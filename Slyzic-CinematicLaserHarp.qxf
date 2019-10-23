@@ -7,11 +7,11 @@
   <Author>Slyzic</Author>
  </Creator>
  <Manufacturer>Slyzic</Manufacturer>
- <Model>LaserHarp</Model>
+ <Model>CinematicLaserHarp</Model>
  <Type>Laser</Type>
  <Channel Name="Dimmer 1">
   <Group Byte="0">Intensity</Group>
-  <Capability Min="0" Max="255">Master dimmer (0 - 100%)</Capability>
+  <Capability Min="0" Max="255">Dimmer</Capability>
  </Channel>
  <Channel Name="Position 1">
   <Group Byte="0">Pan</Group>
@@ -19,11 +19,11 @@
  </Channel>
  <Channel Name="Strobe 1">
   <Group Byte="0">Shutter</Group>
-  <Capability Min="0" Max="255"></Capability>
+  <Capability Min="0" Max="255">Strobe frequency</Capability>
  </Channel>
  <Channel Name="Dimmer 2">
   <Group Byte="0">Intensity</Group>
-  <Capability Min="0" Max="255">Master dimmer (0 - 100%)</Capability>
+  <Capability Min="0" Max="255">Dimmer</Capability>
  </Channel>
  <Channel Name="Position 2">
   <Group Byte="0">Pan</Group>
@@ -31,11 +31,11 @@
  </Channel>
  <Channel Name="Strobe 2">
   <Group Byte="0">Shutter</Group>
-  <Capability Min="0" Max="255"></Capability>
+  <Capability Min="0" Max="255">Strobe frequency</Capability>
  </Channel>
  <Channel Name="Dimmer 3">
   <Group Byte="0">Intensity</Group>
-  <Capability Min="0" Max="255">Master dimmer (0 - 100%)</Capability>
+  <Capability Min="0" Max="255">Dimmer</Capability>
  </Channel>
  <Channel Name="Position 3">
   <Group Byte="0">Pan</Group>
@@ -43,11 +43,11 @@
  </Channel>
  <Channel Name="Strobe 3">
   <Group Byte="0">Shutter</Group>
-  <Capability Min="0" Max="255"></Capability>
+  <Capability Min="0" Max="255">Strobe frequency</Capability>
  </Channel>
  <Channel Name="Dimmer 4">
   <Group Byte="0">Intensity</Group>
-  <Capability Min="0" Max="255">Master dimmer (0 - 100%)</Capability>
+  <Capability Min="0" Max="255">Dimmer</Capability>
  </Channel>
  <Channel Name="Position 4">
   <Group Byte="0">Pan</Group>
@@ -55,11 +55,11 @@
  </Channel>
  <Channel Name="Strobe 4">
   <Group Byte="0">Shutter</Group>
-  <Capability Min="0" Max="255"></Capability>
+  <Capability Min="0" Max="255">Strobe frequency</Capability>
  </Channel>
  <Channel Name="Dimmer 5">
   <Group Byte="0">Intensity</Group>
-  <Capability Min="0" Max="255">Master dimmer (0 - 100%)</Capability>
+  <Capability Min="0" Max="255">Dimmer</Capability>
  </Channel>
  <Channel Name="Position 5">
   <Group Byte="0">Pan</Group>
@@ -67,11 +67,11 @@
  </Channel>
  <Channel Name="Strobe 5">
   <Group Byte="0">Shutter</Group>
-  <Capability Min="0" Max="255"></Capability>
+  <Capability Min="0" Max="255">Strobe frequency</Capability>
  </Channel>
  <Channel Name="Dimmer 6">
   <Group Byte="0">Intensity</Group>
-  <Capability Min="0" Max="255">Master dimmer (0 - 100%)</Capability>
+  <Capability Min="0" Max="255">Dimmer</Capability>
  </Channel>
  <Channel Name="Position 6">
   <Group Byte="0">Pan</Group>
@@ -79,11 +79,11 @@
  </Channel>
  <Channel Name="Strobe 6">
   <Group Byte="0">Shutter</Group>
-  <Capability Min="0" Max="255"></Capability>
+  <Capability Min="0" Max="255">Strobe frequency</Capability>
  </Channel>
  <Channel Name="Dimmer 7">
   <Group Byte="0">Intensity</Group>
-  <Capability Min="0" Max="255">Master dimmer (0 - 100%)</Capability>
+  <Capability Min="0" Max="255">Dimmer</Capability>
  </Channel>
  <Channel Name="Position 7">
   <Group Byte="0">Pan</Group>
@@ -91,10 +91,25 @@
  </Channel>
  <Channel Name="Strobe 7">
   <Group Byte="0">Shutter</Group>
-  <Capability Min="0" Max="255"></Capability>
+  <Capability Min="0" Max="255">Strobe frequency</Capability>
  </Channel>
- <Mode Name="LaserHarp"/>
- <Mode Name="Full Mode">
+ <Mode Name="LaserHarp">
+  <Channel Number="0">Dimmer 1</Channel>
+  <Channel Number="1">Position 1</Channel>
+  <Channel Number="2">Dimmer 2</Channel>
+  <Channel Number="3">Position 2</Channel>
+  <Channel Number="4">Dimmer 3</Channel>
+  <Channel Number="5">Position 3</Channel>
+  <Channel Number="6">Dimmer 4</Channel>
+  <Channel Number="7">Position 4</Channel>
+  <Channel Number="8">Dimmer 5</Channel>
+  <Channel Number="9">Position 5</Channel>
+  <Channel Number="10">Dimmer 6</Channel>
+  <Channel Number="11">Position 6</Channel>
+  <Channel Number="12">Dimmer 7</Channel>
+  <Channel Number="13">Position 7</Channel>
+ </Mode>
+ <Mode Name="FullMode">
   <Channel Number="0">Dimmer 1</Channel>
   <Channel Number="1">Position 1</Channel>
   <Channel Number="2">Strobe 1</Channel>

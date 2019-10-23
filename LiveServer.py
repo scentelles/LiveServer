@@ -16,104 +16,168 @@ MIDI_NOTE_ON  = 0x90
 MIDI_CONTROL_CHANGE = 0xb0
 MIDI_PROGRAM_CHANGE = 0xc0
 
-VL3_CC_GUITAR_UMOD = 21
-VL3_CC_GUITAR_DELAY = 17
-VL3_CC_GUITAR_REVERB = 46
-VL3_CC_GUITAR_HIT = 47
-VL3_CC_GUITAR_DRIVE = 29
-VL3_CC_GUITAR_COMP = 19
-VL3_CC_VOICE_UMOD = 118
-VL3_CC_VOICE_DELAY = 117
-VL3_CC_VOICE_REVERB = 112
-VL3_CC_VOICE_HARMO = 110
-VL3_CC_VOICE_DOUBLE = 111
+VL3_CC_GUITAR_UMOD 	= 21
+VL3_CC_GUITAR_DELAY 	= 17
+VL3_CC_GUITAR_REVERB 	= 46
+VL3_CC_GUITAR_HIT 	= 47
+VL3_CC_GUITAR_DRIVE 	= 29
+VL3_CC_GUITAR_COMP 	= 19
+VL3_CC_VOICE_UMOD 	= 118
+VL3_CC_VOICE_DELAY 	= 117
+VL3_CC_VOICE_REVERB 	= 112
+VL3_CC_VOICE_HARMO 	= 110
+VL3_CC_VOICE_DOUBLE 	= 111
+VL3_CC_STEP 		= 115
 
 currentSong = 0
-currentStep = 1
+currentStep = 0
 
 #OSC connection to QLC+
-client = udp_client.SimpleUDPClient("10.3.141.1", 5005)
+clientQLC = udp_client.SimpleUDPClient("10.3.141.1", 5005)
+#OSC connection to Mini PC
+clientPC = udp_client.SimpleUDPClient("10.3.141.213", 5006)
+#OSC connection to LaserHarp
+clientLH = udp_client.SimpleUDPClient("10.3.141.90", 8001)
 
 
-SMOOTH_PRESET_ANOTHER_TOWN		= 0
-SMOOTH_PRESET_NIGHT_SHADOW_TRAIN 	= 0
-SMOOTH_PRESET_L_AVERSE 			= 0
-SMOOTH_PRESET_DARKNESS_OF_YOUR_EYES	= 0
-SMOOTH_PRESET_LE_BAL 			= 0
-SMOOTH_PRESET_SLAP_MY_HEAD		= 0
-SMOOTH_PRESET_AFTER_CHRISTMAS		= 0
-SMOOTH_PRESET_BOIPEBA			= 0
-SMOOTH_PRESET_BOIPEBA			= 0
-SMOOTH_PRESET_BOIPEBA			= 0
-SMOOTH_PRESET_BOIPEBA			= 0
-SMOOTH_PRESET_BOIPEBA			= 0
+SMOOTH_PRESET_NIGHT_SHADOW_TRAIN 	= 9
+SMOOTH_PRESET_L_AVERSE 			= 10
+SMOOTH_PRESET_ANOTHER_TOWN		= 11
+SMOOTH_PRESET_I_DONT_MIND		= 13
+SMOOTH_PRESET_SLAP_MY_HEAD		= 16
+SMOOTH_PRESET_LE_BAL 			= 22
+SMOOTH_PRESET_AFTER_CHRISTMAS		= 17
+SMOOTH_PRESET_RUNNING_ON_THE_WALL	= 18
+SMOOTH_PRESET_LES_OMBRES		= 23
+SMOOTH_PRESET_DU_SMOOTH			= 24
+SMOOTH_PRESET_LE_RENDEZ_VOUS		= 25
+SMOOTH_PRESET_BOIPEBA			= 26
+SMOOTH_PRESET_CAP_D_HIVER		= 27
+SMOOTH_PRESET_IL_Y_AVAIT		= 28
+SMOOTH_PRESET_TEST			= 31
+
+SName = {}
+SName[SMOOTH_PRESET_NIGHT_SHADOW_TRAIN] = "NightShadowTrain"
+SName[SMOOTH_PRESET_L_AVERSE] 		= "Laverse"
+SName[SMOOTH_PRESET_ANOTHER_TOWN]	= "AnotherTown"
+SName[SMOOTH_PRESET_I_DONT_MIND] 	= "IdontMind"
+SName[SMOOTH_PRESET_SLAP_MY_HEAD] 	= "SlapMyHead"
+SName[SMOOTH_PRESET_LE_BAL] 		= "LeBal"
+SName[SMOOTH_PRESET_AFTER_CHRISTMAS] 	= "AfterChristmas"
+SName[SMOOTH_PRESET_RUNNING_ON_THE_WALL]= "RunningOnTheWall"
+SName[SMOOTH_PRESET_LES_OMBRES] 	= "LesOmbres"
+SName[SMOOTH_PRESET_DU_SMOOTH]		= "DuSmooth"
+SName[SMOOTH_PRESET_LE_RENDEZ_VOUS] 	= "LeRendezVous"
+SName[SMOOTH_PRESET_BOIPEBA] 		= "Boipeba"
+SName[SMOOTH_PRESET_CAP_D_HIVER] 	= "CapDhiver"
+SName[SMOOTH_PRESET_IL_Y_AVAIT]		= "IlYavait"
+SName[SMOOTH_PRESET_TEST]		= "Test"
+
 
 SMOOTH_PRESET_MIN = 1
-SMOOTH_PRESET_MAX = 49
+SMOOTH_PRESET_MAX = 58
 
 
-def SmoothTrioCC():
-  if(currentSong == SMOOTH_PRESET_ANOTHER_TOWN):
-    #if step control
-    currentStep += 1
-    
-    client.send_message("/AnotherTown/" + currentStep, 255)
 
-  
+
+def SmoothTrioPC():
+  global currentStep
+  #TODO : implement on LH side
+  clientLH.send_message("/laserharp/IDLE", 0)
+   
+  if(currentSong in SName):
+    currentStep = 1
+    currentMessage = "/" + SName[currentSong] + "/Step1"
+    print("Sending OSC message to QLC : " + currentMessage)
+    clientQLC.send_message(currentMessage, 255)
   else:
-    print("Smooth message unmapped. do nothing")
+    print("Smooth song unmapped. do nothing")
+
+    
+    
+def SmoothTrioCC(myCC, value):
+  global currentStep
+  #if step control
+  #exlude first time step1, managed by Program Change. 
+  #But allow to go back to it we already were beyond step1 
+  tempNewStep = value + 1
+  print ("myCC : " + str(myCC))
+  if ((myCC == VL3_CC_STEP) and ((tempNewStep > 1) or (currentStep > 1))):
+    currentStep = tempNewStep
+    
+    if(currentSong in SName):
+      currentMessage = "/" + SName[currentSong] + "/Step" +str(currentStep)
+      print("Sending OSC message step to QLC : " + currentMessage)
+      clientQLC.send_message(currentMessage, 255)
+    else:
+      print("Step increment : Smooth song unmapped. do nothing")
+
+ 
 
 
 
+def forwardPCFromVoicelive(myCC, value):
+  global currentSong
+  songName = ""
+  currentSong = myCC + 1
+  if(currentSong in SName):
+    songName = SName[currentSong]
+  print("Setting current song to : " + str(currentSong) + " (" + songName + ")")
 
-#client.send_message("/fog", 255)
-def forwardCCFromVoicelive(myCC, value):
-  global client
-
+    
   if(currentSong > SMOOTH_PRESET_MIN and currentSong < SMOOTH_PRESET_MAX):
-    SmoothTrioCC()
+    SmoothTrioPC()
+
+
+#clientQLC.send_message("/fog", 255)
+def forwardCCFromVoicelive(myCC, value):
+  global clientQLC
+  print("Dispatching message CC from Voicelive : " + str(myCC) + " | " + str(value))
+  if(currentSong > SMOOTH_PRESET_MIN and currentSong < SMOOTH_PRESET_MAX):
+    SmoothTrioCC(myCC, value)
   
   
   else:
     if   (myCC == VL3_CC_VOICE_HARMO):
       if (currentSong == 61):
         if(value > 0):
-          client.send_message("/full_strobe", 255)
+          clientQLC.send_message("/full_strobe", 255)
         else:
-          client.send_message("/full_strobe", 0)
+          clientQLC.send_message("/full_strobe", 0)
 
       else:      
         if (value > 0):
-          client.send_message("/strobe", 255)
+          clientQLC.send_message("/strobe", 255)
         else :
-          client.send_message("/strobe", 0)
+          clientQLC.send_message("/strobe", 0)
 
     if   (myCC == VL3_CC_GUITAR_UMOD):
       if (currentSong == 61):
         if(value > 0):
-          client.send_message("/fog", 255)
+          clientQLC.send_message("/fog", 255)
         else:
-          client.send_message("/fog", 0)
+          clientQLC.send_message("/fog", 0)
 
       else:      
         if (value > 0):
           setGMajorProgram(3)
           setAmpChannel(AMP_CHANNEL_CLEAN)
-          client.send_message("/clean", 255)
+          clientQLC.send_message("/clean", 255)
 
     elif (myCC == VL3_CC_GUITAR_DELAY):
       if (currentSong == 61):
-        client.send_message("/trip", 255)
+        clientQLC.send_message("/trip", 255)
       else:
         if (value > 0):
           setGMajorProgram(6)
           setAmpChannel(AMP_CHANNEL_BOOST)
-          client.send_message("/boost", 255)
+          clientQLC.send_message("/boost", 255)
+          print("Setting QLC boost")
     elif (myCC == VL3_CC_GUITAR_REVERB):
       if (value > 0):    
         setGMajorProgram(8)
         setAmpChannel(AMP_CHANNEL_XLEAD)
-        client.send_message("/lead", 255)
+        clientQLC.send_message("/lead", 255)
     elif (myCC == VL3_CC_GUITAR_COMP):
       if (value > 0):
         setGMajorProgram(5)
@@ -127,17 +191,16 @@ def forwardCCFromVoicelive(myCC, value):
       if(value > 0):
         setGMajorBoost(1)
         setGMajorDelay(1)
-        client.send_message("/solo", 255)
+        clientQLC.send_message("/solo", 255)
       else:
         setGMajorBoost(0)
         setGMajorDelay(0)
-        client.send_message("/solo", 0)
+        clientQLC.send_message("/solo", 0)
     else:
       print("message unmapped. do nothing")
 
 
-def print_midi_handler(unused_addr, args, command, note, vel):
-  global currentSong
+def print_voicelive_handler(unused_addr, args, command, note, vel):
   
   if(command == MIDI_NOTE_ON):
     print("MIDI_NOTE_ON")
@@ -148,11 +211,19 @@ def print_midi_handler(unused_addr, args, command, note, vel):
     forwardCCFromVoicelive(note, vel)
   if(command == MIDI_PROGRAM_CHANGE):
     print("MIDI_PROGRAM_CHANGE")
-    print("Setting current song to : ")
-    print(note+1)
-    currentSong = note + 1  
+    forwardPCFromVoicelive(note, vel)
+
     
   print("[{0}] ~ {1} {2} {3}\n".format(args[0], command, note, vel))
+   
+
+def print_laserharp_handler(osc_address, args, command):
+  print ("Received OSC message from Laser Harp")
+  print("address" + osc_address)
+  print(command);
+  clientPC.send_message(osc_address, command);
+  
+  #print("[{0}] ~ {1} {2} {3}\n".format(args[0], command, note, vel))
    
 
 def print_note_handler(unused_addr, args, arg2, note):
@@ -164,6 +235,15 @@ def print_compute_handler(unused_addr, args, volume):
   except ValueError: pass
 
 if __name__ == "__main__":
+
+ # while(1):
+ #   print("sending LH preset to Laserharp")
+ #   clientLH.send_message("/laserharp/startLH", 2)
+ #   time.sleep(2)
+ #   print("sending DMX request to Laserharp")
+ #   clientLH.send_message("/laserharp/startDMX", 0)
+ #   time.sleep(2)
+      
   parser = argparse.ArgumentParser()
   parser.add_argument("--ip",
       default="10.3.141.1", help="The ip to listen on")
@@ -172,7 +252,8 @@ if __name__ == "__main__":
   args = parser.parse_args()
 
   dispatcher = dispatcher.Dispatcher()
-  dispatcher.map("/midi/voicelive", print_midi_handler, "Midi")
+  dispatcher.map("/midi/voicelive", print_voicelive_handler, "Midi_voicelive")
+  dispatcher.map("/vkb_midi/0/*", print_laserharp_handler, "Midi_laserharp")
 
   server = osc_server.ThreadingOSCUDPServer(
       (args.ip, args.port), dispatcher)
