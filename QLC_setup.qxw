@@ -12,9 +12,7 @@
     <Input Plugin="OSC" Line="1">
      <PluginParameters inputPort="5005"/>
     </Input>
-    <Output Plugin="ArtNet" Line="1">
-     <PluginParameters outputUni="1"/>
-    </Output>
+    <Output Plugin="ArtNet" Line="1"/>
    </Universe>
    <Universe Name="Universe 2" ID="1"/>
    <Universe Name="Universe 3" ID="2"/>
@@ -64,6 +62,16 @@
    <ExcludeFade>2,3</ExcludeFade>
   </Fixture>
   <Fixture>
+   <Manufacturer>Slyzic</Manufacturer>
+   <Model>CinematicLaserHarp</Model>
+   <Mode>FullMode</Mode>
+   <ID>4</ID>
+   <Name>CinematicLaserHarp</Name>
+   <Universe>0</Universe>
+   <Address>45</Address>
+   <Channels>21</Channels>
+  </Fixture>
+  <Fixture>
    <Manufacturer>Stairville</Manufacturer>
    <Model>LED Flood Panel 150</Model>
    <Mode>8-channel</Mode>
@@ -85,6 +93,20 @@
    <Channels>8</Channels>
    <ExcludeFade>4,5</ExcludeFade>
   </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic Smoke</Model>
+   <Mode>Normal</Mode>
+   <ID>7</ID>
+   <Name>LH Smoke</Name>
+   <Universe>0</Universe>
+   <Address>66</Address>
+   <Channels>2</Channels>
+  </Fixture>
+  <ChannelsGroup ID="1" Name="New Group" Value="0"/>
+  <ChannelsGroup ID="0" Name="LaserHarpDimmer" Value="0">4,0,4,3,4,6,4,9,4,12,4,15,4,18</ChannelsGroup>
+  <ChannelsGroup ID="2" Name="LaserHarpStrobe" Value="0">4,2,4,5,4,8,4,11,4,14,4,17,4,20</ChannelsGroup>
+  <ChannelsGroup ID="3" Name="LaserHarpPos" Value="0">4,1,4,4,4,7,4,10,4,13,4,16,4,19</ChannelsGroup>
   <Function ID="0" Type="Scene" Name="FOG!" Path="Red_Cloud">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="0">0,255</FixtureVal>
@@ -174,12 +196,16 @@
   </Function>
   <Function ID="11" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>3,255</ChannelGroupsVal>
+   <FixtureVal ID="4">1,0,4,0,7,0,10,0,13,0,16,0,19,0</FixtureVal>
   </Function>
-  <Function ID="12" Type="Sequence" Name="New Sequence 12" BoundScene="11">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+  <Function ID="12" Type="Sequence" Name="LHmoveslow" BoundScene="11">
+   <Speed FadeIn="0" FadeOut="0" Duration="4000"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+   <SpeedModes FadeIn="PerStep" FadeOut="PerStep" Duration="Common"/>
+   <Step Number="0" FadeIn="4000" Hold="0" FadeOut="4000" Values="7"/>
+   <Step Number="1" FadeIn="4000" Hold="0" FadeOut="4000" Values="7">4:1,255,4,255,7,255,10,255,13,255,16,255,19,255</Step>
   </Function>
   <Function ID="13" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -215,11 +241,104 @@
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
   </Function>
-  <Monitor DisplayMode="0" ShowLabels="0">
+  <Function ID="18" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>0,0</ChannelGroupsVal>
+  </Function>
+  <Function ID="19" Type="Sequence" Name="New Sequence 19" BoundScene="18">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+  </Function>
+  <Function ID="20" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,0,3,0,6,0,9,0,12,0,15,0,18,0</FixtureVal>
+  </Function>
+  <Function ID="21" Type="Sequence" Name="LHstrobe" BoundScene="20">
+   <Speed FadeIn="0" FadeOut="0" Duration="200"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="7">4:0,255,3,255,6,255,9,255,12,255,15,255,18,255</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0" Values="7"/>
+  </Function>
+  <Function ID="22" Type="Scene" Name="LHFog" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="7">0,0</FixtureVal>
+  </Function>
+  <Function ID="23" Type="Sequence" Name="LHFog" BoundScene="22">
+   <Speed FadeIn="0" FadeOut="0" Duration="1000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="1"/>
+   <Step Number="1" FadeIn="0" Hold="1000" FadeOut="0" Values="1">7:0,255</Step>
+  </Function>
+  <Function ID="24" Type="Collection" Name="AnotherTownStep1" Path="Smooth_Trio/AnotherTown">
+   <Step Number="0">3</Step>
+   <Step Number="1">21</Step>
+   <Step Number="2">12</Step>
+   <Step Number="3">23</Step>
+   <Step Number="4">25</Step>
+  </Function>
+  <Function ID="25" Type="Script" Name="Set_LH_Mode_DMX">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <Command>systemcommand%3A%2Fhome%2Fpi%2FProjects%2FLiveServer%2FsetLHModeDmx.py%20arg%3A1%20</Command>
+  </Function>
+  <Function ID="26" Type="Script" Name="Set_LH_Mode_LH0">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <Command>systemcommand%3A%2Fhome%2Fpi%2FProjects%2FLiveServer%2FsetLHModeLH.py%20arg%3A0</Command>
+  </Function>
+  <Function ID="27" Type="Collection" Name="LaverseStep1" Path="Smooth_Trio/Laverse">
+   <Step Number="0">26</Step>
+  </Function>
+  <Function ID="28" Type="Collection" Name="IdontMindStep1" Path="Smooth_Trio/IdontMind">
+   <Step Number="0">25</Step>
+  </Function>
+  <Function ID="29" Type="Collection" Name="AfterChristmasStep1" Path="Smooth_Trio/AfterChristmas"/>
+  <Function ID="30" Type="Collection" Name="BoipebaStep1" Path="Smooth_Trio/Boipeba"/>
+  <Function ID="31" Type="Collection" Name="DuSmoothStep1" Path="Smooth_Trio/DuSmooth"/>
+  <Function ID="32" Type="Collection" Name="IlYavaitStep1" Path="Smooth_Trio/Il y avait"/>
+  <Function ID="33" Type="Collection" Name="LeBalStep1" Path="Smooth_Trio/LeBal"/>
+  <Function ID="34" Type="Collection" Name="LeRendezVousStep1" Path="Smooth_Trio/LeRendezVous"/>
+  <Function ID="35" Type="Collection" Name="LesOmbresStep1" Path="Smooth_Trio/LesOmbres"/>
+  <Function ID="36" Type="Collection" Name="NightShadowTrainStep1" Path="Smooth_Trio/NightShadowTrain"/>
+  <Function ID="37" Type="Collection" Name="RunningOnTheWallStep1" Path="Smooth_Trio/RunningOnTheWall"/>
+  <Function ID="38" Type="Collection" Name="SlapMyHeadStep1" Path="Smooth_Trio/SlapMyHead"/>
+  <Function ID="39" Type="Collection" Name="CapDhiverStep1" Path="Smooth_Trio/CadDhiver"/>
+  <Function ID="40" Type="Script" Name="Set_LH_Mode_IDLE">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <Command>systemcommand%3A%2Fhome%2Fpi%2FProjects%2FLiveServer%2FsetLHModeIdle.py%20arg%3A1%20</Command>
+  </Function>
+  <Function ID="41" Type="Script" Name="Set_LH_Mode_LH1">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <Command>systemcommand%3A%2Fhome%2Fpi%2FProjects%2FLiveServer%2FsetLHModeLH.py%20arg%3A1</Command>
+  </Function>
+  <Function ID="42" Type="Script" Name="Set_LH_Mode_LH2">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <Command>systemcommand%3A%2Fhome%2Fpi%2FProjects%2FLiveServer%2FsetLHModeLH.py%20arg%3A2</Command>
+  </Function>
+  <Monitor DisplayMode="1" ShowLabels="1">
    <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
    <ChannelStyle>0</ChannelStyle>
    <ValueStyle>0</ValueStyle>
    <Grid Width="5" Height="3" Depth="5" Units="0"/>
+   <FxItem ID="0" XPos="0" YPos="0"/>
+   <FxItem ID="1" XPos="2182.8" YPos="3139.78"/>
+   <FxItem ID="2" XPos="2285.71" YPos="479.57" GelColor="#edd400"/>
+   <FxItem ID="5" XPos="1655.91" YPos="3731.18"/>
+   <FxItem ID="6" XPos="2698.92" YPos="3720.43"/>
   </Monitor>
  </Engine>
  <VirtualConsole>
@@ -231,7 +350,20 @@
     <BackgroundImage>None</BackgroundImage>
     <Font>Default</Font>
    </Appearance>
-   <SoloFrame Caption="" ID="8">
+   <Button Caption="laser strobe" ID="10" Icon="">
+    <WindowState Visible="False" X="70" Y="300" Width="50" Height="50"/>
+    <Appearance>
+     <FrameStyle>None</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <Function ID="21"/>
+    <Action>Toggle</Action>
+    <Intensity Adjust="False">100</Intensity>
+   </Button>
+   <SoloFrame Caption="RedCloud" ID="8">
     <Appearance>
      <FrameStyle>Sunken</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -373,6 +505,457 @@
     <Action>Toggle</Action>
     <Intensity Adjust="False">100</Intensity>
    </Button>
+   <SoloFrame Caption="SmoothTrio" ID="11">
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <WindowState Visible="False" X="145" Y="295" Width="940" Height="400"/>
+    <AllowChildren>True</AllowChildren>
+    <AllowResize>True</AllowResize>
+    <ShowHeader>True</ShowHeader>
+    <ShowEnableButton>True</ShowEnableButton>
+    <Mixing>False</Mixing>
+    <Collapsed>False</Collapsed>
+    <Disabled>False</Disabled>
+    <SoloFrame Caption="AnotherTown" ID="12">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="5" Y="35" Width="165" Height="150"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="13" Icon="">
+      <WindowState Visible="False" X="0" Y="40" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="24"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="39091"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="Laverse" ID="14">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="405" Y="130" Width="205" Height="85"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="15" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="27"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="53146"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="IdontMind" ID="17">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="0" Y="130" Width="200" Height="90"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="16" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="28"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="47283"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="Boipeba" ID="19">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="405" Y="35" Width="155" Height="90"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="18" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="30"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="29210"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="AfterChristmas" ID="21">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="205" Y="35" Width="190" Height="95"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="20" Icon="">
+      <WindowState Visible="False" X="0" Y="45" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="29"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="34461"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="IlYavait" ID="27">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="205" Y="130" Width="200" Height="90"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="26" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="32"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="54836"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="LeBal" ID="29">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="615" Y="130" Width="205" Height="85"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="28" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="33"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="41853"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="LeRendezVous" ID="31">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="0" Y="225" Width="195" Height="85"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="30" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="34"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="50800"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="DuSmooth" ID="33">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="610" Y="40" Width="215" Height="90"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="32" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="31"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="34246"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="LesOmbres" ID="35">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="200" Y="220" Width="190" Height="90"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="34" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="35"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="29648"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="NightShadowTrain" ID="38">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="400" Y="220" Width="205" Height="90"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="37" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="36"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="55473"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="RunningOnTheWall" ID="40">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="620" Y="215" Width="215" Height="90"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="39" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="37"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="15432"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="SlapMyHead" ID="42">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="0" Y="310" Width="215" Height="90"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="41" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="38"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="33608"/>
+     </Button>
+    </SoloFrame>
+    <SoloFrame Caption="CapDhiver" ID="44">
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <WindowState Visible="False" X="215" Y="310" Width="215" Height="90"/>
+     <AllowChildren>True</AllowChildren>
+     <AllowResize>True</AllowResize>
+     <ShowHeader>True</ShowHeader>
+     <ShowEnableButton>True</ShowEnableButton>
+     <Mixing>False</Mixing>
+     <Collapsed>False</Collapsed>
+     <Disabled>False</Disabled>
+     <Button Caption="Step1" ID="43" Icon="">
+      <WindowState Visible="False" X="0" Y="35" Width="50" Height="50"/>
+      <Appearance>
+       <FrameStyle>None</FrameStyle>
+       <ForegroundColor>Default</ForegroundColor>
+       <BackgroundColor>Default</BackgroundColor>
+       <BackgroundImage>None</BackgroundImage>
+       <Font>Default</Font>
+      </Appearance>
+      <Function ID="39"/>
+      <Action>Toggle</Action>
+      <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="5277"/>
+     </Button>
+    </SoloFrame>
+   </SoloFrame>
   </Frame>
   <Properties>
    <Size Width="1920" Height="1080"/>
