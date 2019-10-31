@@ -15,15 +15,35 @@ from pythonosc import dispatcher
 
 import os
 
-RASPI_IP = "10.3.141.1"
-LOCALHOST_IP = "10.3.141.213"
+RASPI_IP       = "10.3.141.1"
+RASPI_PORT     = 8000
+LOCALHOST_IP   = "10.3.141.213"
+LOCALHOST_PORT = 5006
 
+INPUT_PORT  = 'Springbeats vMIDI2'
+OUTPUT_PORT = 'Springbeats vMIDI4'
+
+#Open output port
 midiout = rtmidi.MidiOut()
-midiout.open_port(5)
+ports = midiout.get_ports()
+for port, name in enumerate(ports):
+    print("[%i] #%s#" % (port, name))
+    if(OUTPUT_PORT in name):
+       print("Opening output port [%i] #%s#" % (port, name))
+       midiout.open_port(port)
 
 log = logging.getLogger('midiin_callback')
 logging.basicConfig(level=logging.DEBUG)
 
+#Open input port
+midiin = rtmidi.MidiIn()
+ports = midiin.get_ports()
+for port, name in enumerate(ports):
+    print("[%i] #%s#" % (port, name))
+    if(INPUT_PORT in name):
+       print("Opening input port [%i] #%s#" % (port, name))
+       midiin.open_port(port)
+       port_name = name
 
 class MidiInputHandler(object):
     def __init__(self, port):
@@ -34,7 +54,7 @@ class MidiInputHandler(object):
         message, deltatime = event
         self._wallclock += deltatime
         print("[%s] @%0.6f %r" % (self.port, self._wallclock, message))
-        #Only change program change
+        #Forward program changes received from Voicelive
         if(message[0] == 0xC0):
            #send program change thru OSC
            client.send_message("/midi/voicelive", [message[0], message[1], 0])
@@ -45,48 +65,38 @@ class MidiInputHandler(object):
               os.system(cmd)
  
         else:
-           #send Control change thru OSC
+           #Forward Control change received from Voicelive
            client.send_message("/midi/voicelive", [message[0], message[1], message[2]])
        
 
 #Receives note on and off coming from LaserHarp
-def print_laserharp_handler(osc_address, args, command):
+def print_laserharp_handler(osc_address, args, velocity):
   print("received OSC message from laser harp")
-  print("adress" + osc_address)
-  print(command)
+  print("address" + osc_address)
+  print(velocity)
 
   temp = osc_address.split("/")
-  print (temp[4]);
-  if(command != 0):
-    note = [0x90, int(temp[4]), command]    # Note ON
+  note = int(temp[4])
+  print (note);
+  if(velocity != 0):
+    note = [0x90, note, velocity]    # Note ON
   else:
-    note = [0x80, int(temp[4]), 0]          #note OFF
+    note = [0x80, note, 0]           #note OFF
   midiout.send_message(note)
  
 
-client = udp_client.SimpleUDPClient(RASPI_IP, 8000)
+client = udp_client.SimpleUDPClient(RASPI_IP, RASPI_PORT)
 
 dispatcher = dispatcher.Dispatcher()
 dispatcher.map("/vkb_midi/0/*", print_laserharp_handler, "midi_laserharp")
 
 server = osc_server.ThreadingOSCUDPServer(
-    (LOCALHOST_IP, 5006), dispatcher)
-# Prompts user for MIDI input port, unless a valid port number or name
-# is given as the first argument on the command line.
-# API backend defaults to ALSA on Linux.
-#port = sys.argv[1] if len(sys.argv) > 1 else None
-
-try:
-   midiin, port_name = open_midiinput(3) #vMidi2
-except (EOFError, KeyboardInterrupt):
-    sys.exit()
+    (LOCALHOST_IP, LOCALHOST_PORT), dispatcher)
 
 print("Attaching MIDI input callback handler.")
 midiin.set_callback(MidiInputHandler(port_name))
 
 print("Entering main loop. Press Control-C to exit.")
-
-
 server.serve_forever()
     
 
