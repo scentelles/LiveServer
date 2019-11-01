@@ -1,6 +1,4 @@
-"""Show how to receive MIDI input by setting a callback function."""
-
-from __future__ import print_function
+"""Bridges Midi from Voicelive to OSC RASPI, and to Local midi PC sampler. bridges notes from Raspi/LH to sampler"""
 
 import logging
 import sys
@@ -15,6 +13,10 @@ from pythonosc import dispatcher
 
 import os
 
+from threading import Timer
+
+#==========================================================
+# Constant definitions
 RASPI_IP       = "10.3.141.1"
 RASPI_PORT     = 8000
 LOCALHOST_IP   = "10.3.141.213"
@@ -22,6 +24,81 @@ LOCALHOST_PORT = 5006
 
 INPUT_PORT  = 'Springbeats vMIDI2'
 OUTPUT_PORT = 'Springbeats vMIDI4'
+
+DEBOUNCE_PRESET_DELAY = 3.0
+
+#==========================================================
+
+class MidiInputHandler(object):
+    def __init__(self, port):
+        self.port = port
+        self._wallclock = time.time()
+        self.scheduled_timer = None
+
+
+    def debounced_func(self, wait, func, *args, **kwargs):
+            
+        if self.scheduled_timer and not self.scheduled_timer.finished.is_set():
+            print("cancelling Timer")
+            self.scheduled_timer.cancel()
+            
+        self.scheduled_timer = Timer(wait, func, args=args, kwargs=kwargs)
+        self.scheduled_timer.start()
+
+    def debounce(self, wait, func, *args, **kwargs):
+        """Returns a debounced version of a function.
+
+        The debounced function delays invoking `func` until after `wait`
+        seconds have elapsed since the last time the debounced function
+        was invoked.
+        """
+        print("Debouncing")  
+        return self.debounced_func(wait, func, *args)
+
+
+    def forwardProgramChange(self, value):
+        print("Forwarding Program change : " + str(value))
+        client.send_message("/midi/voicelive", [0xC0, value, 0])
+        
+        if(value == 1): #We don't receive the preset 1(index 0...), so let's use the number 2(index 1).
+            #shutdown
+            print("Shuting down immediately")
+            cmd = "Shutdown -s -f -t 0"
+            os.system(cmd)
+              
+    def __call__(self, event, data=None):
+        message, deltatime = event
+        self._wallclock += deltatime
+        print("[%s] @%0.6f %r" % (self.port, self._wallclock, message))
+        #Forward program changes received from Voicelive
+        if(message[0] == 0xC0):
+           #send program change thru OSC
+           programVal = message[1]
+           self.debounce(DEBOUNCE_PRESET_DELAY, self.forwardProgramChange, programVal)
+
+        else:
+           #Forward Control change received from Voicelive
+           #print("Forwarding Control change" + str(message[1]))
+           client.send_message("/midi/voicelive", [message[0], message[1], message[2]])
+       
+
+#Receives note on and off coming from LaserHarp
+def print_laserharp_handler(osc_address, args, velocity):
+  print("received OSC message from laser harp")
+  print("address" + osc_address)
+  print(velocity)
+
+  temp = osc_address.split("/")
+  note = int(temp[4])
+  print (note);
+  if(velocity != 0):
+    note = [0x90, note, velocity]    # Note ON
+  else:
+    note = [0x80, note, 0]           #note OFF
+  midiout.send_message(note)
+
+#==========================================================
+#Main code
 
 #Open output port
 midiout = rtmidi.MidiOut()
@@ -45,45 +122,6 @@ for port, name in enumerate(ports):
        midiin.open_port(port)
        port_name = name
 
-class MidiInputHandler(object):
-    def __init__(self, port):
-        self.port = port
-        self._wallclock = time.time()
-
-    def __call__(self, event, data=None):
-        message, deltatime = event
-        self._wallclock += deltatime
-        print("[%s] @%0.6f %r" % (self.port, self._wallclock, message))
-        #Forward program changes received from Voicelive
-        if(message[0] == 0xC0):
-           #send program change thru OSC
-           client.send_message("/midi/voicelive", [message[0], message[1], 0])
-           if(message[1] == 1): #We don't receive the preset 1(index 0...), so let's use the number 2(index 1).
-              #shutdown
-              print("Shuting down immediately")
-              cmd = "Shutdown -s -f -t 0"
-              os.system(cmd)
- 
-        else:
-           #Forward Control change received from Voicelive
-           client.send_message("/midi/voicelive", [message[0], message[1], message[2]])
-       
-
-#Receives note on and off coming from LaserHarp
-def print_laserharp_handler(osc_address, args, velocity):
-  print("received OSC message from laser harp")
-  print("address" + osc_address)
-  print(velocity)
-
-  temp = osc_address.split("/")
-  note = int(temp[4])
-  print (note);
-  if(velocity != 0):
-    note = [0x90, note, velocity]    # Note ON
-  else:
-    note = [0x80, note, 0]           #note OFF
-  midiout.send_message(note)
- 
 
 client = udp_client.SimpleUDPClient(RASPI_IP, RASPI_PORT)
 
