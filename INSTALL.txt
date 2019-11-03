@@ -1,0 +1,32 @@
+sudo pip3 install python-osc
+
+sudo pip3 install mido 
+
+sudo apt-get install libasound2-dev
+sudo apt-get install libjack-dev
+
+sudo pip3 install python-rtmidi
+
+
+
+git clone https://github.com/mcallegari/qlcplus.git
+git checkout <release_tag>
+
+install guide
+https://github.com/mcallegari/qlcplus/wiki/Linux-build-Qt5
+
+===========
+Autostart
+
+sudo apt-get install xterm
+
+in :
+/etc/xdg/lxsession/LXDE-pi/autostart
+
+@xterm -hold -e '/bin/bash /home/pi/Projects/LiveServer/startup.sh'
+
+===========
+install access point :https://github.com/billz/raspap-webgui
+sudo cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf.org
+
+config in localhost. admin/secret
