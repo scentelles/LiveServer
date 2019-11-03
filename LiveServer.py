@@ -86,12 +86,16 @@ def SmoothTrioPC():
   clientLH.send_message("/laserharp/IDLE", 0)
    
   if(currentSong in SName):
+    clientQLC.send_message("/stopallfunctions", 255)
+    time.sleep(0.5)
+
     currentStep = 1
     currentMessage = "/" + SName[currentSong] + "/Step1"
     print("Sending OSC message to QLC : " + currentMessage)
     clientQLC.send_message(currentMessage, 255)
   else:
     print("Smooth song unmapped. do nothing")
+    #clientQLC.send_message("/stopallfunctions", 255)
 
     
     
