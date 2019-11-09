@@ -51,10 +51,14 @@ def SmoothTrioPC():
    
   if(currentSong in SName):
     clientQLC.send_message("/stopallfunctions", 255)
+    clientQLC.send_message("/stop", 255)
+    clientQLC.send_message("/stop", 0)
+    clientQLC.send_message("/stop", 255)
+    clientQLC.send_message("/stop", 0)
     time.sleep(0.5)
 
     currentStep = 1
-    currentMessage = "/" + SName[currentSong] + "/Step1"
+    currentMessage = "/start_cuelist/" + SName[currentSong]
     print("Sending OSC message to QLC : " + currentMessage)
     clientQLC.send_message(currentMessage, 255)
   else:
@@ -83,8 +87,20 @@ def SmoothTrioCC(myCC, value):
 	      
       print("Sending OSC message step to QLC : " + currentMessage)
       clientQLC.send_message(currentMessage, 255)
+      clientQLC.send_message(currentMessage, 0)
     else:
       print("Step increment : Smooth song unmapped. do nothing")
+
+  #Additional CC coming from Chris
+  if (myCC == 20):
+    currentMessage = "/step_next"
+    clientQLC.send_message(currentMessage, 255)
+    clientQLC.send_message(currentMessage, 0)
+  #Additional CC coming from Chris
+  if (myCC == 21):
+    currentMessage = "/chris_talk"
+    clientQLC.send_message(currentMessage, 255)
+    clientQLC.send_message(currentMessage, 0)
 
  
 
