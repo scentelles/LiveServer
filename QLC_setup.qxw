@@ -919,8 +919,7 @@
     <Intensity Adjust="False">100</Intensity>
     <Input Universe="0" Channel="56334"/>
    </Button>
-   <CueList Caption="NightShadowTrain" ID="23">
-    <WindowState Visible="True" X="330" Y="35" Width="200" Height="215"/>
+   <Frame Caption="" ID="31">
     <Appearance>
      <FrameStyle>Sunken</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -928,427 +927,444 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <Chaser>15</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="390"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="Laverse" ID="11">
-    <WindowState Visible="True" X="545" Y="35" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>67</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="11571"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="AnotherTown" ID="12">
-    <WindowState Visible="True" X="755" Y="35" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>72</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="14847"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="IdontMind" ID="13">
-    <WindowState Visible="True" X="965" Y="35" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>71</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="62250"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="SlapMyHead" ID="14">
-    <WindowState Visible="True" X="1170" Y="35" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>68</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="7039"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="LeBal" ID="15">
-    <WindowState Visible="True" X="330" Y="265" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>73</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="4466"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="AfterChristmas" ID="16">
-    <WindowState Visible="True" X="550" Y="265" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>74</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="60243"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="RunningOnTheWall" ID="17">
-    <WindowState Visible="True" X="760" Y="265" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>75</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="12159"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="LesOmbres" ID="18">
-    <WindowState Visible="True" X="965" Y="265" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>76</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="29118"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="DuSmooth" ID="19">
-    <WindowState Visible="True" X="1175" Y="260" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>77</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="50326"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="LeRendezVous" ID="20">
-    <WindowState Visible="True" X="330" Y="495" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>78</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="5436"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="Boipeba" ID="21">
-    <WindowState Visible="True" X="555" Y="495" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>79</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="8711"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="CapDhiver" ID="24">
-    <WindowState Visible="True" X="765" Y="495" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>81</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="57514"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="IlYavait" ID="25">
-    <WindowState Visible="True" X="970" Y="495" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>82</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="344"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="Keywest" ID="26">
-    <WindowState Visible="True" X="330" Y="720" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>84</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="25140"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="TheRiver" ID="27">
-    <WindowState Visible="True" X="550" Y="725" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>85</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="1260"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="Darkness" ID="28">
-    <WindowState Visible="True" X="1175" Y="495" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>83</Chaser>
-    <NextPrevBehavior>3</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback>
-     <Input Universe="0" Channel="10337"/>
-    </Playback>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
-   <CueList Caption="Empty" ID="29">
-    <WindowState Visible="True" X="1180" Y="720" Width="200" Height="215"/>
-    <Appearance>
-     <FrameStyle>Sunken</FrameStyle>
-     <ForegroundColor>Default</ForegroundColor>
-     <BackgroundColor>Default</BackgroundColor>
-     <BackgroundImage>None</BackgroundImage>
-     <Font>Default</Font>
-    </Appearance>
-    <Chaser>4294967295</Chaser>
-    <NextPrevBehavior>0</NextPrevBehavior>
-    <Next>
-     <Input Universe="0" Channel="18999"/>
-    </Next>
-    <Previous>
-     <Input Universe="0" Channel="2607"/>
-    </Previous>
-    <Playback/>
-    <Stop>
-     <Input Universe="0" Channel="52273"/>
-    </Stop>
-   </CueList>
+    <WindowState Visible="True" X="300" Y="45" Width="1345" Height="1035"/>
+    <AllowChildren>True</AllowChildren>
+    <AllowResize>True</AllowResize>
+    <ShowHeader>True</ShowHeader>
+    <ShowEnableButton>True</ShowEnableButton>
+    <Collapsed>False</Collapsed>
+    <Disabled>False</Disabled>
+    <CueList Caption="NightShadowTrain" ID="23">
+     <WindowState Visible="True" X="10" Y="90" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>15</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="390"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="Laverse" ID="11">
+     <WindowState Visible="True" X="225" Y="90" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>67</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="11571"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="AnotherTown" ID="12">
+     <WindowState Visible="True" X="440" Y="90" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>72</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="14847"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="IdontMind" ID="13">
+     <WindowState Visible="True" X="655" Y="90" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>71</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="62250"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="SlapMyHead" ID="14">
+     <WindowState Visible="True" X="865" Y="90" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>68</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="7039"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="LeBal" ID="15">
+     <WindowState Visible="True" X="10" Y="320" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>73</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="4466"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="AfterChristmas" ID="16">
+     <WindowState Visible="True" X="225" Y="320" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>74</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="60243"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="RunningOnTheWall" ID="17">
+     <WindowState Visible="True" X="440" Y="320" Width="195" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>75</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="12159"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="LesOmbres" ID="18">
+     <WindowState Visible="True" X="20" Y="550" Width="180" Height="205"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>76</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="29118"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="DuSmooth" ID="19">
+     <WindowState Visible="True" X="230" Y="545" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>77</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="50326"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="LeRendezVous" ID="20">
+     <WindowState Visible="True" X="655" Y="325" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>78</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="5436"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="Boipeba" ID="21">
+     <WindowState Visible="True" X="865" Y="330" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>79</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="8711"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="CapDhiver" ID="24">
+     <WindowState Visible="True" X="440" Y="550" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>81</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="57514"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="IlYavait" ID="25">
+     <WindowState Visible="True" X="655" Y="550" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>82</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="344"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="Darkness" ID="28">
+     <WindowState Visible="True" X="865" Y="555" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>83</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="10337"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="Keywest" ID="26">
+     <WindowState Visible="True" X="15" Y="770" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>84</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="25140"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="TheRiver" ID="27">
+     <WindowState Visible="True" X="230" Y="770" Width="200" Height="215"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>85</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="1260"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="Empty" ID="29">
+     <WindowState Visible="True" X="450" Y="775" Width="220" Height="220"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>4294967295</Chaser>
+     <NextPrevBehavior>0</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback/>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+   </Frame>
   </Frame>
   <Properties>
    <Size Width="1920" Height="1080"/>
