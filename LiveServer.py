@@ -61,6 +61,8 @@ def SmoothTrioPC():
     currentMessage = "/start_cuelist/" + SName[currentSong]
     print("Sending OSC message to QLC : " + currentMessage)
     clientQLC.send_message(currentMessage, 255)
+    time.sleep(0.5)
+    clientQLC.send_message(currentMessage, 0)
   else:
     print("Smooth song unmapped. do nothing")
     #clientQLC.send_message("/stopallfunctions", 255)
