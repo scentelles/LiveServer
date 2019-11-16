@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Workspace>
-<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="VirtualConsole">
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="FunctionManager">
  <Creator>
   <Name>Q Light Controller Plus</Name>
   <Version>4.12.2</Version>
@@ -234,7 +234,7 @@
    <ChannelGroupsVal>3,255</ChannelGroupsVal>
    <FixtureVal ID="4">1,0,4,0,7,0,10,0,13,0,16,0,19,0</FixtureVal>
   </Function>
-  <Function ID="12" Type="Sequence" Name="LHmoveslow" BoundScene="11">
+  <Function ID="12" Type="Sequence" Name="LHmoveslow" Path="LaserHarp" BoundScene="11">
    <Speed FadeIn="0" FadeOut="0" Duration="4000"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -266,8 +266,12 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
-   <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">104</Step>
+   <Step Number="1" FadeIn="0" Hold="4294967294" FadeOut="0">36</Step>
+   <Step Number="2" FadeIn="0" Hold="4294967294" FadeOut="0">103</Step>
+   <Step Number="3" FadeIn="0" Hold="4294967294" FadeOut="0">106</Step>
+   <Step Number="4" FadeIn="0" Hold="4294967294" FadeOut="0">87</Step>
+   <Step Number="5" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="16" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -292,7 +296,7 @@
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="4">0,0,3,0,6,0,9,0,12,0,15,0,18,0</FixtureVal>
   </Function>
-  <Function ID="21" Type="Sequence" Name="LHstrobe" BoundScene="20">
+  <Function ID="21" Type="Sequence" Name="LHstrobe" Path="LaserHarp" BoundScene="20">
    <Speed FadeIn="0" FadeOut="0" Duration="200"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -304,7 +308,7 @@
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="7">0,0</FixtureVal>
   </Function>
-  <Function ID="23" Type="Sequence" Name="LHFog" BoundScene="22">
+  <Function ID="23" Type="Sequence" Name="LHFog" Path="LaserHarp" BoundScene="22">
    <Speed FadeIn="0" FadeOut="0" Duration="1000"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -361,10 +365,6 @@
    <Step Number="2">53</Step>
    <Step Number="3">60</Step>
   </Function>
-  <Function ID="32" Type="Collection" Name="IlYavaitStep1" Path="Smooth_Trio/Il y avait">
-   <Step Number="0">40</Step>
-   <Step Number="1">59</Step>
-  </Function>
   <Function ID="33" Type="Collection" Name="LeBalStep1" Path="Smooth_Trio/LeBal">
    <Step Number="0">40</Step>
    <Step Number="1">45</Step>
@@ -383,11 +383,9 @@
    <Step Number="2">40</Step>
    <Step Number="3">60</Step>
   </Function>
-  <Function ID="36" Type="Collection" Name="NightShadowTrainStep1" Path="Smooth_Trio/NightShadowTrain">
-   <Step Number="0">56</Step>
-   <Step Number="1">57</Step>
-   <Step Number="2">59</Step>
-   <Step Number="3">26</Step>
+  <Function ID="36" Type="Collection" Name="NightShadowTrainStep3-Bridge" Path="Smooth_Trio/NightShadowTrain">
+   <Step Number="0">48</Step>
+   <Step Number="1">52</Step>
   </Function>
   <Function ID="37" Type="Collection" Name="RunningOnTheWallStep1" Path="Smooth_Trio/RunningOnTheWall">
    <Step Number="0">40</Step>
@@ -493,19 +491,19 @@
    <FixtureVal ID="9">5,0</FixtureVal>
    <FixtureVal ID="10">5,0</FixtureVal>
   </Function>
-  <Function ID="52" Type="Scene" Name="Ambiance-White" Path="Smooth_Trio">
+  <Function ID="52" Type="Scene" Name="Ambiance-White">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="8">6,0,7,0,8,0,9,255,10,0</FixtureVal>
    <FixtureVal ID="9">6,0,7,0,8,0,9,255,10,0</FixtureVal>
    <FixtureVal ID="10">6,0,7,0,8,0,9,255,10,0</FixtureVal>
   </Function>
-  <Function ID="53" Type="Scene" Name="Ambiance-Amber" Path="Smooth_Trio">
+  <Function ID="53" Type="Scene" Name="Ambiance-Amber">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="8">6,185,7,53,8,0,9,21,10,0</FixtureVal>
    <FixtureVal ID="9">6,185,7,53,8,0,9,21,10,0</FixtureVal>
    <FixtureVal ID="10">6,185,7,53,8,0,9,21,10,0</FixtureVal>
   </Function>
-  <Function ID="54" Type="Scene" Name="Ambiance-Smooth" Path="Smooth_Trio">
+  <Function ID="54" Type="Scene" Name="Ambiance-pink">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="8">6,255,7,16,8,16,9,16,10,0</FixtureVal>
    <FixtureVal ID="9">6,255,7,16,8,16,9,16,10,0</FixtureVal>
@@ -518,7 +516,7 @@
    <FixtureVal ID="9">5,0</FixtureVal>
    <FixtureVal ID="10">5,0</FixtureVal>
   </Function>
-  <Function ID="56" Type="Scene" Name="Ambiance-Red" Path="Smooth_Trio">
+  <Function ID="56" Type="Scene" Name="Ambiance-Red">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="8">6,255,7,0,8,0,9,0,10,0</FixtureVal>
    <FixtureVal ID="9">6,255,7,0,8,0,9,0,10,0</FixtureVal>
@@ -545,7 +543,7 @@
    <FixtureVal ID="9">0,165,2,28,4,160</FixtureVal>
    <FixtureVal ID="10">0,193,2,28,4,160</FixtureVal>
   </Function>
-  <Function ID="60" Type="Scene" Name="Lyre-dimmer">
+  <Function ID="60" Type="Scene" Name="Dimmer-Lyre-full">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <ChannelGroupsVal>4,255</ChannelGroupsVal>
    <FixtureVal ID="8">5,255</FixtureVal>
@@ -566,18 +564,26 @@
   </Function>
   <Function ID="63" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,0,2,0,3,0,5,0,6,0,8,0,9,0,11,0,12,0,14,0,15,0,17,0,18,0,20,0</FixtureVal>
   </Function>
-  <Function ID="64" Type="Sequence" Name="LHLightChaser" Path="LaserHarp" BoundScene="63">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+  <Function ID="64" Type="Sequence" Name="LHLightChaserRandom" Path="LaserHarp" BoundScene="63">
+   <Speed FadeIn="0" FadeOut="0" Duration="100"/>
    <Direction>Forward</Direction>
-   <RunOrder>Loop</RunOrder>
+   <RunOrder>Random</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:0,255</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:3,255</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:6,255</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:6,255,9,255</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:12,255</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:15,255</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:18,255</Step>
   </Function>
-  <Function ID="65" Type="Collection" Name="IlYavaitStep2" Path="Smooth_Trio/Il y avait">
+  <Function ID="65" Type="Collection" Name="IlYavaitStep1" Path="Smooth_Trio/Il y avait">
    <Step Number="0">43</Step>
    <Step Number="1">52</Step>
    <Step Number="2">40</Step>
-   <Step Number="3">60</Step>
+   <Step Number="3">96</Step>
   </Function>
   <Function ID="66" Type="Scene" Name="Dimmer-blackout">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -591,7 +597,7 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">27</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="68" Type="Chaser" Name="SlapMyHead" Path="Smooth_Trio">
@@ -599,7 +605,7 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">38</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="69" Type="Collection" Name="DefaultAmber" Path="Smooth_Trio/0-Defaults">
@@ -607,19 +613,19 @@
    <Step Number="1">59</Step>
    <Step Number="2">70</Step>
   </Function>
-  <Function ID="70" Type="Scene" Name="Dimmer-fulllight">
+  <Function ID="70" Type="Scene" Name="Dimmer-Lyre-strobe-fast">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <ChannelGroupsVal>4,255</ChannelGroupsVal>
-   <FixtureVal ID="8">5,255</FixtureVal>
-   <FixtureVal ID="9">5,255</FixtureVal>
-   <FixtureVal ID="10">5,255</FixtureVal>
+   <ChannelGroupsVal>4,143</ChannelGroupsVal>
+   <FixtureVal ID="8">5,143</FixtureVal>
+   <FixtureVal ID="9">5,143</FixtureVal>
+   <FixtureVal ID="10">5,143</FixtureVal>
   </Function>
   <Function ID="71" Type="Chaser" Name="IdontMind" Path="Smooth_Trio">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">28</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="72" Type="Chaser" Name="AnotherTown" Path="Smooth_Trio">
@@ -627,7 +633,7 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">24</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="73" Type="Chaser" Name="LeBal" Path="Smooth_Trio">
@@ -635,7 +641,7 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">33</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="74" Type="Chaser" Name="AfterChristmas" Path="Smooth_Trio">
@@ -643,7 +649,7 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">29</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="75" Type="Chaser" Name="RunningOnTheWall" Path="Smooth_Trio">
@@ -651,7 +657,7 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">37</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="76" Type="Chaser" Name="LesOmbres" Path="Smooth_Trio">
@@ -659,7 +665,7 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">35</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="77" Type="Chaser" Name="DuSmooth" Path="Smooth_Trio">
@@ -667,7 +673,7 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">31</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="78" Type="Chaser" Name="LeRendezVous" Path="Smooth_Trio">
@@ -675,7 +681,7 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">34</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="79" Type="Chaser" Name="Boipeba" Path="Smooth_Trio">
@@ -683,15 +689,21 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">30</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
+  </Function>
+  <Function ID="80" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">5,0,6,0</FixtureVal>
+   <FixtureVal ID="10">5,0,6,0</FixtureVal>
+   <FixtureVal ID="9">5,0,6,0</FixtureVal>
   </Function>
   <Function ID="81" Type="Chaser" Name="CapDhiver" Path="Smooth_Trio">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">39</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="82" Type="Chaser" Name="IlYavait" Path="Smooth_Trio">
@@ -699,7 +711,7 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">65</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="83" Type="Chaser" Name="Darkness" Path="Smooth_Trio">
@@ -715,7 +727,7 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">101</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
   <Function ID="85" Type="Chaser" Name="TheRiver" Path="Smooth_Trio">
@@ -723,8 +735,193 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">69</Step>
+   <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">105</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
+  </Function>
+  <Function ID="86" Type="Sequence" Name="dimmer wave" BoundScene="80">
+   <Speed FadeIn="1000" FadeOut="1000" Duration="2000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="PerStep" Duration="Common"/>
+   <Step Number="0" FadeIn="1000" Hold="0" FadeOut="0" Values="6">8:5,129,6,255:9:5,15,6,255:10:5,39,6,255</Step>
+   <Step Number="1" FadeIn="1000" Hold="0" FadeOut="0" Values="6">8:5,13,6,255:9:5,15,6,255:10:5,129,6,255</Step>
+   <Step Number="2" FadeIn="1000" Hold="0" FadeOut="0" Values="6">8:5,13,6,255:9:5,123,6,255:10:5,26,6,255</Step>
+  </Function>
+  <Function ID="87" Type="Collection" Name="NightShadowTrainStep5" Path="Smooth_Trio/NightShadowTrain">
+   <Step Number="0">52</Step>
+   <Step Number="1">89</Step>
+   <Step Number="2">64</Step>
+   <Step Number="3">111</Step>
+  </Function>
+  <Function ID="88" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">0,0,2,0</FixtureVal>
+   <FixtureVal ID="9">0,0,2,0</FixtureVal>
+   <FixtureVal ID="10">0,0,2,0</FixtureVal>
+  </Function>
+  <Function ID="89" Type="Sequence" Name="lyre move 360 slow" BoundScene="88">
+   <Speed FadeIn="0" FadeOut="0" Duration="10200"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="10000" Hold="0" FadeOut="0" Values="6">8:0,255,2,255:9:0,255,2,255:10:0,255,2,255</Step>
+   <Step Number="1" FadeIn="10000" Hold="0" FadeOut="0" Values="6"/>
+  </Function>
+  <Function ID="90" Type="Sequence" Name="lyre move vertical trio fast" Path="Lyres" BoundScene="91">
+   <Speed FadeIn="0" FadeOut="0" Duration="500"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Random</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="3">8:2,195:9:2,77:10:2,79</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0" Values="3">8:2,73:9:2,194:10:2,76</Step>
+   <Step Number="2" FadeIn="0" Hold="10200" FadeOut="0" Values="3">8:2,73:9:2,69:10:2,195</Step>
+  </Function>
+  <Function ID="91" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">2,0</FixtureVal>
+   <FixtureVal ID="9">2,0</FixtureVal>
+   <FixtureVal ID="10">2,0</FixtureVal>
+  </Function>
+  <Function ID="92" Type="Sequence" Name="lyre move vertical trio and people fast" Path="Lyres" BoundScene="93">
+   <Speed FadeIn="0" FadeOut="0" Duration="500"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Random</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="3">8:2,255:9:2,77:10:2,79</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0" Values="3">8:2,73:9:2,255:10:2,76</Step>
+   <Step Number="2" FadeIn="0" Hold="10200" FadeOut="0" Values="3">8:2,73:9:2,69:10:2,255</Step>
+  </Function>
+  <Function ID="93" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">2,0</FixtureVal>
+   <FixtureVal ID="9">2,0</FixtureVal>
+   <FixtureVal ID="10">2,0</FixtureVal>
+  </Function>
+  <Function ID="94" Type="Scene" Name="Lyre Position people">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>7,138,8,73</ChannelGroupsVal>
+   <FixtureVal ID="8">0,138,2,73</FixtureVal>
+   <FixtureVal ID="9">0,138,2,73</FixtureVal>
+   <FixtureVal ID="10">0,138,2,73</FixtureVal>
+  </Function>
+  <Function ID="95" Type="Scene" Name="Lyre Position up">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>7,138,8,73</ChannelGroupsVal>
+   <FixtureVal ID="8">0,138,2,73</FixtureVal>
+   <FixtureVal ID="9">0,138,2,73</FixtureVal>
+   <FixtureVal ID="10">0,138,2,73</FixtureVal>
+  </Function>
+  <Function ID="96" Type="Scene" Name="Dimmer-halflight">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>4,83</ChannelGroupsVal>
+   <FixtureVal ID="8">5,83</FixtureVal>
+   <FixtureVal ID="9">5,83</FixtureVal>
+   <FixtureVal ID="10">5,83</FixtureVal>
+  </Function>
+  <Function ID="97" Type="Collection" Name="DefaultWhite" Path="Smooth_Trio/0-Defaults">
+   <Step Number="0">52</Step>
+   <Step Number="1">59</Step>
+   <Step Number="2">70</Step>
+  </Function>
+  <Function ID="98" Type="Collection" Name="DefaultSmooth" Path="Smooth_Trio/0-Defaults">
+   <Step Number="0">59</Step>
+   <Step Number="1">70</Step>
+   <Step Number="2">54</Step>
+  </Function>
+  <Function ID="99" Type="Scene" Name="Ambiance-blue">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">6,16,7,16,8,255,9,16,10,0</FixtureVal>
+   <FixtureVal ID="9">6,18,7,16,8,255,9,16,10,0</FixtureVal>
+   <FixtureVal ID="10">6,15,7,16,8,255,9,16,10,0</FixtureVal>
+  </Function>
+  <Function ID="100" Type="Scene" Name="Ambiance-Green">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">6,0,7,255,8,0,9,6,10,0</FixtureVal>
+   <FixtureVal ID="9">6,0,7,255,8,0,9,3,10,0</FixtureVal>
+   <FixtureVal ID="10">6,0,7,255,8,0,9,2,10,0</FixtureVal>
+  </Function>
+  <Function ID="101" Type="Collection" Name="KeyWestStep1" Path="Smooth_Trio/KeyWest">
+   <Step Number="0">40</Step>
+   <Step Number="1">53</Step>
+   <Step Number="2">59</Step>
+   <Step Number="3">60</Step>
+  </Function>
+  <Function ID="102" Type="Scene" Name="Dimmer-Lyre-strobe-slow">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>4,165</ChannelGroupsVal>
+   <FixtureVal ID="8">5,165</FixtureVal>
+   <FixtureVal ID="9">5,165</FixtureVal>
+   <FixtureVal ID="10">5,165</FixtureVal>
+  </Function>
+  <Function ID="103" Type="Collection" Name="NightShadowTrainStep4Trump">
+   <Step Number="0">52</Step>
+   <Step Number="1">48</Step>
+  </Function>
+  <Function ID="104" Type="Collection" Name="NightShadowTrainStep1">
+   <Step Number="0">25</Step>
+   <Step Number="1">86</Step>
+   <Step Number="2">56</Step>
+   <Step Number="3">59</Step>
+   <Step Number="4">107</Step>
+   <Step Number="5">108</Step>
+  </Function>
+  <Function ID="105" Type="Collection" Name="TheRiverStep1" Path="Smooth_Trio/TheRiver">
+   <Step Number="0">40</Step>
+   <Step Number="1">98</Step>
+  </Function>
+  <Function ID="106" Type="Collection" Name="NightShadowTrainStep4Trump" Path="Smooth_Trio/NightShadowTrain">
+   <Step Number="0">52</Step>
+   <Step Number="1">110</Step>
+   <Step Number="2">112</Step>
+   <Step Number="3">60</Step>
+  </Function>
+  <Function ID="107" Type="Scene" Name="LH-dimmer" Path="LaserHarp">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>0,255,2,0</ChannelGroupsVal>
+   <FixtureVal ID="4">0,255,2,0,3,255,5,0,6,255,8,0,9,255,11,0,12,255,14,0,15,255,17,0,18,255,20,0</FixtureVal>
+  </Function>
+  <Function ID="108" Type="Sequence" Name="move-in-and-out slow" Path="LaserHarp" BoundScene="109">
+   <Speed FadeIn="8000" FadeOut="0" Duration="8000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="2000" Hold="0" FadeOut="0" Values="7">4:4,20,7,64,10,139,13,191,16,171,19,255</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0" Values="7">4:1,199,4,215,7,187,10,139,13,80,16,56,19,28</Step>
+  </Function>
+  <Function ID="109" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">1,0,4,0,7,0,10,0,13,0,16,0,19,0</FixtureVal>
+  </Function>
+  <Function ID="110" Type="Scene" Name="LH-position vertical">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>3,115</ChannelGroupsVal>
+   <FixtureVal ID="4">1,115,4,115,7,115,10,115,13,115,16,115,19,115</FixtureVal>
+  </Function>
+  <Function ID="111" Type="Scene" Name="LH-position open (Copy)">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">1,45,4,36,7,82,10,127,13,165,16,166,19,195</FixtureVal>
+  </Function>
+  <Function ID="112" Type="Scene" Name="LH-dimmer strobe fast" Path="LaserHarp">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>0,255</ChannelGroupsVal>
+   <FixtureVal ID="4">0,255,2,4,3,255,5,4,6,255,8,4,9,255,11,4,12,255,14,4,15,255,17,4,18,255,20,4</FixtureVal>
+  </Function>
+  <Function ID="113" Type="Sequence" Name="LHLightChaserFast" Path="LaserHarp" BoundScene="114">
+   <Speed FadeIn="0" FadeOut="0" Duration="150"/>
+   <Direction>Forward</Direction>
+   <RunOrder>PingPong</RunOrder>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:0,255</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:3,255</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:6,255</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:9,255</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:12,255</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:15,255</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0" Values="14">4:18,255</Step>
+  </Function>
+  <Function ID="114" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="4">0,0,2,0,3,0,5,0,6,0,8,0,9,0,11,0,12,0,14,0,15,0,17,0,18,0,20,0</FixtureVal>
   </Function>
   <Monitor DisplayMode="1" ShowLabels="1">
    <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
@@ -751,7 +948,7 @@
     <Font>Default</Font>
    </Appearance>
    <Button Caption="laser strobe" ID="10" Icon="">
-    <WindowState Visible="True" X="70" Y="300" Width="50" Height="50"/>
+    <WindowState Visible="False" X="70" Y="300" Width="50" Height="50"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -771,7 +968,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="True" X="50" Y="365" Width="430" Height="230"/>
+    <WindowState Visible="False" X="50" Y="365" Width="430" Height="230"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
@@ -780,7 +977,7 @@
     <Collapsed>True</Collapsed>
     <Disabled>False</Disabled>
     <Button Caption="Clean" ID="3" Icon="">
-     <WindowState Visible="True" X="45" Y="50" Width="50" Height="50"/>
+     <WindowState Visible="False" X="45" Y="50" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -794,7 +991,7 @@
      <Input Universe="0" Channel="14284"/>
     </Button>
     <Button Caption="BOOST" ID="4" Icon="">
-     <WindowState Visible="True" X="140" Y="55" Width="50" Height="50"/>
+     <WindowState Visible="False" X="140" Y="55" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -808,7 +1005,7 @@
      <Input Universe="0" Channel="29637"/>
     </Button>
     <Button Caption="LEAD" ID="5" Icon="">
-     <WindowState Visible="True" X="240" Y="60" Width="50" Height="50"/>
+     <WindowState Visible="False" X="240" Y="60" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -822,7 +1019,7 @@
      <Input Universe="0" Channel="44693"/>
     </Button>
     <Button Caption="Solo" ID="2" Icon="">
-     <WindowState Visible="True" X="235" Y="150" Width="50" Height="50"/>
+     <WindowState Visible="False" X="235" Y="150" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -836,7 +1033,7 @@
      <Input Universe="0" Channel="41500"/>
     </Button>
     <Button Caption="Strobe" ID="1" Icon="">
-     <WindowState Visible="True" X="40" Y="145" Width="50" Height="50"/>
+     <WindowState Visible="False" X="40" Y="145" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -850,7 +1047,7 @@
      <Input Universe="0" Channel="18799"/>
     </Button>
     <Button Caption="Full strobe" ID="7" Icon="">
-     <WindowState Visible="True" X="140" Y="145" Width="50" Height="50"/>
+     <WindowState Visible="False" X="140" Y="145" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -864,7 +1061,7 @@
      <Input Universe="0" Channel="51072"/>
     </Button>
     <Button Caption="Trip" ID="9" Icon="">
-     <WindowState Visible="True" X="340" Y="145" Width="50" Height="50"/>
+     <WindowState Visible="False" X="340" Y="145" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -879,7 +1076,7 @@
     </Button>
    </SoloFrame>
    <Button Caption="FOG!" ID="0" Icon="">
-    <WindowState Visible="True" X="105" Y="190" Width="50" Height="50"/>
+    <WindowState Visible="False" X="105" Y="190" Width="50" Height="50"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -893,7 +1090,7 @@
     <Input Universe="0" Channel="58308"/>
    </Button>
    <Button Caption="Default" ID="6" Icon="">
-    <WindowState Visible="True" X="105" Y="110" Width="50" Height="50"/>
+    <WindowState Visible="False" X="105" Y="110" Width="50" Height="50"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -906,7 +1103,7 @@
     <Intensity Adjust="False">100</Intensity>
    </Button>
    <Button Caption="stopAll" ID="22" Icon="">
-    <WindowState Visible="True" X="235" Y="160" Width="50" Height="50"/>
+    <WindowState Visible="False" X="235" Y="160" Width="50" Height="50"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -927,7 +1124,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="True" X="300" Y="45" Width="1345" Height="1035"/>
+    <WindowState Visible="False" X="300" Y="45" Width="1345" Height="1035"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
@@ -935,7 +1132,7 @@
     <Collapsed>False</Collapsed>
     <Disabled>False</Disabled>
     <CueList Caption="NightShadowTrain" ID="23">
-     <WindowState Visible="True" X="10" Y="90" Width="200" Height="215"/>
+     <WindowState Visible="False" X="10" Y="90" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -959,7 +1156,7 @@
      </Stop>
     </CueList>
     <CueList Caption="Laverse" ID="11">
-     <WindowState Visible="True" X="225" Y="90" Width="200" Height="215"/>
+     <WindowState Visible="False" X="225" Y="90" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -983,7 +1180,7 @@
      </Stop>
     </CueList>
     <CueList Caption="AnotherTown" ID="12">
-     <WindowState Visible="True" X="440" Y="90" Width="200" Height="215"/>
+     <WindowState Visible="False" X="440" Y="90" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1007,7 +1204,7 @@
      </Stop>
     </CueList>
     <CueList Caption="IdontMind" ID="13">
-     <WindowState Visible="True" X="655" Y="90" Width="200" Height="215"/>
+     <WindowState Visible="False" X="655" Y="90" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1031,7 +1228,7 @@
      </Stop>
     </CueList>
     <CueList Caption="SlapMyHead" ID="14">
-     <WindowState Visible="True" X="865" Y="90" Width="200" Height="215"/>
+     <WindowState Visible="False" X="865" Y="90" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1055,7 +1252,7 @@
      </Stop>
     </CueList>
     <CueList Caption="LeBal" ID="15">
-     <WindowState Visible="True" X="10" Y="320" Width="200" Height="215"/>
+     <WindowState Visible="False" X="10" Y="320" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1079,7 +1276,7 @@
      </Stop>
     </CueList>
     <CueList Caption="AfterChristmas" ID="16">
-     <WindowState Visible="True" X="225" Y="320" Width="200" Height="215"/>
+     <WindowState Visible="False" X="225" Y="320" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1103,7 +1300,7 @@
      </Stop>
     </CueList>
     <CueList Caption="RunningOnTheWall" ID="17">
-     <WindowState Visible="True" X="440" Y="320" Width="195" Height="215"/>
+     <WindowState Visible="False" X="440" Y="320" Width="195" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1127,7 +1324,7 @@
      </Stop>
     </CueList>
     <CueList Caption="LesOmbres" ID="18">
-     <WindowState Visible="True" X="20" Y="550" Width="180" Height="205"/>
+     <WindowState Visible="False" X="20" Y="550" Width="180" Height="205"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1151,7 +1348,7 @@
      </Stop>
     </CueList>
     <CueList Caption="DuSmooth" ID="19">
-     <WindowState Visible="True" X="230" Y="545" Width="200" Height="215"/>
+     <WindowState Visible="False" X="230" Y="545" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1175,7 +1372,7 @@
      </Stop>
     </CueList>
     <CueList Caption="LeRendezVous" ID="20">
-     <WindowState Visible="True" X="655" Y="325" Width="200" Height="215"/>
+     <WindowState Visible="False" X="655" Y="325" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1199,7 +1396,7 @@
      </Stop>
     </CueList>
     <CueList Caption="Boipeba" ID="21">
-     <WindowState Visible="True" X="865" Y="330" Width="200" Height="215"/>
+     <WindowState Visible="False" X="865" Y="330" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1223,7 +1420,7 @@
      </Stop>
     </CueList>
     <CueList Caption="CapDhiver" ID="24">
-     <WindowState Visible="True" X="440" Y="550" Width="200" Height="215"/>
+     <WindowState Visible="False" X="440" Y="550" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1247,7 +1444,7 @@
      </Stop>
     </CueList>
     <CueList Caption="IlYavait" ID="25">
-     <WindowState Visible="True" X="655" Y="550" Width="200" Height="215"/>
+     <WindowState Visible="False" X="655" Y="550" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1271,7 +1468,7 @@
      </Stop>
     </CueList>
     <CueList Caption="Darkness" ID="28">
-     <WindowState Visible="True" X="865" Y="555" Width="200" Height="215"/>
+     <WindowState Visible="False" X="865" Y="555" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1295,7 +1492,7 @@
      </Stop>
     </CueList>
     <CueList Caption="Keywest" ID="26">
-     <WindowState Visible="True" X="15" Y="770" Width="200" Height="215"/>
+     <WindowState Visible="False" X="15" Y="770" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1319,7 +1516,7 @@
      </Stop>
     </CueList>
     <CueList Caption="TheRiver" ID="27">
-     <WindowState Visible="True" X="230" Y="770" Width="200" Height="215"/>
+     <WindowState Visible="False" X="230" Y="770" Width="200" Height="215"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -1343,7 +1540,7 @@
      </Stop>
     </CueList>
     <CueList Caption="Empty" ID="29">
-     <WindowState Visible="True" X="450" Y="775" Width="220" Height="220"/>
+     <WindowState Visible="False" X="450" Y="775" Width="220" Height="220"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
