@@ -1,8 +1,12 @@
 import mido
 import time
 
-output = mido.open_output('MIDIMATE II:MIDIMATE II MIDI 2 20:1')
-print (output)
+try:
+  output = mido.open_output('MIDIMATE II:MIDIMATE II MIDI 2 20:1')
+  print (output)
+except:
+  print("Midi interface not found")
+
 #output.send(mido.Message('note_on', note=60, velocity=64))
 
 AMP_CHANNEL_CLEAN = 89

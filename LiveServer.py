@@ -10,6 +10,7 @@ from pythonosc import osc_server
 from pythonosc import udp_client
 
 from GuitarAmpMidi import *
+from SmoothDefines import *
 
 MIDI_NOTE_OFF = 0x80
 MIDI_NOTE_ON  = 0x90
@@ -40,43 +41,6 @@ clientPC = udp_client.SimpleUDPClient("10.3.141.213", 5006)
 clientLH = udp_client.SimpleUDPClient("10.3.141.90", 8001)
 
 
-SMOOTH_PRESET_NIGHT_SHADOW_TRAIN 	= 9
-SMOOTH_PRESET_L_AVERSE 			= 10
-SMOOTH_PRESET_ANOTHER_TOWN		= 11
-SMOOTH_PRESET_I_DONT_MIND		= 13
-SMOOTH_PRESET_SLAP_MY_HEAD		= 16
-SMOOTH_PRESET_LE_BAL 			= 22
-SMOOTH_PRESET_AFTER_CHRISTMAS		= 17
-SMOOTH_PRESET_RUNNING_ON_THE_WALL	= 18
-SMOOTH_PRESET_LES_OMBRES		= 23
-SMOOTH_PRESET_DU_SMOOTH			= 24
-SMOOTH_PRESET_LE_RENDEZ_VOUS		= 25
-SMOOTH_PRESET_BOIPEBA			= 26
-SMOOTH_PRESET_CAP_D_HIVER		= 27
-SMOOTH_PRESET_IL_Y_AVAIT		= 28
-SMOOTH_PRESET_TEST			= 31
-
-SName = {}
-SName[SMOOTH_PRESET_NIGHT_SHADOW_TRAIN] = "NightShadowTrain"
-SName[SMOOTH_PRESET_L_AVERSE] 		= "Laverse"
-SName[SMOOTH_PRESET_ANOTHER_TOWN]	= "AnotherTown"
-SName[SMOOTH_PRESET_I_DONT_MIND] 	= "IdontMind"
-SName[SMOOTH_PRESET_SLAP_MY_HEAD] 	= "SlapMyHead"
-SName[SMOOTH_PRESET_LE_BAL] 		= "LeBal"
-SName[SMOOTH_PRESET_AFTER_CHRISTMAS] 	= "AfterChristmas"
-SName[SMOOTH_PRESET_RUNNING_ON_THE_WALL]= "RunningOnTheWall"
-SName[SMOOTH_PRESET_LES_OMBRES] 	= "LesOmbres"
-SName[SMOOTH_PRESET_DU_SMOOTH]		= "DuSmooth"
-SName[SMOOTH_PRESET_LE_RENDEZ_VOUS] 	= "LeRendezVous"
-SName[SMOOTH_PRESET_BOIPEBA] 		= "Boipeba"
-SName[SMOOTH_PRESET_CAP_D_HIVER] 	= "CapDhiver"
-SName[SMOOTH_PRESET_IL_Y_AVAIT]		= "IlYavait"
-SName[SMOOTH_PRESET_TEST]		= "Test"
-
-
-SMOOTH_PRESET_MIN = 1
-SMOOTH_PRESET_MAX = 58
-
 
 
 
@@ -86,12 +50,22 @@ def SmoothTrioPC():
   clientLH.send_message("/laserharp/IDLE", 0)
    
   if(currentSong in SName):
+    clientQLC.send_message("/stopallfunctions", 255)
+    clientQLC.send_message("/stop", 255)
+    clientQLC.send_message("/stop", 0)
+    clientQLC.send_message("/stop", 255)
+    clientQLC.send_message("/stop", 0)
+    time.sleep(0.5)
+
     currentStep = 1
-    currentMessage = "/" + SName[currentSong] + "/Step1"
+    currentMessage = "/start_cuelist/" + SName[currentSong]
     print("Sending OSC message to QLC : " + currentMessage)
     clientQLC.send_message(currentMessage, 255)
+    time.sleep(0.5)
+    clientQLC.send_message(currentMessage, 0)
   else:
     print("Smooth song unmapped. do nothing")
+    #clientQLC.send_message("/stopallfunctions", 255)
 
     
     
@@ -103,14 +77,32 @@ def SmoothTrioCC(myCC, value):
   tempNewStep = value + 1
   print ("myCC : " + str(myCC))
   if ((myCC == VL3_CC_STEP) and ((tempNewStep > 1) or (currentStep > 1))):
+    previousStep = currentStep
     currentStep = tempNewStep
     
     if(currentSong in SName):
-      currentMessage = "/" + SName[currentSong] + "/Step" +str(currentStep)
+      #currentMessage = "/" + SName[currentSong] + "/Step" +str(currentStep)
+      if (currentStep > previousStep):
+        currentMessage = "/step_next"
+      else:
+        currentMessage = "/step_previous"  
+	      
       print("Sending OSC message step to QLC : " + currentMessage)
       clientQLC.send_message(currentMessage, 255)
+      clientQLC.send_message(currentMessage, 0)
     else:
       print("Step increment : Smooth song unmapped. do nothing")
+
+  #Additional CC coming from Chris
+  if (myCC == 20):
+    currentMessage = "/step_next"
+    clientQLC.send_message(currentMessage, 255)
+    clientQLC.send_message(currentMessage, 0)
+  #Additional CC coming from Chris
+  if (myCC == 21):
+    currentMessage = "/chris_talk"
+    clientQLC.send_message(currentMessage, 255)
+    clientQLC.send_message(currentMessage, 0)
 
  
 
