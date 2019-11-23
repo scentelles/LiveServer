@@ -7,9 +7,12 @@ import time
 import rtmidi
 from rtmidi.midiutil import open_midiinput
 
+
 from pythonosc import udp_client
 from pythonosc import osc_server
 from pythonosc import dispatcher
+
+from LCDMonitor import LCDMonitorClass
 
 import os
 
@@ -26,6 +29,27 @@ INPUT_PORT  = 'Springbeats vMIDI2'
 OUTPUT_PORT = 'Springbeats vMIDI4'
 
 DEBOUNCE_PRESET_DELAY = 3.0
+
+#==========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #==========================================================
 
@@ -100,6 +124,9 @@ def print_laserharp_handler(osc_address, args, velocity):
 #==========================================================
 #Main code
 
+myMonitor = LCDMonitorClass()
+
+
 #Open output port
 midiout = rtmidi.MidiOut()
 ports = midiout.get_ports()
@@ -134,7 +161,11 @@ server = osc_server.ThreadingOSCUDPServer(
 print("Attaching MIDI input callback handler.")
 midiin.set_callback(MidiInputHandler(port_name))
 
-print("Entering main loop. Press Control-C to exit.")
-server.serve_forever()
-    
+try:
+    print("Entering main loop. Press Control-C to exit.")
+    server.serve_forever()
+except KeyboardInterrupt:
+    myMonitor.monitorThread.join()
+    myMonitor.keyThread.join()
+    exit()
 
