@@ -15,6 +15,7 @@ from SmoothDefines import *
 MIDI_NOTE_OFF = 0x80
 MIDI_NOTE_ON  = 0x90
 MIDI_CONTROL_CHANGE = 0xb0
+MIDI_CONTROL_CHANGE_FROM_CHRIS = 0xbe
 MIDI_PROGRAM_CHANGE = 0xc0
 
 VL3_CC_GUITAR_UMOD 	= 21
@@ -44,12 +45,8 @@ clientLH = udp_client.SimpleUDPClient("10.3.141.90", 8001)
 
 
 
-def SmoothTrioPC():
-  global currentStep
-  #TODO : implement on LH side
-  clientLH.send_message("/laserharp/IDLE", 0)
-   
-  if(currentSong in SName):
+def startCueList(songName):
+    global currentStep
     clientQLC.send_message("/stopallfunctions", 255)
     clientQLC.send_message("/stop", 255)
     clientQLC.send_message("/stop", 0)
@@ -58,11 +55,19 @@ def SmoothTrioPC():
     time.sleep(0.5)
 
     currentStep = 1
-    currentMessage = "/start_cuelist/" + SName[currentSong]
+    currentMessage = "/start_cuelist/" + SName[songName]
     print("Sending OSC message to QLC : " + currentMessage)
     clientQLC.send_message(currentMessage, 255)
     time.sleep(0.5)
     clientQLC.send_message(currentMessage, 0)
+
+def SmoothTrioPC():
+  global currentStep
+  clientLH.send_message("/laserharp/IDLE", 0)
+  
+  if(currentSong in SName):  
+    startCueList(currentSong)
+
   else:
     print("Smooth song unmapped. do nothing")
     #clientQLC.send_message("/stopallfunctions", 255)
@@ -81,7 +86,16 @@ def SmoothTrioCC(myCC, value):
     currentStep = tempNewStep
     
     if(currentSong in SName):
-      #currentMessage = "/" + SName[currentSong] + "/Step" +str(currentStep)
+      
+      
+      #Special case of going from last to first step on voicelive.
+      #Using it to reset to step1, stop all functiona and restart cue
+      #will work only for presets with more than2 steps...
+      if(abs(previousStep - currentStep) > 1):
+          print("resetting Cue and restart")
+          startCueList(currentSong)
+          return
+          
       if (currentStep > previousStep):
         currentMessage = "/step_next"
       else:
@@ -93,19 +107,29 @@ def SmoothTrioCC(myCC, value):
     else:
       print("Step increment : Smooth song unmapped. do nothing")
 
-  #Additional CC coming from Chris
-  if (myCC == 20):
-    currentMessage = "/step_next"
-    clientQLC.send_message(currentMessage, 255)
-    clientQLC.send_message(currentMessage, 0)
-  #Additional CC coming from Chris
-  if (myCC == 21):
-    currentMessage = "/chris_talk"
-    clientQLC.send_message(currentMessage, 255)
-    clientQLC.send_message(currentMessage, 0)
 
  
-
+def forwardCCFromChris(myCC, value):
+  global currentStep  
+  #Additional CC coming from Chris
+  if (myCC == 0x20):
+    if(value == 127):
+       currentMessage = "/step_next"
+       currentStep = currentStep + 1
+       clientQLC.send_message(currentMessage, 255)
+       clientQLC.send_message(currentMessage, 0)
+    elif(value == 0):
+       currentStep = currentStep - 1
+       currentMessage = "/step_previous"  
+       clientQLC.send_message(currentMessage, 255)
+       clientQLC.send_message(currentMessage, 0)       
+    elif(value == 1):
+       print("Setting Chris Talk Scene")
+       currentMessage = "/chris_talk"
+       clientQLC.send_message(currentMessage, 255)
+       clientQLC.send_message(currentMessage, 0)
+  else:
+       print("Message from Chris unrecognized")
 
 
 def forwardPCFromVoicelive(myCC, value):
@@ -201,6 +225,9 @@ def print_voicelive_handler(unused_addr, args, command, note, vel):
   if(command == MIDI_CONTROL_CHANGE):
     print("MIDI_CONTROL_CHANGE")
     forwardCCFromVoicelive(note, vel)
+  if(command == MIDI_CONTROL_CHANGE_FROM_CHRIS):
+    print("MIDI_CONTROL_CHANGE_FROM_CHRIS")
+    forwardCCFromChris(note, vel)
   if(command == MIDI_PROGRAM_CHANGE):
     print("MIDI_PROGRAM_CHANGE")
     forwardPCFromVoicelive(note, vel)
