@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Workspace>
-<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="FunctionManager">
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="SimpleDesk">
  <Creator>
   <Name>Q Light Controller Plus</Name>
   <Version>4.12.2</Version>
@@ -14,10 +14,10 @@
     </Input>
     <Output Plugin="ArtNet" Line="0"/>
    </Universe>
-   <Universe Name="Universe 2" ID="1">
-    <Output Plugin="DMX USB" Line="0"/>
+   <Universe Name="Universe 2" ID="1"/>
+   <Universe Name="Universe 3" ID="2">
+    <Output Plugin="OSC" Line="1"/>
    </Universe>
-   <Universe Name="Universe 3" ID="2"/>
    <Universe Name="Universe 4" ID="3"/>
   </InputOutputMap>
   <Fixture>
@@ -134,6 +134,36 @@
    <Universe>1</Universe>
    <Address>28</Address>
    <Channels>14</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic RGB</Model>
+   <Mode>RGB</Mode>
+   <ID>11</ID>
+   <Name>BT-LED-Chris</Name>
+   <Universe>2</Universe>
+   <Address>0</Address>
+   <Channels>3</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic RGB</Model>
+   <Mode>RGB</Mode>
+   <ID>12</ID>
+   <Name>BT-LED-Sly</Name>
+   <Universe>2</Universe>
+   <Address>3</Address>
+   <Channels>3</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic RGB</Model>
+   <Mode>RGB</Mode>
+   <ID>13</ID>
+   <Name>BT-LED-Gui</Name>
+   <Universe>2</Universe>
+   <Address>6</Address>
+   <Channels>3</Channels>
   </Fixture>
   <ChannelsGroup ID="1" Name="New Group" Value="0"/>
   <ChannelsGroup ID="0" Name="LaserHarpDimmer" Value="0">4,0,4,3,4,6,4,9,4,12,4,15,4,18</ChannelsGroup>
@@ -337,9 +367,9 @@
   </Function>
   <Function ID="27" Type="Collection" Name="LaverseStep1" Path="Smooth_Trio/Laverse">
    <Step Number="0">26</Step>
-   <Step Number="1">54</Step>
-   <Step Number="2">59</Step>
-   <Step Number="3">60</Step>
+   <Step Number="1">59</Step>
+   <Step Number="2">60</Step>
+   <Step Number="3">115</Step>
   </Function>
   <Function ID="28" Type="Collection" Name="IdontMindStep1" Path="Smooth_Trio/IdontMind">
    <Step Number="0">25</Step>
@@ -365,6 +395,11 @@
    <Step Number="2">53</Step>
    <Step Number="3">60</Step>
   </Function>
+  <Function ID="32" Type="Collection" Name="ChrisTalk" Path="Smooth_Trio/0-Defaults">
+   <Step Number="0">54</Step>
+   <Step Number="1">45</Step>
+   <Step Number="2">60</Step>
+  </Function>
   <Function ID="33" Type="Collection" Name="LeBalStep1" Path="Smooth_Trio/LeBal">
    <Step Number="0">40</Step>
    <Step Number="1">45</Step>
@@ -384,8 +419,8 @@
    <Step Number="3">60</Step>
   </Function>
   <Function ID="36" Type="Collection" Name="NightShadowTrainStep3-Bridge" Path="Smooth_Trio/NightShadowTrain">
-   <Step Number="0">48</Step>
-   <Step Number="1">52</Step>
+   <Step Number="0">52</Step>
+   <Step Number="1">60</Step>
   </Function>
   <Function ID="37" Type="Collection" Name="RunningOnTheWallStep1" Path="Smooth_Trio/RunningOnTheWall">
    <Step Number="0">40</Step>
@@ -598,7 +633,10 @@
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
    <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">27</Step>
-   <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
+   <Step Number="1" FadeIn="0" Hold="4294967294" FadeOut="0">117</Step>
+   <Step Number="2" FadeIn="0" Hold="4294967294" FadeOut="0">27</Step>
+   <Step Number="3" FadeIn="0" Hold="4294967294" FadeOut="0">116</Step>
+   <Step Number="4" FadeIn="0" Hold="4294967294" FadeOut="0">27</Step>
   </Function>
   <Function ID="68" Type="Chaser" Name="SlapMyHead" Path="Smooth_Trio">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -611,7 +649,7 @@
   <Function ID="69" Type="Collection" Name="DefaultAmber" Path="Smooth_Trio/0-Defaults">
    <Step Number="0">53</Step>
    <Step Number="1">59</Step>
-   <Step Number="2">70</Step>
+   <Step Number="2">60</Step>
   </Function>
   <Function ID="70" Type="Scene" Name="Dimmer-Lyre-strobe-fast">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -752,6 +790,7 @@
    <Step Number="1">89</Step>
    <Step Number="2">64</Step>
    <Step Number="3">111</Step>
+   <Step Number="4">60</Step>
   </Function>
   <Function ID="88" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -763,9 +802,9 @@
    <Speed FadeIn="0" FadeOut="0" Duration="10200"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="Common"/>
-   <Step Number="0" FadeIn="10000" Hold="0" FadeOut="0" Values="6">8:0,255,2,255:9:0,255,2,255:10:0,255,2,255</Step>
-   <Step Number="1" FadeIn="10000" Hold="0" FadeOut="0" Values="6"/>
+   <SpeedModes FadeIn="PerStep" FadeOut="PerStep" Duration="Common"/>
+   <Step Number="0" FadeIn="10000" Hold="0" FadeOut="10000" Values="6">8:0,255,2,207:9:0,255,2,203:10:0,255,2,203</Step>
+   <Step Number="1" FadeIn="10000" Hold="0" FadeOut="10000" Values="6">8:2,50:9:2,48:10:2,48</Step>
   </Function>
   <Function ID="90" Type="Sequence" Name="lyre move vertical trio fast" Path="Lyres" BoundScene="91">
    <Speed FadeIn="0" FadeOut="0" Duration="500"/>
@@ -821,12 +860,12 @@
   <Function ID="97" Type="Collection" Name="DefaultWhite" Path="Smooth_Trio/0-Defaults">
    <Step Number="0">52</Step>
    <Step Number="1">59</Step>
-   <Step Number="2">70</Step>
+   <Step Number="2">60</Step>
   </Function>
   <Function ID="98" Type="Collection" Name="DefaultSmooth" Path="Smooth_Trio/0-Defaults">
    <Step Number="0">59</Step>
-   <Step Number="1">70</Step>
-   <Step Number="2">54</Step>
+   <Step Number="1">54</Step>
+   <Step Number="2">60</Step>
   </Function>
   <Function ID="99" Type="Scene" Name="Ambiance-blue">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -922,6 +961,29 @@
   <Function ID="114" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="4">0,0,2,0,3,0,5,0,6,0,8,0,9,0,11,0,12,0,14,0,15,0,17,0,18,0,20,0</FixtureVal>
+  </Function>
+  <Function ID="115" Type="Scene" Name="Ambiance-Averse">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">6,217,7,91,8,0,9,0</FixtureVal>
+   <FixtureVal ID="10">6,255,7,0,8,0,9,0</FixtureVal>
+   <FixtureVal ID="9">5,115,6,0,7,255,8,20,9,48</FixtureVal>
+  </Function>
+  <Function ID="116" Type="Collection" Name="LaverseStep3">
+   <Step Number="0">115</Step>
+   <Step Number="1">43</Step>
+   <Step Number="2">60</Step>
+  </Function>
+  <Function ID="117" Type="Collection" Name="LaverseStep2" Path="Smooth_Trio/Laverse">
+   <Step Number="0">26</Step>
+   <Step Number="1">59</Step>
+   <Step Number="2">48</Step>
+   <Step Number="3">118</Step>
+  </Function>
+  <Function ID="118" Type="Scene" Name="Ambiance-Averse orage">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">6,0,7,0,8,255,9,0</FixtureVal>
+   <FixtureVal ID="10">6,0,7,0,8,255,9,0</FixtureVal>
+   <FixtureVal ID="9">5,115,6,0,7,255,8,20,9,48</FixtureVal>
   </Function>
   <Monitor DisplayMode="1" ShowLabels="1">
    <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
@@ -1562,6 +1624,20 @@
      </Stop>
     </CueList>
    </Frame>
+   <Button Caption="ChrisTalk" ID="30" Icon="">
+    <WindowState Visible="False" X="80" Y="20" Width="170" Height="65"/>
+    <Appearance>
+     <FrameStyle>None</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <Function ID="32"/>
+    <Action>Toggle</Action>
+    <Intensity Adjust="False">100</Intensity>
+    <Input Universe="0" Channel="49269"/>
+   </Button>
   </Frame>
   <Properties>
    <Size Width="1920" Height="1080"/>
