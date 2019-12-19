@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
 from bluepy import btle
 import time
 import threading
 import sys
+from threading import Timer
 
 
 from pythonosc import osc_server
@@ -10,13 +12,19 @@ from pythonosc import dispatcher
 
 ledThreads = {}
 MAC_ADDRESS_CHRIS = "ff:ff:ee:00:27:09"
-MAC_ADDRESS_SLY = "ff:ff:10:0f:53:11"
-MAC_ADDRESS_GUI = "ff:ff:bc:00:2b:78"
-MAC_ADDRESS_LED4 = "ff:ff:ac:00:24:1b"
-MAC_ADDRESS_TEST = "ff:ff:10:0f:51:dc"
+MAC_ADDRESS_SLY   = "ff:ff:10:0f:53:11"
+MAC_ADDRESS_GUI   = "ff:ff:bc:00:2b:78"
+MAC_ADDRESS_LED4  = "ff:ff:ac:00:24:1b"
+MAC_ADDRESS_TEST  = "ff:ff:10:0f:51:dc"
 
 OSC_ADDRESS   = "127.0.0.1"
 OSC_PORT      = 9002         #corresponds to universe #3
+
+DEBOUNCE_DELAY = 0.2
+DELAY_TO_SEND_LAST_VALUES = 1
+
+
+
 
 def dispatch_qlc_osc_handler(osc_address, args, command):
 
@@ -29,23 +37,28 @@ def dispatch_qlc_osc_handler(osc_address, args, command):
   value = round(command*255)
   
   
-  print("address" + osc_address + " : " + str(ledIndex) + " : " + str(channelIndex) + " : " + str(value))
+  #print("address" + osc_address + " : " + str(ledIndex) + " : " + str(channelIndex) + " : " + str(value))
   
   
   myLed = ledThreads[ledIndex]
 
   if (myLed.connected):
-                print(str(myLed.name) + " : " + str(value))
+             #   print(str(myLed.name) + " : " + str(value))
                 if(channelIndex == 0):
                    myLed.R = value
                 if(channelIndex == 1):
                    myLed.G = value
                 if(channelIndex == 2):
                    myLed.B = value
-		   
+
+                #TODO: FIX. workaround because too many messages, losing some values.
+                if(myLed.R + myLed.R + myLed.R <60) :
+                    myLed.R = 0
+                    myLed.G = 0
+                    myLed.B = 0
                 #myLed.dev.connect() 	
                 try:	               
-                  myLed.char.write(bytes([0x56, myLed.R, myLed.G, myLed.B, 0x00, 0xf0, 0xaa]))
+                  myLed.bleWrite()
                   # time.sleep(0.2)
                 except:
                   print("Lost connection")
@@ -71,7 +84,18 @@ class MonThread (threading.Thread):
         self.B = 0
         self.name = name
         self.connectionOngoing = 0
+        self.lastBleWriteTime = 0
+
+    def hello():
+        print("Hello")
 	
+    def bleWrite(self):
+        
+        if(time.time() - self.lastBleWriteTime > DEBOUNCE_DELAY):
+            self.char.write(bytes([0x56,  self.R, self.G, self.B, 0x00, 0xf0, 0xaa]))
+            self.lastBleWriteTime = time.time()
+        else:
+            print("debouncing BLE write")
 
     def connect(self):
                 if(self.connectionOngoing == 0):
@@ -99,6 +123,10 @@ class MonThread (threading.Thread):
 
         if (self.connected):
             while 1:
+                if(time.time() - self.lastBleWriteTime > DELAY_TO_SEND_LAST_VALUES): #Send last values afer delay without ble write
+                    #print("Sending last values")
+                    self.bleWrite()
+                   # self.lastValuesSent = 1
                 time.sleep(1)
 
 
