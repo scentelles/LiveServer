@@ -23,7 +23,7 @@ sudo apt-get install xterm
 in :
 /etc/xdg/lxsession/LXDE-pi/autostart
 
-@xterm -hold -e '/bin/bash /home/pi/Projects/LiveServer/startup.sh'
+@lxterm -hold -e '/bin/bash /home/pi/Projects/LiveServer/startup.sh'
 
 ===========
 install access point :https://github.com/billz/raspap-webgui
