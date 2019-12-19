@@ -51,7 +51,9 @@ def dispatch_qlc_osc_handler(osc_address, args, command):
                   print("Lost connection")
                   myLed.connected = 0
                   myLed.connect()
-
+  else:
+      print("Received command, but still not connected to " + str(myLed.name) + ". Trying to connect now")
+      myLed.connect()
 
 
 
@@ -68,28 +70,33 @@ class MonThread (threading.Thread):
         self.G = 0
         self.B = 0
         self.name = name
+        self.connectionOngoing = 0
 	
 
     def connect(self):
-                print("trying to connect to " + self.name)
-                self.dev = btle.Peripheral(self.macAddress)
-                self.service = self.dev.getServiceByUUID("0000FFE5-0000-1000-8000-00805F9B34FB")
-                self.char = self.service.getCharacteristics("0000FFE9-0000-1000-8000-00805F9B34FB")[0]  
-                self.connected = 1
-                print("Connected successfully to " + self.name)
-
+                if(self.connectionOngoing == 0):
+                    self.connectionOngoing = 1
+                    print("trying to connect to " + self.name)
+                    try:
+                        self.dev = btle.Peripheral(self.macAddress)
+                        self.service = self.dev.getServiceByUUID("0000FFE5-0000-1000-8000-00805F9B34FB")
+                        self.char = self.service.getCharacteristics("0000FFE9-0000-1000-8000-00805F9B34FB")[0]  
+                        self.connected = 1
+                        print("Connected successfully to " + self.name)
+                        self.connectionOngoing = 0
+                    except:
+                        print ("connection failed")
+                        self.connected = 0  
+                        self.connectionOngoing = 0			
+	    
+                else:
+                    print("           Connection already on going")
     
     def run(self):
  
         if (self.connected == 0):
-            try:
-                self.connect()
-            except :
-                print("Could not connect")	 
-                self.connected = 0  
-          
- 
-        i=0
+            self.connect()
+
         if (self.connected):
             while 1:
                 time.sleep(1)
