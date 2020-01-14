@@ -20,8 +20,8 @@ MAC_ADDRESS_TEST  = "ff:ff:10:0f:51:dc"
 OSC_ADDRESS   = "127.0.0.1"
 OSC_PORT      = 9002         #corresponds to universe #3
 
-DEBOUNCE_DELAY = 0.2
-DELAY_TO_SEND_LAST_VALUES = 1
+DEBOUNCE_DELAY = 0.3
+DELAY_TO_SEND_LAST_VALUES = 0.6
 
 
 
@@ -52,18 +52,19 @@ def dispatch_qlc_osc_handler(osc_address, args, command):
                    myLed.B = value
 
                 #TODO: FIX. workaround because too many messages, losing some values.
-                if(myLed.R + myLed.R + myLed.R <60) :
-                    myLed.R = 0
-                    myLed.G = 0
-                    myLed.B = 0
-                #myLed.dev.connect() 	
+               # if(myLed.R + myLed.R + myLed.R <60) :
+                #    myLed.R = 0
+                 #   myLed.G = 0
+                  #  myLed.B = 0
                 try:	               
                   myLed.bleWrite()
-                  # time.sleep(0.2)
-                except:
-                  print("Lost connection")
+                  #time.sleep(0.2) #change debug
+                except Exception as e:
+                  print('Exception : Error on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
+                  print("DISCONNECTED!!!!!!!")
                   myLed.connected = 0
                   myLed.connect()
+
   else:
       print("Received command, but still not connected to " + str(myLed.name) + ". Trying to connect now")
       myLed.connect()
@@ -85,17 +86,20 @@ class MonThread (threading.Thread):
         self.name = name
         self.connectionOngoing = 0
         self.lastBleWriteTime = 0
-
+        self.lastValuesSent = 1
+	
     def hello():
         print("Hello")
 	
     def bleWrite(self):
         
         if(time.time() - self.lastBleWriteTime > DEBOUNCE_DELAY):
+            print("R :" + str(self.R) + "G : " + str(self.G) + "B : " + str(self.B))
             self.char.write(bytes([0x56,  self.R, self.G, self.B, 0x00, 0xf0, 0xaa]))
             self.lastBleWriteTime = time.time()
         else:
             print("debouncing BLE write")
+            self.lastValuesSent = 0    
 
     def connect(self):
                 if(self.connectionOngoing == 0):
@@ -120,14 +124,23 @@ class MonThread (threading.Thread):
  
         if (self.connected == 0):
             self.connect()
+        while 1:
+            if (self.connected):
 
-        if (self.connected):
-            while 1:
-                if(time.time() - self.lastBleWriteTime > DELAY_TO_SEND_LAST_VALUES): #Send last values afer delay without ble write
-                    #print("Sending last values")
-                    self.bleWrite()
-                   # self.lastValuesSent = 1
-                time.sleep(1)
+                #print (time.time())
+                if((time.time() - self.lastBleWriteTime > DELAY_TO_SEND_LAST_VALUES) and (self.lastValuesSent == 0)): #Send last values afer delay without ble write
+                    print("Sending last values")
+                    try:	
+                        self.bleWrite()
+                        self.lastValuesSent = 1
+                    except Exception as e:
+                        print("DISCONNECTED!!!!!!!")
+                        print('Exception : Error on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
+                        #self.connected = 0
+                        #self.connect()
+
+
+            time.sleep(0.1)
 
 
 
