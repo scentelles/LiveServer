@@ -309,8 +309,6 @@
   <Function ID="16" Type="Scene" Name="Archet blue" Path="Smooth_Trio/Archet">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="11">0,67,1,0,2,255</FixtureVal>
-   <FixtureVal ID="12">0,67,1,0,2,255</FixtureVal>
-   <FixtureVal ID="13">0,67,1,0,2,255</FixtureVal>
   </Function>
   <Function ID="17" Type="Scene" Name="Ambiance-beach" Path="Lyres">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -322,8 +320,6 @@
   <Function ID="18" Type="Scene" Name="Archet OFF" Path="Smooth_Trio/Archet">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="11">0,0,1,0,2,0</FixtureVal>
-   <FixtureVal ID="12">0,0,1,0,2,0</FixtureVal>
-   <FixtureVal ID="13">0,0,1,0,2,0</FixtureVal>
   </Function>
   <Function ID="19" Type="Scene" Name="Front-wavered">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -439,12 +435,13 @@
    <Step Number="0">52</Step>
    <Step Number="1">60</Step>
   </Function>
-  <Function ID="37" Type="Collection" Name="RunningOnTheWallStep1" Path="Smooth_Trio/RunningOnTheWall">
+  <Function ID="37" Type="Collection" Name="RunningOnTheWallStep01" Path="Smooth_Trio/RunningOnTheWall">
    <Step Number="0">40</Step>
    <Step Number="1">18</Step>
-   <Step Number="2">60</Step>
-   <Step Number="3">59</Step>
-   <Step Number="4">53</Step>
+   <Step Number="2">130</Step>
+   <Step Number="3">60</Step>
+   <Step Number="4">59</Step>
+   <Step Number="5">53</Step>
   </Function>
   <Function ID="38" Type="Collection" Name="SlapMyHeadStep1" Path="Smooth_Trio/SlapMyHead">
    <Step Number="0">25</Step>
@@ -479,21 +476,21 @@
    <RunOrder>Loop</RunOrder>
    <Command>systemcommand%3A%2Fhome%2Fpi%2FProjects%2FLiveServer%2FsetLHModeLH.py%20arg%3A2</Command>
   </Function>
-  <Function ID="43" Type="Scene" Name="SlyPosition" Path="Smooth_Trio">
+  <Function ID="43" Type="Scene" Name="SlyPosition" Path="Smooth_Trio/Lyres positions">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <ChannelGroupsVal>6,160</ChannelGroupsVal>
    <FixtureVal ID="8">0,190,2,34,4,160</FixtureVal>
    <FixtureVal ID="9">0,169,2,28,4,160</FixtureVal>
    <FixtureVal ID="10">0,163,2,52,4,160</FixtureVal>
   </Function>
-  <Function ID="44" Type="Scene" Name="GuiPosition" Path="Smooth_Trio">
+  <Function ID="44" Type="Scene" Name="GuiPosition" Path="Smooth_Trio/Lyres positions">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <ChannelGroupsVal>6,160</ChannelGroupsVal>
    <FixtureVal ID="8">0,206,2,34,4,160</FixtureVal>
    <FixtureVal ID="9">0,190,2,28,4,160</FixtureVal>
    <FixtureVal ID="10">0,194,2,40,4,160</FixtureVal>
   </Function>
-  <Function ID="45" Type="Scene" Name="ChrisPosition" Path="Smooth_Trio">
+  <Function ID="45" Type="Scene" Name="ChrisPosition" Path="Smooth_Trio/Lyres positions">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <ChannelGroupsVal>6,160</ChannelGroupsVal>
    <FixtureVal ID="8">0,124,2,48,4,160</FixtureVal>
@@ -563,7 +560,7 @@
    <FixtureVal ID="9">6,255,7,16,8,16,9,16,10,0</FixtureVal>
    <FixtureVal ID="10">6,255,7,16,8,16,9,16,10,0</FixtureVal>
   </Function>
-  <Function ID="55" Type="Scene" Name="ChrisSolo" Path="Smooth_Trio">
+  <Function ID="55" Type="Scene" Name="ChrisSolo" Path="Smooth_Trio/Lyres positions">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <ChannelGroupsVal>6,0</ChannelGroupsVal>
    <FixtureVal ID="8">5,255</FixtureVal>
@@ -576,21 +573,21 @@
    <FixtureVal ID="9">6,255,7,0,8,0,9,0,10,0</FixtureVal>
    <FixtureVal ID="10">6,255,7,0,8,0,9,0,10,0</FixtureVal>
   </Function>
-  <Function ID="57" Type="Scene" Name="GuiSolo" Path="Smooth_Trio">
+  <Function ID="57" Type="Scene" Name="GuiSolo" Path="Smooth_Trio/Lyres positions">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <ChannelGroupsVal>6,0</ChannelGroupsVal>
    <FixtureVal ID="8">5,0</FixtureVal>
    <FixtureVal ID="9">5,0</FixtureVal>
    <FixtureVal ID="10">5,255</FixtureVal>
   </Function>
-  <Function ID="58" Type="Scene" Name="SlySolo" Path="Smooth_Trio">
+  <Function ID="58" Type="Scene" Name="SlySolo" Path="Smooth_Trio/Lyres positions">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <ChannelGroupsVal>6,160</ChannelGroupsVal>
    <FixtureVal ID="8">5,0</FixtureVal>
    <FixtureVal ID="9">5,255</FixtureVal>
    <FixtureVal ID="10">5,0</FixtureVal>
   </Function>
-  <Function ID="59" Type="Scene" Name="TrioPosition" Path="Smooth_Trio">
+  <Function ID="59" Type="Scene" Name="TrioPosition" Path="Smooth_Trio/Lyres positions">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <ChannelGroupsVal>6,160</ChannelGroupsVal>
    <FixtureVal ID="8">0,160,2,34,4,160</FixtureVal>
@@ -725,7 +722,18 @@
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
    <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">37</Step>
-   <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
+   <Step Number="1" FadeIn="0" Hold="18000" FadeOut="0">163</Step>
+   <Step Number="2" FadeIn="0" Hold="37000" FadeOut="0">165</Step>
+   <Step Number="3" FadeIn="0" Hold="14000" FadeOut="0">164</Step>
+   <Step Number="4" FadeIn="0" Hold="18000" FadeOut="0">166</Step>
+   <Step Number="5" FadeIn="0" Hold="19000" FadeOut="0">167</Step>
+   <Step Number="6" FadeIn="0" Hold="14000" FadeOut="0">168</Step>
+   <Step Number="7" FadeIn="0" Hold="18000" FadeOut="0">169</Step>
+   <Step Number="8" FadeIn="0" Hold="37000" FadeOut="0">170</Step>
+   <Step Number="9" FadeIn="0" Hold="19000" FadeOut="0">171</Step>
+   <Step Number="10" FadeIn="0" Hold="36000" FadeOut="0">172</Step>
+   <Step Number="11" FadeIn="0" Hold="4294967294" FadeOut="0">173</Step>
+   <Step Number="12" FadeIn="0" Hold="4294967294" FadeOut="0">174</Step>
   </Function>
   <Function ID="76" Type="Chaser" Name="LesOmbres" Path="Smooth_Trio">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -817,7 +825,7 @@
    <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">105</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
-  <Function ID="86" Type="Sequence" Name="dimmer wave" BoundScene="80">
+  <Function ID="86" Type="Sequence" Name="dimmer wave" Path="Lyres" BoundScene="80">
    <Speed FadeIn="1000" FadeOut="1000" Duration="2000"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -839,7 +847,7 @@
    <FixtureVal ID="9">0,0,2,0,12,0</FixtureVal>
    <FixtureVal ID="10">0,0,2,0,12,0</FixtureVal>
   </Function>
-  <Function ID="89" Type="Sequence" Name="lyre move 360 slow" BoundScene="88">
+  <Function ID="89" Type="Sequence" Name="lyre move 360 slow" Path="Lyres" BoundScene="88">
    <Speed FadeIn="0" FadeOut="0" Duration="10200"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -848,7 +856,7 @@
    <Step Number="1" FadeIn="10000" Hold="0" FadeOut="10000" Values="9">8:2,50:9:2,48:10:2,48</Step>
   </Function>
   <Function ID="90" Type="Sequence" Name="lyre move vertical trio fast" Path="Lyres" BoundScene="91">
-   <Speed FadeIn="0" FadeOut="0" Duration="500"/>
+   <Speed FadeIn="0" FadeOut="0" Duration="700"/>
    <Direction>Forward</Direction>
    <RunOrder>Random</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="Common"/>
@@ -1063,8 +1071,6 @@
   <Function ID="124" Type="Scene" Name="Archet white" Path="Smooth_Trio/Archet">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="11">0,255,1,255,2,255</FixtureVal>
-   <FixtureVal ID="12">0,255,1,255,2,255</FixtureVal>
-   <FixtureVal ID="13">0,255,1,255,2,255</FixtureVal>
   </Function>
   <Function ID="125" Type="Collection" Name="LeBalStep3-start LH" Path="Smooth_Trio/LeBal">
    <Step Number="0">25</Step>
@@ -1125,10 +1131,10 @@
   <Function ID="134" Type="Collection" Name="KeyWestStep5 - solo et voix" Path="Smooth_Trio/KeyWest">
    <Step Number="0">25</Step>
    <Step Number="1">53</Step>
-   <Step Number="2">59</Step>
-   <Step Number="3">60</Step>
-   <Step Number="4">62</Step>
-   <Step Number="5">64</Step>
+   <Step Number="2">60</Step>
+   <Step Number="3">62</Step>
+   <Step Number="4">64</Step>
+   <Step Number="5">59</Step>
   </Function>
   <Function ID="135" Type="Collection" Name="KeyWestStep6 - retour au calme" Path="Smooth_Trio/KeyWest">
    <Step Number="0">40</Step>
@@ -1163,13 +1169,13 @@
    <FixtureVal ID="12">0,0,1,0,2,0</FixtureVal>
   </Function>
   <Function ID="140" Type="Sequence" Name="Trump-change colors" BoundScene="139">
-   <Speed FadeIn="0" FadeOut="0" Duration="4000"/>
+   <Speed FadeIn="0" FadeOut="0" Duration="3000"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="Common"/>
    <Step Number="0" FadeIn="1000" Hold="0" FadeOut="0" Values="6">12:0,255:13:0,255</Step>
-   <Step Number="1" FadeIn="1000" Hold="0" FadeOut="0" Values="6">12:1,255:13:0,73,1,255,2,148</Step>
-   <Step Number="2" FadeIn="1000" Hold="4000" FadeOut="0" Values="6">12:2,255:13:0,73,1,255,2,148</Step>
+   <Step Number="1" FadeIn="1000" Hold="0" FadeOut="0" Values="6">12:1,255:13:1,255</Step>
+   <Step Number="2" FadeIn="1000" Hold="4000" FadeOut="0" Values="6">12:2,255:13:2,255</Step>
   </Function>
   <Function ID="141" Type="Collection" Name="AfterChristmasStep4-reprise" Path="Smooth_Trio/AfterChristmas">
    <Step Number="0">40</Step>
@@ -1186,7 +1192,7 @@
    <Step Number="4">94</Step>
    <Step Number="5">147</Step>
   </Function>
-  <Function ID="143" Type="Sequence" Name="lyre move 360 fast" BoundScene="144">
+  <Function ID="143" Type="Sequence" Name="lyre move 360 fast" Path="Lyres" BoundScene="144">
    <Speed FadeIn="0" FadeOut="0" Duration="10200"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -1295,8 +1301,6 @@
   <Function ID="158" Type="Scene" Name="Archet red" Path="Smooth_Trio/Archet">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="11">0,255,1,0,2,0</FixtureVal>
-   <FixtureVal ID="12">0,255,1,0,2,0</FixtureVal>
-   <FixtureVal ID="13">0,255,1,0,2,0</FixtureVal>
   </Function>
   <Function ID="159" Type="Collection" Name="LeBalStep5-end" Path="Smooth_Trio/LeBal">
    <Step Number="0">130</Step>
@@ -1304,6 +1308,96 @@
    <Step Number="2">66</Step>
    <Step Number="3">59</Step>
    <Step Number="4">17</Step>
+  </Function>
+  <Function ID="160" Type="Scene" Name="Trump Red" Path="Smooth_Trio/Trump">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="13">0,255,1,0,2,0</FixtureVal>
+  </Function>
+  <Function ID="161" Type="Scene" Name="Trump Blue" Path="Smooth_Trio/Trump">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="13">0,0,1,0,2,255</FixtureVal>
+  </Function>
+  <Function ID="162" Type="Scene" Name="Trump White" Path="Smooth_Trio/Trump">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="13">0,255,1,255,2,255</FixtureVal>
+  </Function>
+  <Function ID="163" Type="Collection" Name="RunningOnTheWallStep02-start riff-0" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">40</Step>
+   <Step Number="1">60</Step>
+   <Step Number="2">59</Step>
+   <Step Number="3">53</Step>
+  </Function>
+  <Function ID="164" Type="Collection" Name="RunningOnTheWallStep04-Refrain1-56" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">40</Step>
+   <Step Number="1">60</Step>
+   <Step Number="2">53</Step>
+   <Step Number="3">90</Step>
+  </Function>
+  <Function ID="165" Type="Collection" Name="RunningOnTheWallStep03-couplet1-19" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">40</Step>
+   <Step Number="1">60</Step>
+   <Step Number="2">59</Step>
+   <Step Number="3">17</Step>
+  </Function>
+  <Function ID="166" Type="Collection" Name="RunningOnTheWallStep05-Solo trump-70" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">40</Step>
+   <Step Number="1">60</Step>
+   <Step Number="2">17</Step>
+   <Step Number="3">44</Step>
+   <Step Number="4">161</Step>
+  </Function>
+  <Function ID="167" Type="Collection" Name="RunningOnTheWallStep06-couplet2-88" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">40</Step>
+   <Step Number="1">60</Step>
+   <Step Number="2">59</Step>
+   <Step Number="3">53</Step>
+  </Function>
+  <Function ID="168" Type="Collection" Name="RunningOnTheWallStep07-refrain2-107" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">40</Step>
+   <Step Number="1">60</Step>
+   <Step Number="2">53</Step>
+   <Step Number="3">90</Step>
+  </Function>
+  <Function ID="169" Type="Collection" Name="RunningOnTheWallStep08-soloCB-121" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">40</Step>
+   <Step Number="1">60</Step>
+   <Step Number="2">17</Step>
+   <Step Number="3">45</Step>
+  </Function>
+  <Function ID="170" Type="Collection" Name="RunningOnTheWallStep09-couplet3-139" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">40</Step>
+   <Step Number="1">60</Step>
+   <Step Number="2">59</Step>
+   <Step Number="3">53</Step>
+  </Function>
+  <Function ID="171" Type="Collection" Name="RunningOnTheWallStep10-refrain3-176" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">40</Step>
+   <Step Number="1">60</Step>
+   <Step Number="2">59</Step>
+   <Step Number="3">53</Step>
+   <Step Number="4">89</Step>
+  </Function>
+  <Function ID="172" Type="Collection" Name="RunningOnTheWallStep10-soloSly-195" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">40</Step>
+   <Step Number="1">60</Step>
+   <Step Number="2">17</Step>
+   <Step Number="3">43</Step>
+  </Function>
+  <Function ID="173" Type="Collection" Name="RunningOnTheWallStep11-final-231" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">25</Step>
+   <Step Number="1">60</Step>
+   <Step Number="2">107</Step>
+   <Step Number="3">62</Step>
+   <Step Number="4">138</Step>
+   <Step Number="5">19</Step>
+   <Step Number="6">160</Step>
+  </Function>
+  <Function ID="174" Type="Collection" Name="RunningOnTheWallStep12-stop" Path="Smooth_Trio/RunningOnTheWall">
+   <Step Number="0">40</Step>
+   <Step Number="1">120</Step>
+   <Step Number="2">60</Step>
+   <Step Number="3">59</Step>
+   <Step Number="4">53</Step>
   </Function>
   <Monitor DisplayMode="1" ShowLabels="1">
    <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
@@ -1972,8 +2066,8 @@
      <Speed FadeIn="0" FadeOut="0" Duration="0"/>
     </Cue>
     <Cue Name="Cue 2">
-     <Value Channel="1024">99</Value>
      <Value Channel="1025">61</Value>
+     <Value Channel="1024">99</Value>
      <Speed FadeIn="0" FadeOut="0" Duration="0"/>
     </Cue>
    </CueStack>
