@@ -356,6 +356,7 @@
    <Step Number="3">54</Step>
    <Step Number="4">60</Step>
    <Step Number="5">130</Step>
+   <Step Number="6">175</Step>
   </Function>
   <Function ID="25" Type="Script" Name="Set_LH_Mode_DMX">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -931,9 +932,11 @@
   <Function ID="101" Type="Collection" Name="KeyWestStep1" Path="Smooth_Trio/KeyWest">
    <Step Number="0">40</Step>
    <Step Number="1">18</Step>
-   <Step Number="2">53</Step>
-   <Step Number="3">59</Step>
-   <Step Number="4">60</Step>
+   <Step Number="2">59</Step>
+   <Step Number="3">176</Step>
+   <Step Number="4">177</Step>
+   <Step Number="5">60</Step>
+   <Step Number="6">120</Step>
   </Function>
   <Function ID="102" Type="Scene" Name="Dimmer-Lyre-strobe-slow" Path="Lyres">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -1398,6 +1401,20 @@
    <Step Number="2">60</Step>
    <Step Number="3">59</Step>
    <Step Number="4">53</Step>
+  </Function>
+  <Function ID="175" Type="Scene" Name="Trump Pink" Path="Smooth_Trio/Trump">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="13">0,255,1,0,2,12</FixtureVal>
+  </Function>
+  <Function ID="176" Type="Scene" Name="Ambiance-turquoise" Path="Lyres">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="8">6,0,7,255,8,72,9,72,10,0</FixtureVal>
+   <FixtureVal ID="9">6,53,7,53,8,255,9,53,10,0</FixtureVal>
+   <FixtureVal ID="10">6,0,7,255,8,72,9,72,10,0</FixtureVal>
+  </Function>
+  <Function ID="177" Type="Scene" Name="Trump turquoise" Path="Smooth_Trio/Trump">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="13">0,36,1,37,2,255</FixtureVal>
   </Function>
   <Monitor DisplayMode="1" ShowLabels="1">
    <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
@@ -2049,7 +2066,7 @@
     </Appearance>
     <Function ID="32"/>
     <Action>Toggle</Action>
-    <Intensity Adjust="False">100</Intensity>
+    <Intensity Adjust="True">100</Intensity>
     <Input Universe="0" Channel="49269"/>
    </Button>
   </Frame>
