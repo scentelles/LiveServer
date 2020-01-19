@@ -15,8 +15,8 @@ from SmoothDefines import *
 MIDI_NOTE_OFF = 0x80
 MIDI_NOTE_ON  = 0x90
 MIDI_CONTROL_CHANGE = 0xb0
-MIDI_CONTROL_CHANGE_FROM_CHRIS = 0xbe
 MIDI_PROGRAM_CHANGE = 0xc0
+MIDI_CONTROL_CHANGE_CHRIS = 0x20
 
 VL3_CC_GUITAR_UMOD 	= 21
 VL3_CC_GUITAR_DELAY 	= 17
@@ -33,6 +33,7 @@ VL3_CC_STEP 		= 115
 
 currentSong = 0
 currentStep = 0
+chrisTalkOngoing = 0
 
 #OSC connection to QLC+
 clientQLC = udp_client.SimpleUDPClient("10.3.141.1", 5005)
@@ -63,9 +64,10 @@ def startCueList(songName):
 
 def SmoothTrioPC():
   global currentStep
+  global currentSong
   clientLH.send_message("/laserharp/IDLE", 0)
   
-  if(currentSong in SName):  
+  if((currentSong in SName) and (chrisTalkOngoing == 0)):  
     startCueList(currentSong)
 
   else:
@@ -76,6 +78,9 @@ def SmoothTrioPC():
     
 def SmoothTrioCC(myCC, value):
   global currentStep
+  global chrisTalkOngoing
+  global currentSong
+  
   #if step control
   #exlude first time step1, managed by Program Change. 
   #But allow to go back to it we already were beyond step1 
@@ -107,12 +112,8 @@ def SmoothTrioCC(myCC, value):
     else:
       print("Step increment : Smooth song unmapped. do nothing")
 
-
- 
-def forwardCCFromChris(myCC, value):
-  global currentStep  
   #Additional CC coming from Chris
-  if (myCC == 0x20):
+  if (myCC == MIDI_CONTROL_CHANGE_CHRIS):
     if(value == 127):
        currentMessage = "/step_next"
        currentStep = currentStep + 1
@@ -125,11 +126,28 @@ def forwardCCFromChris(myCC, value):
        clientQLC.send_message(currentMessage, 0)       
     elif(value == 1):
        print("Setting Chris Talk Scene")
-       currentMessage = "/chris_talk"
-       clientQLC.send_message(currentMessage, 255)
-       clientQLC.send_message(currentMessage, 0)
+
+       if(chrisTalkOngoing == 0):
+           chrisTalkOngoing = 1
+           clientQLC.send_message("/stopallfunctions", 255) 
+           clientQLC.send_message("/stop", 255)
+           clientQLC.send_message("/stop", 0)
+           clientQLC.send_message("/stop", 255)
+           clientQLC.send_message("/stop", 0)
+           time.sleep(0.5)
+           currentMessage = "/chris_talk"	      
+           clientQLC.send_message(currentMessage, 255)
+           clientQLC.send_message(currentMessage, 0)
+
+       else:  #restart cue list of current song when going out of CHris talk
+           chrisTalkOngoing = 0
+           startCueList(currentSong) #contains a stop all function call, should be sufficient to stop the chris talk
+
+
   else:
        print("Message from Chris unrecognized")
+
+
 
 
 def forwardPCFromVoicelive(myCC, value):
