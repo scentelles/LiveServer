@@ -407,9 +407,10 @@
    <Step Number="4">18</Step>
   </Function>
   <Function ID="32" Type="Collection" Name="ChrisTalk" Path="Smooth_Trio/0-Defaults">
-   <Step Number="0">54</Step>
-   <Step Number="1">45</Step>
-   <Step Number="2">60</Step>
+   <Step Number="0">130</Step>
+   <Step Number="1">54</Step>
+   <Step Number="2">45</Step>
+   <Step Number="3">60</Step>
   </Function>
   <Function ID="33" Type="Collection" Name="LeBalStep01-focus Chris" Path="Smooth_Trio/LeBal">
    <Step Number="0">40</Step>
@@ -450,6 +451,7 @@
    <Step Number="3">224</Step>
    <Step Number="4">52</Step>
    <Step Number="5">70</Step>
+   <Step Number="6">160</Step>
   </Function>
   <Function ID="39" Type="Collection" Name="CapDhiverStep01-introTrump" Path="Smooth_Trio/CadDhiver">
    <Step Number="0">40</Step>
@@ -458,6 +460,7 @@
    <Step Number="3">44</Step>
    <Step Number="4">17</Step>
    <Step Number="5">60</Step>
+   <Step Number="6">161</Step>
   </Function>
   <Function ID="40" Type="Script" Name="Set_LH_Mode_IDLE">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -826,7 +829,7 @@
    <Step Number="9" FadeIn="0" Hold="18000" FadeOut="0">196</Step>
    <Step Number="10" FadeIn="0" Hold="16170" FadeOut="0">197</Step>
    <Step Number="11" FadeIn="0" Hold="20290" FadeOut="0">198</Step>
-   <Step Number="12" FadeIn="0" Hold="18260" FadeOut="0">199</Step>
+   <Step Number="12" FadeIn="0" Hold="36500" FadeOut="0">199</Step>
    <Step Number="13" FadeIn="0" Hold="4294967294" FadeOut="0">200</Step>
   </Function>
   <Function ID="82" Type="Chaser" Name="IlYavait" Path="Smooth_Trio">
@@ -862,7 +865,8 @@
    <Step Number="2" FadeIn="0" Hold="4294967294" FadeOut="0">132</Step>
    <Step Number="3" FadeIn="0" Hold="4294967294" FadeOut="0">133</Step>
    <Step Number="4" FadeIn="0" Hold="4294967294" FadeOut="0">134</Step>
-   <Step Number="5" FadeIn="0" Hold="4294967294" FadeOut="0">135</Step>
+   <Step Number="5" FadeIn="0" Hold="4294967294" FadeOut="0">260</Step>
+   <Step Number="6" FadeIn="0" Hold="4294967294" FadeOut="0">135</Step>
   </Function>
   <Function ID="85" Type="Chaser" Name="TheRiver" Path="Smooth_Trio">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -1107,6 +1111,7 @@
    <Step Number="3">59</Step>
    <Step Number="4">52</Step>
    <Step Number="5">60</Step>
+   <Step Number="6">162</Step>
   </Function>
   <Function ID="122" Type="Collection" Name="IlYavaitStep2-color Trio" Path="Smooth_Trio/Il y avait">
    <Step Number="0">40</Step>
@@ -1115,6 +1120,7 @@
    <Step Number="3">59</Step>
    <Step Number="4">60</Step>
    <Step Number="5">53</Step>
+   <Step Number="6">161</Step>
   </Function>
   <Function ID="123" Type="Scene" Name="Front-blue">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -1165,6 +1171,7 @@
    <Step Number="5">19</Step>
    <Step Number="6">43</Step>
    <Step Number="7">126</Step>
+   <Step Number="8">245</Step>
   </Function>
   <Function ID="130" Type="Scene" Name="Front-amber">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -1201,19 +1208,21 @@
    <Step Number="2">64</Step>
    <Step Number="3">123</Step>
    <Step Number="4">227</Step>
+   <Step Number="5">160</Step>
   </Function>
-  <Function ID="135" Type="Collection" Name="KeyWestStep6 - retour au calme" Path="Smooth_Trio/KeyWest">
+  <Function ID="135" Type="Collection" Name="KeyWestStep7 - retour au calme" Path="Smooth_Trio/KeyWest">
    <Step Number="0">40</Step>
    <Step Number="1">140</Step>
    <Step Number="2">59</Step>
    <Step Number="3">176</Step>
    <Step Number="4">60</Step>
+   <Step Number="5">245</Step>
   </Function>
   <Function ID="136" Type="Collection" Name="AfterChristmasStep04-solotrump" Path="Smooth_Trio/AfterChristmas">
    <Step Number="0">40</Step>
    <Step Number="1">18</Step>
-   <Step Number="2">53</Step>
-   <Step Number="3">130</Step>
+   <Step Number="2">130</Step>
+   <Step Number="3">53</Step>
    <Step Number="4">89</Step>
    <Step Number="5">60</Step>
    <Step Number="6">247</Step>
@@ -1278,6 +1287,7 @@
    <Step Number="3">59</Step>
    <Step Number="4">53</Step>
    <Step Number="5">60</Step>
+   <Step Number="6">161</Step>
   </Function>
   <Function ID="146" Type="Scene" Name="Lyre-dimmer blackout progressive" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -1307,6 +1317,7 @@
    <Step Number="3">44</Step>
    <Step Number="4">53</Step>
    <Step Number="5">60</Step>
+   <Step Number="6">160</Step>
   </Function>
   <Function ID="150" Type="Collection" Name="LeRendezVousStep4-voix et LH" Path="Smooth_Trio/LeRendezVous">
    <Step Number="0">25</Step>
@@ -1315,6 +1326,7 @@
    <Step Number="3">130</Step>
    <Step Number="4">89</Step>
    <Step Number="5">221</Step>
+   <Step Number="6">175</Step>
   </Function>
   <Function ID="151" Type="Sequence" Name="move-left and right slow" Path="LaserHarp" BoundScene="152">
    <Speed FadeIn="4000" FadeOut="0" Duration="4000"/>
@@ -1353,6 +1365,7 @@
    <Step Number="3">59</Step>
    <Step Number="4">52</Step>
    <Step Number="5">60</Step>
+   <Step Number="6">162</Step>
   </Function>
   <Function ID="156" Type="Collection" Name="IlYavaitStep6-color" Path="Smooth_Trio/Il y avait">
    <Step Number="0">40</Step>
@@ -1361,6 +1374,7 @@
    <Step Number="3">59</Step>
    <Step Number="4">53</Step>
    <Step Number="5">60</Step>
+   <Step Number="6">161</Step>
   </Function>
   <Function ID="157" Type="Collection" Name="IlYavaitStep9-fin" Path="Smooth_Trio/Il y avait">
    <Step Number="0">40</Step>
@@ -1368,6 +1382,7 @@
    <Step Number="2">252</Step>
    <Step Number="3">99</Step>
    <Step Number="4">249</Step>
+   <Step Number="5">245</Step>
   </Function>
   <Function ID="158" Type="Scene" Name="Archet red" Path="Smooth_Trio/Archet">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -1673,10 +1688,11 @@
   <Function ID="200" Type="Collection" Name="CapDhiverStep13-humm fin" Path="Smooth_Trio/CadDhiver">
    <Step Number="0">40</Step>
    <Step Number="1">18</Step>
-   <Step Number="2">120</Step>
+   <Step Number="2">130</Step>
    <Step Number="3">59</Step>
    <Step Number="4">17</Step>
    <Step Number="5">147</Step>
+   <Step Number="6">245</Step>
   </Function>
   <Function ID="201" Type="Collection" Name="AfterChristmasStep02-couplet1" Path="Smooth_Trio/AfterChristmas">
    <Step Number="0">40</Step>
@@ -1716,6 +1732,7 @@
    <Step Number="1">53</Step>
    <Step Number="2">130</Step>
    <Step Number="3">89</Step>
+   <Step Number="4">60</Step>
   </Function>
   <Function ID="206" Type="Collection" Name="LeBalStep02-entree guitare et beat" Path="Smooth_Trio/LeBal">
    <Step Number="0">40</Step>
@@ -1732,6 +1749,7 @@
    <Step Number="3">52</Step>
    <Step Number="4">228</Step>
    <Step Number="5">60</Step>
+   <Step Number="6">162</Step>
   </Function>
   <Function ID="208" Type="Collection" Name="AfterChristmasStep00-step0" Path="Smooth_Trio/AfterChristmas">
    <Step Number="0">40</Step>
@@ -1810,7 +1828,7 @@
    <Step Number="3">120</Step>
    <Step Number="4">59</Step>
    <Step Number="5">52</Step>
-   <Step Number="6">240</Step>
+   <Step Number="6">96</Step>
   </Function>
   <Function ID="218" Type="Collection" Name="LeRendezVousStep6-fin" Path="Smooth_Trio/LeRendezVous">
    <Step Number="0">25</Step>
@@ -1819,6 +1837,7 @@
    <Step Number="3">220</Step>
    <Step Number="4">54</Step>
    <Step Number="5">96</Step>
+   <Step Number="6">245</Step>
   </Function>
   <Function ID="219" Type="Scene" Name="croisement vers public" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -2049,11 +2068,12 @@
   </Function>
   <Function ID="251" Type="Collection" Name="IlYavaitStep8-black-white calm" Path="Smooth_Trio/Il y avait">
    <Step Number="0">40</Step>
-   <Step Number="1">124</Step>
+   <Step Number="1">18</Step>
    <Step Number="2">123</Step>
    <Step Number="3">43</Step>
    <Step Number="4">52</Step>
    <Step Number="5">60</Step>
+   <Step Number="6">245</Step>
   </Function>
   <Function ID="252" Type="Scene" Name="Front-blue - no dimmer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -2069,6 +2089,7 @@
    <Step Number="2">43</Step>
    <Step Number="3">56</Step>
    <Step Number="4">96</Step>
+   <Step Number="5">245</Step>
   </Function>
   <Function ID="255" Type="Collection" Name="SlapMyHeadStep2-couplets et refrains" Path="Smooth_Trio/SlapMyHead">
    <Step Number="0">12</Step>
@@ -2105,6 +2126,14 @@
    <Step Number="3">59</Step>
    <Step Number="4">56</Step>
    <Step Number="5">60</Step>
+   <Step Number="6">245</Step>
+  </Function>
+  <Function ID="260" Type="Collection" Name="KeyWestStep6 - solo et voix no strobe" Path="Smooth_Trio/KeyWest">
+   <Step Number="0">25</Step>
+   <Step Number="1">62</Step>
+   <Step Number="2">64</Step>
+   <Step Number="3">123</Step>
+   <Step Number="4">138</Step>
   </Function>
   <Monitor DisplayMode="1" ShowLabels="1">
    <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
