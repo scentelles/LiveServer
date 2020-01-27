@@ -260,6 +260,7 @@ def print_voicelive_handler(unused_addr, args, command, note, vel):
 def print_switch_handler(unused_addr, args, switchId, value):
   
   global fogOngoing 
+  global currentStep
   print("\nReceive Switch OSC message : [{0}] ~ {1} {2} ".format(args[0], switchId, value))
   if(switchId == 3):
     if(value > 0):
@@ -271,6 +272,14 @@ def print_switch_handler(unused_addr, args, switchId, value):
         print("Switching fog Off")
         clientQLC.send_message("/fog", 0)
         fogOngoing = 0
+	
+  if(switchId == 1):
+    if(value > 0):
+       print("From Switch : next step")
+       currentMessage = "/step_next"
+       currentStep = currentStep + 1
+       clientQLC.send_message(currentMessage, 255)
+       clientQLC.send_message(currentMessage, 0)
 
 
 def print_laserharp_handler(osc_address, args, command):
