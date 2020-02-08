@@ -87,7 +87,7 @@ def SmoothTrioCC(myCC, value):
   #But allow to go back to it we already were beyond step1 
   tempNewStep = value + 1
   print ("myCC : " + str(myCC))
-  if ((myCC == VL3_CC_STEP) and ((tempNewStep > 1) or (currentStep > 1))):
+  if ((myCC == VL3_CC_STEP) and ((tempNewStep > 1) or (currentStep > 1)) and (chrisTalkOngoing == 0)):
     previousStep = currentStep
     currentStep = tempNewStep
     
