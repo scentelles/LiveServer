@@ -15,12 +15,7 @@
     </Output>
    </Universe>
    <Universe Name="Universe 2" ID="1">
-    <Input Plugin="OSC" Line="0">
-     <PluginParameters inputPort="7700"/>
-    </Input>
-    <Output Plugin="uDMX" Line="0">
-     <PluginParameters UniverseChannels="57"/>
-    </Output>
+    <Output Plugin="uDMX" Line="0"/>
    </Universe>
    <Universe Name="Universe 3" ID="2">
     <Output Plugin="OSC" Line="1"/>
@@ -212,6 +207,13 @@
   <Function ID="9" Type="Scene" Name="Default" Path="Red_Cloud">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="2">0,141,1,255,2,61,3,0,4,0,5,0,6,0,7,0</FixtureVal>
+  </Function>
+  <Function ID="10" Type="Scene" Name="Lyre Position release" Path="Lyres">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>7,138,8,73</ChannelGroupsVal>
+   <FixtureVal ID="8"/>
+   <FixtureVal ID="9"/>
+   <FixtureVal ID="10"/>
   </Function>
   <Function ID="11" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -2188,7 +2190,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="True" X="250" Y="0" Width="580" Height="290"/>
+    <WindowState Visible="True" X="170" Y="300" Width="580" Height="290"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
@@ -2208,7 +2210,7 @@
      <Function ID="3"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
-     <Input Universe="0" Channel="14284"/>
+     <Input Universe="0" Channel="37436"/>
     </Button>
     <Button Caption="BOOST" ID="4" Icon="">
      <WindowState Visible="True" X="140" Y="55" Width="50" Height="50"/>
@@ -2222,7 +2224,7 @@
      <Function ID="4"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
-     <Input Universe="0" Channel="29637"/>
+     <Input Universe="0" Channel="41127"/>
     </Button>
     <Button Caption="LEAD" ID="5" Icon="">
      <WindowState Visible="True" X="240" Y="60" Width="50" Height="50"/>
@@ -2236,7 +2238,7 @@
      <Function ID="5"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
-     <Input Universe="0" Channel="44693"/>
+     <Input Universe="0" Channel="45358"/>
     </Button>
     <Button Caption="Solo" ID="2" Icon="">
      <WindowState Visible="True" X="115" Y="145" Width="50" Height="50"/>
@@ -2250,7 +2252,7 @@
      <Function ID="7"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
-     <Input Universe="0" Channel="41500"/>
+     <Input Universe="0" Channel="50577"/>
     </Button>
     <Button Caption="Trip" ID="9" Icon="">
      <WindowState Visible="True" X="195" Y="145" Width="50" Height="50"/>
@@ -2264,7 +2266,7 @@
      <Function ID="14"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
-     <Input Universe="0" Channel="6425"/>
+     <Input Universe="0" Channel="54296"/>
     </Button>
     <Slider Caption="Scanner" ID="73" WidgetStyle="Slider" InvertedAppearance="false">
      <WindowState Visible="True" X="390" Y="45" Width="85" Height="215"/>
@@ -2275,8 +2277,9 @@
       <BackgroundImage>None</BackgroundImage>
       <Font>Default</Font>
      </Appearance>
+     <Input Universe="0" Channel="36897"/>
      <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
-     <Level LowLimit="0" HighLimit="255" Value="255">
+     <Level LowLimit="0" HighLimit="255" Value="126">
       <Channel Fixture="3">4</Channel>
      </Level>
      <Playback>
@@ -2292,8 +2295,9 @@
       <BackgroundImage>None</BackgroundImage>
       <Font>Default</Font>
      </Appearance>
+     <Input Universe="0" Channel="45875"/>
      <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
-     <Level LowLimit="0" HighLimit="255" Value="255">
+     <Level LowLimit="0" HighLimit="255" Value="204">
       <Channel Fixture="5">0</Channel>
       <Channel Fixture="6">0</Channel>
      </Level>
@@ -2314,7 +2318,7 @@
     <Function ID="0"/>
     <Action>Flash</Action>
     <Intensity Adjust="False">100</Intensity>
-    <Input Universe="0" Channel="58308"/>
+    <Input Universe="0" Channel="33310"/>
    </Button>
    <Button Caption="stopAll" ID="22" Icon="">
     <WindowState Visible="True" X="105" Y="40" Width="50" Height="50"/>
@@ -2328,10 +2332,10 @@
     <Function ID="4294967295"/>
     <Action FadeOut="1000">StopAll</Action>
     <Intensity Adjust="False">100</Intensity>
-    <Input Universe="0" Channel="56334"/>
+    <Input Universe="0" Channel="45189"/>
    </Button>
    <XYPad Caption="XY Pad" ID="11" InvertedAppearance="1">
-    <WindowState Visible="True" X="585" Y="335" Width="230" Height="230"/>
+    <WindowState Visible="True" X="1050" Y="330" Width="230" Height="230"/>
     <Appearance>
      <FrameStyle>Sunken</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -2352,11 +2356,11 @@
      <Axis ID="Y" LowLimit="0" HighLimit="1" Reverse="False"/>
     </Fixture>
     <Window hMin="117" hMax="216" vMin="0" vMax="256"/>
-    <Pan Position="181">
-     <Input Universe="1" Channel="3179"/>
+    <Pan Position="169">
+     <Input Universe="0" Channel="13813"/>
     </Pan>
-    <Tilt Position="234">
-     <Input Universe="1" Channel="7650"/>
+    <Tilt Position="91">
+     <Input Universe="0" Channel="9340"/>
     </Tilt>
    </XYPad>
    <Slider Caption="Slider 12" ID="12" WidgetStyle="Slider" InvertedAppearance="false">
@@ -2368,9 +2372,9 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <Input Universe="0" Channel="10115"/>
+    <Input Universe="0" Channel="62743"/>
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="134" Value="0">
+    <Level LowLimit="0" HighLimit="134" Value="134">
      <Channel Fixture="8">5</Channel>
      <Channel Fixture="9">5</Channel>
      <Channel Fixture="10">5</Channel>
@@ -2387,7 +2391,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="True" X="1135" Y="75" Width="565" Height="325"/>
+    <WindowState Visible="True" X="1150" Y="0" Width="565" Height="325"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
@@ -2422,7 +2426,7 @@
       <Function ID="53"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
-      <Input Universe="1" Channel="58222"/>
+      <Input Universe="0" Channel="20552"/>
      </Button>
      <Button Caption="Lyres-Ambiance-beach" ID="15" Icon="">
       <WindowState Visible="True" X="105" Y="10" Width="95" Height="95"/>
@@ -2436,7 +2440,7 @@
       <Function ID="17"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
-      <Input Universe="0" Channel="53749"/>
+      <Input Universe="0" Channel="25299"/>
      </Button>
      <Button Caption="Lyres-Ambiance-blue" ID="16" Icon="">
       <WindowState Visible="True" X="205" Y="10" Width="95" Height="95"/>
@@ -2450,7 +2454,7 @@
       <Function ID="99"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
-      <Input Universe="1" Channel="49276"/>
+      <Input Universe="0" Channel="29530"/>
      </Button>
      <Button Caption="Lyres-Ambiance-Averse" ID="17" Icon="">
       <WindowState Visible="True" X="305" Y="10" Width="95" Height="95"/>
@@ -2464,7 +2468,7 @@
       <Function ID="115"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
-      <Input Universe="1" Channel="46275"/>
+      <Input Universe="0" Channel="2021"/>
      </Button>
      <Button Caption="Lyres-Ambiance-Green" ID="18" Icon="">
       <WindowState Visible="True" X="405" Y="10" Width="95" Height="95"/>
@@ -2478,7 +2482,7 @@
       <Function ID="100"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
-      <Input Universe="1" Channel="42314"/>
+      <Input Universe="0" Channel="5740"/>
      </Button>
      <Button Caption="Lyres-Ambiance-pink" ID="19" Icon="">
       <WindowState Visible="True" X="10" Y="105" Width="95" Height="95"/>
@@ -2492,6 +2496,7 @@
       <Function ID="54"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="48940"/>
      </Button>
      <Button Caption="Lyres-Ambiance-Red" ID="20" Icon="">
       <WindowState Visible="True" X="105" Y="105" Width="95" Height="95"/>
@@ -2505,9 +2510,10 @@
       <Function ID="56"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="36279"/>
      </Button>
      <Button Caption="Lyres-Ambiance-turquoise" ID="21" Icon="">
-      <WindowState Visible="True" X="205" Y="105" Width="95" Height="95"/>
+      <WindowState Visible="True" X="200" Y="105" Width="95" Height="95"/>
       <Appearance>
        <FrameStyle>None</FrameStyle>
        <ForegroundColor>Default</ForegroundColor>
@@ -2518,6 +2524,7 @@
       <Function ID="176"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="39998"/>
      </Button>
      <Button Caption="Lyres-Ambiance-White" ID="23" Icon="">
       <WindowState Visible="True" X="305" Y="105" Width="95" Height="95"/>
@@ -2531,6 +2538,7 @@
       <Function ID="52"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="59521"/>
      </Button>
      <Button Caption="Lyres-Dimmer-blackout" ID="24" Icon="">
       <WindowState Visible="True" X="405" Y="105" Width="95" Height="95"/>
@@ -2544,6 +2552,7 @@
       <Function ID="239"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
+      <Input Universe="0" Channel="63752"/>
      </Button>
     </Frame>
    </SoloFrame>
@@ -2555,7 +2564,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="True" X="190" Y="445" Width="315" Height="215"/>
+    <WindowState Visible="True" X="1135" Y="565" Width="315" Height="215"/>
     <AllowChildren>False</AllowChildren>
     <AllowResize>False</AllowResize>
     <ShowHeader>False</ShowHeader>
@@ -2575,6 +2584,7 @@
      <Function ID="265"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="27600"/>
     </Button>
     <Button Caption="Spider show - move slow" ID="28" Icon="">
      <WindowState Visible="True" X="105" Y="10" Width="95" Height="95"/>
@@ -2588,6 +2598,7 @@
      <Function ID="266"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="22859"/>
     </Button>
     <Button Caption="Spider show - move slow" ID="29" Icon="">
      <WindowState Visible="True" X="205" Y="10" Width="95" Height="95"/>
@@ -2601,6 +2612,7 @@
      <Function ID="271"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="18626"/>
     </Button>
     <Button Caption="Spider steady" ID="30" Icon="">
      <WindowState Visible="True" X="10" Y="105" Width="95" Height="95"/>
@@ -2614,6 +2626,7 @@
      <Function ID="267"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="33972"/>
     </Button>
     <Button Caption="Spider steady chaser" ID="31" Icon="">
      <WindowState Visible="True" X="105" Y="105" Width="95" Height="95"/>
@@ -2627,6 +2640,7 @@
      <Function ID="268"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="46639"/>
     </Button>
     <Button Caption="Spider steady strobe" ID="32" Icon="">
      <WindowState Visible="True" X="205" Y="105" Width="95" Height="95"/>
@@ -2640,10 +2654,11 @@
      <Function ID="269"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="42918"/>
     </Button>
    </SoloFrame>
    <Slider Caption="Slider 12" ID="33" WidgetStyle="Slider" InvertedAppearance="false">
-    <WindowState Visible="True" X="80" Y="440" Width="60" Height="200"/>
+    <WindowState Visible="True" X="1070" Y="565" Width="60" Height="215"/>
     <Appearance>
      <FrameStyle>Sunken</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -2651,9 +2666,9 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <Input Universe="0" Channel="10115"/>
+    <Input Universe="0" Channel="58526"/>
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
-    <Level LowLimit="0" HighLimit="134" Value="134">
+    <Level LowLimit="0" HighLimit="134" Value="25">
      <Channel Fixture="4">2</Channel>
     </Level>
     <Playback>
@@ -2668,7 +2683,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="True" X="35" Y="190" Width="215" Height="215"/>
+    <WindowState Visible="True" X="820" Y="305" Width="215" Height="215"/>
     <AllowChildren>False</AllowChildren>
     <AllowResize>False</AllowResize>
     <ShowHeader>False</ShowHeader>
@@ -2688,6 +2703,7 @@
      <Function ID="272"/>
      <Action>Flash</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="65194"/>
     </Button>
     <Button Caption="Flash-blue" ID="36" Icon="">
      <WindowState Visible="True" X="105" Y="10" Width="95" Height="95"/>
@@ -2701,6 +2717,7 @@
      <Function ID="275"/>
      <Action>Flash</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="52273"/>
     </Button>
     <Button Caption="Flash-red" ID="37" Icon="">
      <WindowState Visible="True" X="10" Y="105" Width="95" Height="95"/>
@@ -2714,6 +2731,7 @@
      <Function ID="273"/>
      <Action>Flash</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="4558"/>
     </Button>
     <Button Caption="Flash-green" ID="38" Icon="">
      <WindowState Visible="True" X="105" Y="105" Width="95" Height="95"/>
@@ -2727,6 +2745,7 @@
      <Function ID="274"/>
      <Action>Flash</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="9045"/>
     </Button>
    </SoloFrame>
    <SoloFrame Caption="" ID="40">
@@ -2737,7 +2756,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="True" X="1255" Y="570" Width="415" Height="215"/>
+    <WindowState Visible="True" X="300" Y="30" Width="415" Height="215"/>
     <AllowChildren>False</AllowChildren>
     <AllowResize>False</AllowResize>
     <ShowHeader>False</ShowHeader>
@@ -2757,6 +2776,7 @@
      <Function ID="120"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="24724" UpperValue="1"/>
     </Button>
     <Button Caption="Front-amber" ID="42" Icon="">
      <WindowState Visible="True" X="105" Y="10" Width="95" Height="95"/>
@@ -2770,6 +2790,7 @@
      <Function ID="130"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="21007"/>
     </Button>
     <Button Caption="Front-blue" ID="43" Icon="">
      <WindowState Visible="True" X="205" Y="10" Width="95" Height="95"/>
@@ -2783,6 +2804,7 @@
      <Function ID="123"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="17286"/>
     </Button>
     <Button Caption="Front-red" ID="44" Icon="">
      <WindowState Visible="True" X="305" Y="10" Width="95" Height="95"/>
@@ -2796,6 +2818,7 @@
      <Function ID="257"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="14137"/>
     </Button>
     <Button Caption="Front-wavered" ID="45" Icon="">
      <WindowState Visible="True" X="10" Y="105" Width="95" Height="95"/>
@@ -2809,6 +2832,7 @@
      <Function ID="19"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="36848"/>
     </Button>
     <Button Caption="Front-white" ID="46" Icon="">
      <WindowState Visible="True" X="105" Y="105" Width="95" Height="95"/>
@@ -2822,6 +2846,7 @@
      <Function ID="182"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="48491"/>
     </Button>
     <Button Caption="Front-strobe" ID="47" Icon="">
      <WindowState Visible="True" X="205" Y="105" Width="95" Height="95"/>
@@ -2835,6 +2860,7 @@
      <Function ID="224"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="44258"/>
     </Button>
     <Button Caption="Front-changing colors" ID="48" Icon="">
      <WindowState Visible="True" X="305" Y="105" Width="95" Height="95"/>
@@ -2848,6 +2874,7 @@
      <Function ID="209"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="55389"/>
     </Button>
    </SoloFrame>
    <Frame Caption="" ID="49">
@@ -2877,6 +2904,7 @@
      <Function ID="278"/>
      <Action>Flash</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="58214"/>
     </Button>
     <Button Caption="Strobe rear" ID="51" Icon="">
      <WindowState Visible="True" X="105" Y="10" Width="95" Height="95"/>
@@ -2890,6 +2918,7 @@
      <Function ID="1"/>
      <Action>Flash</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="53757"/>
     </Button>
     <Button Caption="Strobe rear and lyre" ID="52" Icon="">
      <WindowState Visible="True" X="10" Y="105" Width="95" Height="95"/>
@@ -2903,6 +2932,7 @@
      <Function ID="277"/>
      <Action>Flash</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="3074"/>
     </Button>
     <Button Caption="Strobe rear full" ID="53" Icon="">
      <WindowState Visible="True" X="105" Y="105" Width="95" Height="95"/>
@@ -2916,6 +2946,7 @@
      <Function ID="276"/>
      <Action>Flash</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="16025"/>
     </Button>
    </Frame>
    <SoloFrame Caption="" ID="64">
@@ -2926,7 +2957,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="True" X="955" Y="350" Width="415" Height="215"/>
+    <WindowState Visible="True" X="1295" Y="335" Width="415" Height="215"/>
     <AllowChildren>False</AllowChildren>
     <AllowResize>False</AllowResize>
     <ShowHeader>False</ShowHeader>
@@ -2935,7 +2966,7 @@
     <Collapsed>False</Collapsed>
     <Disabled>False</Disabled>
     <Button Caption="Lyre Position default" ID="65" Icon="">
-     <WindowState Visible="True" X="10" Y="10" Width="95" Height="95"/>
+     <WindowState Visible="True" X="105" Y="10" Width="95" Height="95"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -2946,9 +2977,10 @@
      <Function ID="279"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="23308"/>
     </Button>
-    <Button Caption="Lyre Position up" ID="66" Icon="">
-     <WindowState Visible="True" X="105" Y="10" Width="95" Height="95"/>
+    <Button Caption="Lyre Position Release" ID="66" Icon="">
+     <WindowState Visible="True" X="10" Y="10" Width="95" Height="95"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -2956,9 +2988,10 @@
       <BackgroundImage>None</BackgroundImage>
       <Font>Default</Font>
      </Appearance>
-     <Function ID="95"/>
+     <Function ID="10"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="27031"/>
     </Button>
     <Button Caption="Lyre-position cross front" ID="67" Icon="">
      <WindowState Visible="True" X="205" Y="10" Width="95" Height="95"/>
@@ -2972,6 +3005,7 @@
      <Function ID="282"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="30750"/>
     </Button>
     <Button Caption="Lyre-position rear drummer" ID="68" Icon="">
      <WindowState Visible="True" X="305" Y="10" Width="95" Height="95"/>
@@ -2985,6 +3019,7 @@
      <Function ID="283"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="3233"/>
     </Button>
     <Button Caption="Lyre-program-rotate and color fast" ID="69" Icon="">
      <WindowState Visible="True" X="10" Y="105" Width="95" Height="95"/>
@@ -2998,6 +3033,7 @@
      <Function ID="138"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="46184"/>
     </Button>
     <Button Caption="Lyre-program-rotate slow color high" ID="70" Icon="">
      <WindowState Visible="True" X="105" Y="105" Width="95" Height="95"/>
@@ -3011,6 +3047,7 @@
      <Function ID="128"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="34547"/>
     </Button>
     <Button Caption="Lyre-program-rotate slow color low" ID="71" Icon="">
      <WindowState Visible="True" X="205" Y="105" Width="95" Height="95"/>
@@ -3024,6 +3061,7 @@
      <Function ID="281"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="38778"/>
     </Button>
     <Button Caption="Lyre-program-up-down and color " ID="72" Icon="">
      <WindowState Visible="True" X="305" Y="105" Width="95" Height="95"/>
@@ -3037,6 +3075,7 @@
      <Function ID="280"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="58309"/>
     </Button>
    </SoloFrame>
   </Frame>
@@ -3053,8 +3092,8 @@
      <Speed FadeIn="0" FadeOut="0" Duration="0"/>
     </Cue>
     <Cue Name="Cue 2">
-     <Value Channel="1025">61</Value>
      <Value Channel="1024">99</Value>
+     <Value Channel="1025">61</Value>
      <Speed FadeIn="0" FadeOut="0" Duration="0"/>
     </Cue>
    </CueStack>
