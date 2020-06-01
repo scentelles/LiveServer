@@ -1,6 +1,9 @@
 import sys  
 sys.path.append("..")  
 
+#obs-websocket-py package
+from obswebsocket import obsws, requests
+
 #python-osc package
 from pythonosc import osc_server
 from pythonosc import dispatcher
@@ -8,7 +11,6 @@ import threading
 
 #pywin32 package
 import win32com.client
-import pythoncom
 import time
 
 from SmoothDefines import *
@@ -21,6 +23,11 @@ MIDI_CONTROL_CHANGE_FROM_CHRIS = 0x20 #Warning : this value is also received fro
 LOCALHOST_IP   = "192.168.1.51"
 LOCALHOST_PORT = 5007
 
+host = "localhost"
+port = 4444
+password = "secret"
+ws = obsws(host, port, password)
+obs_connected = False
 
 currentSong = 0
 chrisTalkOngoing = 0
@@ -35,9 +42,12 @@ CHRIS_TALK 		= 4
 
 localCommand = NO_COMMAND
 
+ScenesNames = []
+
+     
+
 app = win32com.client.Dispatch("PowerPoint.Application")
-# Create id
-ppt_id = pythoncom.CoMarshalInterThreadInterfaceInStream(pythoncom.IID_IDispatch, app)
+
 
 class ppt:
 	def __init__(self):
@@ -136,11 +146,6 @@ def forwardCCFromVoicelive(myCC, value):
   
 		
 def voicelive_osc_receive(unused_addr, args, command, note, vel):
-  global initialized
-  if(initialized == False):
-    pythoncom.CoInitialize()
-    appT = win32com.client.Dispatch(pythoncom.CoGetInterfaceAndReleaseStream(ppt_id, pythoncom.IID_IDispatch))
-    initialized = True
   
   if(command == MIDI_CONTROL_CHANGE):
     forwardCCFromVoicelive(note, vel)
@@ -153,9 +158,20 @@ def voicelive_osc_receive(unused_addr, args, command, note, vel):
   print("\n[{0}] ~ {1} {2} {3}".format(args[0], command, note, vel))
    
 
+def obs_osc_receive(unused_addr, args, command, value):
+	global obs_connected
+	if(obs_connected):
+		if(command == OBS_COMMAND_SWITCH_SCENE):
+			ws.call(requests.SetCurrentScene(ScenesNames[value])) 	
+	else:
+		print("Warning: OBS not connected. Skipping OBS OSC command")
+	print("\n[{0}] ~ {1} {2}".format(args[0], command, value))
+   
+   
 def osc_thread(name):
 
 	dispatcher.map("/midi/voicelive", voicelive_osc_receive, "voicelive_osc_receive")
+	dispatcher.map("/video/obs", obs_osc_receive, "obs_osc_receive")
 
 	server = osc_server.ThreadingOSCUDPServer((LOCALHOST_IP, LOCALHOST_PORT), dispatcher)
 	print("Starting OSC server")
@@ -164,7 +180,8 @@ def osc_thread(name):
 	except (KeyboardInterrupt, SystemExit):
 		print('The END in OSC server.')
 
-
+	
+		
 my_slide = ppt()
 time.sleep(1)
 my_slide.start_slideshow()
@@ -175,11 +192,32 @@ dispatcher = dispatcher.Dispatcher()
 x = threading.Thread(target=osc_thread, args=(1,))
 
 x.start()
+
+
+def obs_connect():	
+	global obs_connected
+	try:
+		print("Connecting to OBS\n")
+		ws.connect()	
+		obs_connected = True
+	except:
+		print("ERROR : could not connect to OBS. Is OBS running?\n")
+		return
+	scenes = ws.call(requests.GetSceneList())
+	for s in scenes.getScenes():
+		name = s['name']
+#            print(ws.call(requests.GetSourcesList()),"\n")       # Get The list of available sources in each scene in OBS
+		ScenesNames.append(name)                        # Add every scene to a list of scenes
+	print("\n CURRENT SCENES IN OBS" ,ScenesNames)
+	
 	
 try:
 	while True:
 		time.sleep(0.01)
 		if (localCommand != NO_COMMAND):
+			if(obs_connected == False):
+				obs_connect()
+			
 			print("Executing local command")
 			if localCommand == NEXT_SLIDE:
 				my_slide.next_slide()

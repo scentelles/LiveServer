@@ -23,7 +23,11 @@ for currentSong in SName:
   count+=1
   print ("\n##################")
   print ("Sending PC " + str(count))
-     
+
+  clientVideoPC.send_message("/video/obs", [OBS_COMMAND_SWITCH_SCENE, OBS_SCENE_DEFAULT])
+  time.sleep(2) 
+  clientVideoPC.send_message("/video/obs", [OBS_COMMAND_SWITCH_SCENE, OBS_SCENE_POWERPOINT])
+  
 	 
   clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, 1])
   time.sleep(2)  	 
