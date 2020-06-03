@@ -1,6 +1,8 @@
 import sys  
 sys.path.append("..")  
 
+import json
+
 #obs-websocket-py package
 from obswebsocket import obsws, requests
 
@@ -19,14 +21,17 @@ MIDI_CONTROL_CHANGE = 0xb0
 MIDI_PROGRAM_CHANGE = 0xc0
 MIDI_CONTROL_CHANGE_FROM_CHRIS = 0x20 #Warning : this value is also received from voicelive...
 
+with open('config.json') as config_file:
+    config = json.load(config_file)
 
-LOCALHOST_IP   = "192.168.1.51"
-LOCALHOST_PORT = 5007
+OSC_LOCALHOST_IP = config['OSC_LOCALHOST_IP']
+OSC_LOCALHOST_PORT = config['OSC_LOCALHOST_PORT']
 
-host = "localhost"
-port = 4444
-password = "secret"
-ws = obsws(host, port, password)
+
+OBS_HOST = config['OBS_HOST']
+OBS_PORT = config['OBS_PORT']
+OBS_PWD  = config['OBS_PWD']
+ws = obsws(OBS_HOST, OBS_PORT, OBS_PWD)
 obs_connected = False
 
 currentSong = 0
@@ -52,7 +57,7 @@ app = win32com.client.Dispatch("PowerPoint.Application")
 class ppt:
 	def __init__(self):
 
-		self.pres = app.Presentations.Open(r'C:\Users\scent\Documents\LiveServer\VideoPC\clip1.ppsx',    WithWindow=False)
+		self.pres = app.Presentations.Open(r'C:\Users\az02098.CORP\Documents\LiveServer\VideoPC\clip1.ppsx',    WithWindow=False)
 	
 	def goto_slide(self, nb):
 		self.pres.SlideShowWindow.View.GotoSlide(nb)
@@ -173,7 +178,7 @@ def osc_thread(name):
 	dispatcher.map("/midi/voicelive", voicelive_osc_receive, "voicelive_osc_receive")
 	dispatcher.map("/video/obs", obs_osc_receive, "obs_osc_receive")
 
-	server = osc_server.ThreadingOSCUDPServer((LOCALHOST_IP, LOCALHOST_PORT), dispatcher)
+	server = osc_server.ThreadingOSCUDPServer((OSC_LOCALHOST_IP, OSC_LOCALHOST_PORT), dispatcher)
 	print("Starting OSC server")
 	try:
 		server.serve_forever()

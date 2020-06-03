@@ -6,7 +6,8 @@ import time
 from pythonosc import udp_client
 
 #OSC connection to Video manager
-LOCALHOST_IP   = "192.168.1.51"
+#LOCALHOST_IP   = "192.168.1.51"
+LOCALHOST_IP   = "192.168.1.22"
 LOCALHOST_PORT = 5007
 clientVideoPC = udp_client.SimpleUDPClient(LOCALHOST_IP, LOCALHOST_PORT)
 
