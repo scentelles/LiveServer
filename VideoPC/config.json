@@ -3,5 +3,6 @@
   "OSC_LOCALHOST_PORT" 	: 5007,
   "OBS_HOST" 			: "localhost",
   "OBS_PORT" 			: 4444,
-  "OBS_PWD"  			: "secret"
+  "OBS_PWD"  			: "secret",
+  "OSC_PROJECTM_PORT" 	: 7700
 }

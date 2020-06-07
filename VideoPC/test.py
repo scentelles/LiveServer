@@ -15,45 +15,71 @@ DELAY = 1
 
 MIDI_CONTROL_CHANGE = 0xb0
 MIDI_PROGRAM_CHANGE = 0xc0
-MIDI_CONTROL_CHANGE_FROM_CHRIS = 0x20 #Warning : this value is also received from voicelive...
+
+def testProjectMControl():
+	print ("\n\nTEST : PROJECTM control\n")  
+	clientVideoPC.send_message("/video/projectm/command", [2,1]) #random enable command
+	time.sleep(5)
+	clientVideoPC.send_message("/video/projectm/command", [1,1]) #lock command
+	time.sleep(5)
+	clientVideoPC.send_message("/video/projectm/command", [2,0]) #random disable command
+	time.sleep(5)
+	clientVideoPC.send_message("/video/projectm/command", [1,0]) #unlock command
+	time.sleep(20)
+
+		
+	clientVideoPC.send_message("/video/projectm/preset", 5)
+	time.sleep(5)
+	clientVideoPC.send_message("/video/projectm/preset", 10)
+	time.sleep(5)
+	clientVideoPC.send_message("/video/projectm/preset", 100)
+
+	
+def testOBSControl():
+	print ("\n\nTEST : OBS control\n")  
+	clientVideoPC.send_message("/video/obs", [OBS_COMMAND_SWITCH_SCENE, OBS_SCENE_DEFAULT])
+	time.sleep(2) 
+	clientVideoPC.send_message("/video/obs", [OBS_COMMAND_SWITCH_SCENE, OBS_SCENE_POWERPOINT])
+	time.sleep(2) 
+	#TBD
 
 
+	
+def testPresetSlideshowSwitch():
+	print ("\n\nTEST : Slideshow switch\n")
+	count = 6; #start at index 6. other presets are not used in voicelive
+	for currentSong in SName:
+	  count+=1
+	  print ("\n##################")
+	  print ("Sending PC " + str(count))
 
-count = 6;
-for currentSong in SName:
-  count+=1
-  print ("\n##################")
-  print ("Sending PC " + str(count))
+	  #=====================================
+	  #test changing preset during Christalk 
+	  #entering Chris talk
+	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_TALK])
+	  time.sleep(2)  	 
 
-  clientVideoPC.send_message("/video/obs", [OBS_COMMAND_SWITCH_SCENE, OBS_SCENE_DEFAULT])
-  time.sleep(2) 
-  clientVideoPC.send_message("/video/obs", [OBS_COMMAND_SWITCH_SCENE, OBS_SCENE_POWERPOINT])
-  
-	 
-  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, 1])
-  time.sleep(2)  	 
+	  #sending program change
+	  clientVideoPC.send_message("/midi/voicelive", [MIDI_PROGRAM_CHANGE, count, 0])
+	  time.sleep(2)  
+	  
+	  #exiting Chris talk
+	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_TALK])
+	  time.sleep(DELAY)
 
-  
-  clientVideoPC.send_message("/midi/voicelive", [MIDI_PROGRAM_CHANGE, count, 0])
-  time.sleep(2)  
-  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, 1])
+	  #Now we can send next/previous slide commands
+	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_NEXT_SLIDE])
+	  time.sleep(DELAY)
 
-  
-  time.sleep(DELAY)
+	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_NEXT_SLIDE])
+	  time.sleep(DELAY)
 
-  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, 125])
-  
-  time.sleep(DELAY)
+	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_PREVIOUS_SLIDE])
+	  time.sleep(DELAY)
 
-  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, 125])
- 
-  time.sleep(DELAY)
-
-  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, 124])
-  
-  time.sleep(DELAY)
-
-  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, 124])
- 
-  time.sleep(DELAY)
-
+	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_PREVIOUS_SLIDE])
+	  time.sleep(DELAY)
+	  
+testProjectMControl()
+testOBSControl()
+testPresetSlideshowSwitch()

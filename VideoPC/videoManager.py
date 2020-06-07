@@ -9,6 +9,7 @@ from obswebsocket import obsws, requests
 #python-osc package
 from pythonosc import osc_server
 from pythonosc import dispatcher
+from pythonosc import udp_client
 import threading
 
 #pywin32 package
@@ -21,18 +22,24 @@ MIDI_CONTROL_CHANGE = 0xb0
 MIDI_PROGRAM_CHANGE = 0xc0
 MIDI_CONTROL_CHANGE_FROM_CHRIS = 0x20 #Warning : this value is also received from voicelive...
 
+
 with open('config.json') as config_file:
     config = json.load(config_file)
 
-OSC_LOCALHOST_IP = config['OSC_LOCALHOST_IP']
+OSC_LOCALHOST_IP   = config['OSC_LOCALHOST_IP']
 OSC_LOCALHOST_PORT = config['OSC_LOCALHOST_PORT']
-
+OSC_PROJECTM_PORT  = config['OSC_PROJECTM_PORT']
 
 OBS_HOST = config['OBS_HOST']
 OBS_PORT = config['OBS_PORT']
 OBS_PWD  = config['OBS_PWD']
 ws = obsws(OBS_HOST, OBS_PORT, OBS_PWD)
 obs_connected = False
+
+
+clientProjectM = udp_client.SimpleUDPClient(OSC_LOCALHOST_IP, OSC_PROJECTM_PORT)
+
+
 
 currentSong = 0
 chrisTalkOngoing = 0
@@ -144,7 +151,6 @@ def forwardPCFromVoicelive(myCC, value):
     print("Other songs than smooth ones to be managed")
 		
 def forwardCCFromVoicelive(myCC, value):
-  global clientQLC
   print("Dispatching message CC from Voicelive : CC : " + str(myCC) + " | " + str(value))
   if(currentSong > SMOOTH_PRESET_MIN and currentSong < SMOOTH_PRESET_MAX):
     SmoothTrioCC(myCC, value)
@@ -171,13 +177,28 @@ def obs_osc_receive(unused_addr, args, command, value):
 	else:
 		print("Warning: OBS not connected. Skipping OBS OSC command")
 	print("\n[{0}] ~ {1} {2}".format(args[0], command, value))
-   
-   
-def osc_thread(name):
+  
+def projectm_preset_osc_receive(unused_addr, args, preset):
+	#send preset
+	clientProjectM.send_message("/projectm/preset", preset)
+	print("\n[{0}] ~ {1}".format(args[0], preset))  
+ 
+def projectm_command_osc_receive(unused_addr, args, command, value):
+	#send command to projectM
+	if(command == 1):
+		clientProjectM.send_message("/projectm/lock", value);
+	if(command == 2):
+		clientProjectM.send_message("/projectm/random", value);
 
+	print("\n[{0}] ~ {1} {1}".format(args[0], command, value))  
+	
+ 
+def osc_thread(name):
 	dispatcher.map("/midi/voicelive", voicelive_osc_receive, "voicelive_osc_receive")
 	dispatcher.map("/video/obs", obs_osc_receive, "obs_osc_receive")
-
+	dispatcher.map("/video/projectm/preset", projectm_preset_osc_receive, "projectm_preset_osc_receive")
+	dispatcher.map("/video/projectm/command", projectm_command_osc_receive, "projectm_command_osc_receive")
+	
 	server = osc_server.ThreadingOSCUDPServer((OSC_LOCALHOST_IP, OSC_LOCALHOST_PORT), dispatcher)
 	print("Starting OSC server")
 	try:

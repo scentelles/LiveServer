@@ -1,14 +1,74 @@
 {
-    "current_program_scene": "camera",
-    "current_scene": "camera",
+    "AuxAudioDevice1": {
+        "balance": 0.5,
+        "deinterlace_field_order": 0,
+        "deinterlace_mode": 0,
+        "enabled": true,
+        "flags": 0,
+        "hotkeys": {
+            "libobs.mute": [],
+            "libobs.push-to-mute": [],
+            "libobs.push-to-talk": [],
+            "libobs.unmute": []
+        },
+        "id": "wasapi_input_capture",
+        "mixers": 255,
+        "monitoring_type": 0,
+        "muted": false,
+        "name": "Mic/Aux",
+        "prev_ver": 419430408,
+        "private_settings": {},
+        "push-to-mute": false,
+        "push-to-mute-delay": 0,
+        "push-to-talk": false,
+        "push-to-talk-delay": 0,
+        "settings": {
+            "device_id": "default"
+        },
+        "sync": 0,
+        "versioned_id": "wasapi_input_capture",
+        "volume": 1.0
+    },
+    "DesktopAudioDevice1": {
+        "balance": 0.5,
+        "deinterlace_field_order": 0,
+        "deinterlace_mode": 0,
+        "enabled": true,
+        "flags": 0,
+        "hotkeys": {
+            "libobs.mute": [],
+            "libobs.push-to-mute": [],
+            "libobs.push-to-talk": [],
+            "libobs.unmute": []
+        },
+        "id": "wasapi_output_capture",
+        "mixers": 255,
+        "monitoring_type": 0,
+        "muted": false,
+        "name": "Audio du Bureau",
+        "prev_ver": 419430408,
+        "private_settings": {},
+        "push-to-mute": false,
+        "push-to-mute-delay": 0,
+        "push-to-talk": false,
+        "push-to-talk-delay": 0,
+        "settings": {
+            "device_id": "default"
+        },
+        "sync": 0,
+        "versioned_id": "wasapi_output_capture",
+        "volume": 1.0
+    },
+    "current_program_scene": "projectm",
+    "current_scene": "projectm",
     "current_transition": "Fondu",
     "groups": [],
     "modules": {
         "auto-scene-switcher": {
             "active": false,
             "interval": 300,
-            "non_matching_scene": "ProjectM",
-            "switch_if_not_matching": true,
+            "non_matching_scene": "",
+            "switch_if_not_matching": false,
             "switches": []
         },
         "captions": {
@@ -30,7 +90,7 @@
         },
         "scripts-tool": []
     },
-    "name": "Smooth",
+    "name": "Sans nom",
     "preview_locked": false,
     "quick_transitions": [
         {
@@ -62,22 +122,16 @@
     "scaling_off_y": 0.0,
     "scene_order": [
         {
-            "name": "ProjectM"
+            "name": "Scène"
         },
         {
-            "name": "ProjectM 2"
+            "name": "Scène 2"
         },
         {
-            "name": "Powerpoint"
+            "name": "Scène 3"
         },
         {
-            "name": "ppt and projectM"
-        },
-        {
-            "name": "musicbeam"
-        },
-        {
-            "name": "camera"
+            "name": "projectm"
         }
     ],
     "sources": [
@@ -88,16 +142,14 @@
             "enabled": true,
             "flags": 0,
             "hotkeys": {
-                "libobs.mute": [],
-                "libobs.push-to-mute": [],
-                "libobs.push-to-talk": [],
-                "libobs.unmute": []
+                "hotkey_start": [],
+                "hotkey_stop": []
             },
-            "id": "ndi_source",
-            "mixers": 255,
+            "id": "game_capture",
+            "mixers": 0,
             "monitoring_type": 0,
             "muted": false,
-            "name": "Source NDI™",
+            "name": "Capture de Jeu",
             "prev_ver": 419430408,
             "private_settings": {},
             "push-to-mute": false,
@@ -105,14 +157,15 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "latency": 0,
-                "ndi_bw_mode": 1,
-                "ndi_fix_alpha_blending": false,
-                "ndi_recv_hw_accel": true,
-                "ndi_source_name": "LOCALHOST (Galaxy S10e)"
+                "anti_cheat_hook": false,
+                "capture_cursor": false,
+                "capture_mode": "window",
+                "force_scaling": false,
+                "limit_framerate": true,
+                "window": "projectM Visualizer:SDL_app:projectM.exe"
             },
             "sync": 0,
-            "versioned_id": "ndi_source",
+            "versioned_id": "game_capture",
             "volume": 1.0
         },
         {
@@ -124,15 +177,13 @@
             "hotkeys": {
                 "OBSBasic.SelectScene": [],
                 "libobs.hide_scene_item.Capture de Jeu": [],
-                "libobs.hide_scene_item.Source NDI™": [],
-                "libobs.show_scene_item.Capture de Jeu": [],
-                "libobs.show_scene_item.Source NDI™": []
+                "libobs.show_scene_item.Capture de Jeu": []
             },
             "id": "scene",
             "mixers": 0,
             "monitoring_type": 0,
             "muted": false,
-            "name": "camera",
+            "name": "projectm",
             "prev_ver": 419430408,
             "private_settings": {},
             "push-to-mute": false,
@@ -141,19 +192,19 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "custom_size": false,
-                "id_counter": 3,
+                "id_counter": 1,
                 "items": [
                     {
                         "align": 5,
                         "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
+                            "x": 387.0,
+                            "y": 259.0
                         },
                         "bounds_align": 0,
-                        "bounds_type": 0,
-                        "crop_bottom": 217,
+                        "bounds_type": 1,
+                        "crop_bottom": 0,
                         "crop_left": 0,
-                        "crop_right": 400,
+                        "crop_right": 0,
                         "crop_top": 0,
                         "group_item_backup": false,
                         "id": 1,
@@ -166,8 +217,97 @@
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 1.6185567378997803,
-                            "y": 1.6211180686950684
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "disable",
+                        "visible": true
+                    }
+                ]
+            },
+            "sync": 0,
+            "versioned_id": "scene",
+            "volume": 1.0
+        },
+        {
+            "balance": 0.5,
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "window_capture",
+            "mixers": 0,
+            "monitoring_type": 0,
+            "muted": false,
+            "name": "Capture de fenêtre 4",
+            "prev_ver": 419430408,
+            "private_settings": {},
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "cursor": false,
+                "window": "EyeTune:Windows.UI.Core.CoreWindow:EyeTune.WindowsUniversal.Application.exe"
+            },
+            "sync": 0,
+            "versioned_id": "window_capture",
+            "volume": 1.0
+        },
+        {
+            "balance": 0.5,
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.hide_scene_item.Capture de fenêtre": [],
+                "libobs.hide_scene_item.Capture de fenêtre 4": [],
+                "libobs.show_scene_item.Capture de fenêtre": [],
+                "libobs.show_scene_item.Capture de fenêtre 4": []
+            },
+            "id": "scene",
+            "mixers": 0,
+            "monitoring_type": 0,
+            "muted": false,
+            "name": "Scène",
+            "prev_ver": 419430408,
+            "private_settings": {},
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "custom_size": false,
+                "id_counter": 13,
+                "items": [
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "group_item_backup": false,
+                        "id": 12,
+                        "locked": false,
+                        "name": "Capture de fenêtre",
+                        "pos": {
+                            "x": 0.0,
+                            "y": -17.0
+                        },
+                        "private_settings": {},
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.48124998807907104,
+                            "y": 0.48072290420532227
                         },
                         "scale_filter": "disable",
                         "visible": true
@@ -180,23 +320,109 @@
                         },
                         "bounds_align": 0,
                         "bounds_type": 0,
-                        "crop_bottom": 100,
+                        "crop_bottom": 0,
                         "crop_left": 0,
                         "crop_right": 0,
                         "crop_top": 0,
                         "group_item_backup": false,
-                        "id": 3,
+                        "id": 13,
                         "locked": false,
-                        "name": "Source NDI™",
+                        "name": "Capture de fenêtre 4",
                         "pos": {
-                            "x": 61.0,
-                            "y": 53.0
+                            "x": 0.0,
+                            "y": 0.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.41874998807907104,
-                            "y": 0.41874998807907104
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_filter": "disable",
+                        "visible": true
+                    }
+                ]
+            },
+            "sync": 0,
+            "versioned_id": "scene",
+            "volume": 1.0
+        },
+        {
+            "balance": 0.5,
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "window_capture",
+            "mixers": 0,
+            "monitoring_type": 0,
+            "muted": false,
+            "name": "Capture de fenêtre",
+            "prev_ver": 419430408,
+            "private_settings": {},
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "window": "final_display_cluster_nav.mp4 - Lecteur multimédia VLC:QWidget:vlc.exe"
+            },
+            "sync": 0,
+            "versioned_id": "window_capture",
+            "volume": 1.0
+        },
+        {
+            "balance": 0.5,
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.hide_scene_item.Capture de fenêtre 2": [],
+                "libobs.show_scene_item.Capture de fenêtre 2": []
+            },
+            "id": "scene",
+            "mixers": 0,
+            "monitoring_type": 0,
+            "muted": false,
+            "name": "Scène 2",
+            "prev_ver": 419430408,
+            "private_settings": {},
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "custom_size": false,
+                "id_counter": 1,
+                "items": [
+                    {
+                        "align": 5,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_align": 0,
+                        "bounds_type": 0,
+                        "crop_bottom": 0,
+                        "crop_left": 0,
+                        "crop_right": 0,
+                        "crop_top": 0,
+                        "group_item_backup": false,
+                        "id": 1,
+                        "locked": false,
+                        "name": "Capture de fenêtre 2",
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "private_settings": {},
+                        "rot": 0.0,
+                        "scale": {
+                            "x": 0.41169154644012451,
+                            "y": 0.41121494770050049
                         },
                         "scale_filter": "disable",
                         "visible": true
@@ -226,7 +452,8 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "window": "Stage:_newt_clazz0:javaw.exe"
+                "priority": 2,
+                "window": "Diaporama PowerPoint  -  AVMDigital_intersystem_V32.pptx  -  Dernier enregistrement par l’utilisateur - PowerPoint:PPTFrameClass:POWERPNT.EXE"
             },
             "sync": 0,
             "versioned_id": "window_capture",
@@ -240,14 +467,14 @@
             "flags": 0,
             "hotkeys": {
                 "OBSBasic.SelectScene": [],
-                "libobs.hide_scene_item.Capture de fenêtre 2": [],
-                "libobs.show_scene_item.Capture de fenêtre 2": []
+                "libobs.hide_scene_item.Capture de fenêtre 3": [],
+                "libobs.show_scene_item.Capture de fenêtre 3": []
             },
             "id": "scene",
             "mixers": 0,
             "monitoring_type": 0,
             "muted": false,
-            "name": "musicbeam",
+            "name": "Scène 3",
             "prev_ver": 419430408,
             "private_settings": {},
             "push-to-mute": false,
@@ -256,7 +483,7 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "custom_size": false,
-                "id_counter": 3,
+                "id_counter": 1,
                 "items": [
                     {
                         "align": 5,
@@ -266,145 +493,23 @@
                         },
                         "bounds_align": 0,
                         "bounds_type": 0,
-                        "crop_bottom": 0,
-                        "crop_left": 0,
-                        "crop_right": 0,
-                        "crop_top": 0,
+                        "crop_bottom": 42,
+                        "crop_left": 71,
+                        "crop_right": 181,
+                        "crop_top": 150,
                         "group_item_backup": false,
-                        "id": 3,
+                        "id": 1,
                         "locked": false,
-                        "name": "Capture de fenêtre 2",
+                        "name": "Capture de fenêtre 3",
                         "pos": {
-                            "x": 0.0,
+                            "x": -174.0,
                             "y": 0.0
                         },
                         "private_settings": {},
                         "rot": 0.0,
                         "scale": {
-                            "x": 0.66666668653488159,
-                            "y": 0.66666668653488159
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    }
-                ]
-            },
-            "sync": 0,
-            "versioned_id": "scene",
-            "volume": 1.0
-        },
-        {
-            "balance": 0.5,
-            "deinterlace_field_order": 0,
-            "deinterlace_mode": 0,
-            "enabled": true,
-            "flags": 0,
-            "hotkeys": {
-                "OBSBasic.SelectScene": [],
-                "libobs.hide_scene_item.ppt": [],
-                "libobs.show_scene_item.ppt": []
-            },
-            "id": "scene",
-            "mixers": 0,
-            "monitoring_type": 0,
-            "muted": false,
-            "name": "Powerpoint",
-            "prev_ver": 419430408,
-            "private_settings": {},
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "settings": {
-                "custom_size": false,
-                "id_counter": 9,
-                "items": [
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 0,
-                        "crop_bottom": 32,
-                        "crop_left": 0,
-                        "crop_right": 0,
-                        "crop_top": 0,
-                        "group_item_backup": false,
-                        "id": 9,
-                        "locked": false,
-                        "name": "ppt",
-                        "pos": {
-                            "x": -40.0,
-                            "y": 0.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 0.27548351883888245,
-                            "y": 0.27505329251289368
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    }
-                ]
-            },
-            "sync": 0,
-            "versioned_id": "scene",
-            "volume": 1.0
-        },
-        {
-            "balance": 0.5,
-            "deinterlace_field_order": 0,
-            "deinterlace_mode": 0,
-            "enabled": true,
-            "flags": 0,
-            "hotkeys": {
-                "OBSBasic.SelectScene": [],
-                "libobs.hide_scene_item.Capture de Jeu": [],
-                "libobs.show_scene_item.Capture de Jeu": []
-            },
-            "id": "scene",
-            "mixers": 0,
-            "monitoring_type": 0,
-            "muted": false,
-            "name": "ProjectM",
-            "prev_ver": 419430408,
-            "private_settings": {},
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "settings": {
-                "custom_size": false,
-                "id_counter": 10,
-                "items": [
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 0,
-                        "crop_bottom": 0,
-                        "crop_left": 0,
-                        "crop_right": 78,
-                        "crop_top": 0,
-                        "group_item_backup": false,
-                        "id": 10,
-                        "locked": false,
-                        "name": "Capture de Jeu",
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 0.71886122226715088,
-                            "y": 0.71842104196548462
+                            "x": 0.48442366719245911,
+                            "y": 0.48444443941116333
                         },
                         "scale_filter": "disable",
                         "visible": true
@@ -426,7 +531,7 @@
             "mixers": 0,
             "monitoring_type": 0,
             "muted": false,
-            "name": "ppt",
+            "name": "Capture de fenêtre 3",
             "prev_ver": 419430408,
             "private_settings": {},
             "push-to-mute": false,
@@ -434,248 +539,13 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "client_area": true,
-                "priority": 2,
-                "window": "Diaporama PowerPoint - [clip3.ppsx [Lecture seule]] - PowerPoint:PPTFrameClass:POWERPNT.EXE"
+                "window": "1. Line Input - Winamp:BaseWindow_RootWnd:winamp.exe"
             },
             "sync": 0,
             "versioned_id": "window_capture",
             "volume": 1.0
-        },
-        {
-            "balance": 0.5,
-            "deinterlace_field_order": 0,
-            "deinterlace_mode": 0,
-            "enabled": true,
-            "flags": 0,
-            "hotkeys": {
-                "hotkey_start": [],
-                "hotkey_stop": []
-            },
-            "id": "game_capture",
-            "mixers": 0,
-            "monitoring_type": 0,
-            "muted": false,
-            "name": "Capture de Jeu",
-            "prev_ver": 419430408,
-            "private_settings": {},
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "settings": {
-                "capture_cursor": false,
-                "capture_mode": "window",
-                "window": "projectM ➫ Rovastar - Hyperspace.milk:SDL_app:projectM.exe"
-            },
-            "sync": 0,
-            "versioned_id": "game_capture",
-            "volume": 1.0
-        },
-        {
-            "balance": 0.5,
-            "deinterlace_field_order": 0,
-            "deinterlace_mode": 0,
-            "enabled": true,
-            "flags": 0,
-            "hotkeys": {
-                "OBSBasic.SelectScene": [],
-                "libobs.hide_scene_item.Capture de Jeu": [],
-                "libobs.show_scene_item.Capture de Jeu": []
-            },
-            "id": "scene",
-            "mixers": 0,
-            "monitoring_type": 0,
-            "muted": false,
-            "name": "ProjectM 2",
-            "prev_ver": 419430408,
-            "private_settings": {},
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "settings": {
-                "custom_size": false,
-                "id_counter": 2,
-                "items": [
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 0,
-                        "crop_bottom": 0,
-                        "crop_left": 0,
-                        "crop_right": 346,
-                        "crop_top": 0,
-                        "group_item_backup": false,
-                        "id": 1,
-                        "locked": false,
-                        "name": "Capture de Jeu",
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 0.67656248807907104,
-                            "y": 0.6763157844543457
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    },
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 0,
-                        "crop_bottom": 0,
-                        "crop_left": 0,
-                        "crop_right": 349,
-                        "crop_top": 0,
-                        "group_item_backup": false,
-                        "id": 2,
-                        "locked": false,
-                        "name": "Capture de Jeu",
-                        "pos": {
-                            "x": 198.90937805175781,
-                            "y": 0.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 0.67656248807907104,
-                            "y": 0.6763157844543457
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    }
-                ]
-            },
-            "sync": 0,
-            "versioned_id": "scene",
-            "volume": 1.0
-        },
-        {
-            "balance": 0.5,
-            "deinterlace_field_order": 0,
-            "deinterlace_mode": 0,
-            "enabled": true,
-            "flags": 0,
-            "hotkeys": {
-                "OBSBasic.SelectScene": [],
-                "libobs.hide_scene_item.Capture de Jeu": [],
-                "libobs.hide_scene_item.ppt": [],
-                "libobs.show_scene_item.Capture de Jeu": [],
-                "libobs.show_scene_item.ppt": []
-            },
-            "id": "scene",
-            "mixers": 0,
-            "monitoring_type": 0,
-            "muted": false,
-            "name": "ppt and projectM",
-            "prev_ver": 419430408,
-            "private_settings": {},
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "settings": {
-                "custom_size": false,
-                "id_counter": 2,
-                "items": [
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 0,
-                        "crop_bottom": 217,
-                        "crop_left": 0,
-                        "crop_right": 400,
-                        "crop_top": 0,
-                        "group_item_backup": false,
-                        "id": 2,
-                        "locked": false,
-                        "name": "Capture de Jeu",
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 1.6185567378997803,
-                            "y": 1.6211180686950684
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    },
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 0,
-                        "crop_bottom": 34,
-                        "crop_left": 100,
-                        "crop_right": 100,
-                        "crop_top": 0,
-                        "group_item_backup": false,
-                        "id": 1,
-                        "locked": false,
-                        "name": "ppt",
-                        "pos": {
-                            "x": 66.0,
-                            "y": 57.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 0.15107160806655884,
-                            "y": 0.15064102411270142
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    }
-                ]
-            },
-            "sync": 0,
-            "versioned_id": "scene",
-            "volume": 1.0
         }
     ],
-    "transition_duration": 1000,
-    "transitions": [
-        {
-            "id": "obs_stinger_transition",
-            "name": "Stinger",
-            "settings": {}
-        },
-        {
-            "id": "wipe_transition",
-            "name": "Balayage Luma",
-            "settings": {}
-        },
-        {
-            "id": "fade_to_color_transition",
-            "name": "Fondu vers couleur",
-            "settings": {}
-        },
-        {
-            "id": "swipe_transition",
-            "name": "Balayage",
-            "settings": {}
-        }
-    ]
+    "transition_duration": 300,
+    "transitions": []
 }
