@@ -171,6 +171,16 @@
    <Address>6</Address>
    <Channels>3</Channels>
   </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic Smoke</Model>
+   <Mode>Amount</Mode>
+   <ID>15</ID>
+   <Name>LHControl</Name>
+   <Universe>2</Universe>
+   <Address>15</Address>
+   <Channels>1</Channels>
+  </Fixture>
   <ChannelsGroup ID="1" Name="New Group" Value="0"/>
   <ChannelsGroup ID="0" Name="LaserHarpDimmer" Value="0">4,0,4,3,4,6,4,9,4,12,4,15,4,18</ChannelsGroup>
   <ChannelsGroup ID="2" Name="LaserHarpStrobe" Value="0">4,2,4,5,4,8,4,11,4,14,4,17,4,20</ChannelsGroup>
@@ -394,12 +404,11 @@
    <Step Number="5">60</Step>
   </Function>
   <Function ID="30" Type="Collection" Name="BoipebaStep01-intro" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">40</Step>
-   <Step Number="1">18</Step>
-   <Step Number="2">130</Step>
-   <Step Number="3">43</Step>
-   <Step Number="4">17</Step>
-   <Step Number="5">60</Step>
+   <Step Number="0">18</Step>
+   <Step Number="1">130</Step>
+   <Step Number="2">43</Step>
+   <Step Number="3">17</Step>
+   <Step Number="4">60</Step>
   </Function>
   <Function ID="31" Type="Collection" Name="DuSmoothStep1" Path="Smooth_Trio/DuSmooth">
    <Step Number="0">59</Step>
@@ -1354,12 +1363,11 @@
    <Step Number="6">96</Step>
   </Function>
   <Function ID="154" Type="Collection" Name="BoipebaStep02-couplet1-2" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">40</Step>
-   <Step Number="1">18</Step>
-   <Step Number="2">209</Step>
-   <Step Number="3">59</Step>
-   <Step Number="4">54</Step>
-   <Step Number="5">60</Step>
+   <Step Number="0">18</Step>
+   <Step Number="1">209</Step>
+   <Step Number="2">59</Step>
+   <Step Number="3">54</Step>
+   <Step Number="4">60</Step>
   </Function>
   <Function ID="155" Type="Collection" Name="IlYavaitStep5-black-white" Path="Smooth_Trio/Il y avait">
    <Step Number="0">40</Step>
@@ -1515,7 +1523,7 @@
    <FixtureVal ID="13">0,36,1,37,2,255</FixtureVal>
   </Function>
   <Function ID="178" Type="Collection" Name="BoipebaStep04-refrain1" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">25</Step>
+   <Step Number="0">262</Step>
    <Step Number="1">111</Step>
    <Step Number="2">107</Step>
    <Step Number="3">18</Step>
@@ -1532,7 +1540,7 @@
    <FixtureVal ID="10">5,0,12,0</FixtureVal>
   </Function>
   <Function ID="180" Type="Collection" Name="BoipebaStep05-pont" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">40</Step>
+   <Step Number="0">261</Step>
    <Step Number="1">18</Step>
    <Step Number="2">209</Step>
    <Step Number="3">54</Step>
@@ -1540,19 +1548,18 @@
    <Step Number="5">60</Step>
   </Function>
   <Function ID="181" Type="Collection" Name="BoipebaStep06-couplet3-4" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">40</Step>
-   <Step Number="1">18</Step>
-   <Step Number="2">209</Step>
-   <Step Number="3">54</Step>
-   <Step Number="4">89</Step>
-   <Step Number="5">60</Step>
+   <Step Number="0">18</Step>
+   <Step Number="1">209</Step>
+   <Step Number="2">54</Step>
+   <Step Number="3">89</Step>
+   <Step Number="4">60</Step>
   </Function>
   <Function ID="182" Type="Scene" Name="Front-white">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="2">0,255,1,255,2,255,3,255,4,0,5,0,6,0,7,0</FixtureVal>
   </Function>
   <Function ID="183" Type="Collection" Name="BoipebaStep08-refrain2" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">25</Step>
+   <Step Number="0">262</Step>
    <Step Number="1">18</Step>
    <Step Number="2">111</Step>
    <Step Number="3">107</Step>
@@ -1562,7 +1569,7 @@
    <Step Number="7">60</Step>
   </Function>
   <Function ID="184" Type="Collection" Name="BoipebaStep09-soloTrump" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">40</Step>
+   <Step Number="0">261</Step>
    <Step Number="1">18</Step>
    <Step Number="2">130</Step>
    <Step Number="3">44</Step>
@@ -1570,36 +1577,32 @@
    <Step Number="5">60</Step>
   </Function>
   <Function ID="185" Type="Collection" Name="BoipebaStep10-SlyParle" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">40</Step>
-   <Step Number="1">18</Step>
-   <Step Number="2">130</Step>
-   <Step Number="3">43</Step>
-   <Step Number="4">54</Step>
-   <Step Number="5">60</Step>
+   <Step Number="0">18</Step>
+   <Step Number="1">130</Step>
+   <Step Number="2">43</Step>
+   <Step Number="3">54</Step>
+   <Step Number="4">60</Step>
   </Function>
   <Function ID="186" Type="Collection" Name="BoipebaStep11-poiopopo tous" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">40</Step>
-   <Step Number="1">18</Step>
-   <Step Number="2">209</Step>
-   <Step Number="3">94</Step>
-   <Step Number="4">54</Step>
-   <Step Number="5">60</Step>
+   <Step Number="0">18</Step>
+   <Step Number="1">209</Step>
+   <Step Number="2">94</Step>
+   <Step Number="3">54</Step>
+   <Step Number="4">60</Step>
   </Function>
   <Function ID="187" Type="Collection" Name="BoipebaStep12-poiopopo fin" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">40</Step>
-   <Step Number="1">18</Step>
-   <Step Number="2">209</Step>
-   <Step Number="3">60</Step>
-   <Step Number="4">54</Step>
-   <Step Number="5">89</Step>
+   <Step Number="0">18</Step>
+   <Step Number="1">209</Step>
+   <Step Number="2">60</Step>
+   <Step Number="3">54</Step>
+   <Step Number="4">89</Step>
   </Function>
   <Function ID="188" Type="Collection" Name="BoipebaStep13-fin sly et Gui" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">40</Step>
-   <Step Number="1">18</Step>
-   <Step Number="2">123</Step>
-   <Step Number="3">95</Step>
-   <Step Number="4">54</Step>
-   <Step Number="5">60</Step>
+   <Step Number="0">18</Step>
+   <Step Number="1">123</Step>
+   <Step Number="2">95</Step>
+   <Step Number="3">54</Step>
+   <Step Number="4">60</Step>
   </Function>
   <Function ID="189" Type="Collection" Name="CapDhiverStep02-couplet1-2" Path="Smooth_Trio/CadDhiver">
    <Step Number="0">40</Step>
@@ -1873,7 +1876,7 @@
    <Step Number="5">60</Step>
   </Function>
   <Function ID="223" Type="Collection" Name="BoipebaStep00-rythme" Path="Smooth_Trio/Boipeba">
-   <Step Number="0">40</Step>
+   <Step Number="0">261</Step>
    <Step Number="1">18</Step>
    <Step Number="2">130</Step>
    <Step Number="3">59</Step>
@@ -2139,6 +2142,22 @@
    <Step Number="2">64</Step>
    <Step Number="3">123</Step>
    <Step Number="4">138</Step>
+  </Function>
+  <Function ID="261" Type="Scene" Name="LH-mode-IDLE" Path="LaserHarp">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="15">0,1</FixtureVal>
+  </Function>
+  <Function ID="262" Type="Scene" Name="LH-mode-DMX" Path="LaserHarp">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="15">0,2</FixtureVal>
+  </Function>
+  <Function ID="263" Type="Scene" Name="LH-mode-LHPreset0" Path="LaserHarp">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="15">0,3</FixtureVal>
+  </Function>
+  <Function ID="264" Type="Scene" Name="LH-mode-LHPreset1" Path="LaserHarp">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="15">0,4</FixtureVal>
   </Function>
   <Monitor DisplayMode="1" ShowLabels="1">
    <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
