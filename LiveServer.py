@@ -16,7 +16,6 @@ MIDI_NOTE_OFF = 0x80
 MIDI_NOTE_ON  = 0x90
 MIDI_CONTROL_CHANGE = 0xb0
 MIDI_PROGRAM_CHANGE = 0xc0
-MIDI_CONTROL_CHANGE_FROM_CHRIS = 0x20 #Warning : this value is also received from voicelive...
 
 
 VL3_CC_GUITAR_UMOD 	= 21
@@ -128,19 +127,19 @@ def SmoothTrioCC(myCC, value):
 
   #Additional CC coming from Chris
   if (myCC == MIDI_CONTROL_CHANGE_FROM_CHRIS) : 
-    if(value == 127):
+    if(value == MIDI_CC_CHRIS_NEXT_STEP):
        print("From Chris : next step")
        currentMessage = "/step_next"
        currentStep = currentStep + 1
        clientQLC.send_message(currentMessage, 255)
        clientQLC.send_message(currentMessage, 0)
-    elif(value == 126):
+    elif(value == MIDI_CC_CHRIS_PREVIOUS_STEP):
        print("From Chris : previous step")
        currentStep = currentStep - 1
        currentMessage = "/step_previous"  
        clientQLC.send_message(currentMessage, 255)
        clientQLC.send_message(currentMessage, 0)       
-    elif(value == 1):
+    elif(value == MIDI_CC_CHRIS_TALK):
        print("Setting Chris Talk Scene")
 
        if(chrisTalkOngoing == 0):
