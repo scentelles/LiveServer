@@ -39,14 +39,17 @@ chrisTalkOngoing = 0
 clientQLC = udp_client.SimpleUDPClient("10.3.141.1", 5005)
 #OSC connection to Mini PC
 clientPC = udp_client.SimpleUDPClient("10.3.141.213", 5006)
+#OSC connection to Video PC
+clientVideoPC = udp_client.SimpleUDPClient("10.3.141.52", 5007)
 
 
 fogOngoing = 0
 
 
 
-def startCueList(songName):
+def startCueList(songId):
     global currentStep
+    
     clientQLC.send_message("/stopallfunctions", 255)
     clientQLC.send_message("/stop", 255)
     clientQLC.send_message("/stop", 0)
@@ -55,11 +58,17 @@ def startCueList(songName):
     time.sleep(0.5)
 
     currentStep = 1
-    currentMessage = "/start_cuelist/" + SName[songName]
+    currentMessage = "/start_cuelist/" + SName[songId]
     print("Sending OSC message to QLC : " + currentMessage)
     clientQLC.send_message(currentMessage, 255)
     time.sleep(0.5)
     clientQLC.send_message(currentMessage, 0)
+
+def startSong(songId):
+    clientVideoPC.send_message("/video/song", songId) #TODO : check currentsong key exists
+
+    startCueList(songId)
+
 
 def SmoothTrioPC():
   global currentStep
@@ -67,7 +76,7 @@ def SmoothTrioPC():
 
   
   if((currentSong in SName) and (chrisTalkOngoing == 0)):  
-    startCueList(currentSong)
+    startSong(currentSong)
 
   else:
     print("Smooth song unmapped. do nothing")
@@ -95,7 +104,7 @@ def SmoothTrioCC(myCC, value):
    #Forcing Christalk deactivation and resetting to current song start
    if(tempNewStep == 2):
      chrisTalkOngoing = 0
-     startCueList(currentSong) #contains a stop all function call, should be sufficient to stop the chris talk
+     startSong(currentSong) #contains a stop all function call, should be sufficient to stop the chris talk
      time.sleep(0.1) 
 
    if ((tempNewStep > 1) or (currentStep > 1)) and (chrisTalkOngoing == 0):
@@ -110,7 +119,7 @@ def SmoothTrioCC(myCC, value):
 	#will work only for presets with more than2 steps...
         if(abs(previousStep - currentStep) > 1):
             print("resetting Cue and restart")
-            startCueList(currentSong)
+            startSong(currentSong)
             return
 
         if (currentStep > previousStep):
@@ -138,6 +147,14 @@ def SmoothTrioCC(myCC, value):
        currentMessage = "/step_previous"  
        clientQLC.send_message(currentMessage, 255)
        clientQLC.send_message(currentMessage, 0)       
+    elif(value == MIDI_CC_CHRIS_NEXT_SLIDE):
+       print("From Chris : next slide")
+       currentMessage = "/step_next"
+       clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_NEXT_SLIDE)
+    elif(value == MIDI_CC_CHRIS_PREVIOUS_SLIDE):
+       print("From Chris : previous slide")
+       clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_NEXT_SLIDE)
+
     elif(value == MIDI_CC_CHRIS_TALK):
        print("Setting Chris Talk Scene")
 
@@ -155,7 +172,7 @@ def SmoothTrioCC(myCC, value):
 
        else:  #restart cue list of current song when going out of CHris talk
            chrisTalkOngoing = 0
-           startCueList(currentSong) #contains a stop all function call, should be sufficient to stop the chris talk
+           startSong(currentSong) #contains a stop all function call, should be sufficient to stop the chris talk
 
 
   else:
