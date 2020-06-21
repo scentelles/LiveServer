@@ -4,5 +4,6 @@
   "OBS_HOST" 			: "localhost",
   "OBS_PORT" 			: 4444,
   "OBS_PWD"  			: "secret",
-  "OSC_PROJECTM_PORT" 	: 7700
+  "OSC_PROJECTM_PORT" 	: 7700,
+  "SLIDESHOW_PATH"		: "C:\\Users\\az02098.CORP\\Documents\\LiveServer\\VideoPC\\clip1.pptx"
 }
