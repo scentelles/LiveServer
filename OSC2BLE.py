@@ -31,6 +31,7 @@ DELAY_TO_SEND_LAST_VALUES = 0.6
 
 
 clientLH = udp_client.SimpleUDPClient("10.3.141.90", 8001)
+clientMS = udp_client.SimpleUDPClient("10.3.141.133", 7701)
 
 def dispatch_qlc_osc_handler(osc_address, args, command):
 
@@ -42,30 +43,58 @@ def dispatch_qlc_osc_handler(osc_address, args, command):
   channelIndex = int(channel)%3
   value = round(command*255)
 
-  if(int(channel) == 15):
-    print("Received LH OSC Command")
+  if(int(channel) >= 15):
+    if(int(channel) == 15):
+      print("Received LH OSC Command")
 
-    if(value == LH_CONTROL_IDLE):
-      print("LH : Setting LH in IDLE mode")
-      clientLH.send_message("/laserharp/startIDLE", 0)
-    if(value == LH_CONTROL_DMX):
-      print("LH : Settinh LH in DMX mode")
-      clientLH.send_message("/laserharp/startDMX", 0)
-    if(value >= LH_CONTROL_LH_PRESET_OFFSET):
-      preset = value - LH_CONTROL_LH_PRESET_OFFSET
-      print("LH : Setting LH mode, preset : " + str(preset))
-      clientLH.send_message("/laserharp/startLH", preset)      #To be tested
-    return
+      if(value == LH_CONTROL_IDLE):
+        print("LH : Setting LH in IDLE mode")
+        clientLH.send_message("/laserharp/startIDLE", 0)
+      if(value == LH_CONTROL_DMX):
+        print("LH : Settinh LH in DMX mode")
+        clientLH.send_message("/laserharp/startDMX", 0)
+      if(value >= LH_CONTROL_LH_PRESET_OFFSET):
+        preset = value - LH_CONTROL_LH_PRESET_OFFSET
+        print("LH : Setting LH mode, preset : " + str(preset))
+        clientLH.send_message("/laserharp/startLH", preset)      #To be tested
+      return
     
-  else:
-    print("no number")
+    if(int(channel) == 16):
+      print("Received Megascreen OSC Command")
+
+      clientMS.send_message("/MS/alpha", value)
+      return
+
+    if(int(channel) == 17):
+      print("Received Megascreen OSC Command")
+
+      clientMS.send_message("/MS/red", value)
+      return
+
+    if(int(channel) == 18):
+      print("Received Megascreen OSC Command")
+
+      clientMS.send_message("/MS/green", value)
+      return
+      
+    if(int(channel) == 19):
+      print("Received Megascreen OSC Command")
+
+      clientMS.send_message("/MS/blue", value)
+      return
+      
+    if(int(channel) == 20):
+      print("Received Megascreen OSC Command")
+
+      clientMS.send_message("/MS/strobe", value)
+      return
   
   #print("address" + osc_address + " : " + str(ledIndex) + " : " + str(channelIndex) + " : " + str(value))
   
-  
-  myLed = ledThreads[ledIndex]
+  else: #for DMX channel between 0 and 15)
+    myLed = ledThreads[ledIndex]
 
-  if (myLed.connected):
+    if (myLed.connected):
              #   print(str(myLed.name) + " : " + str(value))
                 if(channelIndex == 0):
                    myLed.R = value
@@ -88,7 +117,7 @@ def dispatch_qlc_osc_handler(osc_address, args, command):
                   myLed.connected = 0
                   myLed.connect()
 
-  else:
+    else:
       print("Received command, but still not connected to " + str(myLed.name) + ". Trying to connect now")
       myLed.connect()
 

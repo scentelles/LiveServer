@@ -86,31 +86,44 @@ def SmoothTrioCC(myCC, value):
   #But allow to go back to it we already were beyond step1 
   tempNewStep = value + 1
   print ("myCC : " + str(myCC))
-  if ((myCC == VL3_CC_STEP) and ((tempNewStep > 1) or (currentStep > 1)) and (chrisTalkOngoing == 0)):
-    previousStep = currentStep
-    currentStep = tempNewStep
+  
+  
     
-    if(currentSong in SName):
-      
-      
-      #Special case of going from last to first step on voicelive.
-      #Using it to reset to step1, stop all functiona and restart cue
-      #will work only for presets with more than2 steps...
-      if(abs(previousStep - currentStep) > 1):
-          print("resetting Cue and restart")
-          startCueList(currentSong)
-          return
-          
-      if (currentStep > previousStep):
-        currentMessage = "/step_next"
+  
+  
+  if (myCC == VL3_CC_STEP):
+   #Upon Step2, (generally the start of the song, no Christalk is allowed.
+   #Forcing Christalk deactivation and resetting to current song start
+   if(tempNewStep == 2):
+     chrisTalkOngoing = 0
+     startCueList(currentSong) #contains a stop all function call, should be sufficient to stop the chris talk
+     time.sleep(0.1) 
+
+   if ((tempNewStep > 1) or (currentStep > 1)) and (chrisTalkOngoing == 0):
+      previousStep = currentStep
+      currentStep = tempNewStep
+
+      if(currentSong in SName):
+
+
+	#Special case of going from last to first step on voicelive.
+	#Using it to reset to step1, stop all functiona and restart cue
+	#will work only for presets with more than2 steps...
+        if(abs(previousStep - currentStep) > 1):
+            print("resetting Cue and restart")
+            startCueList(currentSong)
+            return
+
+        if (currentStep > previousStep):
+          currentMessage = "/step_next"
+        else:
+          currentMessage = "/step_previous"  
+
+        print("Sending OSC message step to QLC : " + currentMessage)
+        clientQLC.send_message(currentMessage, 255)
+        clientQLC.send_message(currentMessage, 0)
       else:
-        currentMessage = "/step_previous"  
-	      
-      print("Sending OSC message step to QLC : " + currentMessage)
-      clientQLC.send_message(currentMessage, 255)
-      clientQLC.send_message(currentMessage, 0)
-    else:
-      print("Step increment : Smooth song unmapped. do nothing")
+        print("Step increment : Smooth song unmapped. do nothing")
 
   #Additional CC coming from Chris
   if (myCC == MIDI_CONTROL_CHANGE_FROM_CHRIS) : 
