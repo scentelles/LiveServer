@@ -33,6 +33,9 @@ OSC_PROJECTM_PORT  = config['OSC_PROJECTM_PORT']
 OBS_HOST = config['OBS_HOST']
 OBS_PORT = config['OBS_PORT']
 OBS_PWD  = config['OBS_PWD']
+
+SLIDESHOW_PATH = config['SLIDESHOW_PATH']
+
 ws = obsws(OBS_HOST, OBS_PORT, OBS_PWD)
 obs_connected = False
 
@@ -63,8 +66,8 @@ app = win32com.client.Dispatch("PowerPoint.Application")
 
 class ppt:
 	def __init__(self):
-
-		self.pres = app.Presentations.Open(r'C:\Users\az02098.CORP\Documents\LiveServer\VideoPC\clip1.ppsx',    WithWindow=False)
+		
+		self.pres = app.Presentations.Open(SLIDESHOW_PATH, WithWindow=False)
 	
 	def goto_slide(self, nb):
 		self.pres.SlideShowWindow.View.GotoSlide(nb)
