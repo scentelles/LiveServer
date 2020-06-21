@@ -1,5 +1,5 @@
 {
-  "OSC_LOCALHOST_IP" 	: "192.168.1.22",
+  "OSC_LOCALHOST_IP" 	: "10.3.141.52",
   "OSC_LOCALHOST_PORT" 	: 5007,
   "OBS_HOST" 			: "localhost",
   "OBS_PORT" 			: 4444,

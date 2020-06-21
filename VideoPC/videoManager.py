@@ -18,10 +18,7 @@ import time
 
 from SmoothDefines import *
 
-MIDI_CONTROL_CHANGE = 0xb0
-MIDI_PROGRAM_CHANGE = 0xc0
-MIDI_CONTROL_CHANGE_FROM_CHRIS = 0x20 #Warning : this value is also received from voicelive...
-
+MAIN_LOOP_DELAY = 0.01 #TODO : replace loop with message queue
 
 with open('config.json') as config_file:
     config = json.load(config_file)
@@ -45,7 +42,6 @@ clientProjectM = udp_client.SimpleUDPClient(OSC_LOCALHOST_IP, OSC_PROJECTM_PORT)
 
 
 currentSong = 0
-chrisTalkOngoing = 0
 
 initialized = False
 
@@ -70,8 +66,11 @@ class ppt:
 		self.pres = app.Presentations.Open(SLIDESHOW_PATH, WithWindow=False)
 	
 	def goto_slide(self, nb):
-		self.pres.SlideShowWindow.View.GotoSlide(nb)
-		
+		try:
+			print("Setting slide " + str(nb))
+			self.pres.SlideShowWindow.View.GotoSlide(nb)
+		except:
+			print("Exception when trying to set slide. Please kill ALL ppt instances from task manager ")
 	def next_slide(self):
 		self.pres.SlideShowWindow.View.Next() 
 
@@ -94,84 +93,35 @@ class ppt:
 
 def startSongSlide(song):
 	global my_slide	
-	my_slide.goto_slide(SToSlide[song])
+	slideNb = SToSlide[song]
+	print("Setting ppt slide according to song : " + str(slideNb))
+	my_slide.goto_slide(slideNb)
 		
-def SmoothTrioPC():
-  global currentStep
+	
+		
+def song_osc_receive(unused_addr, args, songNb):
+  print("\n[{0}] ~ {1} ".format(args[0], songNb))
+  print("Requesting start song to ppt local command loop")
   global currentSong
   global localCommand
+  currentSong = songNb
+  localCommand = START_SONG  
   
-  if((currentSong in SName) and (chrisTalkOngoing == 0)): 
-    print("setting local command start song")
-    localCommand = START_SONG  
 
-  else:
-    print("Smooth song unmapped. do nothing")
-
-#TODO: remove voicelive duplication beween receivers, need voicelive / smooth class    
-def SmoothTrioCC(myCC, value):
-	global chrisTalkOngoing
-	global currentSong
-	global localCommand
-  
-	#checking only CC coming from Chris
-	if (myCC == MIDI_CONTROL_CHANGE_FROM_CHRIS) : 
-		if(value == 125):
-			print("From Chris : next video step")
-			localCommand = NEXT_SLIDE
-		elif(value == 124):
-			print("From Chris : previous video step")
-			localCommand = PREVIOUS_SLIDE     
-		elif(value == 1):
-			print("Setting Chris Talk Video Scene")
-
-			if(chrisTalkOngoing == 0):
-				chrisTalkOngoing = 1
-				localCommand = CHRIS_TALK 
-
-			else:  #restart show of current song when going out of CHris talk
-				print("Exiting Chris Talk, starting song slide")
-				chrisTalkOngoing = 0
-				localCommand = START_SONG    
-
-	else:
-		print("Message from Chris unrecognized : " + str(value))
-		
-		
-def forwardPCFromVoicelive(myCC, value):
-  global currentSong
-  songName = ""
-  currentSong = myCC + 1
-  if(currentSong in SName):
-    songName = SName[currentSong]
-  print("Setting current song to : " + str(currentSong) + " (" + songName + ")")
-    
-  if(currentSong > SMOOTH_PRESET_MIN and currentSong < SMOOTH_PRESET_MAX):
-    SmoothTrioPC()
-
-  else:
-    #TODO : manage out of smooth presets cases
-    print("Other songs than smooth ones to be managed")
-		
-def forwardCCFromVoicelive(myCC, value):
-  print("Dispatching message CC from Voicelive : CC : " + str(myCC) + " | " + str(value))
-  if(currentSong > SMOOTH_PRESET_MIN and currentSong < SMOOTH_PRESET_MAX):
-    SmoothTrioCC(myCC, value)
-  
-		
-def voicelive_osc_receive(unused_addr, args, command, note, vel):
-  
-  if(command == MIDI_CONTROL_CHANGE):
-    forwardCCFromVoicelive(note, vel)
-
-  if(command == MIDI_PROGRAM_CHANGE):
-    print("MIDI_PROGRAM_CHANGE")
-    forwardPCFromVoicelive(note, vel)
-
-    
-  print("\n[{0}] ~ {1} {2} {3}".format(args[0], command, note, vel))
    
 
+def slideshow_osc_receive(unused_addr, args, command):
+  global localCommand 
+  if(command == SLIDESHOW_COMMAND_NEXT_SLIDE):
+    localCommand = NEXT_SLIDE
+  if(command == SLIDESHOW_COMMAND_PREVIOUS_SLIDE):
+    localCommand = PREVIOUS_SLIDE	
+	
+    
+  print("\n[{0}] ~ {1} ".format(args[0], command))
+   
+
+#TODO check works from RASPI/QLC changes   
 def obs_osc_receive(unused_addr, args, command, value):
 	global obs_connected
 	if(obs_connected):
@@ -197,7 +147,9 @@ def projectm_command_osc_receive(unused_addr, args, command, value):
 	
  
 def osc_thread(name):
-	dispatcher.map("/midi/voicelive", voicelive_osc_receive, "voicelive_osc_receive")
+	dispatcher.map("/video/song", song_osc_receive, "song_osc_receive")
+	dispatcher.map("/video/slideshow", slideshow_osc_receive, "slideshow_osc_receive")
+
 	dispatcher.map("/video/obs", obs_osc_receive, "obs_osc_receive")
 	dispatcher.map("/video/projectm/preset", projectm_preset_osc_receive, "projectm_preset_osc_receive")
 	dispatcher.map("/video/projectm/command", projectm_command_osc_receive, "projectm_command_osc_receive")
@@ -242,7 +194,7 @@ def obs_connect():
 	
 try:
 	while True:
-		time.sleep(0.01)
+		time.sleep(MAIN_LOOP_DELAY)
 		if (localCommand != NO_COMMAND):
 			if(obs_connected == False):
 				obs_connect()
@@ -254,8 +206,7 @@ try:
 				my_slide.previous_slide()
 			if localCommand == START_SONG:
 				startSongSlide(currentSong)
-			if localCommand == CHRIS_TALK:
-				my_slide.goto_slide(CHRIS_TALK_SLIDE_INDEX)
+
 			localCommand = NO_COMMAND
 			
 except KeyboardInterrupt:

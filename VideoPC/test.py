@@ -7,9 +7,12 @@ from pythonosc import udp_client
 
 #OSC connection to Video manager
 #LOCALHOST_IP   = "192.168.1.51"
-LOCALHOST_IP   = "192.168.1.22"
+LOCALHOST_IP   = "10.3.141.52"
 LOCALHOST_PORT = 5007
+RASPI_IP   = "10.3.141.1"
+RASPI_PORT = 8000
 clientVideoPC = udp_client.SimpleUDPClient(LOCALHOST_IP, LOCALHOST_PORT)
+clientRaspi   = udp_client.SimpleUDPClient(RASPI_IP, RASPI_PORT)
 
 DELAY = 1
 
@@ -44,42 +47,54 @@ def testOBSControl():
 	#TBD
 
 
-	
-def testPresetSlideshowSwitch():
+
+def testPresetSlideshowSteps_local():
 	print ("\n\nTEST : Slideshow switch\n")
 	count = 6; #start at index 6. other presets are not used in voicelive
-	for currentSong in SName:
-	  count+=1
-	  print ("\n##################")
-	  print ("Sending PC " + str(count))
+
+    #=====================================
+	  
+	#Now we can send next/previous slide commands
+	clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_NEXT_SLIDE)
+	time.sleep(DELAY)
+	clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_NEXT_SLIDE)
+	time.sleep(DELAY)
+	clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_PREVIOUS_SLIDE)
+	time.sleep(DELAY)
+	clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_PREVIOUS_SLIDE)
+	time.sleep(DELAY)
+	
+	
+def testPresetSlideshowSteps_raspi():
 
 	  #=====================================
 	  #test changing preset during Christalk 
 	  #entering Chris talk
-	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_TALK])
-	  time.sleep(2)  	 
+	  #clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_TALK])
+	  #time.sleep(2)  	 
 
 	  #sending program change
-	  clientVideoPC.send_message("/midi/voicelive", [MIDI_PROGRAM_CHANGE, count, 0])
-	  time.sleep(2)  
+	  #clientVideoPC.send_message("/midi/voicelive", [MIDI_PROGRAM_CHANGE, count, 0])
+	  #time.sleep(2)  
 	  
 	  #exiting Chris talk
-	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_TALK])
-	  time.sleep(DELAY)
+	  #clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_TALK])
+	  #time.sleep(DELAY)
 
 	  #Now we can send next/previous slide commands
-	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_NEXT_SLIDE])
+	  clientRaspi.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_NEXT_SLIDE])
 	  time.sleep(DELAY)
 
-	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_NEXT_SLIDE])
+	  clientRaspi.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_NEXT_SLIDE])
 	  time.sleep(DELAY)
 
-	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_PREVIOUS_SLIDE])
+	  clientRaspi.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_PREVIOUS_SLIDE])
 	  time.sleep(DELAY)
 
-	  clientVideoPC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_PREVIOUS_SLIDE])
+	  clientRaspi.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_PREVIOUS_SLIDE])
 	  time.sleep(DELAY)
 	  
-testProjectMControl()
-testOBSControl()
-testPresetSlideshowSwitch()
+#testProjectMControl()
+#testOBSControl()
+#testPresetSlideshowSteps_local()
+testPresetSlideshowSteps_raspi()
