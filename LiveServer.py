@@ -39,8 +39,7 @@ chrisTalkOngoing = 0
 clientQLC = udp_client.SimpleUDPClient("10.3.141.1", 5005)
 #OSC connection to Mini PC
 clientPC = udp_client.SimpleUDPClient("10.3.141.213", 5006)
-#OSC connection to LaserHarp
-clientLH = udp_client.SimpleUDPClient("10.3.141.90", 8001)
+
 
 fogOngoing = 0
 
@@ -65,7 +64,7 @@ def startCueList(songName):
 def SmoothTrioPC():
   global currentStep
   global currentSong
-  clientLH.send_message("/laserharp/IDLE", 0)
+
   
   if((currentSong in SName) and (chrisTalkOngoing == 0)):  
     startCueList(currentSong)
@@ -313,14 +312,8 @@ def print_compute_handler(unused_addr, args, volume):
 
 if __name__ == "__main__":
 
- # while(1):
- #   print("sending LH preset to Laserharp")
- #   clientLH.send_message("/laserharp/startLH", 2)
- #   time.sleep(2)
- #   print("sending DMX request to Laserharp")
- #   clientLH.send_message("/laserharp/startDMX", 0)
- #   time.sleep(2)
-      
+
+#TODO : remove this and use config file      
   parser = argparse.ArgumentParser()
   parser.add_argument("--ip",
       default="10.3.141.1", help="The ip to listen on")
