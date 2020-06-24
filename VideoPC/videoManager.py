@@ -124,6 +124,8 @@ def slideshow_osc_receive(unused_addr, args, command):
 #TODO check works from RASPI/QLC changes   
 def obs_osc_receive(unused_addr, args, command, value):
 	global obs_connected
+	if(obs_connected == False):
+		obs_connect()
 	if(obs_connected):
 		if(command == OBS_COMMAND_SWITCH_SCENE):
 			ws.call(requests.SetCurrentScene(ScenesNames[value])) 	
@@ -136,23 +138,22 @@ def projectm_preset_osc_receive(unused_addr, args, preset):
 	clientProjectM.send_message("/projectm/preset", preset)
 	print("\n[{0}] ~ {1}".format(args[0], preset))  
  
-def projectm_command_osc_receive(unused_addr, args, command, value):
-	#send command to projectM
-	if(command == 1):
-		clientProjectM.send_message("/projectm/lock", value);
-	if(command == 2):
-		clientProjectM.send_message("/projectm/random", value);
-
-	print("\n[{0}] ~ {1} {1}".format(args[0], command, value))  
+def projectm_lock_osc_receive(unused_addr, args, value):
+	clientProjectM.send_message("/projectm/lock", value)
+	print("\n[{0}] ~ {1}".format(args[0], value)) 
 	
- 
+def projectm_random_osc_receive(unused_addr, args, value):
+	clientProjectM.send_message("/projectm/random", value)
+	print("\n[{0}] ~ {1}".format(args[0], value)) 
+	
 def osc_thread(name):
 	dispatcher.map("/video/song", song_osc_receive, "song_osc_receive")
 	dispatcher.map("/video/slideshow", slideshow_osc_receive, "slideshow_osc_receive")
 
 	dispatcher.map("/video/obs", obs_osc_receive, "obs_osc_receive")
-	dispatcher.map("/video/projectm/preset", projectm_preset_osc_receive, "projectm_preset_osc_receive")
-	dispatcher.map("/video/projectm/command", projectm_command_osc_receive, "projectm_command_osc_receive")
+	dispatcher.map("/video/visualizer/preset", projectm_preset_osc_receive, "projectm_preset_osc_receive")
+	dispatcher.map("/video/visualizer/lock", projectm_lock_osc_receive, "projectm_lock_osc_receive")
+	dispatcher.map("/video/visualizer/random", projectm_random_osc_receive, "projectm_random_osc_receive")
 	
 	server = osc_server.ThreadingOSCUDPServer((OSC_LOCALHOST_IP, OSC_LOCALHOST_PORT), dispatcher)
 	print("Starting OSC server")
