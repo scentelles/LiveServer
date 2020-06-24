@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureDefinition>
+<FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.12.2</Version>
+  <Author></Author>
+ </Creator>
+ <Manufacturer>Slyzic</Manufacturer>
+ <Model>Megascreen</Model>
+ <Type>Other</Type>
+ <Channel Name="Alpha" Default="255">
+  <Group Byte="0">Colour</Group>
+ </Channel>
+ <Channel Name="Red Multiply" Default="255">
+  <Group Byte="0">Colour</Group>
+  <Colour>Red</Colour>
+ </Channel>
+ <Channel Name="Green Multiply" Default="255">
+  <Group Byte="0">Colour</Group>
+  <Colour>Green</Colour>
+ </Channel>
+ <Channel Name="Blue Multiply" Default="255">
+  <Group Byte="0">Colour</Group>
+  <Colour>Blue</Colour>
+ </Channel>
+ <Channel Name="Strobe">
+  <Group Byte="0">Shutter</Group>
+ </Channel>
+ <Mode Name="Standard">
+  <Channel Number="0">Alpha</Channel>
+  <Channel Number="1">Red Multiply</Channel>
+  <Channel Number="2">Green Multiply</Channel>
+  <Channel Number="3">Blue Multiply</Channel>
+  <Channel Number="4">Strobe</Channel>
+ </Mode>
+ <Physical>
+  <Bulb Type="" Lumens="0" ColourTemperature="0"/>
+  <Dimensions Weight="0" Width="0" Height="0" Depth="0"/>
+  <Lens Name="Other" DegreesMin="0" DegreesMax="0"/>
+  <Focus Type="Fixed" PanMax="0" TiltMax="0"/>
+  <Technical PowerConsumption="0" DmxConnector="5-pin"/>
+ </Physical>
+</FixtureDefinition>

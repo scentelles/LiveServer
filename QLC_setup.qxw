@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Workspace>
-<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="FunctionManager">
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="SimpleDesk">
  <Creator>
   <Name>Q Light Controller Plus</Name>
   <Version>4.12.2</Version>
@@ -17,9 +17,7 @@
     </Output>
    </Universe>
    <Universe Name="Universe 2" ID="1">
-    <Output Plugin="uDMX" Line="0">
-     <PluginParameters UniverseChannels="42"/>
-    </Output>
+    <Output Plugin="uDMX" Line="0"/>
    </Universe>
    <Universe Name="Universe 3" ID="2">
     <Output Plugin="OSC" Line="1"/>
@@ -172,6 +170,16 @@
    <Channels>3</Channels>
   </Fixture>
   <Fixture>
+   <Manufacturer>Slyzic</Manufacturer>
+   <Model>Megascreen</Model>
+   <Mode>Standard</Mode>
+   <ID>14</ID>
+   <Name>Megascreen</Name>
+   <Universe>2</Universe>
+   <Address>23</Address>
+   <Channels>5</Channels>
+  </Fixture>
+  <Fixture>
    <Manufacturer>Generic</Manufacturer>
    <Model>Generic Smoke</Model>
    <Mode>Amount</Mode>
@@ -180,6 +188,26 @@
    <Universe>2</Universe>
    <Address>15</Address>
    <Channels>1</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Slyzic</Manufacturer>
+   <Model>Visualizer</Model>
+   <Mode>Standard</Mode>
+   <ID>16</ID>
+   <Name>Visualizer</Name>
+   <Universe>2</Universe>
+   <Address>31</Address>
+   <Channels>3</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Slyzic</Manufacturer>
+   <Model>OBS</Model>
+   <Mode>Standard</Mode>
+   <ID>17</ID>
+   <Name>OBS</Name>
+   <Universe>2</Universe>
+   <Address>19</Address>
+   <Channels>2</Channels>
   </Fixture>
   <ChannelsGroup ID="1" Name="New Group" Value="0"/>
   <ChannelsGroup ID="0" Name="LaserHarpDimmer" Value="0">4,0,4,3,4,6,4,9,4,12,4,15,4,18</ChannelsGroup>
@@ -2826,8 +2854,8 @@
      <Speed FadeIn="0" FadeOut="0" Duration="0"/>
     </Cue>
     <Cue Name="Cue 2">
-     <Value Channel="1024">99</Value>
      <Value Channel="1025">61</Value>
+     <Value Channel="1024">99</Value>
      <Speed FadeIn="0" FadeOut="0" Duration="0"/>
     </Cue>
    </CueStack>
