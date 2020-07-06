@@ -209,12 +209,18 @@ def forwardCCFromVoicelive(myCC, value):
           clientQLC.send_message("/full_strobe", 255)
         else:
           clientQLC.send_message("/full_strobe", 0)
+          #when going out of solo, or strobe, go back to boost
+          time.sleep(0.1)
+          clientQLC.send_message("/boost", 255)
 
       else:      
         if (value > 0):
           clientQLC.send_message("/strobe", 255)
         else :
           clientQLC.send_message("/strobe", 0)
+          #when going out of solo, or strobe, go back to boost
+          time.sleep(0.1)
+          clientQLC.send_message("/boost", 255)
 
     if   (myCC == VL3_CC_GUITAR_UMOD):
       if (currentSong == 61):
@@ -257,9 +263,13 @@ def forwardCCFromVoicelive(myCC, value):
         setGMajorBoost(1)
         setGMajorDelay(1)
         clientQLC.send_message("/solo", 255)
+        time.sleep(0.1)
+        clientQLC.send_message("/solo", 0)
       else:
         setGMajorBoost(0)
         setGMajorDelay(0)
+        clientQLC.send_message("/solo", 255)
+        time.sleep(0.1)
         clientQLC.send_message("/solo", 0)
     else:
       print("message unmapped. do nothing")
