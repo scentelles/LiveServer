@@ -160,6 +160,9 @@ def SmoothTrioCC(myCC, value):
 
        if(chrisTalkOngoing == 0):
            chrisTalkOngoing = 1
+	   
+           clientVideoPC.send_message("/video/song", SMOOTH_PRESET_CHRIS_TALK) 
+
            clientQLC.send_message("/stopallfunctions", 255) 
            clientQLC.send_message("/stop", 255)
            clientQLC.send_message("/stop", 0)

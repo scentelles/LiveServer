@@ -124,7 +124,11 @@ def dispatch_qlc_osc_handler(osc_address, args, command):
       print("Received VideoPC OBS Scene OSC Command")
       clientVideoPC.send_message("/video/obs", [OBS_COMMAND_SWITCH_SCENE, value])
       return
-
+      
+    if(int(channel) == DMX_CHANNEL_OBS_COLLECTION - 1):
+      print("Received VideoPC OBS COllection OSC Command")
+      clientVideoPC.send_message("/video/obs", [OBS_COMMAND_SWITCH_COLLECTION, value])
+      return
   
   #print("address" + osc_address + " : " + str(ledIndex) + " : " + str(channelIndex) + " : " + str(value))
   
