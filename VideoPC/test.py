@@ -16,8 +16,7 @@ clientRaspi   = udp_client.SimpleUDPClient(RASPI_IP, RASPI_PORT)
 
 DELAY = 1
 
-MIDI_CONTROL_CHANGE = 0xb0
-MIDI_PROGRAM_CHANGE = 0xc0
+
 
 def testProjectMControl():
 	print ("\n\nTEST : PROJECTM control\n")  
