@@ -79,7 +79,7 @@ def SmoothTrioPC():
     startSong(currentSong)
 
   else:
-    print("Smooth song unmapped. do nothing")
+    print("Smooth song unmapped or Christalk ongoing. do nothing")
     #clientQLC.send_message("/stopallfunctions", 255)
 
     
