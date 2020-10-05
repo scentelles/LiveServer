@@ -471,6 +471,8 @@
    <Step Number="1">54</Step>
    <Step Number="2">45</Step>
    <Step Number="3">60</Step>
+   <Step Number="4">280</Step>
+   <Step Number="5">268</Step>
   </Function>
   <Function ID="33" Type="Collection" Name="LeBalStep01-focus Chris" Path="Smooth_Trio/LeBal">
    <Step Number="0">40</Step>
@@ -2140,7 +2142,7 @@
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="2">0,255</FixtureVal>
   </Function>
-  <Function ID="254" Type="Collection" Name="SlapMyHeadIntro">
+  <Function ID="254" Type="Collection" Name="SlapMyHeadIntro" Path="Smooth_Trio/SlapMyHead">
    <Step Number="0">25</Step>
    <Step Number="1">120</Step>
    <Step Number="2">43</Step>
