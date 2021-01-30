@@ -23,7 +23,8 @@ sudo apt-get install xterm
 in :
 /etc/xdg/lxsession/LXDE-pi/autostart
 
-@lxterm -hold -e '/bin/bash /home/pi/Projects/LiveServer/startup.sh'
+@lxterm -hold -e '/home/pi/Projects/LiveServer/startup.sh'
+@lxterm -hold -title "OSC2BLE" -e '/home/pi/Projects/LiveServer/OSC2BLE.py'
 
 ===========
 install access point :https://github.com/billz/raspap-webgui

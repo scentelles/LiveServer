@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureDefinition>
+<FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.12.2</Version>
+  <Author></Author>
+ </Creator>
+ <Manufacturer>Slyzic</Manufacturer>
+ <Model>Visualizer</Model>
+ <Type>Other</Type>
+ <Channel Name="Preset">
+  <Group Byte="0">Effect</Group>
+ </Channel>
+ <Channel Name="Lock">
+  <Group Byte="0">Effect</Group>
+ </Channel>
+ <Channel Name="Random">
+  <Group Byte="0">Effect</Group>
+ </Channel>
+ <Mode Name="Standard">
+  <Channel Number="0">Preset</Channel>
+  <Channel Number="1">Lock</Channel>
+  <Channel Number="2">Random</Channel>
+ </Mode>
+ <Physical>
+  <Bulb Type="" Lumens="0" ColourTemperature="0"/>
+  <Dimensions Weight="0" Width="0" Height="0" Depth="0"/>
+  <Lens Name="Other" DegreesMin="0" DegreesMax="0"/>
+  <Focus Type="Fixed" PanMax="0" TiltMax="0"/>
+  <Technical PowerConsumption="0" DmxConnector="5-pin"/>
+ </Physical>
+</FixtureDefinition>

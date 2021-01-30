@@ -18,7 +18,7 @@
    </Universe>
    <Universe Name="Universe 2" ID="1">
     <Output Plugin="uDMX" Line="0">
-     <PluginParameters UniverseChannels="42"/>
+     <PluginParameters UniverseChannels="57"/>
     </Output>
    </Universe>
    <Universe Name="Universe 3" ID="2">
@@ -172,6 +172,16 @@
    <Channels>3</Channels>
   </Fixture>
   <Fixture>
+   <Manufacturer>Slyzic</Manufacturer>
+   <Model>Megascreen</Model>
+   <Mode>Standard</Mode>
+   <ID>14</ID>
+   <Name>Megascreen</Name>
+   <Universe>2</Universe>
+   <Address>23</Address>
+   <Channels>5</Channels>
+  </Fixture>
+  <Fixture>
    <Manufacturer>Generic</Manufacturer>
    <Model>Generic Smoke</Model>
    <Mode>Amount</Mode>
@@ -180,6 +190,36 @@
    <Universe>2</Universe>
    <Address>15</Address>
    <Channels>1</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Slyzic</Manufacturer>
+   <Model>Visualizer</Model>
+   <Mode>Standard</Mode>
+   <ID>16</ID>
+   <Name>Visualizer</Name>
+   <Universe>2</Universe>
+   <Address>31</Address>
+   <Channels>3</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Slyzic</Manufacturer>
+   <Model>OBS</Model>
+   <Mode>Standard</Mode>
+   <ID>17</ID>
+   <Name>OBS</Name>
+   <Universe>2</Universe>
+   <Address>19</Address>
+   <Channels>2</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic</Model>
+   <Mode>15 Channel</Mode>
+   <ID>18</ID>
+   <Name>Spider</Name>
+   <Universe>1</Universe>
+   <Address>42</Address>
+   <Channels>15</Channels>
   </Fixture>
   <ChannelsGroup ID="1" Name="New Group" Value="0"/>
   <ChannelsGroup ID="0" Name="LaserHarpDimmer" Value="0">4,0,4,3,4,6,4,9,4,12,4,15,4,18</ChannelsGroup>
@@ -198,6 +238,7 @@
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="0"/>
    <FixtureVal ID="1">0,255,1,255,2,255,3,255,4,209,5,0</FixtureVal>
+   <FixtureVal ID="8">4,206,5,171,12,109</FixtureVal>
   </Function>
   <Function ID="2" Type="Scene" Name="Solo" Path="Red_Cloud">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -211,6 +252,7 @@
    <FixtureVal ID="3">0,0,1,12,2,255,3,46,4,255,5,255</FixtureVal>
    <FixtureVal ID="5">0,40,1,255,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="6">0,40,1,255,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
+   <FixtureVal ID="8">0,88,2,255,4,192,5,255,6,255,7,0,8,0,9,0,10,0,11,0,12,0</FixtureVal>
   </Function>
   <Function ID="4" Type="Scene" Name="BOOST" Path="Red_Cloud">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -219,6 +261,7 @@
    <FixtureVal ID="3">0,255,1,0,2,255,3,175,4,255</FixtureVal>
    <FixtureVal ID="5">0,166,1,15,2,0,3,0,4,0,5,255,6,0,7,0</FixtureVal>
    <FixtureVal ID="6">0,168,1,93,2,0,3,0,4,0,5,255,6,0,7,0</FixtureVal>
+   <FixtureVal ID="8">0,236,2,120,4,239,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,78</FixtureVal>
   </Function>
   <Function ID="5" Type="Scene" Name="LEAD" Path="Red_Cloud">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -227,6 +270,7 @@
    <FixtureVal ID="6">0,255,1,126,2,0,3,0,4,0,5,255,6,0,7,0</FixtureVal>
    <FixtureVal ID="5">0,255,1,126,2,0,3,0,4,0,5,255,6,0,7,0</FixtureVal>
    <FixtureVal ID="3">0,123,1,49,2,255,3,15,4,255</FixtureVal>
+   <FixtureVal ID="8">0,255,2,82,4,0,5,255,6,0,7,0,8,0,9,0,10,239,11,0,12,127</FixtureVal>
   </Function>
   <Function ID="6" Type="Scene" Name="Solo show" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -235,29 +279,31 @@
    <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
+   <FixtureVal ID="8">0,0,2,0,4,0,5,0,6,0,7,0,8,0,9,0,11,0,12,0</FixtureVal>
+   <FixtureVal ID="18">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
   </Function>
   <Function ID="7" Type="Sequence" Name="Solo show" BoundScene="6">
    <Speed FadeIn="0" FadeOut="0" Duration="500"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="500" Hold="400" FadeOut="0" Values="38">1:0,255,1,103:2:0,141,1,255,2,61:3:2,107,3,181,4,255,5,70:5:0,82,1,99:6:0,82,1,99</Step>
-   <Step Number="1" FadeIn="500" Hold="1500" FadeOut="0" Values="38">1:0,255,1,53:2:0,141,1,255,2,61:3:3,29,4,255:5:0,82,1,99,5,255:6:0,82,1,99,5,255</Step>
-   <Step Number="2" FadeIn="3000" Hold="1000" FadeOut="0" Values="38">1:0,255,1,99:2:0,141,1,255,2,61:3:1,226,2,255,3,29,4,255,5,70:5:0,82,1,99:6:0,82,1,99</Step>
-   <Step Number="3" FadeIn="2000" Hold="1000" FadeOut="0" Values="42">1:0,255,1,45:2:0,141,1,255,2,61:3:1,255,2,255,3,243,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="4" FadeIn="4000" Hold="2000" FadeOut="0" Values="42">1:0,16,1,82:2:0,141,1,255,2,61:3:0,226,1,29,2,255,4,255,5,70:5:0,82,1,99:6:0,82,1,99:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="5" FadeIn="4000" Hold="100" FadeOut="0" Values="41">1:0,255,1,255:2:0,141,1,255,2,61:3:1,29,2,255,4,255,5,70:5:0,169,1,99:6:0,82,1,255:3:5,70:6:0,82,1,255</Step>
-   <Step Number="6" FadeIn="4000" Hold="2000" FadeOut="0" Values="42">2:0,141,1,255,2,61:3:0,77,1,29,2,100,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="7" FadeIn="1500" Hold="1500" FadeOut="0" Values="38">1:0,16,1,160:2:0,141,1,255,2,61:3:2,100,4,255,5,70</Step>
-   <Step Number="8" FadeIn="500" Hold="1500" FadeOut="0" Values="47">1:0,202,1,218,5,115:2:0,141,1,255,2,61:3:0,129,1,163,2,135,3,52,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:3:4,255:5:0,82,1,99,5,255:6:0,82:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="9" FadeIn="500" Hold="1500" FadeOut="0" Values="42">1:0,255,5,173:2:0,141,1,255,2,61:3:0,129,1,237,2,255,3,52,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="10" FadeIn="500" Hold="1500" FadeOut="0" Values="42">1:0,165,1,255,5,90:2:0,141,1,255,2,61:3:0,129,1,249,2,255,3,165,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="11" FadeIn="300" Hold="2000" FadeOut="0" Values="46">1:0,181,5,230:2:0,141,1,255,2,61:3:0,255,1,249,2,255,3,125,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="12" FadeIn="500" Hold="2000" FadeOut="0" Values="46">1:0,206,5,144:2:0,141,1,255,2,61:3:0,129,1,142,2,255,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="13" FadeIn="700" Hold="200" FadeOut="0" Values="46">1:0,255,1,226,5,181:2:0,141,1,255,2,61:3:1,114,2,255,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="14" FadeIn="700" Hold="200" FadeOut="0" Values="46">1:0,255,1,12:2:0,141,1,255,2,61:3:0,255,1,140,2,255,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="15" FadeIn="700" Hold="200" FadeOut="0" Values="46">1:0,255,5,111:2:0,141,1,255,2,61:3:0,5,1,120,2,255,3,71,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="16" FadeIn="700" Hold="200" FadeOut="0" Values="46">1:0,136,1,49:2:0,141,1,255,2,61:3:0,243,1,114,2,255,3,226,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:3:4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255</Step>
+   <Step Number="0" FadeIn="500" Hold="400" FadeOut="0" Values="62">1:0,255,1,103:2:0,141,1,255,2,61:3:2,107,3,181,4,255,5,70:5:0,82,1,99:6:0,82,1,99:8:5,255,12,246:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="1" FadeIn="500" Hold="1500" FadeOut="0" Values="62">1:0,255,1,53:2:0,141,1,255,2,61:3:3,29,4,255:5:0,82,1,99,5,255:6:0,82,1,99,5,255:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="2" FadeIn="3000" Hold="1000" FadeOut="0" Values="62">1:0,255,1,99:2:0,141,1,255,2,61:3:1,226,2,255,3,29,4,255,5,70:5:0,82,1,99:6:0,82,1,99:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="3" FadeIn="2000" Hold="1000" FadeOut="0" Values="67">1:0,255,1,45:2:0,141,1,255,2,61:3:1,255,2,255,3,243,4,255,5,70,5,70:5:0,82,1,99,5,255:6:0,82,0,82,1,99,1,99:8:4,254:6:5,255,5,255:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:8:4,254,5,255,12,28</Step>
+   <Step Number="4" FadeIn="4000" Hold="2000" FadeOut="0" Values="62">1:0,16,1,82:2:0,141,1,255,2,61:3:0,226,1,29,2,255,4,255,5,70:5:0,82,1,99:6:0,82,1,99,5,255:8:4,222,5,255,12,103:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="5" FadeIn="4000" Hold="100" FadeOut="0" Values="66">1:0,255,1,255:2:0,141,1,255,2,61:3:1,29,2,255,4,255,5,70:5:0,169,1,99:6:0,82,1,255:8:5,255,12,119:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:3:5,70:6:0,82,1,255</Step>
+   <Step Number="6" FadeIn="4000" Hold="2000" FadeOut="0" Values="67">2:0,141,1,255,2,61:3:0,77,1,29,2,100,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,19:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:5,70:6:0,82,1,99,5,255</Step>
+   <Step Number="7" FadeIn="1500" Hold="1500" FadeOut="0" Values="62">1:0,16,1,160:2:0,141,1,255,2,61:3:2,100,4,255,5,70:8:5,199,9,255,12,34:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255</Step>
+   <Step Number="8" FadeIn="500" Hold="1500" FadeOut="0" Values="72">1:0,202,1,218,5,115:2:0,141,1,255,2,61:3:0,129,1,163,2,135,3,52,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:6:0,82:3:5,70:6:0,82,1,99,5,255</Step>
+   <Step Number="9" FadeIn="500" Hold="1500" FadeOut="0" Values="67">1:0,255,5,173:2:0,141,1,255,2,61:3:0,129,1,237,2,255,3,52,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:5,70:6:0,82,1,99,5,255</Step>
+   <Step Number="10" FadeIn="500" Hold="1500" FadeOut="0" Values="67">1:0,165,1,255,5,90:2:0,141,1,255,2,61:3:0,129,1,249,2,255,3,165,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,243:3:5,70:6:0,82,1,99,5,255</Step>
+   <Step Number="11" FadeIn="300" Hold="2000" FadeOut="0" Values="71">1:0,181,5,230:2:0,141,1,255,2,61:3:0,255,1,249,2,255,3,125,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,243:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
+   <Step Number="12" FadeIn="500" Hold="2000" FadeOut="0" Values="71">1:0,206,5,144:2:0,141,1,255,2,61:3:0,129,1,142,2,255,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
+   <Step Number="13" FadeIn="700" Hold="200" FadeOut="0" Values="71">1:0,255,1,226,5,181:2:0,141,1,255,2,61:3:1,114,2,255,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
+   <Step Number="14" FadeIn="700" Hold="200" FadeOut="0" Values="71">1:0,255,1,12:2:0,141,1,255,2,61:3:0,255,1,140,2,255,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
+   <Step Number="15" FadeIn="700" Hold="200" FadeOut="0" Values="71">1:0,255,5,111:2:0,141,1,255,2,61:3:0,5,1,120,2,255,3,71,4,255,4,255,5,70,5,70:5:0,82,0,82,1,99,1,99,5,255,5,255:6:0,82,0,82,1,99,1,99,5,255,5,255:8:0,255,2,117:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:8:5,255,6,255</Step>
+   <Step Number="16" FadeIn="700" Hold="200" FadeOut="0" Values="71">1:0,136,1,49:2:0,141,1,255,2,61:3:0,243,1,114,2,255,3,226,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,6,255,0,255,2,117:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255</Step>
   </Function>
   <Function ID="8" Type="Collection" Name="DefaultBlackout" Path="Smooth_Trio/0-Defaults">
    <Step Number="0">59</Step>
@@ -266,6 +312,7 @@
   <Function ID="9" Type="Scene" Name="Default" Path="Red_Cloud">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="2">0,141,1,255,2,61,3,0,4,0,5,0,6,0,7,0</FixtureVal>
+   <FixtureVal ID="8">0,255,2,122,4,0,5,255,6,255,7,0,8,0,9,0,10,0,11,0,12,0</FixtureVal>
   </Function>
   <Function ID="10" Type="Scene" Name="Strobe full" Path="Red_Cloud">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -274,6 +321,8 @@
    <FixtureVal ID="3">0,214,1,21,2,111,3,0,4,255</FixtureVal>
    <FixtureVal ID="5">0,255,1,255,2,255,3,255,4,53,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="6">0,255,1,255,2,255,3,255,4,53,5,0,6,0,7,0</FixtureVal>
+   <FixtureVal ID="8">4,0,5,224,11,0,12,46</FixtureVal>
+   <FixtureVal ID="18">0,83,1,165,2,255,3,89,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,0,13,0</FixtureVal>
   </Function>
   <Function ID="11" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -295,17 +344,19 @@
    <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0</FixtureVal>
+   <FixtureVal ID="8">0,0,2,0,4,0,5,0,6,0,7,0,8,0,9,0,11,0,12,0</FixtureVal>
+   <FixtureVal ID="18">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
   </Function>
   <Function ID="14" Type="Sequence" Name="Trip" BoundScene="13">
    <Speed FadeIn="0" FadeOut="0" Duration="2000"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="PerStep" Duration="PerStep"/>
-   <Step Number="0" FadeIn="1000" Hold="2000" FadeOut="1000" Values="34">2:0,255,5,193</Step>
-   <Step Number="1" FadeIn="3000" Hold="2000" FadeOut="1000" Values="34">2:0,255,5,193:3:1,82,2,144,3,12,4,255</Step>
-   <Step Number="2" FadeIn="2000" Hold="4000" FadeOut="500" Values="34">2:0,255,5,193:3:1,82,2,144,3,12:5:0,255:6:0,255</Step>
-   <Step Number="3" FadeIn="2000" Hold="4000" FadeOut="500" Values="36">2:0,255,5,193:3:1,82,2,144,3,12,4,255:5:1,255:6:1,255,0,255,1,255</Step>
-   <Step Number="4" FadeIn="0" Hold="1500" FadeOut="0" Values="34">1:0,132,1,255,4,234:2:0,255,5,193:3:1,82,2,144,3,12:5:0,255,1,255:6:0,255,1,255</Step>
+   <Step Number="0" FadeIn="1000" Hold="2000" FadeOut="1000" Values="58">2:0,255,5,193:8:2,255,4,28,5,255,6,255:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="1" FadeIn="3000" Hold="2000" FadeOut="1000" Values="58">2:0,255,5,193:3:1,82,2,144,3,12,4,255:8:0,255,2,255,4,233,5,255,6,255,9,74:18:0,163,1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="2" FadeIn="2000" Hold="4000" FadeOut="500" Values="58">2:0,255,5,193:3:1,82,2,144,3,12:5:0,255:6:0,255:8:2,255,4,27,5,255,6,255:18:0,163,1,140,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="3" FadeIn="2000" Hold="4000" FadeOut="500" Values="60">2:0,255,5,193:3:1,82,2,144,3,12,4,255:5:1,255:6:0,255,1,255:8:0,255,2,255,4,238,5,255,6,255,9,32:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:6:0,255,1,255</Step>
+   <Step Number="4" FadeIn="0" Hold="1500" FadeOut="0" Values="58">1:0,132,1,255,4,234:2:0,255,5,193:3:1,82,2,144,3,12:5:0,255,1,255:6:0,255,1,255:8:0,131,2,120,4,183,5,255,9,255:18:1,255,2,78,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
   </Function>
   <Function ID="15" Type="Chaser" Name="NightShadowTrain" Path="Smooth_Trio">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -2204,13 +2255,13 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="False" X="50" Y="365" Width="430" Height="230"/>
+    <WindowState Visible="False" X="50" Y="360" Width="430" Height="230"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
     <ShowEnableButton>True</ShowEnableButton>
     <Mixing>False</Mixing>
-    <Collapsed>True</Collapsed>
+    <Collapsed>False</Collapsed>
     <Disabled>False</Disabled>
     <Button Caption="Clean" ID="3" Icon="">
      <WindowState Visible="False" X="45" Y="50" Width="50" Height="50"/>
@@ -2254,34 +2305,6 @@
      <Intensity Adjust="False">100</Intensity>
      <Input Universe="0" Channel="44693"/>
     </Button>
-    <Button Caption="Solo" ID="2" Icon="">
-     <WindowState Visible="False" X="235" Y="150" Width="50" Height="50"/>
-     <Appearance>
-      <FrameStyle>None</FrameStyle>
-      <ForegroundColor>Default</ForegroundColor>
-      <BackgroundColor>Default</BackgroundColor>
-      <BackgroundImage>None</BackgroundImage>
-      <Font>Default</Font>
-     </Appearance>
-     <Function ID="7"/>
-     <Action>Toggle</Action>
-     <Intensity Adjust="False">100</Intensity>
-     <Input Universe="0" Channel="41500"/>
-    </Button>
-    <Button Caption="Strobe" ID="1" Icon="">
-     <WindowState Visible="False" X="40" Y="145" Width="50" Height="50"/>
-     <Appearance>
-      <FrameStyle>None</FrameStyle>
-      <ForegroundColor>Default</ForegroundColor>
-      <BackgroundColor>Default</BackgroundColor>
-      <BackgroundImage>None</BackgroundImage>
-      <Font>Default</Font>
-     </Appearance>
-     <Function ID="1"/>
-     <Action>Flash</Action>
-     <Intensity Adjust="False">100</Intensity>
-     <Input Universe="0" Channel="18799"/>
-    </Button>
     <Button Caption="Full strobe" ID="7" Icon="">
      <WindowState Visible="False" X="140" Y="145" Width="50" Height="50"/>
      <Appearance>
@@ -2292,7 +2315,7 @@
       <Font>Default</Font>
      </Appearance>
      <Function ID="10"/>
-     <Action>Flash</Action>
+     <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
      <Input Universe="0" Channel="51072"/>
     </Button>
@@ -2309,6 +2332,20 @@
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
      <Input Universe="0" Channel="6425"/>
+    </Button>
+    <Button Caption="Strobe" ID="32" Icon="">
+     <WindowState Visible="False" X="55" Y="150" Width="50" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="1"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="18799"/>
     </Button>
    </SoloFrame>
    <Button Caption="FOG!" ID="0" Icon="">
@@ -2365,7 +2402,7 @@
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
     <ShowEnableButton>True</ShowEnableButton>
-    <Collapsed>False</Collapsed>
+    <Collapsed>True</Collapsed>
     <Disabled>False</Disabled>
     <CueList Caption="NightShadowTrain" ID="23">
      <WindowState Visible="False" X="10" Y="90" Width="200" Height="215"/>
@@ -2811,6 +2848,20 @@
     <Action>Toggle</Action>
     <Intensity Adjust="True">100</Intensity>
     <Input Universe="0" Channel="49269"/>
+   </Button>
+   <Button Caption="Solo" ID="2" Icon="">
+    <WindowState Visible="False" X="420" Y="275" Width="50" Height="50"/>
+    <Appearance>
+     <FrameStyle>None</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <Function ID="7"/>
+    <Action>Toggle</Action>
+    <Intensity Adjust="False">100</Intensity>
+    <Input Universe="0" Channel="41500"/>
    </Button>
   </Frame>
   <Properties>
