@@ -20,7 +20,12 @@ from SmoothDefines import *
 
 MAIN_LOOP_DELAY = 0.01 #TODO : replace loop with message queue
 
-with open('config.json') as config_file:
+print ("Argument List:", str(sys.argv))
+print("loading config", str(sys.argv[1]))
+
+
+
+with open(sys.argv[1]) as config_file:
     config = json.load(config_file)
 
 OSC_LOCALHOST_IP   = config['OSC_LOCALHOST_IP']
@@ -36,7 +41,7 @@ SLIDESHOW_PATH = config['SLIDESHOW_PATH']
 ws = obsws(OBS_HOST, OBS_PORT, OBS_PWD)
 obs_connected = False
 
-
+print("opening OSC client")
 clientProjectM = udp_client.SimpleUDPClient(OSC_LOCALHOST_IP, OSC_PROJECTM_PORT)
 
 
@@ -126,8 +131,10 @@ def obs_osc_receive(unused_addr, args, command, value):
 	global obs_connected
 	if(obs_connected == False):
 		obs_connect()
+		time.sleep(1)
 	if(obs_connected):
 		if(command == OBS_COMMAND_SWITCH_SCENE):
+			print("Setting scene index : " + str(value))
 			ws.call(requests.SetCurrentScene(ScenesNames[value])) 	
 	else:
 		print("Warning: OBS not connected. Skipping OBS OSC command")
@@ -163,13 +170,13 @@ def osc_thread(name):
 		print('The END in OSC server.')
 
 	
-		
+print("Opening slideset")		
 my_slide = ppt()
 time.sleep(1)
 my_slide.start_slideshow()
 
 time.sleep(2)
-
+print("starting OSC thread")
 dispatcher = dispatcher.Dispatcher()
 x = threading.Thread(target=osc_thread, args=(1,))
 
@@ -196,9 +203,13 @@ def obs_connect():
 try:
 	while True:
 		time.sleep(MAIN_LOOP_DELAY)
+		if(obs_connected == False):
+			print("Tring to connect to OBS...")
+			obs_connect()
+			time.sleep(1)
+
 		if (localCommand != NO_COMMAND):
-			if(obs_connected == False):
-				obs_connect()
+
 			
 			print("Executing local command")
 			if localCommand == NEXT_SLIDE:
@@ -212,4 +223,5 @@ try:
 			
 except KeyboardInterrupt:
 	app.Quit()
+	time.sleep(1)
 	print('The END.')
