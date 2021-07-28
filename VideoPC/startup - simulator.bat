@@ -1,10 +1,13 @@
 ::start projectM
 ::start Musicbeam
 
-start py -u videoManager.py config.json
+start "Simulator" python -u ..\Simulator\simulator.py
+timeout /t 2
+start "Video Manager" python -u videoManager.py config-simulator.json
+
 pushd .
 
-sleep 2
+timeout /t 2
 ::Path for obs config files : %appdata%/obs-studio
 ::https://obsproject.com/wiki/Launch-Parameters
 cd "C:\Program Files\obs-studio\bin\64bit" 
