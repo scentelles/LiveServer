@@ -1,3 +1,13 @@
+QLC custom fixture :
+Install QLC+ from here : 
+After launching once QLC+ after install
+Copy the files Slyzic-xxxxxxx.qxf in C:\Users\<Your User>\QLC+\Fixtures
+Then, launch QLC+ and open the proper project (QLC_setup.qxw)
+
+
+
+Only for raspeberry setup :
+
 sudo pip3 install python-osc
 
 sudo pip3 install mido 

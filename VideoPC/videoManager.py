@@ -204,9 +204,9 @@ try:
 	while True:
 		time.sleep(MAIN_LOOP_DELAY)
 		if(obs_connected == False):
-			print("Tring to connect to OBS...")
+			print("Trying to connect to OBS...")
 			obs_connect()
-			time.sleep(1)
+			time.sleep(3)
 
 		if (localCommand != NO_COMMAND):
 

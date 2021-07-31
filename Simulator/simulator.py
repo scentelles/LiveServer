@@ -5,8 +5,8 @@ import tkinter as tk
 from random import randint
 import math
 
-from PIL import ImageTk
-from PIL import Image
+#from PIL import ImageTk
+#from PIL import Image
 
 import threading
 import time
