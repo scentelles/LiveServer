@@ -28,7 +28,7 @@ from OSC_2_video_PC import *
 
 
 #todo : use config file
-clientVideoPC = udp_client.SimpleUDPClient("localhost", 5007)
+clientVideoPC = udp_client.SimpleUDPClient("192.168.1.65", 5007)
 
 
 class Stage:
@@ -82,7 +82,7 @@ class Fixture:
 
 
     def drawItem(self):
-        self.tkitem  = canvas.create_circle(self.xpos, self.ypos, self.size, fill="blue", outline="#DDD", width=2)
+        self.tkitem  = canvas.create_circle(self.xpos, self.ypos, self.size, fill="black", outline="#DDD", width=2)
         self.tklabel = canvas.create_text(self.xpos,self.ypos + self.size + 10,fill="white",font="Times 10 italic bold", text=self.label)
         
     def render(self):
@@ -193,8 +193,25 @@ class MegaScreen(Fixture):
         #print ("colorDMX : " + color + "\n")
         canvas.itemconfig(self.tkitem, fill = color)
 
+class LH(Fixture):
+    def __init__(self, label, xpos, ypos, size, universe, address, range=None, dimmer_index=None, R_index=None, G_index=None, B_index=None, W_index=None):
+        Fixture.__init__(self, label, xpos, ypos, size, universe, address, range=range, dimmer_index=dimmer_index, R_index=R_index, G_index=G_index, B_index=B_index, W_index=W_index)
+        self.beam0 = Fixture("", xpos,ypos,size, universe=universe, address = address+0, range = 3, dimmer_index=1)
+        self.beam1 = Fixture("", xpos + size*2,ypos,size, universe=universe, address = address+3, range = 3, dimmer_index=1)
+        self.beam2 = Fixture("", xpos + size*4,ypos,size, universe=universe, address = address+6, range = 3, dimmer_index=1)       
+        self.beam3 = Fixture("", xpos + size*6,ypos,size, universe=universe, address = address+9, range = 3, dimmer_index=1)     
+        self.beam4 = Fixture("", xpos + size*8,ypos,size, universe=universe, address = address+12, range = 3, dimmer_index=1)     
+        self.beam5 = Fixture("", xpos + size*10,ypos,size, universe=universe, address = address+15, range = 3, dimmer_index=1)  
+        self.beam6 = Fixture("", xpos + size*12,ypos,size, universe=universe, address = address+18, range = 3, dimmer_index=1)  
 
+        
+    def drawItem(self):
+        self.tkitem  = canvas.create_rectangle(self.xpos-self.size-2, self.ypos-self.size-2, self.xpos+self.size+2+self.size*12, self.ypos+self.size+2, fill="black", outline="#DDD", width=2)
+        self.tklabel = canvas.create_text(self.xpos + self.size*5,self.ypos + self.size + 10,fill="white",font="Times 10 italic bold", text=self.label)
 
+    def set_dmx(self, values):
+
+        print("not implemented yet")
         
 def from_rgb(rgb):
     #translates an rgb tuple of int to a tkinter friendly color code
@@ -315,11 +332,14 @@ def main():
     my_stage.add_fixture(Fixture("LYRE CHRIS" , 200,500,20, universe=2, address = 1, range = 14, R_index = 7, G_index = 8, B_index = 9, W_index = 10, dimmer_index=6 ))
     my_stage.add_fixture(Fixture("LYRE SLY"   , 400,500,20, universe=2, address = 15, range = 14, R_index = 7, G_index = 8, B_index = 9, W_index = 10, dimmer_index=6))
     my_stage.add_fixture(Fixture("LYRE GUI"   , 600,500,20, universe=2, address = 29, range = 14, R_index = 7, G_index = 8, B_index = 9, W_index = 10, dimmer_index=6))
-#    my_stage.add_fixture(Fixture("BTLED CHRIS", 200,400,10, universe=3, address = 1, R_index = 1, G_index = 2, B_index = 3, W_index = None, dimmer_index=None))
+    my_stage.add_fixture(Fixture("BTLED CHRIS", 200,400,10, universe=3, address = 1,  range = 3, R_index = 1, G_index = 2, B_index = 3, W_index = None, dimmer_index=None))
     #btled_sly   = Fixture(400,400,20)
-#    my_stage.add_fixture(Fixture("BTLED GUI", 600,400,10, universe=3, address = 7, R_index = 1, G_index = 2, B_index = 3, W_index = None, dimmer_index=None))
+    my_stage.add_fixture(Fixture("BTLED GUI", 600,400,10, universe=3, address = 7, range = 3, R_index = 1, G_index = 2, B_index = 3, W_index = None, dimmer_index=None))
     my_stage.add_fixture(Fixture("PAR_FL", 50,550,25,  universe=1, address = 8, range = 8, R_index = 2, G_index = 3, B_index = 4, W_index = None, dimmer_index=1))
     my_stage.add_fixture(Fixture("PAR_FR", 750,550,25, universe=1, address = 8, range = 8, R_index = 2, G_index = 3, B_index = 4, W_index = None, dimmer_index=1))
+
+    my_stage.add_fixture(LH("LH", 330,570,10, universe=1, address = 46, range = 21))
+
 
     my_stage.add_fixture(MegaScreen("MEGASCREEN", 180,100,220, universe=3, address = 24, range = 5, R_index = 2, G_index = 3, B_index = 4, W_index = None, dimmer_index=1))
     my_stage.add_fixture(OBS("OBS", 0,0,0, universe=3, address = 20, range = 2))
