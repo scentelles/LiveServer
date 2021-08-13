@@ -75,6 +75,12 @@ class Fixture:
         self.G_index = G_index
         self.B_index = B_index
         self.W_index = W_index
+        self.R_value = 0
+        self.G_value = 0
+        self.B_value = 0
+        self.W_value = 0        
+        
+        
         self.dimmer_index = dimmer_index
         
         
@@ -92,23 +98,26 @@ class Fixture:
         return from_rgb((int(dimmer_value * min(R + W, 255)), int(dimmer_value * min(G + W, 255)), int(dimmer_value * min(B + W, 255))))
     
     def set_dmx(self, values):
-
-        R_value = values[self.R_index - 1]
-        G_value = values[self.G_index - 1]
-        B_value = values[self.B_index - 1]
+        
+        if(self.R_index != None):
+            self.R_value = values[self.R_index - 1]
+        if(self.G_index != None):
+            self.G_value = values[self.G_index - 1]
+        if(self.B_index != None):
+            self.B_value = values[self.B_index - 1]
         if(self.W_index != None):
-            W_value = values[self.W_index - 1]
+            self.W_value = values[self.W_index - 1]
         if(self.dimmer_index != None):
             dimmer_value = float(values[self.dimmer_index - 1])/255
         if((self.W_index != None) and (self.dimmer_index != None)):
             
-            color = self.calculate_RGBW_color(R_value, G_value, B_value, W_value, dimmer_value)
+            color = self.calculate_RGBW_color(self.R_value, self.G_value, self.B_value, self.W_value, dimmer_value)
         
         else:
             if((self.W_index == None) and (self.dimmer_index != None)):
-                color = self.calculate_RGBW_color(R_value, G_value, B_value, 0, dimmer_value)
+                color = self.calculate_RGBW_color(self.R_value, self.G_value, self.B_value, 0, dimmer_value)
             else:
-                color = self.calculate_RGBW_color(R_value, G_value, B_value, 0, 1)
+                color = self.calculate_RGBW_color(self.R_value, self.G_value, self.B_value, 0, 1)
                 
         #print ("colorDMX : " + color + "\n")
         canvas.itemconfig(self.tkitem, fill = color)
@@ -204,16 +213,21 @@ class LH(Fixture):
                         Fixture("", xpos + size*8,ypos,size, universe=universe, address = address+12, range = 3, dimmer_index=1),     
                         Fixture("", xpos + size*10,ypos,size, universe=universe, address = address+15, range = 3, dimmer_index=1),  
                         Fixture("", xpos + size*12,ypos,size, universe=universe, address = address+18, range = 3, dimmer_index=1)]  
-
+        
+        #For laser beams, force default Red value 
+        for i in self.beams:
+            i.R_value = 255
         
     def drawItem(self):
         self.tkitem  = canvas.create_rectangle(self.xpos-self.size-2, self.ypos-self.size-2, self.xpos+self.size+2+self.size*12, self.ypos+self.size+2, fill="black", outline="#DDD", width=2)
         self.tklabel = canvas.create_text(self.xpos + self.size*5,self.ypos + self.size + 10,fill="white",font="Times 10 italic bold", text=self.label)
 
     def set_dmx(self, values):
-
-        print("not implemented yet")
-        
+        index = 0
+        for i in self.beams:
+            i.set_dmx(values[index*3:index*3+3])
+            index += 1
+            
 def from_rgb(rgb):
     #translates an rgb tuple of int to a tkinter friendly color code
     return "#%02x%02x%02x" % rgb  
