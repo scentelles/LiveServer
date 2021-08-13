@@ -196,13 +196,14 @@ class MegaScreen(Fixture):
 class LH(Fixture):
     def __init__(self, label, xpos, ypos, size, universe, address, range=None, dimmer_index=None, R_index=None, G_index=None, B_index=None, W_index=None):
         Fixture.__init__(self, label, xpos, ypos, size, universe, address, range=range, dimmer_index=dimmer_index, R_index=R_index, G_index=G_index, B_index=B_index, W_index=W_index)
-        self.beam0 = Fixture("", xpos,ypos,size, universe=universe, address = address+0, range = 3, dimmer_index=1)
-        self.beam1 = Fixture("", xpos + size*2,ypos,size, universe=universe, address = address+3, range = 3, dimmer_index=1)
-        self.beam2 = Fixture("", xpos + size*4,ypos,size, universe=universe, address = address+6, range = 3, dimmer_index=1)       
-        self.beam3 = Fixture("", xpos + size*6,ypos,size, universe=universe, address = address+9, range = 3, dimmer_index=1)     
-        self.beam4 = Fixture("", xpos + size*8,ypos,size, universe=universe, address = address+12, range = 3, dimmer_index=1)     
-        self.beam5 = Fixture("", xpos + size*10,ypos,size, universe=universe, address = address+15, range = 3, dimmer_index=1)  
-        self.beam6 = Fixture("", xpos + size*12,ypos,size, universe=universe, address = address+18, range = 3, dimmer_index=1)  
+        self.beams = []
+        self.beams = [Fixture("", xpos,ypos,size, universe=universe, address = address+0, range = 3, dimmer_index=1),
+                        Fixture("", xpos + size*2,ypos,size, universe=universe, address = address+3, range = 3, dimmer_index=1),
+                        Fixture("", xpos + size*4,ypos,size, universe=universe, address = address+6, range = 3, dimmer_index=1),       
+                        Fixture("", xpos + size*6,ypos,size, universe=universe, address = address+9, range = 3, dimmer_index=1),     
+                        Fixture("", xpos + size*8,ypos,size, universe=universe, address = address+12, range = 3, dimmer_index=1),     
+                        Fixture("", xpos + size*10,ypos,size, universe=universe, address = address+15, range = 3, dimmer_index=1),  
+                        Fixture("", xpos + size*12,ypos,size, universe=universe, address = address+18, range = 3, dimmer_index=1)]  
 
         
     def drawItem(self):
@@ -348,20 +349,23 @@ def main():
 
 
     U1 = threading.Thread(target=OSC_universe1_thread, args=(1,))
+    U1.daemon = True
     U1.start()
     U2 = threading.Thread(target=OSC_universe2_thread, args=(1,))
+    U2.daemon = True
     U2.start()
     U3 = threading.Thread(target=OSC_universe3_thread, args=(1,))
+    U3.daemon = True
     U3.start()
     U4 = threading.Thread(target=OSC_universe4_thread, args=(1,))
+    U4.daemon = True
     U4.start()
     
     
     root.wm_title("Circles and Arcs")
     root.mainloop()
     
-    x.join()
-    
+   
     
 exitapp = False
 if __name__ == '__main__':
@@ -369,4 +373,5 @@ if __name__ == '__main__':
         main()
     except KeyboardInterrupt:
         exitapp = True
+        sys.exit(1)
         raise
