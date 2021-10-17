@@ -27,6 +27,7 @@ from struct import pack, unpack
 from OSC_2_video_PC import *
 
 
+
 #todo : use config file
 clientVideoPC = udp_client.SimpleUDPClient("192.168.1.65", 5007)
 
@@ -63,7 +64,15 @@ class Stage:
 
 
 class Fixture:
-    def __init__(self, label, xpos, ypos, size, universe, address, range=None, dimmer_index=None, R_index=None, G_index=None, B_index=None, W_index=None):
+    #todo : to start in thread as long as strobe is ongoing
+    def strobe_thread_loop(self, name):
+        while (self.strobe_value == 1):
+            canvas.itemconfig(self.tkitem, fill = "white")
+            time.sleep(1)
+            canvas.itemconfig(self.tkitem, fill = "black")
+            time.sleep(1)
+
+    def __init__(self, label, xpos, ypos, size, universe, address, range=None, dimmer_index=None, R_index=None, G_index=None, B_index=None, W_index=None, strobe_index=None):
         self.xpos = xpos
         self.ypos = ypos
         self.size = size
@@ -75,16 +84,24 @@ class Fixture:
         self.G_index = G_index
         self.B_index = B_index
         self.W_index = W_index
+        self.strobe_index = strobe_index
         self.R_value = 0
         self.G_value = 0
         self.B_value = 0
         self.W_value = 0        
-        
+        self.strobe_value = 0
+        self.strobe_started = 0
         
         self.dimmer_index = dimmer_index
         
+      
+        self.strobe_thread = threading.Thread(target=self.strobe_thread_loop, args=(1,))
+        self.strobe_thread.daemon = True
+    
         
         self.drawItem()
+        
+
 
 
     def drawItem(self):
@@ -97,7 +114,11 @@ class Fixture:
     def calculate_RGBW_color(self, R,G,B,W, dimmer_value):
         return from_rgb((int(dimmer_value * min(R + W, 255)), int(dimmer_value * min(G + W, 255)), int(dimmer_value * min(B + W, 255))))
     
+
+        
     def set_dmx(self, values):
+        
+
         
         if(self.R_index != None):
             self.R_value = values[self.R_index - 1]
@@ -109,6 +130,10 @@ class Fixture:
             self.W_value = values[self.W_index - 1]
         if(self.dimmer_index != None):
             dimmer_value = float(values[self.dimmer_index - 1])/255
+        if(self.strobe_index != None):
+            self.strobe_value = values[self.strobe_index - 1] 
+            print("strobe value update ", self.strobe_value)
+            
         if((self.W_index != None) and (self.dimmer_index != None)):
             
             color = self.calculate_RGBW_color(self.R_value, self.G_value, self.B_value, self.W_value, dimmer_value)
@@ -121,7 +146,14 @@ class Fixture:
                 
         #print ("colorDMX : " + color + "\n")
         canvas.itemconfig(self.tkitem, fill = color)
-
+        
+        if(self.strobe_value != 0):
+            if(self.strobe_started == False):
+                self.strobe_started = True
+                self.strobe_thread.start()
+                
+        
+            
 
 class OBS(Fixture):
     def __init__(self, label, xpos, ypos, size, universe, address, range=None, dimmer_index=None, R_index=None, G_index=None, B_index=None, W_index=None):
@@ -207,12 +239,12 @@ class LH(Fixture):
         Fixture.__init__(self, label, xpos, ypos, size, universe, address, range=range, dimmer_index=dimmer_index, R_index=R_index, G_index=G_index, B_index=B_index, W_index=W_index)
         self.beams = []
         self.beams = [Fixture("", xpos,ypos,size, universe=universe, address = address+0, range = 3, dimmer_index=1),
-                        Fixture("", xpos + size*2,ypos,size, universe=universe, address = address+3, range = 3, dimmer_index=1),
-                        Fixture("", xpos + size*4,ypos,size, universe=universe, address = address+6, range = 3, dimmer_index=1),       
-                        Fixture("", xpos + size*6,ypos,size, universe=universe, address = address+9, range = 3, dimmer_index=1),     
-                        Fixture("", xpos + size*8,ypos,size, universe=universe, address = address+12, range = 3, dimmer_index=1),     
-                        Fixture("", xpos + size*10,ypos,size, universe=universe, address = address+15, range = 3, dimmer_index=1),  
-                        Fixture("", xpos + size*12,ypos,size, universe=universe, address = address+18, range = 3, dimmer_index=1)]  
+                        Fixture("", xpos + size*2,ypos,size, universe=universe, address = address+3, range = 3, dimmer_index=1, strobe_index=3),
+                        Fixture("", xpos + size*4,ypos,size, universe=universe, address = address+6, range = 3, dimmer_index=1, strobe_index=3),       
+                        Fixture("", xpos + size*6,ypos,size, universe=universe, address = address+9, range = 3, dimmer_index=1, strobe_index=3),     
+                        Fixture("", xpos + size*8,ypos,size, universe=universe, address = address+12, range = 3, dimmer_index=1, strobe_index=3),     
+                        Fixture("", xpos + size*10,ypos,size, universe=universe, address = address+15, range = 3, dimmer_index=1, strobe_index=3),  
+                        Fixture("", xpos + size*12,ypos,size, universe=universe, address = address+18, range = 3, dimmer_index=1, strobe_index=3)]  
         
         #For laser beams, force default Red value 
         for i in self.beams:
@@ -326,7 +358,7 @@ def OSC_universe4_thread(name):
     except KeyboardInterrupt:
         exit()
 
-        
+
         
 def main():
     tk.Canvas.create_circle = _create_circle
@@ -374,7 +406,7 @@ def main():
     U4 = threading.Thread(target=OSC_universe4_thread, args=(1,))
     U4.daemon = True
     U4.start()
-    
+   
     
     root.wm_title("Circles and Arcs")
     root.mainloop()
