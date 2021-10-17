@@ -99,7 +99,7 @@ class ppt:
 def startSongSlide(song):
 	global my_slide	
 	slideNb = SToSlide[song]
-	print("Setting ppt slide according to song : " + str(slideNb))
+	print("Setting ppt slide according to song : " + str(song) + " slide : " + str(slideNb))
 	my_slide.goto_slide(slideNb)
 		
 	
