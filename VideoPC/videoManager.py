@@ -1,4 +1,5 @@
-import sys  
+import sys 
+import socket 
 sys.path.append("..")  
 
 import json
@@ -28,7 +29,11 @@ print("loading config", str(sys.argv[1]))
 with open(sys.argv[1]) as config_file:
     config = json.load(config_file)
 
-OSC_LOCALHOST_IP   = config['OSC_LOCALHOST_IP']
+hostname = socket.gethostname()
+local_ip = socket.gethostbyname(hostname)
+print(local_ip)
+    
+OSC_LOCALHOST_IP   = local_ip
 OSC_LOCALHOST_PORT = config['OSC_LOCALHOST_PORT']
 OSC_PROJECTM_PORT  = config['OSC_PROJECTM_PORT']
 
@@ -99,7 +104,7 @@ class ppt:
 def startSongSlide(song):
 	global my_slide	
 	slideNb = SToSlide[song]
-	print("Setting ppt slide according to song : " + str(song) + " slide : " + str(slideNb))
+	print("Setting ppt slide according to song : " + str(song) + "(" + SName[song] + ")" + " slide : " + str(slideNb))
 	my_slide.goto_slide(slideNb)
 		
 	
@@ -161,13 +166,18 @@ def osc_thread(name):
 	dispatcher.map("/video/visualizer/preset", projectm_preset_osc_receive, "projectm_preset_osc_receive")
 	dispatcher.map("/video/visualizer/lock", projectm_lock_osc_receive, "projectm_lock_osc_receive")
 	dispatcher.map("/video/visualizer/random", projectm_random_osc_receive, "projectm_random_osc_receive")
-	
-	server = osc_server.ThreadingOSCUDPServer((OSC_LOCALHOST_IP, OSC_LOCALHOST_PORT), dispatcher)
-	print("Starting OSC server")
+
 	try:
-		server.serve_forever()
-	except (KeyboardInterrupt, SystemExit):
-		print('The END in OSC server.')
+		server = osc_server.ThreadingOSCUDPServer((OSC_LOCALHOST_IP, OSC_LOCALHOST_PORT), dispatcher)
+		print("Starting OSC server")
+		try:
+			server.serve_forever()
+		except (KeyboardInterrupt, SystemExit):
+			print('The END in OSC server.')
+	except (OSError):
+		print("Could not connect to Liveserver on RASPI. If you're not in simulation mode, please check you're connected to the RASPI hotspot")
+		print("Exiting OSC thread")
+
 
 	
 print("Opening slideset")		
@@ -223,5 +233,4 @@ try:
 			
 except KeyboardInterrupt:
 	app.Quit()
-	time.sleep(1)
-	print('The END.')
+
