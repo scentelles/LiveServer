@@ -1,9 +1,0 @@
-{
-  "OSC_LOCALHOST_IP" 	: "localhost",
-  "OSC_LOCALHOST_PORT" 	: 5007,
-  "OBS_HOST" 			: "localhost",
-  "OBS_PORT" 			: 4444,
-  "OBS_PWD"  			: "secret",
-  "OSC_PROJECTM_PORT" 	: 7700,
-  "SLIDESHOW_PATH"		: "C:\\Users\\Etage\\Documents\\LiveServer\\VideoPC\\clip1.pptx"
-}

@@ -1,12 +1,12 @@
 import sys  
+import socket 
+
 sys.path.append("..")  
 
 import tkinter as tk
 from random import randint
 import math
 
-#from PIL import ImageTk
-#from PIL import Image
 
 import threading
 import time
@@ -17,10 +17,8 @@ from pythonosc import dispatcher
 
 from SmoothDefines import *  #TODO : used only for OBS. not smooth specific
 
-import sys
-
-from socket import (socket, AF_INET, SOCK_DGRAM, SOL_SOCKET, SO_REUSEADDR,
-                    SO_BROADCAST)
+#from socket import (socket, AF_INET, SOCK_DGRAM, SOL_SOCKET, SO_REUSEADDR,
+#                    SO_BROADCAST)
 from struct import pack, unpack
 
 
@@ -28,8 +26,11 @@ from OSC_2_video_PC import *
 
 
 
-#todo : use config file
-clientVideoPC = udp_client.SimpleUDPClient("192.168.1.65", 5007)
+
+hostname = socket.gethostname()
+local_ip = socket.gethostbyname(hostname)
+print(local_ip)
+clientVideoPC = udp_client.SimpleUDPClient(local_ip, 5007)
 
 
 class Stage:
