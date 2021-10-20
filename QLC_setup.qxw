@@ -17,7 +17,9 @@
     </Output>
    </Universe>
    <Universe Name="Universe 2" ID="1">
-    <Output Plugin="uDMX" Line="0"/>
+    <Output Plugin="uDMX" Line="0">
+     <PluginParameters UniverseChannels="87"/>
+    </Output>
    </Universe>
    <Universe Name="Universe 3" ID="2">
     <Output Plugin="OSC" Line="1"/>
@@ -35,13 +37,13 @@
    <Channels>1</Channels>
   </Fixture>
   <Fixture>
-   <Manufacturer>Stairville</Manufacturer>
-   <Model>LED Flood Panel 7x3W</Model>
-   <Mode>8-channel</Mode>
+   <Manufacturer>Slyzic</Manufacturer>
+   <Model>LED-PAR-chinese</Model>
+   <Mode>9channel</Mode>
    <ID>1</ID>
    <Name>Rear LED Flood Panel 7x3W</Name>
-   <Universe>0</Universe>
-   <Address>15</Address>
+   <Universe>1</Universe>
+   <Address>50</Address>
    <Channels>8</Channels>
    <ExcludeFade>4,5</ExcludeFade>
   </Fixture>
@@ -51,8 +53,8 @@
    <Mode>8-channel</Mode>
    <ID>2</ID>
    <Name>Front LED Flood Panel 7x3W</Name>
-   <Universe>0</Universe>
-   <Address>7</Address>
+   <Universe>1</Universe>
+   <Address>42</Address>
    <Channels>8</Channels>
    <ExcludeFade>4,5</ExcludeFade>
   </Fixture>
@@ -78,26 +80,14 @@
    <Channels>21</Channels>
   </Fixture>
   <Fixture>
-   <Manufacturer>Stairville</Manufacturer>
-   <Model>LED Flood Panel 150</Model>
-   <Mode>8-channel</Mode>
+   <Manufacturer>Slyzic</Manufacturer>
+   <Model>Bee moving head</Model>
+   <Mode>13-channels</Mode>
    <ID>5</ID>
-   <Name>LED Flood Panel 150 #1</Name>
-   <Universe>0</Universe>
-   <Address>23</Address>
-   <Channels>8</Channels>
-   <ExcludeFade>4,5</ExcludeFade>
-  </Fixture>
-  <Fixture>
-   <Manufacturer>Stairville</Manufacturer>
-   <Model>LED Flood Panel 150</Model>
-   <Mode>8-channel</Mode>
-   <ID>6</ID>
-   <Name>LED Flood Panel 150 #2</Name>
-   <Universe>0</Universe>
-   <Address>31</Address>
-   <Channels>8</Channels>
-   <ExcludeFade>4,5</ExcludeFade>
+   <Name>Bee moving head</Name>
+   <Universe>1</Universe>
+   <Address>59</Address>
+   <Channels>13</Channels>
   </Fixture>
   <Fixture>
    <Manufacturer>Generic</Manufacturer>
@@ -210,13 +200,13 @@
    <Channels>2</Channels>
   </Fixture>
   <Fixture>
-   <Manufacturer>Generic</Manufacturer>
-   <Model>Generic</Model>
-   <Mode>15 Channel</Mode>
+   <Manufacturer>Slyzic</Manufacturer>
+   <Model>Spider</Model>
+   <Mode>15-channels</Mode>
    <ID>18</ID>
    <Name>Spider</Name>
    <Universe>1</Universe>
-   <Address>42</Address>
+   <Address>72</Address>
    <Channels>15</Channels>
   </Fixture>
   <ChannelsGroup ID="1" Name="New Group" Value="0"/>
@@ -248,8 +238,6 @@
    <FixtureVal ID="1">0,98,1,141,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="2">0,141,1,255,2,61,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="3">0,0,1,12,2,255,3,46,4,255,5,255</FixtureVal>
-   <FixtureVal ID="5">0,40,1,255,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
-   <FixtureVal ID="6">0,40,1,255,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="8">0,88,2,255,4,192,5,255,6,255,7,0,8,0,9,0,10,0,11,0,12,0</FixtureVal>
   </Function>
   <Function ID="4" Type="Scene" Name="BOOST" Path="Red_Cloud">
@@ -257,16 +245,12 @@
    <FixtureVal ID="1">0,205,1,114,2,18,3,117,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="2">0,141,1,255,2,61,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="3">0,255,1,0,2,255,3,175,4,255</FixtureVal>
-   <FixtureVal ID="5">0,166,1,15,2,0,3,0,4,0,5,255,6,0,7,0</FixtureVal>
-   <FixtureVal ID="6">0,168,1,93,2,0,3,0,4,0,5,255,6,0,7,0</FixtureVal>
    <FixtureVal ID="8">0,236,2,120,4,239,5,255,6,0,7,0,8,0,9,0,10,0,11,0,12,78</FixtureVal>
   </Function>
   <Function ID="5" Type="Scene" Name="LEAD" Path="Red_Cloud">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="1">0,214,1,10,2,0,3,0,4,0,5,255,6,0,7,0</FixtureVal>
    <FixtureVal ID="2">0,141,1,255,2,61,3,0,4,0,5,0,6,0,7,0</FixtureVal>
-   <FixtureVal ID="6">0,255,1,126,2,0,3,0,4,0,5,255,6,0,7,0</FixtureVal>
-   <FixtureVal ID="5">0,255,1,126,2,0,3,0,4,0,5,255,6,0,7,0</FixtureVal>
    <FixtureVal ID="3">0,123,1,49,2,255,3,15,4,255</FixtureVal>
    <FixtureVal ID="8">0,255,2,82,4,0,5,255,6,0,7,0,8,0,9,0,10,239,11,0,12,127</FixtureVal>
   </Function>
@@ -274,8 +258,6 @@
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
    <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
-   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
-   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="8">0,0,2,0,4,0,5,0,6,0,7,0,8,0,9,0,11,0,12,0</FixtureVal>
    <FixtureVal ID="18">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
@@ -285,23 +267,23 @@
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="500" Hold="400" FadeOut="0" Values="62">1:0,255,1,103:2:0,141,1,255,2,61:3:2,107,3,181,4,255,5,70:5:0,82,1,99:6:0,82,1,99:8:5,255,12,246:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="1" FadeIn="500" Hold="1500" FadeOut="0" Values="62">1:0,255,1,53:2:0,141,1,255,2,61:3:3,29,4,255:5:0,82,1,99,5,255:6:0,82,1,99,5,255:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="2" FadeIn="3000" Hold="1000" FadeOut="0" Values="62">1:0,255,1,99:2:0,141,1,255,2,61:3:1,226,2,255,3,29,4,255,5,70:5:0,82,1,99:6:0,82,1,99:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="3" FadeIn="2000" Hold="1000" FadeOut="0" Values="75">1:0,255,1,45:2:0,141,1,255,2,61:3:1,255,2,255,3,243,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99:8:4,254:6:5,255:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:8:4,254,5,255,12,28</Step>
-   <Step Number="4" FadeIn="4000" Hold="2000" FadeOut="0" Values="62">1:0,16,1,82:2:0,141,1,255,2,61:3:0,226,1,29,2,255,4,255,5,70:5:0,82,1,99:6:0,82,1,99,5,255:8:4,222,5,255,12,103:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="5" FadeIn="4000" Hold="100" FadeOut="0" Values="65">1:0,255,1,255:2:0,141,1,255,2,61:3:1,29,2,255,4,255,5,70:5:0,169,1,99:6:0,82,1,255:8:5,255,12,119:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:3:5,70:6:0,82,1,255</Step>
-   <Step Number="6" FadeIn="4000" Hold="2000" FadeOut="0" Values="66">2:0,141,1,255,2,61:3:0,77,1,29,2,100,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,19:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="7" FadeIn="1500" Hold="1500" FadeOut="0" Values="62">1:0,16,1,160:2:0,141,1,255,2,61:3:2,100,4,255,5,70:8:5,199,9,255,12,34:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255</Step>
-   <Step Number="8" FadeIn="500" Hold="1500" FadeOut="0" Values="71">1:0,202,1,218,5,115:2:0,141,1,255,2,61:3:0,129,1,163,2,135,3,52,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:6:0,82:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="9" FadeIn="500" Hold="1500" FadeOut="0" Values="66">1:0,255,5,173:2:0,141,1,255,2,61:3:0,129,1,237,2,255,3,52,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="10" FadeIn="500" Hold="1500" FadeOut="0" Values="66">1:0,165,1,255,5,90:2:0,141,1,255,2,61:3:0,129,1,249,2,255,3,165,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,243:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="11" FadeIn="300" Hold="2000" FadeOut="0" Values="70">1:0,181,5,230:2:0,141,1,255,2,61:3:0,255,1,249,2,255,3,125,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,243:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="12" FadeIn="500" Hold="2000" FadeOut="0" Values="70">1:0,206,5,144:2:0,141,1,255,2,61:3:0,129,1,142,2,255,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="13" FadeIn="700" Hold="200" FadeOut="0" Values="70">1:0,255,1,226,5,181:2:0,141,1,255,2,61:3:1,114,2,255,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="14" FadeIn="700" Hold="200" FadeOut="0" Values="70">1:0,255,1,12:2:0,141,1,255,2,61:3:0,255,1,140,2,255,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70:6:0,82,1,99,5,255</Step>
-   <Step Number="15" FadeIn="700" Hold="200" FadeOut="0" Values="64">1:0,255,5,111:2:0,141,1,255,2,61:3:0,5,1,120,2,255,3,71,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:0,255,2,117:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:8:5,255,6,255</Step>
-   <Step Number="16" FadeIn="700" Hold="200" FadeOut="0" Values="83">1:0,136,1,49:2:0,141,1,255,2,61:3:0,243,1,114,2,255,3,226,4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255:8:5,255,6,255,0,255,2,117:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255,5,70:5:0,82,1,99,5,255:6:0,82,1,99,5,255</Step>
+   <Step Number="0" FadeIn="500" Hold="400" FadeOut="0" Values="59">1:0,255,1,103:2:0,141,1,255,2,61:3:2,107,3,181,4,255,5,70:5:0,82,1,99:8:5,255,12,246:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="1" FadeIn="500" Hold="1500" FadeOut="0" Values="58">1:0,255,1,53:2:0,141,1,255,2,61:3:3,29,4,255:5:0,82,1,99,5,255:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="2" FadeIn="3000" Hold="1000" FadeOut="0" Values="57">1:0,255,1,99:2:0,141,1,255,2,61:3:1,226,2,255,3,29,4,255,5,70:5:0,82,1,99:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="3" FadeIn="2000" Hold="1000" FadeOut="0" Values="62">1:0,255,1,45:2:0,141,1,255,2,61:3:1,255,2,255,3,243,4,255,5,70:5:0,82,1,99,5,255:8:4,254:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:8:4,254,5,255,12,28</Step>
+   <Step Number="4" FadeIn="4000" Hold="2000" FadeOut="0" Values="60">1:0,16,1,82:2:0,141,1,255,2,61:3:0,226,1,29,2,255,4,255,5,70:5:0,82,1,99:8:4,222,5,255,12,103:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="5" FadeIn="4000" Hold="100" FadeOut="0" Values="60">1:0,255,1,255:2:0,141,1,255,2,61:3:1,29,2,255,4,255,5,70:5:0,169,1,99:8:5,255,12,119:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:3:5,70</Step>
+   <Step Number="6" FadeIn="4000" Hold="2000" FadeOut="0" Values="63">2:0,141,1,255,2,61:3:0,77,1,29,2,100,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,19:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:5,70</Step>
+   <Step Number="7" FadeIn="1500" Hold="1500" FadeOut="0" Values="46">1:0,16,1,160:2:0,141,1,255,2,61:3:2,100,4,255,5,70:8:5,199,9,255,12,34:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255</Step>
+   <Step Number="8" FadeIn="500" Hold="1500" FadeOut="0" Values="66">1:0,202,1,218,5,115:2:0,141,1,255,2,61:3:0,129,1,163,2,135,3,52,4,255,5,70:5:0,82,1,99,5,255:8:5,255:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
+   <Step Number="9" FadeIn="500" Hold="1500" FadeOut="0" Values="63">1:0,255,5,173:2:0,141,1,255,2,61:3:0,129,1,237,2,255,3,52,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:5,70</Step>
+   <Step Number="10" FadeIn="500" Hold="1500" FadeOut="0" Values="63">1:0,165,1,255,5,90:2:0,141,1,255,2,61:3:0,129,1,249,2,255,3,165,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,243:3:5,70</Step>
+   <Step Number="11" FadeIn="300" Hold="2000" FadeOut="0" Values="67">1:0,181,5,230:2:0,141,1,255,2,61:3:0,255,1,249,2,255,3,125,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,243:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
+   <Step Number="12" FadeIn="500" Hold="2000" FadeOut="0" Values="67">1:0,206,5,144:2:0,141,1,255,2,61:3:0,129,1,142,2,255,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
+   <Step Number="13" FadeIn="700" Hold="200" FadeOut="0" Values="67">1:0,255,1,226,5,181:2:0,141,1,255,2,61:3:1,114,2,255,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
+   <Step Number="14" FadeIn="700" Hold="200" FadeOut="0" Values="67">1:0,255,1,12:2:0,141,1,255,2,61:3:0,255,1,140,2,255,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
+   <Step Number="15" FadeIn="700" Hold="200" FadeOut="0" Values="64">1:0,255,5,111:2:0,141,1,255,2,61:3:0,5,1,120,2,255,3,71,4,255,5,70:5:0,82,1,99,5,255:8:0,255,2,117:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:8:5,255,6,255</Step>
+   <Step Number="16" FadeIn="700" Hold="200" FadeOut="0" Values="69">1:0,136,1,49:2:0,141,1,255,2,61:3:0,243,1,114,2,255,3,226,4,255,5,70:5:0,82,1,99,5,255:8:5,255,6,255,0,255,2,117:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255,5,70:5:0,82,1,99,5,255</Step>
   </Function>
   <Function ID="8" Type="Collection" Name="DefaultBlackout" Path="Smooth_Trio/0-Defaults">
    <Step Number="0">59</Step>
@@ -317,8 +299,6 @@
    <FixtureVal ID="1">0,255,1,255,2,255,3,255,4,209,5,0</FixtureVal>
    <FixtureVal ID="2">0,255,1,255,2,255,3,255,4,209,5,0</FixtureVal>
    <FixtureVal ID="3">0,214,1,21,2,111,3,0,4,255</FixtureVal>
-   <FixtureVal ID="5">0,255,1,255,2,255,3,255,4,53,5,0,6,0,7,0</FixtureVal>
-   <FixtureVal ID="6">0,255,1,255,2,255,3,255,4,53,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="8">4,0,5,224,11,0,12,46</FixtureVal>
    <FixtureVal ID="18">0,83,1,165,2,255,3,89,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,0,13,0</FixtureVal>
   </Function>
@@ -339,8 +319,6 @@
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="3">0,0,1,0,2,0,3,0,4,0</FixtureVal>
-   <FixtureVal ID="5">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
-   <FixtureVal ID="6">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0</FixtureVal>
    <FixtureVal ID="8">0,0,2,0,4,0,5,0,6,0,7,0,8,0,9,0,11,0,12,0</FixtureVal>
    <FixtureVal ID="18">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
@@ -350,11 +328,11 @@
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="PerStep" Duration="PerStep"/>
-   <Step Number="0" FadeIn="1000" Hold="2000" FadeOut="1000" Values="58">2:0,255,5,193:8:2,255,4,28,5,255,6,255:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="1" FadeIn="3000" Hold="2000" FadeOut="1000" Values="58">2:0,255,5,193:3:1,82,2,144,3,12,4,255:8:0,255,2,255,4,233,5,255,6,255,9,74:18:0,163,1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="2" FadeIn="2000" Hold="4000" FadeOut="500" Values="58">2:0,255,5,193:3:1,82,2,144,3,12:5:0,255:6:0,255:8:2,255,4,27,5,255,6,255:18:0,163,1,140,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="3" FadeIn="2000" Hold="4000" FadeOut="500" Values="60">2:0,255,5,193:3:1,82,2,144,3,12,4,255:5:1,255:6:0,255,1,255:8:0,255,2,255,4,238,5,255,6,255,9,32:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:6:0,255,1,255</Step>
-   <Step Number="4" FadeIn="0" Hold="1500" FadeOut="0" Values="58">1:0,132,1,255,4,234:2:0,255,5,193:3:1,82,2,144,3,12:5:0,255,1,255:6:0,255,1,255:8:0,131,2,120,4,183,5,255,9,255:18:1,255,2,78,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="0" FadeIn="1000" Hold="2000" FadeOut="1000" Values="42">2:0,255,5,193:8:2,255,4,28,5,255,6,255:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="1" FadeIn="3000" Hold="2000" FadeOut="1000" Values="42">2:0,255,5,193:3:1,82,2,144,3,12,4,255:8:0,255,2,255,4,233,5,255,6,255,9,74:18:0,163,1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="2" FadeIn="2000" Hold="4000" FadeOut="500" Values="58">2:0,255,5,193:3:1,82,2,144,3,12:5:0,255:8:2,255,4,27,5,255,6,255:18:0,163,1,140,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="3" FadeIn="2000" Hold="4000" FadeOut="500" Values="59">2:0,255,5,193:3:1,82,2,144,3,12,4,255:5:1,255:8:0,255,2,255,4,238,5,255,6,255,9,32:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="4" FadeIn="0" Hold="1500" FadeOut="0" Values="59">1:0,132,1,255,4,234:2:0,255,5,193:3:1,82,2,144,3,12:5:0,255,1,255:8:0,131,2,120,4,183,5,255,9,255:18:1,255,2,78,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
   </Function>
   <Function ID="15" Type="Chaser" Name="NightShadowTrain" Path="Smooth_Trio">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -514,6 +492,7 @@
    <Step Number="4">56</Step>
    <Step Number="5">70</Step>
    <Step Number="6">160</Step>
+   <Step Number="7">280</Step>
   </Function>
   <Function ID="39" Type="Collection" Name="CapDhiverStep01-introTrump" Path="Smooth_Trio/CadDhiver">
    <Step Number="0">40</Step>
@@ -546,22 +525,22 @@
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <ChannelGroupsVal>6,160</ChannelGroupsVal>
    <FixtureVal ID="8">0,200,2,34,4,160</FixtureVal>
-   <FixtureVal ID="9">0,173,2,28,4,160</FixtureVal>
-   <FixtureVal ID="10">0,150,2,47,4,160</FixtureVal>
+   <FixtureVal ID="9">0,176,2,28,4,160</FixtureVal>
+   <FixtureVal ID="10">0,187,2,17,4,160</FixtureVal>
   </Function>
   <Function ID="44" Type="Scene" Name="GuiPosition" Path="Smooth_Trio/Lyres positions">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <ChannelGroupsVal>6,160</ChannelGroupsVal>
    <FixtureVal ID="8">0,203,2,8,4,160</FixtureVal>
-   <FixtureVal ID="9">0,185,2,20,4,160</FixtureVal>
-   <FixtureVal ID="10">0,154,2,40,4,160</FixtureVal>
+   <FixtureVal ID="9">0,146,2,20,4,160</FixtureVal>
+   <FixtureVal ID="10">0,153,2,40,4,160</FixtureVal>
   </Function>
   <Function ID="45" Type="Scene" Name="ChrisPosition" Path="Smooth_Trio/Lyres positions">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <ChannelGroupsVal>6,160</ChannelGroupsVal>
    <FixtureVal ID="8">0,203,2,31,4,160</FixtureVal>
-   <FixtureVal ID="9">0,144,2,28,4,160</FixtureVal>
-   <FixtureVal ID="10">0,134,2,28,4,160</FixtureVal>
+   <FixtureVal ID="9">0,203,2,28,4,160</FixtureVal>
+   <FixtureVal ID="10">0,208,2,28,4,160</FixtureVal>
   </Function>
   <Function ID="46" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -880,18 +859,18 @@
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="PerStep"/>
    <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">222</Step>
-   <Step Number="1" FadeIn="0" Hold="34420" FadeOut="0">39</Step>
-   <Step Number="2" FadeIn="0" Hold="38730" FadeOut="0">189</Step>
-   <Step Number="3" FadeIn="0" Hold="19420" FadeOut="0">191</Step>
-   <Step Number="4" FadeIn="0" Hold="21730" FadeOut="0">190</Step>
-   <Step Number="5" FadeIn="0" Hold="36500" FadeOut="0">192</Step>
+   <Step Number="1" FadeIn="0" Hold="31500" FadeOut="0">39</Step>
+   <Step Number="2" FadeIn="0" Hold="34400" FadeOut="0">189</Step>
+   <Step Number="3" FadeIn="0" Hold="17800" FadeOut="0">191</Step>
+   <Step Number="4" FadeIn="0" Hold="17800" FadeOut="0">190</Step>
+   <Step Number="5" FadeIn="0" Hold="35400" FadeOut="0">192</Step>
    <Step Number="6" FadeIn="0" Hold="4294967294" FadeOut="0">194</Step>
-   <Step Number="7" FadeIn="0" Hold="18260" FadeOut="0">193</Step>
-   <Step Number="8" FadeIn="0" Hold="37800" FadeOut="0">195</Step>
-   <Step Number="9" FadeIn="0" Hold="18000" FadeOut="0">196</Step>
+   <Step Number="7" FadeIn="0" Hold="15800" FadeOut="0">193</Step>
+   <Step Number="8" FadeIn="0" Hold="33400" FadeOut="0">195</Step>
+   <Step Number="9" FadeIn="0" Hold="17800" FadeOut="0">196</Step>
    <Step Number="10" FadeIn="0" Hold="16170" FadeOut="0">197</Step>
-   <Step Number="11" FadeIn="0" Hold="20290" FadeOut="0">198</Step>
-   <Step Number="12" FadeIn="0" Hold="36500" FadeOut="0">199</Step>
+   <Step Number="11" FadeIn="0" Hold="17290" FadeOut="0">198</Step>
+   <Step Number="12" FadeIn="0" Hold="31500" FadeOut="0">199</Step>
    <Step Number="13" FadeIn="0" Hold="4294967294" FadeOut="0">200</Step>
   </Function>
   <Function ID="82" Type="Chaser" Name="IlYavait" Path="Smooth_Trio">
@@ -1345,7 +1324,7 @@
   </Function>
   <Function ID="145" Type="Collection" Name="IlYavaitStep4-color" Path="Smooth_Trio/Il y avait">
    <Step Number="0">40</Step>
-   <Step Number="1">16</Step>
+   <Step Number="1">18</Step>
    <Step Number="2">123</Step>
    <Step Number="3">59</Step>
    <Step Number="4">53</Step>
@@ -1422,7 +1401,7 @@
   </Function>
   <Function ID="155" Type="Collection" Name="IlYavaitStep5-black-white" Path="Smooth_Trio/Il y avait">
    <Step Number="0">40</Step>
-   <Step Number="1">124</Step>
+   <Step Number="1">18</Step>
    <Step Number="2">120</Step>
    <Step Number="3">59</Step>
    <Step Number="4">52</Step>
@@ -1431,7 +1410,7 @@
   </Function>
   <Function ID="156" Type="Collection" Name="IlYavaitStep6-color" Path="Smooth_Trio/Il y avait">
    <Step Number="0">40</Step>
-   <Step Number="1">16</Step>
+   <Step Number="1">18</Step>
    <Step Number="2">123</Step>
    <Step Number="3">59</Step>
    <Step Number="4">53</Step>
@@ -2210,63 +2189,63 @@
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="15">0,4</FixtureVal>
   </Function>
-  <Function ID="265" Type="Scene" Name="Visualizer - 00" Path="MEGASCREEN/Visualizer">
+  <Function ID="265" Type="Scene" Name="Visualizer - 000" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="16">0,0,1,1,2,0</FixtureVal>
   </Function>
-  <Function ID="266" Type="Scene" Name="Visualizer - 04" Path="MEGASCREEN/Visualizer">
+  <Function ID="266" Type="Scene" Name="Visualizer - 004" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="16">0,4,1,4,2,0</FixtureVal>
   </Function>
-  <Function ID="267" Type="Scene" Name="Visualizer - 08" Path="MEGASCREEN/Visualizer">
+  <Function ID="267" Type="Scene" Name="Visualizer - 008" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="16">0,8,1,8,2,0</FixtureVal>
   </Function>
-  <Function ID="268" Type="Scene" Name="Visualizer - 09" Path="MEGASCREEN/Visualizer">
+  <Function ID="268" Type="Scene" Name="Visualizer - 009" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="16">0,9,1,9,2,0</FixtureVal>
   </Function>
-  <Function ID="269" Type="Scene" Name="Visualizer - 14" Path="MEGASCREEN/Visualizer">
+  <Function ID="269" Type="Scene" Name="Visualizer - 014" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="16">0,14,1,14,2,0</FixtureVal>
   </Function>
-  <Function ID="270" Type="Scene" Name="Visualizer - 18" Path="MEGASCREEN/Visualizer">
+  <Function ID="270" Type="Scene" Name="Visualizer - 018" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="16">0,18,1,18,2,0</FixtureVal>
   </Function>
-  <Function ID="271" Type="Scene" Name="Visualizer - 25" Path="MEGASCREEN/Visualizer">
+  <Function ID="271" Type="Scene" Name="Visualizer - 025" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="16">0,25,1,1,2,0</FixtureVal>
+   <FixtureVal ID="16">0,25,1,25,2,0</FixtureVal>
   </Function>
-  <Function ID="272" Type="Scene" Name="Visualizer - 26" Path="MEGASCREEN/Visualizer">
+  <Function ID="272" Type="Scene" Name="Visualizer - 026" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="16">0,26,1,1,2,0</FixtureVal>
+   <FixtureVal ID="16">0,26,1,26,2,0</FixtureVal>
   </Function>
-  <Function ID="273" Type="Scene" Name="Visualizer - 29" Path="MEGASCREEN/Visualizer">
+  <Function ID="273" Type="Scene" Name="Visualizer - 029" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="16">0,29,1,1,2,0</FixtureVal>
+   <FixtureVal ID="16">0,29,1,29,2,0</FixtureVal>
   </Function>
-  <Function ID="274" Type="Scene" Name="Visualizer - 34" Path="MEGASCREEN/Visualizer">
+  <Function ID="274" Type="Scene" Name="Visualizer - 034" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="16">0,34,1,1,2,0</FixtureVal>
+   <FixtureVal ID="16">0,34,1,34,2,0</FixtureVal>
   </Function>
-  <Function ID="275" Type="Scene" Name="Visualizer - 38" Path="MEGASCREEN/Visualizer">
+  <Function ID="275" Type="Scene" Name="Visualizer - 038" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="16">0,38,1,1,2,0</FixtureVal>
+   <FixtureVal ID="16">0,38,1,38,2,0</FixtureVal>
   </Function>
-  <Function ID="276" Type="Scene" Name="Visualizer - 50" Path="MEGASCREEN/Visualizer">
+  <Function ID="276" Type="Scene" Name="Visualizer - 050" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="16">0,50,1,1,2,0</FixtureVal>
   </Function>
-  <Function ID="277" Type="Scene" Name="Visualizer - 51" Path="MEGASCREEN/Visualizer">
+  <Function ID="277" Type="Scene" Name="Visualizer - 051" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="16">0,51,1,1,2,0</FixtureVal>
   </Function>
-  <Function ID="278" Type="Scene" Name="Visualizer - 61" Path="MEGASCREEN/Visualizer">
+  <Function ID="278" Type="Scene" Name="Visualizer - 061" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="16">0,61,1,1,2,0</FixtureVal>
   </Function>
-  <Function ID="279" Type="Scene" Name="Visualizer - 68" Path="MEGASCREEN/Visualizer">
+  <Function ID="279" Type="Scene" Name="Visualizer - 068" Path="MEGASCREEN/Visualizer">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="16">0,68,1,1,2,0</FixtureVal>
   </Function>
@@ -2290,6 +2269,145 @@
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="17">0,0,1,4</FixtureVal>
   </Function>
+  <Function ID="285" Type="Scene" Name="Visualizer - 001" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,1,1,1,2,0</FixtureVal>
+  </Function>
+  <Function ID="286" Type="Scene" Name="Visualizer - 002" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,2,1,2,2,0</FixtureVal>
+  </Function>
+  <Function ID="287" Type="Scene" Name="Visualizer - 003" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,3,1,3,2,0</FixtureVal>
+  </Function>
+  <Function ID="288" Type="Scene" Name="Visualizer - 005" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,5,1,5,2,0</FixtureVal>
+  </Function>
+  <Function ID="289" Type="Scene" Name="Visualizer - 006" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,6,1,6,2,0</FixtureVal>
+  </Function>
+  <Function ID="290" Type="Scene" Name="Visualizer - 007" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,7,1,7,2,0</FixtureVal>
+  </Function>
+  <Function ID="291" Type="Scene" Name="Visualizer - 010" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,10,1,10,2,0</FixtureVal>
+  </Function>
+  <Function ID="292" Type="Scene" Name="Visualizer - 011" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,11,1,11,2,0</FixtureVal>
+  </Function>
+  <Function ID="293" Type="Scene" Name="Visualizer - 012" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,12,1,12,2,0</FixtureVal>
+  </Function>
+  <Function ID="294" Type="Scene" Name="Visualizer - 013" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,13,1,13,2,0</FixtureVal>
+  </Function>
+  <Function ID="295" Type="Scene" Name="Visualizer - 015" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,15,1,15,2,0</FixtureVal>
+  </Function>
+  <Function ID="296" Type="Scene" Name="Visualizer - 016" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,16,1,16,2,0</FixtureVal>
+  </Function>
+  <Function ID="297" Type="Scene" Name="Visualizer - 027" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,27,1,27,2,0</FixtureVal>
+  </Function>
+  <Function ID="298" Type="Scene" Name="Visualizer - 017" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,17,1,17,2,0</FixtureVal>
+  </Function>
+  <Function ID="299" Type="Scene" Name="Visualizer - 019" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,19,1,19,2,0</FixtureVal>
+  </Function>
+  <Function ID="300" Type="Scene" Name="Visualizer - 020" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,20,1,20,2,0</FixtureVal>
+  </Function>
+  <Function ID="301" Type="Scene" Name="Visualizer - 022" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,22,1,22,2,0</FixtureVal>
+  </Function>
+  <Function ID="302" Type="Scene" Name="Visualizer - 021" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,21,1,21,2,0</FixtureVal>
+  </Function>
+  <Function ID="303" Type="Scene" Name="Visualizer - 023" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,23,1,23,2,0</FixtureVal>
+  </Function>
+  <Function ID="304" Type="Scene" Name="Visualizer - 024" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,24,1,24,2,0</FixtureVal>
+  </Function>
+  <Function ID="305" Type="Scene" Name="Visualizer - 028" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,28,1,28,2,0</FixtureVal>
+  </Function>
+  <Function ID="306" Type="Scene" Name="Visualizer - 030" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,30,1,30,2,0</FixtureVal>
+  </Function>
+  <Function ID="307" Type="Scene" Name="Visualizer - 031" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,31,1,31,2,0</FixtureVal>
+  </Function>
+  <Function ID="308" Type="Scene" Name="Visualizer - 032" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,32,1,32,2,0</FixtureVal>
+  </Function>
+  <Function ID="309" Type="Scene" Name="Visualizer - 033" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,33,1,33,2,0</FixtureVal>
+  </Function>
+  <Function ID="310" Type="Scene" Name="Visualizer - 035" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,35,1,35,2,0</FixtureVal>
+  </Function>
+  <Function ID="311" Type="Scene" Name="Visualizer - 036" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,36,1,36,2,0</FixtureVal>
+  </Function>
+  <Function ID="312" Type="Scene" Name="Visualizer - 037" Path="MEGASCREEN/Visualizer">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="16">0,37,1,37,2,0</FixtureVal>
+  </Function>
+  <Function ID="313" Type="Scene" Name="All-Red">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,255,1,255,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
+   <FixtureVal ID="8">5,255,6,255,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="10">5,255,6,255,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="9">5,255,6,255,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="11">0,255,1,0,2,0</FixtureVal>
+   <FixtureVal ID="13">0,255,1,0,2,0</FixtureVal>
+   <FixtureVal ID="12">0,255,1,0,2,0</FixtureVal>
+  </Function>
+  <Function ID="314" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">5,0,6,0,7,0,8,0,9,0,10,0,11,0</FixtureVal>
+   <FixtureVal ID="8">4,0,5,0,9,0,10,0,11,0,12,0</FixtureVal>
+   <FixtureVal ID="10"/>
+   <FixtureVal ID="1">0,0,1,0,7,0</FixtureVal>
+   <FixtureVal ID="18"/>
+   <FixtureVal ID="14">0,0,1,0,2,0,3,0,4,0</FixtureVal>
+  </Function>
+  <Function ID="315" Type="Sequence" Name="New Sequence 315" BoundScene="314">
+   <Speed FadeIn="0" FadeOut="0" Duration="500"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="21">1:1,82,7,255:5:5,255,6,203,10,255,11,141:8:4,222,5,197,9,255:14:0,255</Step>
+   <Step Number="1" FadeIn="0" Hold="500" FadeOut="0" Values="21">1:1,82,7,255:5:6,203,10,255,11,141:8:4,222,9,255:14:0,255,1,255,2,255,3,255</Step>
+  </Function>
   <Monitor DisplayMode="1" ShowLabels="1">
    <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
    <ChannelStyle>0</ChannelStyle>
@@ -2298,8 +2416,6 @@
    <FxItem ID="0" XPos="102.027" YPos="17.2438"/>
    <FxItem ID="1" XPos="871.667" YPos="1714.14"/>
    <FxItem ID="2" XPos="1508.62" YPos="31.2622" GelColor="#edd400"/>
-   <FxItem ID="5" XPos="53.2662" YPos="1678.66"/>
-   <FxItem ID="6" XPos="1657.62" YPos="1695.77"/>
    <FxItem ID="8" XPos="209.329" YPos="883.443"/>
    <FxItem ID="9" XPos="985.296" YPos="862.419"/>
    <FxItem ID="10" XPos="1765.94" YPos="863.272"/>
@@ -2482,7 +2598,7 @@
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
     <ShowEnableButton>True</ShowEnableButton>
-    <Collapsed>True</Collapsed>
+    <Collapsed>False</Collapsed>
     <Disabled>False</Disabled>
     <CueList Caption="NightShadowTrain" ID="23">
      <WindowState Visible="False" X="10" Y="90" Width="200" Height="215"/>
@@ -2951,13 +3067,13 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="False" X="610" Y="130" Width="195" Height="360"/>
+    <WindowState Visible="False" X="480" Y="5" Width="195" Height="360"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
     <ShowEnableButton>True</ShowEnableButton>
     <Mixing>False</Mixing>
-    <Collapsed>False</Collapsed>
+    <Collapsed>True</Collapsed>
     <Disabled>False</Disabled>
     <Button Caption="Visualizer" ID="33" Icon="">
      <WindowState Visible="False" X="5" Y="40" Width="135" Height="45"/>
@@ -3033,13 +3149,13 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="False" X="815" Y="130" Width="200" Height="200"/>
+    <WindowState Visible="False" X="700" Y="5" Width="360" Height="255"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
     <ShowEnableButton>True</ShowEnableButton>
     <Mixing>False</Mixing>
-    <Collapsed>False</Collapsed>
+    <Collapsed>True</Collapsed>
     <Disabled>False</Disabled>
     <Button Caption="Viz0" ID="39" Icon="">
      <WindowState Visible="False" X="10" Y="50" Width="50" Height="50"/>
@@ -3055,7 +3171,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="Visualizer - 04" ID="40" Icon="">
-     <WindowState Visible="False" X="10" Y="105" Width="125" Height="50"/>
+     <WindowState Visible="False" X="10" Y="100" Width="125" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3064,6 +3180,32 @@
       <Font>Default</Font>
      </Appearance>
      <Function ID="266"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Visualizer - 03" ID="41" Icon="">
+     <WindowState Visible="False" X="70" Y="50" Width="125" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="287"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Voice Matrix" ID="42" Icon="">
+     <WindowState Visible="False" X="5" Y="160" Width="125" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="297"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
     </Button>
