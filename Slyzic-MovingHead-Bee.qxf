@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureDefinition>
+<FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.12.3 GIT</Version>
+  <Author></Author>
+ </Creator>
+ <Manufacturer>Slyzic</Manufacturer>
+ <Model>Bee moving head</Model>
+ <Type>Moving Head</Type>
+ <Channel Name="Pan Coarse">
+  <Group Byte="0">Pan</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Pan fine">
+  <Group Byte="1">Pan</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Tilt coarse">
+  <Group Byte="0">Tilt</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Tilt fine">
+  <Group Byte="1">Tilt</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="not used">
+  <Group Byte="0">Nothing</Group>
+ </Channel>
+ <Channel Name="Master dimmer 1">
+  <Group Byte="0">Intensity</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Strobe 1">
+  <Group Byte="0">Shutter</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Red 1">
+  <Group Byte="0">Intensity</Group>
+  <Colour>Red</Colour>
+ </Channel>
+ <Channel Name="Green 1">
+  <Group Byte="0">Intensity</Group>
+  <Colour>Green</Colour>
+ </Channel>
+ <Channel Name="Blue 1">
+  <Group Byte="0">Intensity</Group>
+  <Colour>Blue</Colour>
+ </Channel>
+ <Channel Name="White 1">
+  <Group Byte="0">Intensity</Group>
+  <Colour>White</Colour>
+ </Channel>
+ <Channel Name="Rotate beams">
+  <Group Byte="0">Prism</Group>
+ </Channel>
+ <Channel Name="Show">
+  <Group Byte="0">Effect</Group>
+ </Channel>
+ <Mode Name="13-channels">
+  <Channel Number="0">Pan Coarse</Channel>
+  <Channel Number="1">Pan fine</Channel>
+  <Channel Number="2">Tilt coarse</Channel>
+  <Channel Number="3">Tilt fine</Channel>
+  <Channel Number="4">not used</Channel>
+  <Channel Number="5">Master dimmer 1</Channel>
+  <Channel Number="6">Strobe 1</Channel>
+  <Channel Number="7">Red 1</Channel>
+  <Channel Number="8">Green 1</Channel>
+  <Channel Number="9">Blue 1</Channel>
+  <Channel Number="10">White 1</Channel>
+  <Channel Number="11">Rotate beams</Channel>
+  <Channel Number="12">Show</Channel>
+ </Mode>
+ <Physical>
+  <Bulb Type="" Lumens="0" ColourTemperature="0"/>
+  <Dimensions Weight="0" Width="200" Height="300" Depth="300"/>
+  <Lens Name="Other" DegreesMin="0" DegreesMax="0"/>
+  <Focus Type="Fixed" PanMax="0" TiltMax="0"/>
+  <Technical PowerConsumption="0" DmxConnector="5-pin"/>
+ </Physical>
+</FixtureDefinition>
