@@ -14,3 +14,6 @@ pip install obs-websocket-py
 pip install pywin32
 
 Update config.json SLIDESHOW_PATH variable with the path to the slideshow
+
+For simulator : 
+pip install prompt_toolkit
