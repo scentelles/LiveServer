@@ -16,8 +16,13 @@ import threading
 #pywin32 package
 import win32com.client
 import time
+import win32gui
+
 
 from SmoothDefines import *
+
+
+
 
 MAIN_LOOP_DELAY = 0.01 #TODO : replace loop with message queue
 
@@ -74,7 +79,8 @@ class ppt:
 	def __init__(self):
 		
 		self.pres = app.Presentations.Open(SLIDESHOW_PATH, WithWindow=False)
-	
+
+        
 	def goto_slide(self, nb):
 		try:
 			print("Setting slide " + str(nb))
@@ -85,7 +91,7 @@ class ppt:
 		self.pres.SlideShowWindow.View.Next() 
 
 	def previous_slide(self):
-		self.pres.SlideShowWindow.View.Next() 
+		self.pres.SlideShowWindow.View.Previous() 
 		
 	def start_slideshow(self):
 
@@ -183,9 +189,17 @@ def osc_thread(name):
 print("Opening slideset")		
 my_slide = ppt()
 time.sleep(1)
+
 my_slide.start_slideshow()
 
 time.sleep(2)
+
+
+filename = str(SLIDESHOW_PATH).split('\\').pop()
+window_name = "Diaporama Powerpoint - [" + filename + "] - PowerPoint"                     
+hwnd = win32gui.FindWindow(None, window_name)
+win32gui.MoveWindow(hwnd, 0, 0, 600, 400, True)
+
 print("starting OSC thread")
 dispatcher = dispatcher.Dispatcher()
 x = threading.Thread(target=osc_thread, args=(1,))
@@ -223,10 +237,13 @@ try:
 			
 			print("Executing local command")
 			if localCommand == NEXT_SLIDE:
+				print("next slide")
 				my_slide.next_slide()
 			if localCommand == PREVIOUS_SLIDE:
+				print("previous slide")
 				my_slide.previous_slide()
 			if localCommand == START_SONG:
+				print("Start new song slide")
 				startSongSlide(currentSong)
 
 			localCommand = NO_COMMAND
