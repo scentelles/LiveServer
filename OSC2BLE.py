@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-from bluepy import btle
+
 import time
 import threading
 import sys
+import socket 
 from threading import Timer
 
 
@@ -12,6 +13,18 @@ from pythonosc import dispatcher
 from pythonosc import udp_client
 
 from SmoothDefines import *  #TODO : used only for OBS. not smooth specific
+
+print ("Argument nb:", len(sys.argv))
+
+if(len(sys.argv) > 1):
+    hostname = socket.gethostname()
+    local_ip = socket.gethostbyname(hostname)
+    videoPC_ip = local_ip
+else:
+    from bluepy import btle
+    #local_ip = "10.3.141.1"
+    videoPC_ip = "10.3.141.52"
+
 
 ledThreads = {}
 MAC_ADDRESS_CHRIS = "ff:ff:ee:00:27:09"
@@ -44,6 +57,8 @@ DMX_CHANNEL_OBS_BASE 		= 20
 DMX_CHANNEL_OBS_COLLECTION 	= DMX_CHANNEL_OBS_BASE
 DMX_CHANNEL_OBS_SCENE 		= DMX_CHANNEL_OBS_BASE + 1
 
+DMX_CHANNEL_SLIDESSHOW_CONTROL = 22
+
 DEBOUNCE_DELAY = 0.3
 DELAY_TO_SEND_LAST_VALUES = 0.6
 
@@ -51,7 +66,7 @@ DELAY_TO_SEND_LAST_VALUES = 0.6
 clientLH = udp_client.SimpleUDPClient("10.3.141.90", 8001)
 clientMS = udp_client.SimpleUDPClient("10.3.141.133", 7701)
 #OSC connection to Video PC
-clientVideoPC = udp_client.SimpleUDPClient("10.3.141.52", 5007)
+clientVideoPC = udp_client.SimpleUDPClient(videoPC_ip, 5007)
 
 def dispatch_qlc_osc_handler(osc_address, args, command):
 
@@ -129,6 +144,13 @@ def dispatch_qlc_osc_handler(osc_address, args, command):
       print("Received VideoPC OBS COllection OSC Command")
       clientVideoPC.send_message("/video/obs", [OBS_COMMAND_SWITCH_COLLECTION, value])
       return
+
+    if(int(channel) == DMX_CHANNEL_SLIDESSHOW_CONTROL - 1):
+      print("Received VideoPC Slideshow OSC Command")
+      clientVideoPC.send_message("/video/slideshow", value)
+      return
+ 
+
   
   #print("address" + osc_address + " : " + str(ledIndex) + " : " + str(channelIndex) + " : " + str(value))
   

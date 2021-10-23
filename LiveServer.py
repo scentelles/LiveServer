@@ -2,8 +2,10 @@
 This program listens to several addresses, and prints some information about
 received packets.
 """
+import sys 
 import argparse
 import math
+import socket 
 
 from pythonosc import dispatcher
 from pythonosc import osc_server
@@ -34,13 +36,6 @@ VL3_CC_STEP 		= 115
 currentSong = 0
 currentStep = 0
 chrisTalkOngoing = 0
-
-#OSC connection to QLC+
-clientQLC = udp_client.SimpleUDPClient("10.3.141.1", 5005)
-#OSC connection to Mini PC
-clientPC = udp_client.SimpleUDPClient("10.3.141.213", 5006)
-#OSC connection to Video PC
-clientVideoPC = udp_client.SimpleUDPClient("10.3.141.52", 5007)
 
 
 fogOngoing = 0
@@ -149,7 +144,6 @@ def SmoothTrioCC(myCC, value):
        clientQLC.send_message(currentMessage, 0)       
     elif(value == MIDI_CC_CHRIS_NEXT_SLIDE):
        print("From Chris : next slide")
-       currentMessage = "/step_next"
        clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_NEXT_SLIDE)
     elif(value == MIDI_CC_CHRIS_PREVIOUS_SLIDE):
        print("From Chris : previous slide")
@@ -275,7 +269,7 @@ def forwardCCFromVoicelive(myCC, value):
         time.sleep(0.1)
         clientQLC.send_message("/solo", 0)
     else:
-      print("message unmapped. do nothing")
+      print("message unmapped. do nothing - Did you at least set a song preset?")
 
 
 def print_voicelive_handler(unused_addr, args, command, note, vel):
@@ -343,13 +337,27 @@ def print_compute_handler(unused_addr, args, volume):
 if __name__ == "__main__":
 
 
-#TODO : remove this and use config file      
-  parser = argparse.ArgumentParser()
-  parser.add_argument("--ip",
-      default="10.3.141.1", help="The ip to listen on")
-  parser.add_argument("--port",
-      type=int, default=8000, help="The port to listen on")
-  args = parser.parse_args()
+  print ("Argument nb:", len(sys.argv))
+
+  if(len(sys.argv) > 1):
+    hostname = socket.gethostname()
+    local_ip = socket.gethostbyname(hostname)
+    videoPC_ip = local_ip
+  else:
+    local_ip = "10.3.141.1"
+    videoPC_ip = "10.3.141.52"
+  
+  print("local IP : ", local_ip)
+  
+  
+  #OSC connection to QLC+
+  clientQLC = udp_client.SimpleUDPClient(local_ip, 5005)
+  #OSC connection to Mini PC
+  clientPC = udp_client.SimpleUDPClient("10.3.141.213", 5006)
+  #OSC connection to Video PC
+  clientVideoPC = udp_client.SimpleUDPClient(videoPC_ip, 5007)
+
+
 
   dispatcher = dispatcher.Dispatcher()
   dispatcher.map("/midi/voicelive", print_voicelive_handler, "Midi_voicelive OSC")
@@ -357,7 +365,7 @@ if __name__ == "__main__":
   dispatcher.map("/switch", print_switch_handler, "Switch OSC")
 
   server = osc_server.ThreadingOSCUDPServer(
-      (args.ip, args.port), dispatcher)
+      (local_ip, 8000), dispatcher)
   print("Serving on {}".format(server.server_address))
   
   
