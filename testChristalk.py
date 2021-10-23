@@ -12,6 +12,6 @@ clientQLC = udp_client.SimpleUDPClient("10.3.141.1", 8000)
 #
 #time.sleep(2)
 
-clientQLC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, 1])
+clientQLC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_TALK])
 
 
