@@ -2,7 +2,7 @@
 ::start Musicbeam
 
 ::start "Simulator" python -u ..\Simulator\simulator.py
-start "VoiceLiveSimu" python -u ..\Simulator\voicelive_simulator.py
+start "VoiceLiveSimu" python -u ..\Simulator\voicelive_simulator.py simulation_mode
 timeout /t 1
 start /min "Video Manager" python -u videoManager.py config.json
 timeout /t 2
