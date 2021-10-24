@@ -14,10 +14,17 @@ import socket
 
 #OSC connection to QLC+
 
-hostname = socket.gethostname()
-local_ip = socket.gethostbyname(hostname)
-print(local_ip)
-clientQLC = udp_client.SimpleUDPClient(local_ip, 8000)
+
+
+   
+if(len(sys.argv) > 1):
+    hostname = socket.gethostname()
+    liveserver_ip = socket.gethostbyname(hostname)
+else:
+    liveserver_ip = "10.3.141.1"
+
+print(liveserver_ip)
+clientQLC = udp_client.SimpleUDPClient(liveserver_ip, 8000)
 
 #First set a progam change corresponding to Smooth range
 #clientQLC.send_message("/midi/voicelive", [MIDI_PROGRAM_CHANGE, SMOOTH_PRESET_ANOTHER_TOWN, 0])
