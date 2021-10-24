@@ -196,9 +196,12 @@ time.sleep(2)
 
 
 filename = str(SLIDESHOW_PATH).split('\\').pop()
-window_name = "Diaporama Powerpoint - [" + filename + "] - PowerPoint"                     
+window_name = "Diaporama Powerpoint  -  " + filename + " - PowerPoint"  
+print("looking for window named : ", window_name)                   
 hwnd = win32gui.FindWindow(None, window_name)
-win32gui.MoveWindow(hwnd, 0, 0, 600, 400, True)
+print ("handle : ", hwnd)
+if(hwnd != 0):
+    win32gui.MoveWindow(hwnd, 0, 0, 600, 400, True)
 
 print("starting OSC thread")
 dispatcher = dispatcher.Dispatcher()
