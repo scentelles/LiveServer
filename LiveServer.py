@@ -3,6 +3,7 @@ This program listens to several addresses, and prints some information about
 received packets.
 """
 import sys 
+import os
 import argparse
 import math
 import socket 
@@ -316,6 +317,11 @@ def print_switch_handler(unused_addr, args, switchId, value):
        clientQLC.send_message(currentMessage, 255)
        clientQLC.send_message(currentMessage, 0)
 
+def print_shutdown_handler(unused_addr, args, value):
+  print("Shutting down Megascreen")
+  clientMS.send_message("MS/shutdown", 1) 
+  print("Shutting down system")
+  os.system("shutdown /s /t 1")  
 
 def print_laserharp_handler(osc_address, args, command):
   print ("Received OSC message from Laser Harp")
@@ -356,11 +362,13 @@ if __name__ == "__main__":
   clientPC = udp_client.SimpleUDPClient("10.3.141.213", 5006)
   #OSC connection to Video PC
   clientVideoPC = udp_client.SimpleUDPClient(videoPC_ip, 5007)
-
+  #OSC connection to Megascreen - used only to shutdown
+  clientMS = udp_client.SimpleUDPClient("10.3.141.133", 7701)
 
 
   dispatcher = dispatcher.Dispatcher()
   dispatcher.map("/midi/voicelive", print_voicelive_handler, "Midi_voicelive OSC")
+  dispatcher.map("/midi/shutdown", print_shutdown_handler, "Shutdown")
   dispatcher.map("/vkb_midi/0/*", print_laserharp_handler, "Midi_laserharp OSC")
   dispatcher.map("/switch", print_switch_handler, "Switch OSC")
 

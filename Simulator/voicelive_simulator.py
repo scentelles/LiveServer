@@ -39,7 +39,8 @@ for song_id in SName.keys():
 print("> : Next Step")
 print("< : Previous Step")
 print("* : Chris Talk")    
-    
+print("+ : Shutdown")
+
 while (True):
     choice = prompt('Make your choice: ')
     print('You chose: %s' % choice)
@@ -52,6 +53,9 @@ while (True):
     elif(choice == "*"): 
         print ("Chris talk in QLC...")
         clientQLC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, MIDI_CONTROL_CHANGE_FROM_CHRIS, MIDI_CC_CHRIS_TALK])    
+    elif(choice == "+"): 
+        print ("sending shutdown...")
+        clientQLC.send_message("/midi/shutdown", 1)    
     else:
         print ("Selecting Song In QLC : ", SName[choice2song[int(choice)]])
         clientQLC.send_message("/midi/voicelive", [MIDI_PROGRAM_CHANGE, choice2song[int(choice)]-1, 0])

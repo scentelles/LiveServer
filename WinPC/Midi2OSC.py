@@ -87,6 +87,7 @@ class MidiInputHandler(object):
         if(value == 1): #We don't receive the preset 1(index 0...), so let's use the number 2(index 1).
             #shutdown
             print("Shuting down immediately")
+            client.send_message("/midi/shutdown", 1)
             cmd = "Shutdown -s -f -t 0"
             os.system(cmd)
               
