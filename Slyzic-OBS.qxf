@@ -3,8 +3,8 @@
 <FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
  <Creator>
   <Name>Q Light Controller Plus</Name>
-  <Version>4.12.2</Version>
-  <Author></Author>
+  <Version>4.12.4</Version>
+  <Author>scent</Author>
  </Creator>
  <Manufacturer>Slyzic</Manufacturer>
  <Model>OBS</Model>
@@ -15,9 +15,17 @@
  <Channel Name="Scene">
   <Group Byte="0">Effect</Group>
  </Channel>
+ <Channel Name="Slideshow">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="0">Nothing</Capability>
+  <Capability Min="1" Max="1">Next slide</Capability>
+  <Capability Min="2" Max="2">Previous slide</Capability>
+  <Capability Min="3" Max="255">Unmapped</Capability>
+ </Channel>
  <Mode Name="Standard">
   <Channel Number="0">Collection</Channel>
   <Channel Number="1">Scene</Channel>
+  <Channel Number="2">Slideshow</Channel>
  </Mode>
  <Physical>
   <Bulb Type="" Lumens="0" ColourTemperature="0"/>

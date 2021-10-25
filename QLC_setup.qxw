@@ -3,28 +3,27 @@
 <Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="FunctionManager">
  <Creator>
   <Name>Q Light Controller Plus</Name>
-  <Version>4.12.3 GIT</Version>
-  <Author></Author>
+  <Version>4.12.4</Version>
+  <Author>scent</Author>
  </Creator>
  <Engine>
   <InputOutputMap>
    <Universe Name="Universe 1" ID="0">
-    <Input Plugin="OSC" Line="0">
+    <Input Plugin="OSC" Line="5">
      <PluginParameters inputPort="5005"/>
     </Input>
-    <Output Plugin="ArtNet" Line="0">
-     <PluginParameters outputUni="1"/>
-    </Output>
+    <Output Plugin="OSC" Line="0"/>
    </Universe>
    <Universe Name="Universe 2" ID="1">
-    <Output Plugin="uDMX" Line="0">
-     <PluginParameters UniverseChannels="87"/>
-    </Output>
+    <Output Plugin="OSC" Line="5"/>
    </Universe>
    <Universe Name="Universe 3" ID="2">
-    <Output Plugin="OSC" Line="1"/>
+    <Input Plugin="OSC" Line="5"/>
+    <Output Plugin="OSC" Line="0"/>
    </Universe>
-   <Universe Name="Universe 4" ID="3"/>
+   <Universe Name="Universe 4" ID="3">
+    <Output Plugin="OSC" Line="5"/>
+   </Universe>
   </InputOutputMap>
   <Fixture>
    <Manufacturer>Generic</Manufacturer>
@@ -197,7 +196,7 @@
    <Name>OBS</Name>
    <Universe>2</Universe>
    <Address>19</Address>
-   <Channels>2</Channels>
+   <Channels>3</Channels>
   </Fixture>
   <Fixture>
    <Manufacturer>Slyzic</Manufacturer>
@@ -2391,22 +2390,34 @@
    <FixtureVal ID="13">0,255,1,0,2,0</FixtureVal>
    <FixtureVal ID="12">0,255,1,0,2,0</FixtureVal>
   </Function>
-  <Function ID="314" Type="Scene" Name="New Scene" Hidden="True">
-   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="5">5,0,6,0,7,0,8,0,9,0,10,0,11,0</FixtureVal>
-   <FixtureVal ID="8">4,0,5,0,9,0,10,0,11,0,12,0</FixtureVal>
-   <FixtureVal ID="10"/>
-   <FixtureVal ID="1">0,0,1,0,7,0</FixtureVal>
-   <FixtureVal ID="18"/>
-   <FixtureVal ID="14">0,0,1,0,2,0,3,0,4,0</FixtureVal>
-  </Function>
-  <Function ID="315" Type="Sequence" Name="New Sequence 315" BoundScene="314">
-   <Speed FadeIn="0" FadeOut="0" Duration="500"/>
+  <Function ID="315" Type="Sequence" Name="Slide Next" BoundScene="314">
+   <Speed FadeIn="0" FadeOut="0" Duration="200"/>
    <Direction>Forward</Direction>
-   <RunOrder>Loop</RunOrder>
+   <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="21">1:1,82,7,255:5:5,255,6,203,10,255,11,141:8:4,222,5,197,9,255:14:0,255</Step>
-   <Step Number="1" FadeIn="0" Hold="500" FadeOut="0" Values="21">1:1,82,7,255:5:6,203,10,255,11,141:8:4,222,9,255:14:0,255,1,255,2,255,3,255</Step>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="1">17:2,1</Step>
+   <Step Number="1" FadeIn="0" Hold="200" FadeOut="0" Values="1"/>
+  </Function>
+  <Function ID="316" Type="Sequence" Name="Slide Previous" BoundScene="317">
+   <Speed FadeIn="0" FadeOut="0" Duration="200"/>
+   <Direction>Forward</Direction>
+   <RunOrder>SingleShot</RunOrder>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="1">17:2,2</Step>
+   <Step Number="1" FadeIn="0" Hold="200" FadeOut="0" Values="1"/>
+  </Function>
+  <Function ID="318" Type="Chaser" Name="Test slideshow">
+   <Speed FadeIn="0" FadeOut="0" Duration="1000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>SingleShot</RunOrder>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">315</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">315</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">315</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">315</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">316</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">316</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">316</Step>
   </Function>
   <Monitor DisplayMode="1" ShowLabels="1">
    <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
@@ -2598,7 +2609,7 @@
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
     <ShowEnableButton>True</ShowEnableButton>
-    <Collapsed>False</Collapsed>
+    <Collapsed>True</Collapsed>
     <Disabled>False</Disabled>
     <CueList Caption="NightShadowTrain" ID="23">
      <WindowState Visible="False" X="10" Y="90" Width="200" Height="215"/>
