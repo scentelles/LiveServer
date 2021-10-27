@@ -319,9 +319,9 @@ def print_switch_handler(unused_addr, args, switchId, value):
 
 def print_shutdown_handler(unused_addr, args, value):
   print("Shutting down Megascreen")
-  clientMS.send_message("MS/shutdown", 1) 
+  clientMS.send_message("/MS/shutdown", 1) 
   print("Shutting down system")
-  os.system("shutdown /s /t 1")  
+  os.system("shutdown -h -P now")  
 
 def print_laserharp_handler(osc_address, args, command):
   print ("Received OSC message from Laser Harp")
@@ -363,7 +363,7 @@ if __name__ == "__main__":
   #OSC connection to Video PC
   clientVideoPC = udp_client.SimpleUDPClient(videoPC_ip, 5007)
   #OSC connection to Megascreen - used only to shutdown
-  clientMS = udp_client.SimpleUDPClient("10.3.141.133", 7701)
+  clientMS = udp_client.SimpleUDPClient("10.3.141.133", 7702)
 
 
   dispatcher = dispatcher.Dispatcher()
