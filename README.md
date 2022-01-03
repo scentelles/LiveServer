@@ -1,1 +1,3 @@
 # LiveServer
+
+pip install mido
