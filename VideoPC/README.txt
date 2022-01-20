@@ -13,6 +13,8 @@ Install python (tested successfully with python 3.9 installed from microsoft sto
 pip install obs-websocket-py
 pip install pywin32
 
+pip install python-osc
+
 Update config.json SLIDESHOW_PATH variable with the path to the slideshow
 
 For simulator : 
