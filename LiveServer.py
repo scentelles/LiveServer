@@ -350,8 +350,8 @@ if __name__ == "__main__":
     local_ip = socket.gethostbyname(hostname)
     videoPC_ip = local_ip
   else:
-    local_ip = "10.3.141.1"
-    videoPC_ip = "10.3.141.52"
+    local_ip = "10.3.141.2"
+    videoPC_ip = "10.3.141.3"
   
   print("local IP : ", local_ip)
   
@@ -359,11 +359,11 @@ if __name__ == "__main__":
   #OSC connection to QLC+
   clientQLC = udp_client.SimpleUDPClient(local_ip, 5005)
   #OSC connection to Mini PC
-  clientPC = udp_client.SimpleUDPClient("10.3.141.213", 5006)
+  clientPC = udp_client.SimpleUDPClient(videoPC_ip, 5006)
   #OSC connection to Video PC
   clientVideoPC = udp_client.SimpleUDPClient(videoPC_ip, 5007)
   #OSC connection to Megascreen - used only to shutdown
-  clientMS = udp_client.SimpleUDPClient("10.3.141.133", 7702)
+  clientMS = udp_client.SimpleUDPClient("10.3.141.5", 7702)
 
 
   dispatcher = dispatcher.Dispatcher()
