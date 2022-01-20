@@ -12,17 +12,24 @@ from pythonosc import udp_client
 from pythonosc import osc_server
 from pythonosc import dispatcher
 
-from LCDMonitor import LCDMonitorClass
 
 import os
+import socket 
 
 from threading import Timer
 
 #==========================================================
 # Constant definitions
-RASPI_IP       = "10.3.141.1"
+if(len(sys.argv) > 1):
+    hostname = socket.gethostname()
+    RASPI_IP = socket.gethostbyname(hostname)
+    LOCALHOST_IP = RASPI_IP
+else:
+    RASPI_IP       = "10.3.141.2"
+    LOCALHOST_IP   = "10.3.141.3"
+
+
 RASPI_PORT     = 8000
-LOCALHOST_IP   = "10.3.141.213"
 LOCALHOST_PORT = 5006
 
 INPUT_PORT  = 'Springbeats vMIDI2'
@@ -125,8 +132,6 @@ def print_laserharp_handler(osc_address, args, velocity):
 #==========================================================
 #Main code
 
-myMonitor = LCDMonitorClass()
-
 
 #Open output port
 midiout = rtmidi.MidiOut()
@@ -166,7 +171,6 @@ try:
     print("Entering main loop. Press Control-C to exit.")
     server.serve_forever()
 except KeyboardInterrupt:
-    myMonitor.monitorThread.join()
-    myMonitor.keyThread.join()
+
     exit()
 
