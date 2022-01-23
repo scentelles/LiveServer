@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureDefinition>
+<FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.12.4</Version>
+  <Author>scentelles</Author>
+ </Creator>
+ <Manufacturer>Slyzic</Manufacturer>
+ <Model>LHControl</Model>
+ <Type>Other</Type>
+ <Channel Name="Control">
+  <Group Byte="0">Maintenance</Group>
+  <Capability Min="0" Max="0">unused</Capability>
+  <Capability Min="1" Max="1">Idle</Capability>
+  <Capability Min="2" Max="2">DMX mode</Capability>
+  <Capability Min="3" Max="50">LaserHarp mode and preset</Capability>
+  <Capability Min="51" Max="255">Unuses</Capability>
+ </Channel>
+ <Channel Name="VirtualButtons">
+  <Group Byte="0">Maintenance</Group>
+  <Capability Min="0" Max="0">Button_none</Capability>
+  <Capability Min="1" Max="1">UP</Capability>
+  <Capability Min="2" Max="2">DOWN</Capability>
+  <Capability Min="3" Max="3">LEFT</Capability>
+  <Capability Min="4" Max="4">RIGHT</Capability>
+  <Capability Min="5" Max="5">SELECT</Capability>
+  <Capability Min="6" Max="6">UP_LONGPRESS</Capability>
+  <Capability Min="7" Max="7">DOWN_LONGPRESS</Capability>
+  <Capability Min="8" Max="8">LEFT_LONGPRESS</Capability>
+  <Capability Min="9" Max="9">RIGHT_LONGPRESS</Capability>
+  <Capability Min="10" Max="10">SELECT_LONGPRESS</Capability>
+  <Capability Min="11" Max="255"></Capability>
+ </Channel>
+ <Mode Name="Standard">
+  <Channel Number="0" ActsOn="0">Control</Channel>
+  <Channel Number="1" ActsOn="1">VirtualButtons</Channel>
+ </Mode>
+ <Physical>
+  <Bulb Type="" Lumens="0" ColourTemperature="0"/>
+  <Dimensions Weight="0" Width="0" Height="0" Depth="0"/>
+  <Lens Name="Other" DegreesMin="0" DegreesMax="0"/>
+  <Focus Type="Fixed" PanMax="0" TiltMax="0"/>
+  <Technical PowerConsumption="0" DmxConnector="5-pin"/>
+ </Physical>
+</FixtureDefinition>

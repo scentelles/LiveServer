@@ -1,4 +1,6 @@
 
+import time
+
 from SmoothDefines import *  #TODO : used only for OBS. not smooth specific
 
 DMX_CHANNEL_VISUALIZER_BASE 	= 32

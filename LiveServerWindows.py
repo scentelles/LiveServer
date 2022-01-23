@@ -61,11 +61,123 @@ def startCueList(songId):
     clientQLC.send_message(currentMessage, 0)
 
 def startSong(songId):
+    clientVideoPC.send_message("/video/song", songId) #TODO : check currentsong key exists
 
     startCueList(songId)
 
 
+def SmoothTrioPC():
+  global currentStep
+  global currentSong
+
   
+  if((currentSong in SName) and (chrisTalkOngoing == 0)):  
+    startSong(currentSong)
+
+  else:
+    print("Smooth song unmapped or Christalk ongoing. do nothing")
+    #clientQLC.send_message("/stopallfunctions", 255)
+
+    
+    
+def SmoothTrioCC(myCC, value):
+  global currentStep
+  global chrisTalkOngoing
+  global currentSong
+  
+  #if step control
+  #exlude first time step1, managed by Program Change. 
+  #But allow to go back to it we already were beyond step1 
+  tempNewStep = value + 1
+  print ("myCC : " + str(myCC))
+  
+  
+    
+  
+  
+  if (myCC == VL3_CC_STEP):
+   #Upon Step2, (generally the start of the song, no Christalk is allowed.
+   #Forcing Christalk deactivation and resetting to current song start
+   if(tempNewStep == 2):
+     chrisTalkOngoing = 0
+     startSong(currentSong) #contains a stop all function call, should be sufficient to stop the chris talk
+     time.sleep(0.1) 
+
+   if ((tempNewStep > 1) or (currentStep > 1)) and (chrisTalkOngoing == 0):
+      previousStep = currentStep
+      currentStep = tempNewStep
+
+      if(currentSong in SName):
+
+
+	#Special case of going from last to first step on voicelive.
+	#Using it to reset to step1, stop all functiona and restart cue
+	#will work only for presets with more than2 steps...
+        if(abs(previousStep - currentStep) > 1):
+            print("resetting Cue and restart")
+            startSong(currentSong)
+            return
+
+        if (currentStep > previousStep):
+          currentMessage = "/step_next"
+        else:
+          currentMessage = "/step_previous"  
+
+        print("Sending OSC message step to QLC : " + currentMessage)
+        clientQLC.send_message(currentMessage, 255)
+        clientQLC.send_message(currentMessage, 0)
+      else:
+        print("Step increment : Smooth song unmapped. do nothing")
+
+  #Additional CC coming from Chris
+  if (myCC == MIDI_CONTROL_CHANGE_FROM_CHRIS) : 
+    if(value == MIDI_CC_CHRIS_NEXT_STEP):
+       print("From Chris : next step")
+       currentMessage = "/step_next"
+       currentStep = currentStep + 1
+       clientQLC.send_message(currentMessage, 255)
+       clientQLC.send_message(currentMessage, 0)
+    elif(value == MIDI_CC_CHRIS_PREVIOUS_STEP):
+       print("From Chris : previous step")
+       currentStep = currentStep - 1
+       currentMessage = "/step_previous"  
+       clientQLC.send_message(currentMessage, 255)
+       clientQLC.send_message(currentMessage, 0)       
+    elif(value == MIDI_CC_CHRIS_NEXT_SLIDE):
+       print("From Chris : next slide")
+       clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_NEXT_SLIDE)
+    elif(value == MIDI_CC_CHRIS_PREVIOUS_SLIDE):
+       print("From Chris : previous slide")
+       clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_NEXT_SLIDE)
+
+    elif(value == MIDI_CC_CHRIS_TALK):
+       print("Setting Chris Talk Scene")
+
+       if(chrisTalkOngoing == 0):
+           chrisTalkOngoing = 1
+	   
+           clientVideoPC.send_message("/video/song", SMOOTH_PRESET_CHRIS_TALK) 
+
+           clientQLC.send_message("/stopallfunctions", 255) 
+           clientQLC.send_message("/stop", 255)
+           clientQLC.send_message("/stop", 0)
+           clientQLC.send_message("/stop", 255)
+           clientQLC.send_message("/stop", 0)
+           time.sleep(0.5)
+           currentMessage = "/chris_talk"	      
+           clientQLC.send_message(currentMessage, 255)
+           clientQLC.send_message(currentMessage, 0)
+
+       else:  #restart cue list of current song when going out of CHris talk
+           chrisTalkOngoing = 0
+           startSong(currentSong) #contains a stop all function call, should be sufficient to stop the chris talk
+
+
+  else:
+       print("Message from Chris unrecognized")
+
+
+
 
 def forwardPCFromVoicelive(myCC, value):
   global currentSong
@@ -77,7 +189,7 @@ def forwardPCFromVoicelive(myCC, value):
 
     
   if(currentSong > SMOOTH_PRESET_MIN and currentSong < SMOOTH_PRESET_MAX):
-    print("On RASPI, do nothing when in Smooth trio config")
+    SmoothTrioPC()
 
 
 #clientQLC.send_message("/fog", 255)
@@ -85,7 +197,7 @@ def forwardCCFromVoicelive(myCC, value):
   global clientQLC
   print("Dispatching message CC from Voicelive : " + str(myCC) + " | " + str(value))
   if(currentSong > SMOOTH_PRESET_MIN and currentSong < SMOOTH_PRESET_MAX):
-    print("On RASPI, do nothing when in Smooth trio config")
+    SmoothTrioCC(myCC, value)
   
   
   else:
@@ -180,11 +292,41 @@ def print_voicelive_handler(unused_addr, args, command, note, vel):
     
   print("\n[{0}] ~ {1} {2} {3}".format(args[0], command, note, vel))
    
+
+def print_switch_handler(unused_addr, args, switchId, value):
+  
+  global fogOngoing 
+  global currentStep
+  print("\nReceive Switch OSC message : [{0}] ~ {1} {2} ".format(args[0], switchId, value))
+  if(switchId == 3):
+    if(value > 0):
+      if(fogOngoing == 0):
+        print("Switching fog On")
+        clientQLC.send_message("/fog", 255)
+        fogOngoing = 1
+      else:
+        print("Switching fog Off")
+        clientQLC.send_message("/fog", 0)
+        fogOngoing = 0
+	
+  if(switchId == 1):
+    if(value > 0):
+       print("From Switch : next step")
+       currentMessage = "/step_next"
+       currentStep = currentStep + 1
+       clientQLC.send_message(currentMessage, 255)
+       clientQLC.send_message(currentMessage, 0)
+
 def print_shutdown_handler(unused_addr, args, value):
+  print("Shutting down Megascreen")
+  clientMS.send_message("/MS/shutdown", 1) 
   print("Shutting down system")
   os.system("shutdown -h -P now")  
 
 
+def print_note_handler(unused_addr, args, arg2, note):
+  print("[{0}] ~ {1} {2}".format(args[0], arg2, note))
+  
 def print_compute_handler(unused_addr, args, volume):
   try:
     print("[{0}] ~ {1}".format(args[0], args[1](volume)))
@@ -193,20 +335,29 @@ def print_compute_handler(unused_addr, args, volume):
 if __name__ == "__main__":
 
 
-  local_ip = "10.3.141.2"
-  videoPC_ip = "10.3.141.2"
+  print ("Argument nb:", len(sys.argv))
+
+
+  local_ip = "10.3.141.3"
+  videoPC_ip = "10.3.141.3"
   
   print("local IP : ", local_ip)
   
   
   #OSC connection to QLC+
   clientQLC = udp_client.SimpleUDPClient(local_ip, 5005)
-
+  #OSC connection to Mini PC
+  clientPC = udp_client.SimpleUDPClient(videoPC_ip, 5006)
+  #OSC connection to Video PC
+  clientVideoPC = udp_client.SimpleUDPClient(videoPC_ip, 5007)
+  #OSC connection to Megascreen - used only to shutdown
+  clientMS = udp_client.SimpleUDPClient("10.3.141.5", 7702)
 
 
   dispatcher = dispatcher.Dispatcher()
   dispatcher.map("/midi/voicelive", print_voicelive_handler, "Midi_voicelive OSC")
   dispatcher.map("/midi/shutdown", print_shutdown_handler, "Shutdown")
+  dispatcher.map("/switch", print_switch_handler, "Switch OSC")
 
   server = osc_server.ThreadingOSCUDPServer(
       (local_ip, 8000), dispatcher)
