@@ -27,13 +27,14 @@ OSC_ADDRESS   = "127.0.0.1"
 OSC_PORT      = 9002         #corresponds to universe #3
 
 DMX_CHANNEL_LH_CONTROL = 16
+DMX_CHANNEL_LH_VIRTUAL_BUTTON = 17
 LH_CONTROL_IDLE = 1
 LH_CONTROL_DMX  = 2
 LH_CONTROL_LH_PRESET_OFFSET  = 3
 
 
 DEBOUNCE_DELAY = 0.3
-DELAY_TO_SEND_LAST_VALUES = 0.6
+DELAY_TO_SEND_LAST_VALUES = 0.6 
 
 
 clientLH = udp_client.SimpleUDPClient("10.3.141.90", 8001)
@@ -66,6 +67,15 @@ def dispatch_qlc_osc_handler(osc_address, args, command):
       print("LH : Setting LH mode, preset : " + str(preset))
       clientLH.send_message("/laserharp/startLH", preset)      #To be tested
     return
+
+  if(int(channel) == DMX_CHANNEL_LH_VIRTUAL_BUTTON - 1):
+    print("Received LH OSC Command")
+
+    print("LH : Sending virtual button press")
+    clientLH.send_message("/laserharp/virtualButton", value)
+  
+    return
+
 
   process_OSC_2_MegaScreen(clientMS, channel, value)
 
