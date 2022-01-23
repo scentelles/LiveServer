@@ -30,7 +30,7 @@ else:
 
 
 RASPI_PORT     = 8000
-LOCALHOST_PORT = 5006
+LOCALHOST_PORT = 8010
 
 INPUT_PORT  = 'Springbeats vMIDI2'
 OUTPUT_PORT = 'Springbeats vMIDI4'
