@@ -323,14 +323,6 @@ def print_shutdown_handler(unused_addr, args, value):
   print("Shutting down system")
   os.system("shutdown -h -P now")  
 
-def print_laserharp_handler(osc_address, args, command):
-  print ("Received OSC message from Laser Harp")
-  print("address" + osc_address)
-  print(command);
-  clientPC.send_message(osc_address, command);
-  
-  #print("[{0}] ~ {1} {2} {3}\n".format(args[0], command, note, vel))
-   
 
 def print_note_handler(unused_addr, args, arg2, note):
   print("[{0}] ~ {1} {2}".format(args[0], arg2, note))
@@ -345,13 +337,9 @@ if __name__ == "__main__":
 
   print ("Argument nb:", len(sys.argv))
 
-  if(len(sys.argv) > 1):
-    hostname = socket.gethostname()
-    local_ip = socket.gethostbyname(hostname)
-    videoPC_ip = local_ip
-  else:
-    local_ip = "10.3.141.2"
-    videoPC_ip = "10.3.141.3"
+
+  local_ip = "10.3.141.3"
+  videoPC_ip = "10.3.141.3"
   
   print("local IP : ", local_ip)
   
@@ -369,7 +357,6 @@ if __name__ == "__main__":
   dispatcher = dispatcher.Dispatcher()
   dispatcher.map("/midi/voicelive", print_voicelive_handler, "Midi_voicelive OSC")
   dispatcher.map("/midi/shutdown", print_shutdown_handler, "Shutdown")
-  dispatcher.map("/vkb_midi/0/*", print_laserharp_handler, "Midi_laserharp OSC")
   dispatcher.map("/switch", print_switch_handler, "Switch OSC")
 
   server = osc_server.ThreadingOSCUDPServer(
