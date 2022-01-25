@@ -8,7 +8,7 @@ from prompt_toolkit import prompt
 
 import socket 
 
-
+VL3_CC_STEP 		= 115
 
 #sendosc 10.3.141.1 5005 /step_next i 255
 
@@ -17,11 +17,8 @@ import socket
 
 
    
-if(len(sys.argv) > 1):
-    hostname = socket.gethostname()
-    liveserver_ip = socket.gethostbyname(hostname)
-else:
-    liveserver_ip = "10.3.141.1"
+hostname = socket.gethostname()
+liveserver_ip = socket.gethostbyname(hostname)
 
 print(liveserver_ip)
 clientQLC = udp_client.SimpleUDPClient(liveserver_ip, 8000)
@@ -36,6 +33,7 @@ for song_id in SName.keys():
     index += 1
     print("(" + str(index) + ") " + "preset " + str(song_id) + " \t: " +  SName[song_id])
     choice2song[index] = song_id
+print("! : Voicelive CC Step")
 print("> : Next Step")
 print("< : Previous Step")
 print("* : Chris Talk")    
@@ -56,6 +54,9 @@ while (True):
     elif(choice == "+"): 
         print ("sending shutdown...")
         clientQLC.send_message("/midi/shutdown", 1)    
+    elif(choice == "!"): 
+        print ("sending VL stepcd ...")
+        clientQLC.send_message("/midi/voicelive", [MIDI_CONTROL_CHANGE, VL3_CC_STEP, VL3_CC_STEP])
     else:
         print ("Selecting Song In QLC : ", SName[choice2song[int(choice)]])
         clientQLC.send_message("/midi/voicelive", [MIDI_PROGRAM_CHANGE, choice2song[int(choice)]-1, 0])
