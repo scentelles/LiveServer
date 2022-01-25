@@ -2295,15 +2295,13 @@
   <Function ID="314" Type="Scene" Name="LH_BUTTON_UP" Path="LaserHarp/Buttons">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="17">2,0</FixtureVal>
-   <FixtureVal ID="6">0,1</FixtureVal>
-   <FixtureVal ID="15">1,1</FixtureVal>
   </Function>
   <Function ID="315" Type="Sequence" Name="Slide Next" BoundScene="314">
    <Speed FadeIn="0" FadeOut="0" Duration="200"/>
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="3">6:0,1:15:1,1:17:2,1</Step>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="4">6:0,1:15:1,1:17:2,1</Step>
    <Step Number="1" FadeIn="0" Hold="200" FadeOut="0" Values="3">6:0,1:15:1,1</Step>
   </Function>
   <Function ID="316" Type="Sequence" Name="Slide Previous" BoundScene="317">
@@ -2311,13 +2309,12 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="2">6:0,2:17:2,2</Step>
-   <Step Number="1" FadeIn="0" Hold="200" FadeOut="0" Values="2">15:1,2</Step>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="1">17:2,2</Step>
+   <Step Number="1" FadeIn="0" Hold="200" FadeOut="0" Values="1">15:1,2</Step>
   </Function>
   <Function ID="317" Type="Scene" Name="LH_BUTTON_DOWN" Path="LaserHarp/Buttons">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="17">2,0</FixtureVal>
-   <FixtureVal ID="15">1,2</FixtureVal>
   </Function>
   <Function ID="318" Type="Chaser" Name="Test slideshow">
    <Speed FadeIn="0" FadeOut="0" Duration="1000"/>
@@ -3358,8 +3355,8 @@
      <Speed FadeIn="0" FadeOut="0" Duration="0"/>
     </Cue>
     <Cue Name="Cue 2">
-     <Value Channel="1024">99</Value>
      <Value Channel="1025">61</Value>
+     <Value Channel="1024">99</Value>
      <Speed FadeIn="0" FadeOut="0" Duration="0"/>
     </Cue>
    </CueStack>
