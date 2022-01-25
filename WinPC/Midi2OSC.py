@@ -20,17 +20,12 @@ from threading import Timer
 
 #==========================================================
 # Constant definitions
-if(len(sys.argv) > 1):
-    hostname = socket.gethostname()
-    RASPI_IP = socket.gethostbyname(hostname)
-    LOCALHOST_IP = RASPI_IP
-else:
-    RASPI_IP       = "10.3.141.2"
-    LOCALHOST_IP   = "10.3.141.3"
+hostname = socket.gethostname()
+LOCALHOST_IP   = socket.gethostbyname(hostname)
 
 
-RASPI_PORT     = 8000
-LOCALHOST_PORT = 8010
+LIVESERVER_PORT     = 8000
+LH_PORT = 8010
 
 INPUT_PORT  = 'Springbeats vMIDI2'
 OUTPUT_PORT = 'Springbeats vMIDI4'
@@ -39,26 +34,6 @@ DEBOUNCE_PRESET_DELAY = 3.0
 
 #==========================================================
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#==========================================================
 
 class MidiInputHandler(object):
     def __init__(self, port):
@@ -156,13 +131,13 @@ for port, name in enumerate(ports):
        port_name = name
 
 
-client = udp_client.SimpleUDPClient(RASPI_IP, RASPI_PORT)
+client = udp_client.SimpleUDPClient(LOCALHOST_IP, LIVESERVER_PORT)
 
 dispatcher = dispatcher.Dispatcher()
 dispatcher.map("/vkb_midi/0/*", print_laserharp_handler, "midi_laserharp")
 
 server = osc_server.ThreadingOSCUDPServer(
-    (LOCALHOST_IP, LOCALHOST_PORT), dispatcher)
+    (LOCALHOST_IP, LH_PORT), dispatcher)
 
 print("Attaching MIDI input callback handler.")
 midiin.set_callback(MidiInputHandler(port_name))
