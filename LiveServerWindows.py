@@ -61,8 +61,7 @@ def startCueList(songId):
     clientQLC.send_message(currentMessage, 0)
 
 def startSong(songId):
-    clientVideoPC.send_message("/video/song", songId) #TODO : check currentsong key exists
-
+#    clientVideoPC.send_message("/video/song", songId) #TODO : check currentsong key exists
     startCueList(songId)
 
 
@@ -70,7 +69,9 @@ def SmoothTrioPC():
   global currentStep
   global currentSong
 
-  
+  if(currentSong in SName):  
+    print("Setting slide - song id : " + str(currentSong))
+    clientVideoPC.send_message("/video/song", currentSong) #TODO : check currentsong key exists HERE IT DOES NOT WORK
   if((currentSong in SName) and (chrisTalkOngoing == 0)):  
     startSong(currentSong)
 
@@ -148,7 +149,7 @@ def SmoothTrioCC(myCC, value):
        clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_NEXT_SLIDE)
     elif(value == MIDI_CC_CHRIS_PREVIOUS_SLIDE):
        print("From Chris : previous slide")
-       clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_NEXT_SLIDE)
+       clientVideoPC.send_message("/video/slideshow", SLIDESHOW_COMMAND_PREVIOUS_SLIDE)
 
     elif(value == MIDI_CC_CHRIS_TALK):
        print("Setting Chris Talk Scene")
@@ -156,7 +157,7 @@ def SmoothTrioCC(myCC, value):
        if(chrisTalkOngoing == 0):
            chrisTalkOngoing = 1
 	   
-           clientVideoPC.send_message("/video/song", SMOOTH_PRESET_CHRIS_TALK) 
+           #clientVideoPC.send_message("/video/song", SMOOTH_PRESET_CHRIS_TALK) 
 
            clientQLC.send_message("/stopallfunctions", 255) 
            clientQLC.send_message("/stop", 255)
@@ -337,15 +338,15 @@ if __name__ == "__main__":
 
   print ("Argument nb:", len(sys.argv))
 
-
-  local_ip = "10.3.141.3"
-  videoPC_ip = "10.3.141.3"
+  hostname = socket.gethostname()
+  local_ip = socket.gethostbyname(hostname)
+  videoPC_ip = local_ip
   
   print("local IP : ", local_ip)
   
   
   #OSC connection to QLC+
-  clientQLC = udp_client.SimpleUDPClient(local_ip, 5005)
+  clientQLC = udp_client.SimpleUDPClient("127.0.0.1", 7700)
   #OSC connection to Mini PC
   clientPC = udp_client.SimpleUDPClient(videoPC_ip, 5006)
   #OSC connection to Video PC
