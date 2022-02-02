@@ -10,7 +10,9 @@
   <InputOutputMap>
    <Universe Name="Universe 1" ID="0" Passthrough="True">
     <Input Plugin="OSC" Line="1"/>
-    <Output Plugin="ArtNet" Line="0"/>
+    <Output Plugin="ArtNet" Line="0">
+     <PluginParameters outputUni="1"/>
+    </Output>
    </Universe>
    <Universe Name="Universe 2" ID="1" Passthrough="True">
     <Output Plugin="ArtNet" Line="0">
@@ -18,7 +20,7 @@
     </Output>
    </Universe>
    <Universe Name="Universe 3" ID="2" Passthrough="True">
-    <Output Plugin="OSC" Line="1"/>
+    <Output Plugin="OSC" Line="2"/>
    </Universe>
    <Universe Name="Universe 4" ID="3">
     <Output Plugin="OSC" Line="0">
@@ -405,6 +407,20 @@
    <Step Number="4">130</Step>
    <Step Number="5">175</Step>
   </Function>
+  <Function ID="25" Type="Chaser" Name="OuNaviguentLesSecrets" Path="Smooth_Trio">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">41</Step>
+  </Function>
+  <Function ID="26" Type="Chaser" Name="BienvenueChezVenus" Path="Smooth_Trio">
+   <Speed FadeIn="0" FadeOut="0" Duration="4294967294"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">40</Step>
+  </Function>
   <Function ID="27" Type="Collection" Name="LaverseStep1" Path="Smooth_Trio/Laverse">
    <Step Number="0">18</Step>
    <Step Number="1">59</Step>
@@ -491,6 +507,12 @@
    <Step Number="3">17</Step>
    <Step Number="4">60</Step>
    <Step Number="5">161</Step>
+  </Function>
+  <Function ID="40" Type="Collection" Name="VenusIntro" Path="Smooth_Trio/BienvenueChezVenus">
+   <Step Number="0">313</Step>
+  </Function>
+  <Function ID="41" Type="Collection" Name="OnNaviguentIntro" Path="Smooth_Trio/OuNaviguentLesSecrets">
+   <Step Number="0">130</Step>
   </Function>
   <Function ID="43" Type="Scene" Name="SlyPosition" Path="Smooth_Trio/Lyres positions">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -2292,8 +2314,6 @@
   </Function>
   <Function ID="314" Type="Scene" Name="LH_BUTTON_UP" Path="LaserHarp/Buttons">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="17">2,0</FixtureVal>
-   <FixtureVal ID="6">0,1</FixtureVal>
    <FixtureVal ID="15">1,1</FixtureVal>
   </Function>
   <Function ID="315" Type="Sequence" Name="Slide Next" BoundScene="314">
@@ -2301,8 +2321,8 @@
    <Direction>Forward</Direction>
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
-   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="3">6:0,1:15:1,1:17:2,1</Step>
-   <Step Number="1" FadeIn="0" Hold="200" FadeOut="0" Values="3">6:0,1:15:1,1</Step>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="4">15:1,1:6:0,1:15:1,1:17:2,1</Step>
+   <Step Number="1" FadeIn="0" Hold="200" FadeOut="0" Values="3">15:1,1:6:0,1:15:1,1</Step>
   </Function>
   <Function ID="316" Type="Sequence" Name="Slide Previous" BoundScene="317">
    <Speed FadeIn="0" FadeOut="0" Duration="200"/>
@@ -2314,7 +2334,7 @@
   </Function>
   <Function ID="317" Type="Scene" Name="LH_BUTTON_DOWN" Path="LaserHarp/Buttons">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="17">2,0</FixtureVal>
+   <FixtureVal ID="15">1,2</FixtureVal>
   </Function>
   <Function ID="318" Type="Chaser" Name="Test slideshow">
    <Speed FadeIn="0" FadeOut="0" Duration="1000"/>
@@ -3007,7 +3027,7 @@
       <Input Universe="0" Channel="52273"/>
      </Stop>
     </CueList>
-    <CueList Caption="Empty" ID="29">
+    <CueList Caption="BienvenueChezVenus" ID="29">
      <WindowState Visible="False" X="645" Y="775" Width="220" Height="220"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
@@ -3016,15 +3036,17 @@
       <BackgroundImage>None</BackgroundImage>
       <Font>Default</Font>
      </Appearance>
-     <Chaser>4294967295</Chaser>
-     <NextPrevBehavior>0</NextPrevBehavior>
+     <Chaser>26</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
      <Next>
       <Input Universe="0" Channel="18999"/>
      </Next>
      <Previous>
       <Input Universe="0" Channel="2607"/>
      </Previous>
-     <Playback/>
+     <Playback>
+      <Input Universe="0" Channel="60444"/>
+     </Playback>
      <Stop>
       <Input Universe="0" Channel="52273"/>
      </Stop>
@@ -3048,6 +3070,30 @@
      </Previous>
      <Playback>
       <Input Universe="0" Channel="48768"/>
+     </Playback>
+     <Stop>
+      <Input Universe="0" Channel="52273"/>
+     </Stop>
+    </CueList>
+    <CueList Caption="Empty" ID="52">
+     <WindowState Visible="False" X="875" Y="775" Width="220" Height="220"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Chaser>25</Chaser>
+     <NextPrevBehavior>3</NextPrevBehavior>
+     <Next>
+      <Input Universe="0" Channel="18999"/>
+     </Next>
+     <Previous>
+      <Input Universe="0" Channel="2607"/>
+     </Previous>
+     <Playback>
+      <Input Universe="0" Channel="8006"/>
      </Playback>
      <Stop>
       <Input Universe="0" Channel="52273"/>
