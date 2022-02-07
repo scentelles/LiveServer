@@ -4,7 +4,17 @@
 ::start "transmidifier" /min "C:\Program Files (x86)\TransMIDIfier\TransMIDIfier.exe"
 ::timeout /t 1
 
+::goto :skip
+:loop
+ping -n 2 -w 700 10.3.141.1 | find "octets="
+IF %ERRORLEVEL% EQU 0 (
+    echo "Live router found. Starting setup. "
+) ELSE (
+    echo "Live router not found. Trying again. "
+    goto :loop
+)
 
+:skip
 
 
 start "Cantabile" "C:\Program Files\Topten Software\Cantabile 3.0\Cantabile.exe"
