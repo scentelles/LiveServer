@@ -15,10 +15,17 @@ from pythonosc import udp_client
 from GuitarAmpMidi import *
 from SmoothDefines import *
 
+import rtmidi
+from rtmidi.midiutil import open_midiinput
+
+from threading import Timer
+
+OUTPUT_PORT  = 'Springbeats vMIDI3'
+
 MIDI_NOTE_OFF = 0x80
 MIDI_NOTE_ON  = 0x90
-MIDI_CONTROL_CHANGE = 0xb0
-MIDI_PROGRAM_CHANGE = 0xc0
+
+
 
 
 VL3_CC_GUITAR_UMOD 	= 21
@@ -40,6 +47,7 @@ chrisTalkOngoing = 0
 
 
 fogOngoing = 0
+
 
 
 
@@ -180,13 +188,19 @@ def SmoothTrioCC(myCC, value):
 
 
 
-def forwardPCFromVoicelive(myCC, value):
+def forwardPCFromVoicelive(myPC):
   global currentSong
   songName = ""
-  currentSong = myCC + 1
+  currentSong = myPC + 1
+
+  print("sending midi message")
+  msg = [MIDI_PROGRAM_CHANGE, myPC]    # fwd program change on local midi
+  midiout.send_message(msg)
+
   if(currentSong in SName):
     songName = SName[currentSong]
   print("Setting current song to : " + str(currentSong) + " (" + songName + ")")
+
 
     
   if(currentSong > SMOOTH_PRESET_MIN and currentSong < SMOOTH_PRESET_MAX):
@@ -288,7 +302,7 @@ def print_voicelive_handler(unused_addr, args, command, note, vel):
 #    forwardCCFromChris(note, vel)
   if(command == MIDI_PROGRAM_CHANGE):
     print("MIDI_PROGRAM_CHANGE")
-    forwardPCFromVoicelive(note, vel)
+    forwardPCFromVoicelive(note)
 
     
   print("\n[{0}] ~ {1} {2} {3}".format(args[0], command, note, vel))
@@ -346,13 +360,25 @@ if __name__ == "__main__":
   
   
   #OSC connection to QLC+
-  clientQLC = udp_client.SimpleUDPClient("127.0.0.1", 7700)
+  clientQLC = udp_client.SimpleUDPClient(local_ip, 7700)
   #OSC connection to Mini PC
   clientPC = udp_client.SimpleUDPClient(videoPC_ip, 5006)
   #OSC connection to Video PC
   clientVideoPC = udp_client.SimpleUDPClient(videoPC_ip, 5007)
   #OSC connection to Megascreen - used only to shutdown
   clientMS = udp_client.SimpleUDPClient("10.3.141.5", 7702)
+
+
+  midiout = rtmidi.MidiOut()
+  ports = midiout.get_ports()
+  print("looking for MIDI port")
+  for port, name in enumerate(ports):
+    print("[%i] #%s#" % (port, name))
+    if(OUTPUT_PORT in name):
+       print("Opening output port [%i] #%s#" % (port, name))
+       midiout.open_port(port)
+
+
 
 
   dispatcher = dispatcher.Dispatcher()
