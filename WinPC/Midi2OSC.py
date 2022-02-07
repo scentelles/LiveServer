@@ -4,6 +4,8 @@ import logging
 import sys
 import time
 
+sys.path.append("..")
+
 import rtmidi
 from rtmidi.midiutil import open_midiinput
 
@@ -18,6 +20,8 @@ import socket
 
 from threading import Timer
 
+from SmoothDefines import *
+
 #==========================================================
 # Constant definitions
 hostname = socket.gethostname()
@@ -27,10 +31,10 @@ LOCALHOST_IP   = socket.gethostbyname(hostname)
 LIVESERVER_PORT     = 8000
 LH_PORT = 8010
 
-INPUT_PORT  = 'Springbeats vMIDI2'
+INPUT_PORT  = 'AudioBox USB 96 MIDI In 1'
 OUTPUT_PORT = 'Springbeats vMIDI4'
 
-DEBOUNCE_PRESET_DELAY = 3.0
+
 
 #==========================================================
 
@@ -140,6 +144,7 @@ server = osc_server.ThreadingOSCUDPServer(
     (LOCALHOST_IP, LH_PORT), dispatcher)
 
 print("Attaching MIDI input callback handler.")
+ 
 midiin.set_callback(MidiInputHandler(port_name))
 
 try:
