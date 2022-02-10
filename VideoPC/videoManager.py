@@ -52,7 +52,7 @@ ws = obsws(OBS_HOST, OBS_PORT, OBS_PWD)
 obs_connected = False
 
 print("opening OSC client")
-clientProjectM = udp_client.SimpleUDPClient(OSC_LOCALHOST_IP, OSC_PROJECTM_PORT)
+clientProjectM = udp_client.SimpleUDPClient("127.0.0.1", OSC_PROJECTM_PORT)
 
 
 
