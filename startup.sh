@@ -1,6 +1,6 @@
-/usr/bin/qlcplus -o /home/pi/Projects/LiveServer/QLC_setup.qxw -p &
+/usr/bin/qlcplus -o /home/pi/Projects/LiveServer/QLC_setup-raspi.qxw -p &
 
-sleep 10
+sleep 15
 echo "Launching LiveServer"
 /usr/bin/lxterm -title "LiveServer" -hold -e '/usr/bin/python3 /home/pi/Projects/LiveServer/LiveServer.py'
 
