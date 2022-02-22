@@ -16,15 +16,15 @@
    </Universe>
    <Universe Name="Universe 2" ID="1" Passthrough="True">
     <Output Plugin="ArtNet" Line="0">
-     <PluginParameters outputUni="2"/>
+     <PluginParameters outputIP="10.3.141.2" outputUni="2"/>
     </Output>
    </Universe>
    <Universe Name="Universe 3" ID="2" Passthrough="True">
     <Output Plugin="OSC" Line="2"/>
    </Universe>
-   <Universe Name="Universe 4" ID="3">
+   <Universe Name="Universe 4" ID="3" Passthrough="True">
     <Output Plugin="OSC" Line="0">
-     <PluginParameters outputIP="10.3.141.2" outputPort="9002"/>
+     <PluginParameters outputIP="10.3.141.2"/>
     </Output>
    </Universe>
   </InputOutputMap>
@@ -108,7 +108,7 @@
    <ID>7</ID>
    <Name>LH Smoke</Name>
    <Universe>0</Universe>
-   <Address>66</Address>
+   <Address>1</Address>
    <Channels>2</Channels>
   </Fixture>
   <Fixture>
@@ -300,6 +300,7 @@
   <Function ID="8" Type="Collection" Name="DefaultBlackout" Path="Smooth_Trio/0-Defaults">
    <Step Number="0">59</Step>
    <Step Number="1">66</Step>
+   <Step Number="2">347</Step>
   </Function>
   <Function ID="9" Type="Scene" Name="Default" Path="Red_Cloud">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -400,14 +401,15 @@
    <Step Number="1" FadeIn="0" Hold="1000" FadeOut="0" Values="1">7:0,255</Step>
   </Function>
   <Function ID="24" Type="Collection" Name="AnotherTownStep1" Path="Smooth_Trio/AnotherTown">
-   <Step Number="0">281</Step>
-   <Step Number="1">261</Step>
-   <Step Number="2">18</Step>
-   <Step Number="3">59</Step>
-   <Step Number="4">54</Step>
-   <Step Number="5">60</Step>
-   <Step Number="6">130</Step>
-   <Step Number="7">175</Step>
+   <Step Number="0">280</Step>
+   <Step Number="1">306</Step>
+   <Step Number="2">261</Step>
+   <Step Number="3">18</Step>
+   <Step Number="4">59</Step>
+   <Step Number="5">54</Step>
+   <Step Number="6">60</Step>
+   <Step Number="7">130</Step>
+   <Step Number="8">175</Step>
   </Function>
   <Function ID="25" Type="Chaser" Name="OuNaviguentLesSecrets" Path="Smooth_Trio">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -472,6 +474,7 @@
    <Step Number="3">60</Step>
    <Step Number="4">280</Step>
    <Step Number="5">268</Step>
+   <Step Number="6">347</Step>
   </Function>
   <Function ID="33" Type="Collection" Name="LeBalStep01-focus Chris" Path="Smooth_Trio/LeBal">
    <Step Number="0">281</Step>
@@ -573,7 +576,7 @@
    <FixtureVal ID="9">5,0,12,0</FixtureVal>
    <FixtureVal ID="10">5,0,12,0</FixtureVal>
   </Function>
-  <Function ID="47" Type="Sequence" Name="lyre chaser" Path="Lyres" BoundScene="46">
+  <Function ID="47" Type="Sequence" Name="lyre chaser" Path="Lyres front" BoundScene="46">
    <Speed FadeIn="500" FadeOut="500" Duration="700"/>
    <Direction>Forward</Direction>
    <RunOrder>Random</RunOrder>
@@ -582,7 +585,7 @@
    <Step Number="1" FadeIn="0" Hold="0" FadeOut="0" Values="6">9:5,134</Step>
    <Step Number="2" FadeIn="0" Hold="0" FadeOut="0" Values="6">10:5,134</Step>
   </Function>
-  <Function ID="48" Type="Sequence" Name="lyre chaser strobe" Path="Lyres" BoundScene="49">
+  <Function ID="48" Type="Sequence" Name="lyre chaser strobe" Path="Lyres front" BoundScene="49">
    <Speed FadeIn="0" FadeOut="0" Duration="100"/>
    <Direction>Forward</Direction>
    <RunOrder>Random</RunOrder>
@@ -597,7 +600,7 @@
    <FixtureVal ID="9">5,0</FixtureVal>
    <FixtureVal ID="10">5,0</FixtureVal>
   </Function>
-  <Function ID="50" Type="Sequence" Name="lyre chaser slow" Path="Lyres" BoundScene="51">
+  <Function ID="50" Type="Sequence" Name="lyre chaser slow" Path="Lyres front" BoundScene="51">
    <Speed FadeIn="2000" FadeOut="2000" Duration="3000"/>
    <Direction>Forward</Direction>
    <RunOrder>PingPong</RunOrder>
@@ -748,6 +751,7 @@
    <Step Number="0">53</Step>
    <Step Number="1">59</Step>
    <Step Number="2">60</Step>
+   <Step Number="3">347</Step>
   </Function>
   <Function ID="70" Type="Scene" Name="Dimmer-Lyre-strobe-fast" Path="Lyres">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -942,7 +946,7 @@
    <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">105</Step>
    <Step Number="1" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
   </Function>
-  <Function ID="86" Type="Sequence" Name="dimmer wave" Path="Lyres" BoundScene="80">
+  <Function ID="86" Type="Sequence" Name="dimmer wave" Path="Lyres front" BoundScene="80">
    <Speed FadeIn="1000" FadeOut="1000" Duration="1000"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -964,7 +968,7 @@
    <FixtureVal ID="9">0,0,2,0,12,0</FixtureVal>
    <FixtureVal ID="10">0,0,2,0,12,0</FixtureVal>
   </Function>
-  <Function ID="89" Type="Sequence" Name="lyre move 360 slow" Path="Lyres" BoundScene="88">
+  <Function ID="89" Type="Sequence" Name="lyre move 360 slow" Path="Lyres front" BoundScene="88">
    <Speed FadeIn="0" FadeOut="0" Duration="10200"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -972,7 +976,7 @@
    <Step Number="0" FadeIn="10000" Hold="0" FadeOut="10000" Values="9">8:0,255,2,207:9:0,255,2,203:10:0,255,2,203</Step>
    <Step Number="1" FadeIn="10000" Hold="0" FadeOut="10000" Values="9">8:2,50:9:2,48:10:2,48</Step>
   </Function>
-  <Function ID="90" Type="Sequence" Name="lyre move vertical trio fast" Path="Lyres" BoundScene="91">
+  <Function ID="90" Type="Sequence" Name="lyre move vertical trio fast" Path="Lyres front" BoundScene="91">
    <Speed FadeIn="0" FadeOut="0" Duration="700"/>
    <Direction>Forward</Direction>
    <RunOrder>Random</RunOrder>
@@ -987,7 +991,7 @@
    <FixtureVal ID="9">2,0</FixtureVal>
    <FixtureVal ID="10">2,0</FixtureVal>
   </Function>
-  <Function ID="92" Type="Sequence" Name="lyre move vertical trio and people fast" Path="Lyres" BoundScene="93">
+  <Function ID="92" Type="Sequence" Name="lyre move vertical trio and people fast" Path="Lyres front" BoundScene="93">
    <Speed FadeIn="0" FadeOut="0" Duration="2000"/>
    <Direction>Forward</Direction>
    <RunOrder>Random</RunOrder>
@@ -1026,6 +1030,10 @@
    <Step Number="0">52</Step>
    <Step Number="1">59</Step>
    <Step Number="2">60</Step>
+   <Step Number="3">363</Step>
+   <Step Number="4">342</Step>
+   <Step Number="5">354</Step>
+   <Step Number="6">120</Step>
   </Function>
   <Function ID="98" Type="Collection" Name="DefaultSmooth" Path="Smooth_Trio/0-Defaults">
    <Step Number="0">280</Step>
@@ -1035,6 +1043,9 @@
    <Step Number="4">59</Step>
    <Step Number="5">54</Step>
    <Step Number="6">60</Step>
+   <Step Number="7">354</Step>
+   <Step Number="8">367</Step>
+   <Step Number="9">366</Step>
   </Function>
   <Function ID="99" Type="Scene" Name="Lyres-Ambiance-blue" Path="Lyres">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -1288,6 +1299,7 @@
    <Step Number="3">89</Step>
    <Step Number="4">60</Step>
    <Step Number="5">247</Step>
+   <Step Number="6">355</Step>
   </Function>
   <Function ID="137" Type="Collection" Name="AfterChristmasStep08-payapa" Path="Smooth_Trio/AfterChristmas">
    <Step Number="0">53</Step>
@@ -1324,7 +1336,7 @@
    <Step Number="3">94</Step>
    <Step Number="4">147</Step>
   </Function>
-  <Function ID="143" Type="Sequence" Name="lyre move 360 fast" Path="Lyres" BoundScene="144">
+  <Function ID="143" Type="Sequence" Name="lyre move 360 fast" Path="Lyres front" BoundScene="144">
    <Speed FadeIn="0" FadeOut="0" Duration="10200"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -1352,7 +1364,7 @@
    <FixtureVal ID="10">5,0</FixtureVal>
    <FixtureVal ID="9">5,0</FixtureVal>
   </Function>
-  <Function ID="147" Type="Sequence" Name="Lyre-dimmer blackkout progressive" Path="Lyres" BoundScene="146">
+  <Function ID="147" Type="Sequence" Name="Lyre-dimmer blackkout progressive" Path="Lyres front" BoundScene="146">
    <Speed FadeIn="0" FadeOut="0" Duration="4294967294"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -1738,6 +1750,7 @@
    <Step Number="3">59</Step>
    <Step Number="4">60</Step>
    <Step Number="5">160</Step>
+   <Step Number="6">347</Step>
   </Function>
   <Function ID="204" Type="Collection" Name="AfterChristmasStep06-refrain2" Path="Smooth_Trio/AfterChristmas">
    <Step Number="0">18</Step>
@@ -1775,6 +1788,7 @@
    <Step Number="4">59</Step>
    <Step Number="5">53</Step>
    <Step Number="6">60</Step>
+   <Step Number="7">347</Step>
   </Function>
   <Function ID="209" Type="Scene" Name="Front-changing colors">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -1853,7 +1867,7 @@
    <FixtureVal ID="10">0,0,2,0</FixtureVal>
    <FixtureVal ID="9">0,0,2,0</FixtureVal>
   </Function>
-  <Function ID="220" Type="Sequence" Name="lyre move croisement progressif vers public" Path="Lyres" BoundScene="219">
+  <Function ID="220" Type="Sequence" Name="lyre move croisement progressif vers public" Path="Lyres front" BoundScene="219">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -1910,7 +1924,7 @@
    <FixtureVal ID="9">5,131,10,0,11,0,12,255,13,0</FixtureVal>
    <FixtureVal ID="10">5,225,10,0,11,0,12,255,13,0</FixtureVal>
   </Function>
-  <Function ID="228" Type="Sequence" Name="lyre move vertical trio and people slow" Path="Lyres" BoundScene="229">
+  <Function ID="228" Type="Sequence" Name="lyre move vertical trio and people slow" Path="Lyres front" BoundScene="229">
    <Speed FadeIn="0" FadeOut="0" Duration="8000"/>
    <Direction>Forward</Direction>
    <RunOrder>Random</RunOrder>
@@ -1943,7 +1957,7 @@
    <ChannelGroupsVal>3,0</ChannelGroupsVal>
    <FixtureVal ID="4">1,0,4,0,7,0,10,0,13,0,16,0,19,0</FixtureVal>
   </Function>
-  <Function ID="232" Type="Sequence" Name="lyre move vertical and lateral trio and people fast" Path="Lyres" BoundScene="233">
+  <Function ID="232" Type="Sequence" Name="lyre move vertical and lateral trio and people fast" Path="Lyres front" BoundScene="233">
    <Speed FadeIn="0" FadeOut="0" Duration="4000"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -1966,7 +1980,7 @@
    <FixtureVal ID="9">5,129,12,0</FixtureVal>
    <FixtureVal ID="10">5,129,12,0</FixtureVal>
   </Function>
-  <Function ID="235" Type="Sequence" Name="lyre move aller retour progressif vers public" Path="Lyres" BoundScene="236">
+  <Function ID="235" Type="Sequence" Name="lyre move aller retour progressif vers public" Path="Lyres front" BoundScene="236">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -2013,7 +2027,7 @@
    <ChannelGroupsVal>0,0,2,0</ChannelGroupsVal>
    <FixtureVal ID="4">0,0,2,0,3,0,5,0,6,0,8,0,9,0,11,0,12,0,14,0,15,0,17,0,18,0,20,0</FixtureVal>
   </Function>
-  <Function ID="242" Type="Sequence" Name="Lyre-dimmer blackout progressive and vertical" Path="Lyres" BoundScene="248">
+  <Function ID="242" Type="Sequence" Name="Lyre-dimmer blackout progressive and vertical" Path="Lyres front" BoundScene="248">
    <Speed FadeIn="0" FadeOut="0" Duration="4294967294"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
@@ -2483,6 +2497,149 @@
    <Step Number="3">130</Step>
    <Step Number="4">280</Step>
    <Step Number="5">286</Step>
+  </Function>
+  <Function ID="340" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0</FixtureVal>
+  </Function>
+  <Function ID="341" Type="Sequence" Name="Bee-show-slow" Path="Lyres rear" BoundScene="340">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
+   <Step Number="0" FadeIn="4000" Hold="1000" FadeOut="0" Note="Cross back" Values="12">5:0,30,2,15,5,255,10,255</Step>
+   <Step Number="1" FadeIn="4000" Hold="2000" FadeOut="0" Note="Center" Values="12">5:0,12,2,86,5,255,10,255</Step>
+   <Step Number="2" FadeIn="4000" Hold="2000" FadeOut="0" Note="Up" Values="12">5:0,43,2,52,5,255,10,255</Step>
+   <Step Number="3" FadeIn="0" Hold="2000" FadeOut="0" Note="Turn" Values="12">5:0,43,2,52,5,255,10,255,11,129</Step>
+   <Step Number="4" FadeIn="4000" Hold="2000" FadeOut="0" Note="open wide" Values="12">5:0,46,2,199,5,255,10,255,11,129</Step>
+  </Function>
+  <Function ID="342" Type="Scene" Name="Bee-White" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">5,255,6,0,7,0,8,0,9,0,10,255</FixtureVal>
+  </Function>
+  <Function ID="343" Type="Scene" Name="Bee-Red" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">5,255,6,0,7,255,8,0,9,0,10,0</FixtureVal>
+  </Function>
+  <Function ID="344" Type="Scene" Name="Bee-Blue" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">5,255,6,0,7,0,8,0,9,255,10,0</FixtureVal>
+  </Function>
+  <Function ID="345" Type="Scene" Name="Bee-Green" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">5,255,6,0,7,0,8,255,9,0,10,0</FixtureVal>
+  </Function>
+  <Function ID="346" Type="Scene" Name="Bee-White strobe slow" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">5,255,6,36,7,0,8,0,9,0,10,255</FixtureVal>
+  </Function>
+  <Function ID="347" Type="Scene" Name="Bee-Blackout" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0</FixtureVal>
+  </Function>
+  <Function ID="348" Type="Scene" Name="Bee-White strobe fast" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">5,255,6,209,7,0,8,0,9,0,10,255</FixtureVal>
+  </Function>
+  <Function ID="349" Type="Scene" Name="Bee-Position-Straight Up" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,0,1,0,2,127,3,0,11,1,12,0</FixtureVal>
+  </Function>
+  <Function ID="350" Type="Scene" Name="Bee-Position-Straight Crossed Back" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,30,1,0,2,15,3,0</FixtureVal>
+  </Function>
+  <Function ID="351" Type="Scene" Name="Bee-Position-Straight WIde" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,55,1,0,2,182,3,0,11,1,12,0</FixtureVal>
+  </Function>
+  <Function ID="352" Type="Scene" Name="Bee-Position-Straight Up Crossed" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,43,1,0,2,64,3,0,11,1,12,0</FixtureVal>
+  </Function>
+  <Function ID="353" Type="Scene" Name="Bee-Position-Straight Crossed Front" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,28,1,0,2,59,3,0,11,1,12,0</FixtureVal>
+  </Function>
+  <Function ID="354" Type="Scene" Name="Bee-Position-Straight Wide Side" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,59,1,0,2,242,3,0,11,1,12,0</FixtureVal>
+  </Function>
+  <Function ID="355" Type="Scene" Name="Bee-Show-Slow" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">12,227</FixtureVal>
+  </Function>
+  <Function ID="356" Type="Scene" Name="Bee-Show-Fast" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">12,116</FixtureVal>
+  </Function>
+  <Function ID="357" Type="Sequence" Name="Bee-show-fast" Path="Lyres rear" BoundScene="358">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
+   <Step Number="0" FadeIn="500" Hold="0" FadeOut="0" Note="Cross back" Values="12">5:0,30,2,15,5,255,10,255</Step>
+   <Step Number="1" FadeIn="500" Hold="0" FadeOut="0" Note="Center" Values="12">5:0,12,2,86,5,255,10,255</Step>
+   <Step Number="2" FadeIn="500" Hold="0" FadeOut="0" Note="Up" Values="12">5:0,43,2,52,5,255,10,255</Step>
+   <Step Number="3" FadeIn="1000" Hold="0" FadeOut="0" Note="Turn" Values="12">5:0,43,2,52,5,255,10,255,11,129</Step>
+   <Step Number="4" FadeIn="1000" Hold="0" FadeOut="0" Note="open wide" Values="12">5:0,46,2,199,5,255,10,255,11,129</Step>
+   <Step Number="5" FadeIn="2000" Hold="0" FadeOut="0" Note="center front" Values="12">5:0,255,2,101,5,255,10,255,11,129</Step>
+   <Step Number="6" FadeIn="2000" Hold="1000" FadeOut="0" Note="cross up" Values="12">5:0,44,2,55,5,255,10,255,11,1</Step>
+  </Function>
+  <Function ID="358" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0</FixtureVal>
+  </Function>
+  <Function ID="359" Type="Sequence" Name="Bee-show-fast-Strobe" Path="Lyres rear" BoundScene="360">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
+   <Step Number="0" FadeIn="500" Hold="0" FadeOut="0" Note="Cross back" Values="12">5:0,30,2,15,5,255,6,100,10,255</Step>
+   <Step Number="1" FadeIn="500" Hold="0" FadeOut="0" Note="Center" Values="12">5:0,12,2,86,5,255,6,150,10,255,11,28</Step>
+   <Step Number="2" FadeIn="500" Hold="0" FadeOut="0" Note="Up" Values="12">5:0,43,2,52,5,255,6,200,10,255</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0" Note="start strobe" Values="12">5:0,255,2,101,5,255,6,200,10,255,11,129</Step>
+   <Step Number="4" FadeIn="1000" Hold="0" FadeOut="0" Note="Turn" Values="12">5:0,43,2,52,5,255,6,200,10,255,11,129</Step>
+   <Step Number="5" FadeIn="1000" Hold="0" FadeOut="0" Note="open wide" Values="12">5:0,46,2,199,5,255,6,200,10,255,11,129</Step>
+   <Step Number="6" FadeIn="2000" Hold="0" FadeOut="0" Note="center front" Values="12">5:0,255,2,101,5,255,6,205,10,255,11,129</Step>
+   <Step Number="7" FadeIn="2000" Hold="1000" FadeOut="0" Note="cross up" Values="12">5:0,44,2,55,5,255,6,221,10,255,11,1</Step>
+  </Function>
+  <Function ID="360" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,0,1,0,2,0,3,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0</FixtureVal>
+  </Function>
+  <Function ID="361" Type="Scene" Name="Bee-TurnSlow" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">11,128,12,0</FixtureVal>
+  </Function>
+  <Function ID="362" Type="Scene" Name="Bee-Position-Straight Wide Side rotate slow" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">0,59,1,0,2,242,3,0,11,128,12,0</FixtureVal>
+  </Function>
+  <Function ID="363" Type="Sequence" Name="Bee-rotate-ultraslow" Path="Lyres rear" BoundScene="364">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
+   <Step Number="0" FadeIn="50" Hold="100" FadeOut="0" Note="Cross back" Values="2"/>
+   <Step Number="1" FadeIn="10000" Hold="0" FadeOut="0" Note="Center" Values="2">5:11,16</Step>
+   <Step Number="2" FadeIn="10000" Hold="0" FadeOut="0" Values="2"/>
+  </Function>
+  <Function ID="364" Type="Scene" Name="New Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">11,0,12,0</FixtureVal>
+  </Function>
+  <Function ID="365" Type="Scene" Name="Bee-TurnOff" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">11,0,12,0</FixtureVal>
+  </Function>
+  <Function ID="366" Type="Scene" Name="Bee-Smooth" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">5,255,6,0,7,255,8,0,9,127,10,0</FixtureVal>
+  </Function>
+  <Function ID="367" Type="Scene" Name="Bee-TurnOpen" Path="Rear">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="5">5,255,10,255,11,9,12,0</FixtureVal>
   </Function>
   <Monitor DisplayMode="1" ShowLabels="1">
    <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
@@ -3458,8 +3615,8 @@
      <Speed FadeIn="0" FadeOut="0" Duration="0"/>
     </Cue>
     <Cue Name="Cue 2">
-     <Value Channel="1025">61</Value>
      <Value Channel="1024">99</Value>
+     <Value Channel="1025">61</Value>
      <Speed FadeIn="0" FadeOut="0" Duration="0"/>
     </Cue>
    </CueStack>
