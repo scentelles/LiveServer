@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureDefinition>
+<FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.12.4</Version>
+  <Author>scent</Author>
+ </Creator>
+ <Manufacturer>Slyzic</Manufacturer>
+ <Model>pptControl</Model>
+ <Type>Other</Type>
+ <Channel Name="pptControl">
+  <Group Byte="0">Maintenance</Group>
+  <Capability Min="0" Max="0">Do nothing</Capability>
+  <Capability Min="1" Max="1">Next slide</Capability>
+  <Capability Min="2" Max="2">Previous slide</Capability>
+  <Capability Min="3" Max="255">Unused</Capability>
+ </Channel>
+ <Mode Name="Standard">
+  <Channel Number="0" ActsOn="0">pptControl</Channel>
+ </Mode>
+ <Physical>
+  <Bulb Type="" Lumens="0" ColourTemperature="0"/>
+  <Dimensions Weight="0" Width="0" Height="0" Depth="0"/>
+  <Lens Name="Other" DegreesMin="0" DegreesMax="0"/>
+  <Focus Type="Fixed" PanMax="0" TiltMax="0"/>
+  <Technical PowerConsumption="0" DmxConnector="5-pin"/>
+ </Physical>
+</FixtureDefinition>
