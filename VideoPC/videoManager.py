@@ -77,8 +77,9 @@ app = win32com.client.Dispatch("PowerPoint.Application")
 
 class ppt:
 	def __init__(self):
-		
-		self.pres = app.Presentations.Open(SLIDESHOW_PATH, WithWindow=False)
+		versioned_path = "" + SLIDESHOW_PATH + "Smooth trio clips v" + str(SLIDESHOW_VERSION) + ".pptx"
+		print("opening ", versioned_path)
+		self.pres = app.Presentations.Open(versioned_path, WithWindow=False)
 
         
 	def goto_slide(self, nb):
