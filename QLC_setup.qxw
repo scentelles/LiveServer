@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Workspace>
-<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="FunctionManager">
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="SimpleDesk">
  <Creator>
   <Name>Q Light Controller Plus</Name>
   <Version>4.12.4</Version>
@@ -351,10 +351,11 @@
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="PerStep"/>
    <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">104</Step>
-   <Step Number="1" FadeIn="0" Hold="4294967294" FadeOut="0">36</Step>
-   <Step Number="2" FadeIn="0" Hold="4294967294" FadeOut="0">106</Step>
-   <Step Number="3" FadeIn="0" Hold="4294967294" FadeOut="0">87</Step>
-   <Step Number="4" FadeIn="1000" Hold="4294967294" FadeOut="0">66</Step>
+   <Step Number="1" FadeIn="0" Hold="4294967294" FadeOut="0">404</Step>
+   <Step Number="2" FadeIn="0" Hold="4294967294" FadeOut="0">36</Step>
+   <Step Number="3" FadeIn="0" Hold="4294967294" FadeOut="0">106</Step>
+   <Step Number="4" FadeIn="0" Hold="4294967294" FadeOut="0">87</Step>
+   <Step Number="5" FadeIn="0" Hold="4294967294" FadeOut="0">384</Step>
   </Function>
   <Function ID="16" Type="Scene" Name="Archet blue" Path="Smooth_Trio/Archet">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -437,7 +438,7 @@
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="PerStep"/>
    <Step Number="0" FadeIn="0" Hold="4294967294" FadeOut="0">40</Step>
-   <Step Number="1" FadeIn="0" Hold="8000" FadeOut="0">42</Step>
+   <Step Number="1" FadeIn="0" Hold="6000" FadeOut="0">42</Step>
    <Step Number="2" FadeIn="0" Hold="2000" FadeOut="0">385</Step>
    <Step Number="3" FadeIn="0" Hold="2000" FadeOut="0">386</Step>
    <Step Number="4" FadeIn="0" Hold="4000" FadeOut="0">387</Step>
@@ -552,7 +553,6 @@
    <Step Number="5">56</Step>
    <Step Number="6">70</Step>
    <Step Number="7">160</Step>
-   <Step Number="8">280</Step>
   </Function>
   <Function ID="39" Type="Collection" Name="CapDhiverStep01-NEXT-introTrump" Path="Smooth_Trio/CadDhiver">
    <Step Number="0">316</Step>
@@ -1000,6 +1000,7 @@
    <Step Number="3">111</Step>
    <Step Number="4">60</Step>
    <Step Number="5">130</Step>
+   <Step Number="6">316</Step>
   </Function>
   <Function ID="88" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -1345,6 +1346,7 @@
    <Step Number="1">60</Step>
    <Step Number="2">130</Step>
    <Step Number="3">94</Step>
+   <Step Number="4">316</Step>
   </Function>
   <Function ID="138" Type="Scene" Name="Lyre-program-rotate and color fast-  trio" Path="Front Lyres">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -2949,8 +2951,21 @@
   <Function ID="403" Type="Show" Name="Nouveau show 403">
    <TimeDivision Type="Time" BPM="120"/>
    <Track ID="0" Name="Piste 1" isMute="0">
-    <ShowFunction ID="26" StartTime="0" Duration="207996" Color="#556b80"/>
+    <ShowFunction ID="26" StartTime="0" Duration="205996" Color="#556b80"/>
    </Track>
+  </Function>
+  <Function ID="404" Type="Collection" Name="NightShadowTrain0-startslide" Path="Smooth_Trio/NightShadowTrain">
+   <Step Number="0">281</Step>
+   <Step Number="1">261</Step>
+   <Step Number="2">18</Step>
+   <Step Number="3">262</Step>
+   <Step Number="4">86</Step>
+   <Step Number="5">56</Step>
+   <Step Number="6">59</Step>
+   <Step Number="7">107</Step>
+   <Step Number="8">108</Step>
+   <Step Number="9">19</Step>
+   <Step Number="10">316</Step>
   </Function>
   <Monitor DisplayMode="1" ShowLabels="1">
    <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
