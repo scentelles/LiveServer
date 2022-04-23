@@ -3,17 +3,41 @@
 <FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
  <Creator>
   <Name>Q Light Controller Plus</Name>
-  <Version>4.12.3 GIT</Version>
-  <Author></Author>
+  <Version>4.12.4</Version>
+  <Author>scent</Author>
  </Creator>
  <Manufacturer>Slyzic</Manufacturer>
  <Model>Spider</Model>
  <Type>Moving Head</Type>
+ <Channel Name="Effect">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="10">other</Capability>
+  <Capability Min="11" Max="120">effect1</Capability>
+  <Capability Min="121" Max="243">effect2</Capability>
+  <Capability Min="244" Max="255">sound</Capability>
+ </Channel>
+ <Channel Name="Effect speed">
+  <Group Byte="0">Maintenance</Group>
+ </Channel>
+ <Channel Name="Color change">
+  <Group Byte="0">Colour</Group>
+  <Capability Min="0" Max="10">other</Capability>
+  <Capability Min="11" Max="127">color combination</Capability>
+  <Capability Min="128" Max="160">color jump</Capability>
+  <Capability Min="161" Max="200">color gradient 1</Capability>
+  <Capability Min="201" Max="255">color gradient 2</Capability>
+ </Channel>
+ <Channel Name="color speed change">
+  <Group Byte="0">Maintenance</Group>
+ </Channel>
  <Channel Name="Tilt1">
   <Group Byte="0">Tilt</Group>
  </Channel>
  <Channel Name="Tilt2">
   <Group Byte="0">Tilt</Group>
+ </Channel>
+ <Channel Name="Tilt speed">
+  <Group Byte="0">Maintenance</Group>
  </Channel>
  <Channel Name="Master dimmer">
   <Group Byte="0">Intensity</Group>
@@ -53,48 +77,28 @@
   <Group Byte="0">Intensity</Group>
   <Colour>White</Colour>
  </Channel>
- <Channel Name="Show">
-  <Group Byte="0">Effect</Group>
-  <Capability Min="0" Max="17">Nothing</Capability>
-  <Capability Min="18" Max="27">Strobe</Capability>
-  <Capability Min="28" Max="37">Chenillard R2L</Capability>
-  <Capability Min="38" Max="47">Chenillard L2R</Capability>
-  <Capability Min="48" Max="67">Chenillard L2R2L</Capability>
-  <Capability Min="68" Max="87">Chenillard R2L croise</Capability>
-  <Capability Min="88" Max="107">Chenillard R2L2R croise</Capability>
-  <Capability Min="108" Max="117">Chenillard R2L alterne</Capability>
-  <Capability Min="118" Max="146">Chenillard par 2 alterne</Capability>
-  <Capability Min="147" Max="166">Chenillard sur les 8 beams</Capability>
-  <Capability Min="167" Max="186">Chenillard sur groupe de 2</Capability>
-  <Capability Min="187" Max="196">Chenillard 2 always on R2L</Capability>
-  <Capability Min="197" Max="206">Chenillard 2 always on L2R</Capability>
-  <Capability Min="207" Max="226">Chenillard 2 always on L2R2L</Capability>
-  <Capability Min="227" Max="236">All shows in sequence</Capability>
-  <Capability Min="237" Max="246">All shows with moves in sequence fast</Capability>
-  <Capability Min="247" Max="255">All shows with moves in sequence slow</Capability>
+ <Channel Name="reset">
+  <Group Byte="0">Maintenance</Group>
  </Channel>
- <Channel Name="Speed">
-  <Group Byte="0">Speed</Group>
- </Channel>
- <Channel Name="Nothing">
-  <Group Byte="0">Nothing</Group>
- </Channel>
- <Mode Name="15-channels">
-  <Channel Number="0">Tilt1</Channel>
-  <Channel Number="1">Tilt2</Channel>
-  <Channel Number="2">Master dimmer</Channel>
-  <Channel Number="3">Strobe</Channel>
-  <Channel Number="4">Red</Channel>
-  <Channel Number="5">Green</Channel>
-  <Channel Number="6">Blue</Channel>
-  <Channel Number="7">White</Channel>
-  <Channel Number="8">Red 1</Channel>
-  <Channel Number="9">Green 1</Channel>
-  <Channel Number="10">Blue 1</Channel>
-  <Channel Number="11">White 1</Channel>
-  <Channel Number="12">Show</Channel>
-  <Channel Number="13">Speed</Channel>
-  <Channel Number="14">Nothing</Channel>
+ <Mode Name="18-channels">
+  <Channel Number="0">Effect</Channel>
+  <Channel Number="1">Effect speed</Channel>
+  <Channel Number="2">Color change</Channel>
+  <Channel Number="3">color speed change</Channel>
+  <Channel Number="4">Tilt1</Channel>
+  <Channel Number="5">Tilt2</Channel>
+  <Channel Number="6">Tilt speed</Channel>
+  <Channel Number="7">Master dimmer</Channel>
+  <Channel Number="8">Strobe</Channel>
+  <Channel Number="9">Red</Channel>
+  <Channel Number="10">Green</Channel>
+  <Channel Number="11">Blue</Channel>
+  <Channel Number="12">White</Channel>
+  <Channel Number="13">Red 1</Channel>
+  <Channel Number="14">Green 1</Channel>
+  <Channel Number="15">Blue 1</Channel>
+  <Channel Number="16">White 1</Channel>
+  <Channel Number="17">reset</Channel>
  </Mode>
  <Physical>
   <Bulb Type="" Lumens="0" ColourTemperature="0"/>
