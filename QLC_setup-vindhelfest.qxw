@@ -12,7 +12,9 @@
     <Input Plugin="OSC" Line="0"/>
    </Universe>
    <Universe Name="Universe 2" ID="1" Passthrough="True">
-    <Output Plugin="UART" Line="0"/>
+    <Output Plugin="UART" Line="0">
+     <PluginParameters UniverseChannels="153"/>
+    </Output>
    </Universe>
    <Universe Name="Universe 3" ID="2"/>
    <Universe Name="Universe 4" ID="3"/>
@@ -408,6 +410,41 @@
    <FixtureVal ID="4">7,255,8,182,9,0,10,0,11,0,12,255,13,0,14,0,15,0,16,255</FixtureVal>
    <FixtureVal ID="2">0,255,1,255,2,255,3,255,4,231</FixtureVal>
    <FixtureVal ID="14"/>
+  </Function>
+  <Function ID="31" Type="Scene" Name="Bee-Position-Straight Up - v" Path="Rear Bee">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="12">0,168,1,0,2,0,3,0,11,1,12,0</FixtureVal>
+  </Function>
+  <Function ID="32" Type="Scene" Name="Bee-Position-Straight Up Crossed - v" Path="Rear Bee">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="12">0,146,1,0,2,7,3,0,11,1,12,0</FixtureVal>
+  </Function>
+  <Function ID="33" Type="Scene" Name="Bee-Position-Straight Crossed Back - v" Path="Rear Bee">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="12">0,135,1,0,2,56,3,0</FixtureVal>
+  </Function>
+  <Function ID="34" Type="Scene" Name="Bee-Position-Straight Crossed Front - v" Path="Rear Bee">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="12">0,142,1,0,2,33,3,0,11,1,12,0</FixtureVal>
+  </Function>
+  <Function ID="35" Type="Sequence" Name="Bee custom show (copie)" BoundScene="36">
+   <Speed FadeIn="0" FadeOut="0" Duration="1100"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
+   <Step Number="0" FadeIn="2000" Hold="100" FadeOut="0" Values="11">12:0,77,2,223,5,255,7,255,11,72</Step>
+   <Step Number="1" FadeIn="1000" Hold="100" FadeOut="0" Values="11">12:0,102,2,183,5,255,9,255,11,53</Step>
+   <Step Number="2" FadeIn="1000" Hold="100" FadeOut="0" Values="11">12:0,59,2,226,5,255,7,255,11,71</Step>
+   <Step Number="3" FadeIn="0" Hold="100" FadeOut="0" Values="11">12:0,69,2,218,5,255,6,240,8,255,11,81</Step>
+   <Step Number="4" FadeIn="1000" Hold="100" FadeOut="0" Values="11">12:0,65,2,234,5,255,6,217,9,255,11,84</Step>
+   <Step Number="5" FadeIn="2000" Hold="0" FadeOut="0" Values="11">12:0,60,2,230,5,255,6,240,7,255,11,74</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0" Values="11">12:0,51,2,237,5,255,11,80</Step>
+   <Step Number="7" FadeIn="1000" Hold="0" FadeOut="0" Values="11">12:0,51,2,240,5,255,9,255,10,255,11,28</Step>
+   <Step Number="8" FadeIn="2000" Hold="0" FadeOut="0" Values="11">12:0,51,2,173,5,255,8,255,10,255,11,27</Step>
+  </Function>
+  <Function ID="36" Type="Scene" Name="Bee custom show - color" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="12">0,0,1,0,2,0,3,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0</FixtureVal>
   </Function>
   <Function ID="40" Type="Script" Name="Set_LH_Mode_IDLE">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -836,21 +873,21 @@
   </Function>
   <Function ID="158" Type="Scene" Name="Bee custom show" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="12">0,0,1,0,2,0,3,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0</FixtureVal>
+   <FixtureVal ID="12">0,0,1,0,2,0,3,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0</FixtureVal>
   </Function>
   <Function ID="160" Type="Sequence" Name="Bee custom show" BoundScene="158">
    <Speed FadeIn="0" FadeOut="0" Duration="1100"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="2000" Hold="100" FadeOut="0" Values="11">12:0,29,2,12,5,255,10,255</Step>
-   <Step Number="1" FadeIn="1000" Hold="100" FadeOut="0" Values="11">12:0,45,2,12,5,255,10,255</Step>
-   <Step Number="2" FadeIn="3000" Hold="100" FadeOut="0" Values="11">12:0,45,2,218,5,255,10,255</Step>
-   <Step Number="3" FadeIn="0" Hold="100" FadeOut="0" Values="11">12:0,45,2,218,5,255,6,240,10,255</Step>
-   <Step Number="4" FadeIn="2000" Hold="100" FadeOut="0" Values="11">12:0,51,2,58,5,255,6,240,10,255</Step>
-   <Step Number="5" FadeIn="2000" Hold="0" FadeOut="0" Values="11">12:0,51,2,58,5,255,6,240,10,255,11,104</Step>
-   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0" Values="11">12:0,51,2,58,5,255,10,255,11,104</Step>
-   <Step Number="7" FadeIn="1000" Hold="0" FadeOut="0" Values="11">12:0,51,2,58,5,255,10,255,11,6</Step>
+   <Step Number="0" FadeIn="2000" Hold="100" FadeOut="0" Values="11">12:0,49,2,255,5,255,10,255</Step>
+   <Step Number="1" FadeIn="1000" Hold="100" FadeOut="0" Values="11">12:0,75,2,255,5,255,10,255</Step>
+   <Step Number="2" FadeIn="3000" Hold="100" FadeOut="0" Values="11">12:0,62,2,226,5,255,10,255</Step>
+   <Step Number="3" FadeIn="0" Hold="100" FadeOut="0" Values="11">12:0,69,2,218,5,255,6,240,10,255</Step>
+   <Step Number="4" FadeIn="2000" Hold="100" FadeOut="0" Values="11">12:0,65,2,234,5,255,6,240,10,255</Step>
+   <Step Number="5" FadeIn="2000" Hold="0" FadeOut="0" Values="11">12:0,60,2,230,5,255,6,240,10,255,11,104</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0" Values="11">12:0,51,2,237,5,255,10,255,11,104</Step>
+   <Step Number="7" FadeIn="1000" Hold="0" FadeOut="0" Values="11">12:0,51,2,240,5,255,10,255,11,6</Step>
    <Step Number="8" FadeIn="2000" Hold="0" FadeOut="0" Values="11">12:0,51,2,173,5,255,10,255,11,27</Step>
   </Function>
   <Function ID="161" Type="Scene" Name="Rear chaser2" Hidden="True">
@@ -2184,7 +2221,7 @@
        <BackgroundImage>None</BackgroundImage>
        <Font>Default</Font>
       </Appearance>
-      <Function ID="292"/>
+      <Function ID="31"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
       <Input Universe="0" Channel="43172"/>
@@ -2198,7 +2235,7 @@
        <BackgroundImage>None</BackgroundImage>
        <Font>Default</Font>
       </Appearance>
-      <Function ID="295"/>
+      <Function ID="32"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
       <Input Universe="0" Channel="39487"/>
@@ -2212,7 +2249,7 @@
        <BackgroundImage>None</BackgroundImage>
        <Font>Default</Font>
       </Appearance>
-      <Function ID="293"/>
+      <Function ID="33"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
       <Input Universe="0" Channel="65289"/>
@@ -2226,7 +2263,7 @@
        <BackgroundImage>None</BackgroundImage>
        <Font>Default</Font>
       </Appearance>
-      <Function ID="296"/>
+      <Function ID="34"/>
       <Action>Toggle</Action>
       <Intensity Adjust="False">100</Intensity>
       <Input Universe="0" Channel="35766"/>
@@ -2255,7 +2292,7 @@
       <BackgroundImage>None</BackgroundImage>
       <Font>Default</Font>
      </Appearance>
-     <Function ID="299"/>
+     <Function ID="35"/>
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
      <Input Universe="0" Channel="56347"/>
@@ -2807,7 +2844,7 @@
     <Input Universe="0" Channel="33671"/>
     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="true">Level</SliderMode>
     <Reset/>
-    <Level LowLimit="0" HighLimit="255" Value="132">
+    <Level LowLimit="0" HighLimit="255" Value="0">
      <Channel Fixture="2">1</Channel>
     </Level>
     <Playback>
