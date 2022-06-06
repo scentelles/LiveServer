@@ -12,8 +12,12 @@ from pythonosc import dispatcher
 from pythonosc import osc_server
 from pythonosc import udp_client
 
-from GuitarAmpMidi import *
-from SmoothDefines import *
+from GuitarAmpMidi   import *
+from SmoothDefines   import *
+from RedCloudDefines import *
+
+import threading
+
 
 MIDI_NOTE_OFF = 0x80
 MIDI_NOTE_ON  = 0x90
@@ -90,7 +94,7 @@ def forwardCCFromVoicelive(myCC, value):
   
   else:
     if   (myCC == VL3_CC_VOICE_HARMO):
-      if (currentSong == 61):
+      if (currentSong == RED_CLOUD_LIGHT_PROGRAM):
         if(value > 0):
           clientQLC.send_message("/full_strobe", 255)
         else:
@@ -109,7 +113,8 @@ def forwardCCFromVoicelive(myCC, value):
           clientQLC.send_message("/boost", 255)
 
     if   (myCC == VL3_CC_GUITAR_UMOD):
-      if (currentSong == 61):
+      if (currentSong == RED_CLOUD_LIGHT_PROGRAM):
+        print("LIGHTING")
         if(value > 0):
           clientQLC.send_message("/fog", 255)
         else:
@@ -117,43 +122,43 @@ def forwardCCFromVoicelive(myCC, value):
 
       else:      
         if (value > 0):
-          setGMajorProgram(3)
-          setAmpChannel(AMP_CHANNEL_CLEAN)
+          setGMajorProgram(midi_output, 3)
+          setAmpChannel(midi_output, AMP_CHANNEL_CLEAN)
           clientQLC.send_message("/clean", 255)
 
     elif (myCC == VL3_CC_GUITAR_DELAY):
-      if (currentSong == 61):
+      if (currentSong == RED_CLOUD_LIGHT_PROGRAM):
         clientQLC.send_message("/trip", 255)
       else:
         if (value > 0):
-          setGMajorProgram(6)
-          setAmpChannel(AMP_CHANNEL_BOOST)
+          setGMajorProgram(midi_output, 6)
+          setAmpChannel(midi_output, AMP_CHANNEL_BOOST)
           clientQLC.send_message("/boost", 255)
           print("Setting QLC boost")
     elif (myCC == VL3_CC_GUITAR_REVERB):
       if (value > 0):    
-        setGMajorProgram(8)
-        setAmpChannel(AMP_CHANNEL_XLEAD)
+        setGMajorProgram(midi_output, 8)
+        setAmpChannel(midi_output, AMP_CHANNEL_XLEAD)
         clientQLC.send_message("/lead", 255)
     elif (myCC == VL3_CC_GUITAR_COMP):
       if (value > 0):
-        setGMajorProgram(5)
-        setAmpChannel(AMP_CHANNEL_CLEAN)
+        setGMajorProgram(midi_output, 5)
+        setAmpChannel(midi_output, AMP_CHANNEL_CLEAN)
     elif (myCC == VL3_CC_GUITAR_DRIVE):
       if (value > 0):
-        setGMajorDelay(1)
+        setGMajorDelay(midi_output, 1)
       else:
-        setGMajorDelay(0)
+        setGMajorDelay(midi_output, 0)
     elif (myCC == VL3_CC_GUITAR_HIT):
       if(value > 0):
-        setGMajorBoost(1)
-        setGMajorDelay(1)
+        setGMajorBoost(midi_output, 1)
+        setGMajorDelay(midi_output, 1)
         clientQLC.send_message("/solo", 255)
         time.sleep(0.1)
         clientQLC.send_message("/solo", 0)
       else:
-        setGMajorBoost(0)
-        setGMajorDelay(0)
+        setGMajorBoost(midi_output, 0)
+        setGMajorDelay(midi_output, 0)
         clientQLC.send_message("/solo", 255)
         time.sleep(0.1)
         clientQLC.send_message("/solo", 0)
@@ -190,6 +195,20 @@ def print_compute_handler(unused_addr, args, volume):
     print("[{0}] ~ {1}".format(args[0], args[1](volume)))
   except ValueError: pass
 
+def midiReceiveThread(name):
+    while (1):
+      msg = midi_input.receive()
+      print (msg)
+      if(msg.type == 'program_change'):
+        print("MIDI_PROGRAM_CHANGE")
+        forwardPCFromVoicelive(msg.program, 0)
+      elif(msg.type == 'control_change'):
+        forwardCCFromVoicelive(msg.control, msg.value)
+       
+      print("looping")
+      time.sleep(0.1)
+
+
 if __name__ == "__main__":
 
 
@@ -202,6 +221,8 @@ if __name__ == "__main__":
   #OSC connection to QLC+
   clientQLC = udp_client.SimpleUDPClient(local_ip, 5005)
 
+  x = threading.Thread(target=midiReceiveThread, args=(1,))
+  x.start()
 
 
   dispatcher = dispatcher.Dispatcher()
