@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureDefinition>
+<FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.12.4</Version>
+  <Author></Author>
+ </Creator>
+ <Manufacturer>Slyzic</Manufacturer>
+ <Model>Lyre Algam MS 60</Model>
+ <Type>Moving Head</Type>
+ <Channel Name="Pan">
+  <Group Byte="0">Pan</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Tilt">
+  <Group Byte="0">Tilt</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="MotorSpeed">
+  <Group Byte="0">Speed</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Dimmer">
+  <Group Byte="0">Intensity</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Strobe">
+  <Group Byte="0">Shutter</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Color">
+  <Group Byte="0">Colour</Group>
+  <Capability Min="0" Max="139">color selection</Capability>
+  <Capability Min="140" Max="255">auto color change</Capability>
+ </Channel>
+ <Channel Name="Gobo">
+  <Group Byte="0">Gobo</Group>
+  <Capability Min="0" Max="128">Gobo select</Capability>
+  <Capability Min="129" Max="255">Auto change</Capability>
+ </Channel>
+ <Channel Name="Prism">
+  <Group Byte="0">Prism</Group>
+  <Capability Min="0" Max="99">OFF</Capability>
+  <Capability Min="100" Max="127">ON</Capability>
+  <Capability Min="128" Max="255">slow-fast</Capability>
+ </Channel>
+ <Channel Name="Focus">
+  <Group Byte="0">Beam</Group>
+  <Capability Min="0" Max="255">focus</Capability>
+ </Channel>
+ <Channel Name="Auto">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="59">OFF</Capability>
+  <Capability Min="60" Max="75">Auto0</Capability>
+  <Capability Min="76" Max="90">Auto1</Capability>
+  <Capability Min="91" Max="105">Auto2</Capability>
+  <Capability Min="106" Max="120">Auto3</Capability>
+  <Capability Min="121" Max="135">Auto4</Capability>
+  <Capability Min="136" Max="159">Auto5</Capability>
+  <Capability Min="160" Max="175">Music0</Capability>
+  <Capability Min="176" Max="190">Music1</Capability>
+  <Capability Min="191" Max="205">Music2</Capability>
+  <Capability Min="206" Max="220">Music3</Capability>
+  <Capability Min="221" Max="235">Music4</Capability>
+  <Capability Min="236" Max="255">Music5</Capability>
+ </Channel>
+ <Channel Name="Reset">
+  <Group Byte="0">Maintenance</Group>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Mode Name="11 Channel">
+  <Channel Number="0">Pan</Channel>
+  <Channel Number="1">Tilt</Channel>
+  <Channel Number="2">MotorSpeed</Channel>
+  <Channel Number="3">Dimmer</Channel>
+  <Channel Number="4">Strobe</Channel>
+  <Channel Number="5">Color</Channel>
+  <Channel Number="6">Gobo</Channel>
+  <Channel Number="7">Prism</Channel>
+  <Channel Number="8">Focus</Channel>
+  <Channel Number="9">Auto</Channel>
+  <Channel Number="10">Reset</Channel>
+  <Head>
+   <Channel>0</Channel>
+   <Channel>1</Channel>
+  </Head>
+ </Mode>
+ <Physical>
+  <Bulb Type="LED" Lumens="0" ColourTemperature="0"/>
+  <Dimensions Weight="0" Width="0" Height="0" Depth="0"/>
+  <Lens Name="Other" DegreesMin="0" DegreesMax="0"/>
+  <Focus Type="Head" PanMax="540" TiltMax="230"/>
+  <Technical PowerConsumption="0" DmxConnector="3-pin"/>
+ </Physical>
+</FixtureDefinition>
