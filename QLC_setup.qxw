@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Workspace>
-<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="SimpleDesk">
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="VirtualConsole">
  <Creator>
   <Name>Q Light Controller Plus</Name>
   <Version>4.12.4</Version>
-  <Author>scent</Author>
+  <Author></Author>
  </Creator>
  <Engine>
   <InputOutputMap>
    <Universe Name="Universe 1" ID="0" Passthrough="True">
-    <Input Plugin="OSC" Line="1"/>
+    <Input Plugin="OSC" Line="1">
+     <PluginParameters inputPort="5005"/>
+    </Input>
     <Output Plugin="ArtNet" Line="0">
      <PluginParameters outputUni="1"/>
     </Output>
    </Universe>
    <Universe Name="Universe 2" ID="1" Passthrough="True">
-    <Output Plugin="ArtNet" Line="0">
-     <PluginParameters outputUni="2"/>
+    <Output Plugin="UART" Line="0">
+     <PluginParameters UniverseChannels="87"/>
     </Output>
    </Universe>
    <Universe Name="Universe 3" ID="2" Passthrough="True">
@@ -90,9 +92,9 @@
    <Channels>13</Channels>
   </Fixture>
   <Fixture>
-   <Manufacturer>Slyzic</Manufacturer>
-   <Model>pptControl</Model>
-   <Mode>Standard</Mode>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic</Model>
+   <Mode>1 Channel</Mode>
    <ID>6</ID>
    <Name>pptControl</Name>
    <Universe>2</Universe>
@@ -180,9 +182,9 @@
    <Channels>5</Channels>
   </Fixture>
   <Fixture>
-   <Manufacturer>Slyzic</Manufacturer>
-   <Model>LHControl</Model>
-   <Mode>Standard</Mode>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic</Model>
+   <Mode>2 Channel</Mode>
    <ID>15</ID>
    <Name>LHControl</Name>
    <Universe>2</Universe>
@@ -207,12 +209,12 @@
    <Name>OBS</Name>
    <Universe>2</Universe>
    <Address>19</Address>
-   <Channels>3</Channels>
+   <Channels>2</Channels>
   </Fixture>
   <Fixture>
-   <Manufacturer>Slyzic</Manufacturer>
-   <Model>Spider</Model>
-   <Mode>15-channels</Mode>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic</Model>
+   <Mode>15 Channel</Mode>
    <ID>18</ID>
    <Name>Spider</Name>
    <Universe>1</Universe>
@@ -271,29 +273,30 @@
    <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
    <FixtureVal ID="8">0,0,2,0,4,0,5,0,6,0,7,0,8,0,9,0,11,0,12,0</FixtureVal>
    <FixtureVal ID="18">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0,1,0,5,0</FixtureVal>
   </Function>
   <Function ID="7" Type="Sequence" Name="Solo show" BoundScene="6">
    <Speed FadeIn="0" FadeOut="0" Duration="500"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="500" Hold="400" FadeOut="0" Values="59">1:0,255,1,103:2:0,141,1,255,2,61:3:2,107,3,181,4,255,5,70:5:0,82,1,99:8:5,255,12,246:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="1" FadeIn="500" Hold="1500" FadeOut="0" Values="58">1:0,255,1,53:2:0,141,1,255,2,61:3:3,29,4,255:5:0,82,1,99,5,255:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="2" FadeIn="3000" Hold="1000" FadeOut="0" Values="57">1:0,255,1,99:2:0,141,1,255,2,61:3:1,226,2,255,3,29,4,255,5,70:5:0,82,1,99:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="3" FadeIn="2000" Hold="1000" FadeOut="0" Values="62">1:0,255,1,45:2:0,141,1,255,2,61:3:1,255,2,255,3,243,4,255,5,70:5:0,82,1,99,5,255:8:4,254:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:8:4,254,5,255,12,28</Step>
-   <Step Number="4" FadeIn="4000" Hold="2000" FadeOut="0" Values="60">1:0,16,1,82:2:0,141,1,255,2,61:3:0,226,1,29,2,255,4,255,5,70:5:0,82,1,99:8:4,222,5,255,12,103:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="5" FadeIn="4000" Hold="100" FadeOut="0" Values="60">1:0,255,1,255:2:0,141,1,255,2,61:3:1,29,2,255,4,255,5,70:5:0,169,1,99:8:5,255,12,119:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:3:5,70</Step>
-   <Step Number="6" FadeIn="4000" Hold="2000" FadeOut="0" Values="63">2:0,141,1,255,2,61:3:0,77,1,29,2,100,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,19:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:5,70</Step>
-   <Step Number="7" FadeIn="1500" Hold="1500" FadeOut="0" Values="46">1:0,16,1,160:2:0,141,1,255,2,61:3:2,100,4,255,5,70:8:5,199,9,255,12,34:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255</Step>
-   <Step Number="8" FadeIn="500" Hold="1500" FadeOut="0" Values="66">1:0,202,1,218,5,115:2:0,141,1,255,2,61:3:0,129,1,163,2,135,3,52,4,255,5,70:5:0,82,1,99,5,255:8:5,255:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
-   <Step Number="9" FadeIn="500" Hold="1500" FadeOut="0" Values="63">1:0,255,5,173:2:0,141,1,255,2,61:3:0,129,1,237,2,255,3,52,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:5,70</Step>
-   <Step Number="10" FadeIn="500" Hold="1500" FadeOut="0" Values="63">1:0,165,1,255,5,90:2:0,141,1,255,2,61:3:0,129,1,249,2,255,3,165,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,243:3:5,70</Step>
-   <Step Number="11" FadeIn="300" Hold="2000" FadeOut="0" Values="67">1:0,181,5,230:2:0,141,1,255,2,61:3:0,255,1,249,2,255,3,125,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,243:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
-   <Step Number="12" FadeIn="500" Hold="2000" FadeOut="0" Values="67">1:0,206,5,144:2:0,141,1,255,2,61:3:0,129,1,142,2,255,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
-   <Step Number="13" FadeIn="700" Hold="200" FadeOut="0" Values="67">1:0,255,1,226,5,181:2:0,141,1,255,2,61:3:1,114,2,255,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
-   <Step Number="14" FadeIn="700" Hold="200" FadeOut="0" Values="67">1:0,255,1,12:2:0,141,1,255,2,61:3:0,255,1,140,2,255,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
-   <Step Number="15" FadeIn="700" Hold="200" FadeOut="0" Values="64">1:0,255,5,111:2:0,141,1,255,2,61:3:0,5,1,120,2,255,3,71,4,255,5,70:5:0,82,1,99,5,255:8:0,255,2,117:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:8:5,255,6,255</Step>
-   <Step Number="16" FadeIn="700" Hold="200" FadeOut="0" Values="69">1:0,136,1,49:2:0,141,1,255,2,61:3:0,243,1,114,2,255,3,226,4,255,5,70:5:0,82,1,99,5,255:8:5,255,6,255,0,255,2,117:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255,5,70:5:0,82,1,99,5,255</Step>
+   <Step Number="0" FadeIn="500" Hold="400" FadeOut="0" Values="49">1:0,255,1,103:2:0,141,1,255,2,61:3:2,107,3,181,4,255,5,70:5:0,82,1,99:8:5,255,12,246:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="1" FadeIn="500" Hold="1500" FadeOut="0" Values="49">1:0,255,1,53:2:0,141,1,255,2,61:3:3,29,4,255:5:0,82,1,99,5,255:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="2" FadeIn="3000" Hold="1000" FadeOut="0" Values="49">1:0,255,1,99:2:0,141,1,255,2,61:3:1,226,2,255,3,29,4,255,5,70:5:0,82,1,99:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="3" FadeIn="2000" Hold="1000" FadeOut="0" Values="52">1:0,255,1,45:2:0,141,1,255,2,61:3:1,255,2,255,3,243,4,255,5,70:5:0,82,1,99,5,255:8:4,254:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:8:4,254,5,255,12,28</Step>
+   <Step Number="4" FadeIn="4000" Hold="2000" FadeOut="0" Values="49">1:0,16,1,82:2:0,141,1,255,2,61:3:0,226,1,29,2,255,4,255,5,70:5:0,82,1,99:8:4,222,5,255,12,103:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="5" FadeIn="4000" Hold="100" FadeOut="0" Values="50">1:0,255,1,255:2:0,141,1,255,2,61:3:1,29,2,255,4,255,5,70:5:0,169,1,99:8:5,255,12,119:18:1,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255:3:5,70</Step>
+   <Step Number="6" FadeIn="4000" Hold="2000" FadeOut="0" Values="50">2:0,141,1,255,2,61:3:0,77,1,29,2,100,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,19:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:5,70</Step>
+   <Step Number="7" FadeIn="1500" Hold="1500" FadeOut="0" Values="49">1:0,16,1,160:2:0,141,1,255,2,61:3:2,100,4,255,5,70:8:5,199,9,255,12,34:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255</Step>
+   <Step Number="8" FadeIn="500" Hold="1500" FadeOut="0" Values="54">1:0,202,1,218,5,115:2:0,141,1,255,2,61:3:0,129,1,163,2,135,3,52,4,255,5,70:5:0,82,1,99,5,255:8:5,255:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
+   <Step Number="9" FadeIn="500" Hold="1500" FadeOut="0" Values="50">1:0,255,5,173:2:0,141,1,255,2,61:3:0,129,1,237,2,255,3,52,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:5,70</Step>
+   <Step Number="10" FadeIn="500" Hold="1500" FadeOut="0" Values="50">1:0,165,1,255,5,90:2:0,141,1,255,2,61:3:0,129,1,249,2,255,3,165,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,243:3:5,70</Step>
+   <Step Number="11" FadeIn="300" Hold="2000" FadeOut="0" Values="54">1:0,181,5,230:2:0,141,1,255,2,61:3:0,255,1,249,2,255,3,125,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,243:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
+   <Step Number="12" FadeIn="500" Hold="2000" FadeOut="0" Values="54">1:0,206,5,144:2:0,141,1,255,2,61:3:0,129,1,142,2,255,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
+   <Step Number="13" FadeIn="700" Hold="200" FadeOut="0" Values="54">1:0,255,1,226,5,181:2:0,141,1,255,2,61:3:1,114,2,255,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
+   <Step Number="14" FadeIn="700" Hold="200" FadeOut="0" Values="54">1:0,255,1,12:2:0,141,1,255,2,61:3:0,255,1,140,2,255,4,255,5,70:5:0,82,1,99,5,255:8:5,255,12,90:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255:5:0,82,1,99,5,255:3:5,70</Step>
+   <Step Number="15" FadeIn="700" Hold="200" FadeOut="0" Values="51">1:0,255,5,111:2:0,141,1,255,2,61:3:0,5,1,120,2,255,3,71,4,255,5,70:5:0,82,1,99,5,255:8:0,255,2,117:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:8:5,255,6,255</Step>
+   <Step Number="16" FadeIn="700" Hold="200" FadeOut="0" Values="67">1:0,136,1,49:2:0,141,1,255,2,61:3:0,243,1,114,2,255,3,226,4,255,5,70:5:0,82,1,99,5,255:8:5,255,6,255,0,255,2,117:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255,12,255:3:4,255,5,70:5:0,82,1,99,5,255</Step>
   </Function>
   <Function ID="8" Type="Collection" Name="DefaultBlackout" Path="Smooth_Trio/0-Defaults">
    <Step Number="0">59</Step>
@@ -333,16 +336,17 @@
    <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0</FixtureVal>
    <FixtureVal ID="8">0,0,2,0,4,0,5,0,6,0,7,0,8,0,9,0,11,0,12,0</FixtureVal>
    <FixtureVal ID="18">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="5">0,0</FixtureVal>
   </Function>
   <Function ID="14" Type="Sequence" Name="Trip" BoundScene="13">
    <Speed FadeIn="0" FadeOut="0" Duration="2000"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="PerStep" Duration="PerStep"/>
-   <Step Number="0" FadeIn="1000" Hold="2000" FadeOut="1000" Values="42">2:0,255,5,193:8:2,255,4,28,5,255,6,255:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="1" FadeIn="3000" Hold="2000" FadeOut="1000" Values="42">2:0,255,5,193:3:1,82,2,144,3,12,4,255:8:0,255,2,255,4,233,5,255,6,255,9,74:18:0,163,1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="2" FadeIn="2000" Hold="4000" FadeOut="500" Values="58">2:0,255,5,193:3:1,82,2,144,3,12:5:0,255:8:2,255,4,27,5,255,6,255:18:0,163,1,140,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
-   <Step Number="3" FadeIn="2000" Hold="4000" FadeOut="500" Values="59">2:0,255,5,193:3:1,82,2,144,3,12,4,255:5:1,255:8:0,255,2,255,4,238,5,255,6,255,9,32:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="0" FadeIn="1000" Hold="2000" FadeOut="1000" Values="43">2:0,255,5,193:8:2,255,4,28,5,255,6,255:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="1" FadeIn="3000" Hold="2000" FadeOut="1000" Values="43">2:0,255,5,193:3:1,82,2,144,3,12,4,255:8:0,255,2,255,4,233,5,255,6,255,9,74:18:0,163,1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="2" FadeIn="2000" Hold="4000" FadeOut="500" Values="43">2:0,255,5,193:3:1,82,2,144,3,12:5:0,255:8:2,255,4,27,5,255,6,255:18:0,163,1,140,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
+   <Step Number="3" FadeIn="2000" Hold="4000" FadeOut="500" Values="60">2:0,255,5,193:3:1,82,2,144,3,12,4,255:5:1,255:8:0,255,2,255,4,238,5,255,6,255,9,32:18:1,255,2,255,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
    <Step Number="4" FadeIn="0" Hold="1500" FadeOut="0" Values="59">1:0,132,1,255,4,234:2:0,255,5,193:3:1,82,2,144,3,12:5:0,255,1,255:8:0,131,2,120,4,183,5,255,9,255:18:1,255,2,78,4,255,5,255,6,255,7,255,8,255,9,255,10,255,11,255</Step>
   </Function>
   <Function ID="15" Type="Chaser" Name="NightShadowTrain" Path="Smooth_Trio">
@@ -2422,11 +2426,11 @@
   </Function>
   <Function ID="314" Type="Scene" Name="LH_BUTTON_UP" Path="LaserHarp/Buttons">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="17">2,0</FixtureVal>
+   <FixtureVal ID="17"/>
   </Function>
   <Function ID="315" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="17">2,0</FixtureVal>
+   <FixtureVal ID="17"/>
   </Function>
   <Function ID="316" Type="Sequence" Name="Slide Next" BoundScene="315">
    <Speed FadeIn="0" FadeOut="0" Duration="200"/>
@@ -2434,11 +2438,11 @@
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
    <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="1">17:2,1</Step>
-   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0" Values="1"/>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0" Values="0"/>
   </Function>
   <Function ID="317" Type="Scene" Name="LH_BUTTON_DOWN" Path="LaserHarp/Buttons">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="17">2,0</FixtureVal>
+   <FixtureVal ID="17"/>
    <FixtureVal ID="15">1,2</FixtureVal>
   </Function>
   <Function ID="318" Type="Sequence" Name="Slide Previous" BoundScene="338">
@@ -2447,7 +2451,7 @@
    <RunOrder>SingleShot</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
    <Step Number="0" FadeIn="0" Hold="0" FadeOut="0" Values="1">17:2,2</Step>
-   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0" Values="1"/>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0" Values="0"/>
   </Function>
   <Function ID="319" Type="Scene" Name="LH_BUTTON_LEFT" Path="LaserHarp/Buttons">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -2531,7 +2535,7 @@
   </Function>
   <Function ID="338" Type="Scene" Name="New Scene" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="17">2,0</FixtureVal>
+   <FixtureVal ID="17"/>
   </Function>
   <Function ID="339" Type="Collection" Name="Darkness" Path="Smooth_Trio/Darkness">
    <Step Number="0">281</Step>
@@ -2990,7 +2994,7 @@
     <Font>Default</Font>
    </Appearance>
    <Button Caption="laser strobe" ID="10" Icon="">
-    <WindowState Visible="False" X="70" Y="300" Width="50" Height="50"/>
+    <WindowState Visible="True" X="70" Y="300" Width="50" Height="50"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -3010,16 +3014,16 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="False" X="50" Y="360" Width="430" Height="230"/>
+    <WindowState Visible="True" X="50" Y="360" Width="430" Height="230"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
     <ShowEnableButton>True</ShowEnableButton>
     <Mixing>False</Mixing>
-    <Collapsed>True</Collapsed>
+    <Collapsed>False</Collapsed>
     <Disabled>False</Disabled>
     <Button Caption="Clean" ID="3" Icon="">
-     <WindowState Visible="False" X="45" Y="50" Width="50" Height="50"/>
+     <WindowState Visible="True" X="45" Y="50" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3033,7 +3037,7 @@
      <Input Universe="0" Channel="14284"/>
     </Button>
     <Button Caption="BOOST" ID="4" Icon="">
-     <WindowState Visible="False" X="140" Y="55" Width="50" Height="50"/>
+     <WindowState Visible="True" X="140" Y="55" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3047,7 +3051,7 @@
      <Input Universe="0" Channel="29637"/>
     </Button>
     <Button Caption="LEAD" ID="5" Icon="">
-     <WindowState Visible="False" X="240" Y="60" Width="50" Height="50"/>
+     <WindowState Visible="True" X="240" Y="60" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3061,7 +3065,7 @@
      <Input Universe="0" Channel="44693"/>
     </Button>
     <Button Caption="Full strobe" ID="7" Icon="">
-     <WindowState Visible="False" X="140" Y="145" Width="50" Height="50"/>
+     <WindowState Visible="True" X="140" Y="145" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3075,7 +3079,7 @@
      <Input Universe="0" Channel="51072"/>
     </Button>
     <Button Caption="Trip" ID="9" Icon="">
-     <WindowState Visible="False" X="340" Y="145" Width="50" Height="50"/>
+     <WindowState Visible="True" X="340" Y="145" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3089,7 +3093,7 @@
      <Input Universe="0" Channel="6425"/>
     </Button>
     <Button Caption="Strobe" ID="32" Icon="">
-     <WindowState Visible="False" X="55" Y="150" Width="50" Height="50"/>
+     <WindowState Visible="True" X="55" Y="150" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3104,7 +3108,7 @@
     </Button>
    </SoloFrame>
    <Button Caption="FOG!" ID="0" Icon="">
-    <WindowState Visible="False" X="70" Y="240" Width="50" Height="50"/>
+    <WindowState Visible="True" X="70" Y="240" Width="50" Height="50"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -3118,7 +3122,7 @@
     <Input Universe="0" Channel="58308"/>
    </Button>
    <Button Caption="Default" ID="6" Icon="">
-    <WindowState Visible="False" X="105" Y="110" Width="50" Height="50"/>
+    <WindowState Visible="True" X="105" Y="110" Width="50" Height="50"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -3131,7 +3135,7 @@
     <Intensity Adjust="False">100</Intensity>
    </Button>
    <Button Caption="stopAll" ID="22" Icon="">
-    <WindowState Visible="False" X="165" Y="110" Width="50" Height="50"/>
+    <WindowState Visible="True" X="165" Y="110" Width="50" Height="50"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -3152,15 +3156,15 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="False" X="250" Y="15" Width="2365" Height="1415"/>
+    <WindowState Visible="True" X="250" Y="15" Width="2365" Height="1415"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
     <ShowEnableButton>True</ShowEnableButton>
-    <Collapsed>False</Collapsed>
+    <Collapsed>True</Collapsed>
     <Disabled>False</Disabled>
     <CueList Caption="NightShadowTrain" ID="23">
-     <WindowState Visible="False" X="20" Y="45" Width="455" Height="270"/>
+     <WindowState Visible="True" X="20" Y="45" Width="455" Height="270"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3184,7 +3188,7 @@
      </Stop>
     </CueList>
     <CueList Caption="Laverse" ID="11">
-     <WindowState Visible="False" X="930" Y="45" Width="430" Height="275"/>
+     <WindowState Visible="True" X="930" Y="45" Width="430" Height="275"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3208,7 +3212,7 @@
      </Stop>
     </CueList>
     <CueList Caption="AnotherTown" ID="12">
-     <WindowState Visible="False" X="1105" Y="940" Width="290" Height="230"/>
+     <WindowState Visible="True" X="1105" Y="940" Width="290" Height="230"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3232,7 +3236,7 @@
      </Stop>
     </CueList>
     <CueList Caption="IdontMind" ID="13">
-     <WindowState Visible="False" X="1875" Y="940" Width="355" Height="280"/>
+     <WindowState Visible="True" X="1875" Y="940" Width="355" Height="280"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3256,7 +3260,7 @@
      </Stop>
     </CueList>
     <CueList Caption="SlapMyHead" ID="14">
-     <WindowState Visible="False" X="1915" Y="45" Width="440" Height="280"/>
+     <WindowState Visible="True" X="1915" Y="45" Width="440" Height="280"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3280,7 +3284,7 @@
      </Stop>
     </CueList>
     <CueList Caption="LeBal" ID="15">
-     <WindowState Visible="False" X="1355" Y="610" Width="500" Height="280"/>
+     <WindowState Visible="True" X="1355" Y="610" Width="500" Height="280"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3304,7 +3308,7 @@
      </Stop>
     </CueList>
     <CueList Caption="AfterChristmas" ID="16">
-     <WindowState Visible="False" X="485" Y="45" Width="435" Height="270"/>
+     <WindowState Visible="True" X="485" Y="45" Width="435" Height="270"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3328,7 +3332,7 @@
      </Stop>
     </CueList>
     <CueList Caption="RunningOnTheWall" ID="17">
-     <WindowState Visible="False" X="1365" Y="45" Width="550" Height="280"/>
+     <WindowState Visible="True" X="1365" Y="45" Width="550" Height="280"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3352,7 +3356,7 @@
      </Stop>
     </CueList>
     <CueList Caption="LesOmbres" ID="18">
-     <WindowState Visible="False" X="20" Y="325" Width="325" Height="255"/>
+     <WindowState Visible="True" X="20" Y="325" Width="325" Height="255"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3376,7 +3380,7 @@
      </Stop>
     </CueList>
     <CueList Caption="DuSmooth" ID="19">
-     <WindowState Visible="False" X="15" Y="615" Width="355" Height="270"/>
+     <WindowState Visible="True" X="15" Y="615" Width="355" Height="270"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3400,7 +3404,7 @@
      </Stop>
     </CueList>
     <CueList Caption="LeRendezVous" ID="20">
-     <WindowState Visible="False" X="1355" Y="325" Width="580" Height="280"/>
+     <WindowState Visible="True" X="1355" Y="325" Width="580" Height="280"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3424,7 +3428,7 @@
      </Stop>
     </CueList>
     <CueList Caption="Boipeba" ID="21">
-     <WindowState Visible="False" X="1940" Y="325" Width="420" Height="280"/>
+     <WindowState Visible="True" X="1940" Y="325" Width="420" Height="280"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3448,7 +3452,7 @@
      </Stop>
     </CueList>
     <CueList Caption="CapDhiver" ID="24">
-     <WindowState Visible="False" X="815" Y="325" Width="455" Height="275"/>
+     <WindowState Visible="True" X="815" Y="325" Width="455" Height="275"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3472,7 +3476,7 @@
      </Stop>
     </CueList>
     <CueList Caption="IlYavait" ID="25">
-     <WindowState Visible="False" X="1940" Y="610" Width="420" Height="280"/>
+     <WindowState Visible="True" X="1940" Y="610" Width="420" Height="280"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3496,7 +3500,7 @@
      </Stop>
     </CueList>
     <CueList Caption="Darkness" ID="28">
-     <WindowState Visible="False" X="800" Y="940" Width="295" Height="255"/>
+     <WindowState Visible="True" X="800" Y="940" Width="295" Height="255"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3520,7 +3524,7 @@
      </Stop>
     </CueList>
     <CueList Caption="Keywest" ID="26">
-     <WindowState Visible="False" X="355" Y="325" Width="450" Height="275"/>
+     <WindowState Visible="True" X="355" Y="325" Width="450" Height="275"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3544,7 +3548,7 @@
      </Stop>
     </CueList>
     <CueList Caption="TheRiver" ID="27">
-     <WindowState Visible="False" X="25" Y="940" Width="325" Height="245"/>
+     <WindowState Visible="True" X="25" Y="940" Width="325" Height="245"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3568,7 +3572,7 @@
      </Stop>
     </CueList>
     <CueList Caption="BienvenueChezVenus" ID="29">
-     <WindowState Visible="False" X="795" Y="610" Width="550" Height="280"/>
+     <WindowState Visible="True" X="795" Y="610" Width="550" Height="280"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3592,7 +3596,7 @@
      </Stop>
     </CueList>
     <CueList Caption="VentDEspagne" ID="51">
-     <WindowState Visible="False" X="375" Y="940" Width="400" Height="285"/>
+     <WindowState Visible="True" X="375" Y="940" Width="400" Height="285"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3616,7 +3620,7 @@
      </Stop>
     </CueList>
     <CueList Caption="OuNaviguent" ID="52">
-     <WindowState Visible="False" X="1405" Y="940" Width="455" Height="280"/>
+     <WindowState Visible="True" X="1405" Y="940" Width="455" Height="280"/>
      <Appearance>
       <FrameStyle>Sunken</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3641,7 +3645,7 @@
     </CueList>
    </Frame>
    <Button Caption="ChrisTalk" ID="30" Icon="">
-    <WindowState Visible="False" X="80" Y="20" Width="170" Height="65"/>
+    <WindowState Visible="True" X="80" Y="20" Width="170" Height="65"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -3655,7 +3659,7 @@
     <Input Universe="0" Channel="49269"/>
    </Button>
    <Button Caption="Solo" ID="2" Icon="">
-    <WindowState Visible="False" X="135" Y="300" Width="50" Height="50"/>
+    <WindowState Visible="True" X="135" Y="300" Width="50" Height="50"/>
     <Appearance>
      <FrameStyle>None</FrameStyle>
      <ForegroundColor>Default</ForegroundColor>
@@ -3676,7 +3680,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="False" X="480" Y="5" Width="195" Height="360"/>
+    <WindowState Visible="True" X="480" Y="5" Width="195" Height="360"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
@@ -3685,7 +3689,7 @@
     <Collapsed>True</Collapsed>
     <Disabled>False</Disabled>
     <Button Caption="Visualizer" ID="33" Icon="">
-     <WindowState Visible="False" X="5" Y="40" Width="135" Height="45"/>
+     <WindowState Visible="True" X="5" Y="40" Width="135" Height="45"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3698,7 +3702,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="DualViz" ID="34" Icon="">
-     <WindowState Visible="False" X="5" Y="90" Width="135" Height="45"/>
+     <WindowState Visible="True" X="5" Y="90" Width="135" Height="45"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3711,7 +3715,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="SlideShow" ID="35" Icon="">
-     <WindowState Visible="False" X="5" Y="140" Width="135" Height="45"/>
+     <WindowState Visible="True" X="5" Y="140" Width="135" Height="45"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3724,7 +3728,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="Camera" ID="36" Icon="">
-     <WindowState Visible="False" X="5" Y="240" Width="135" Height="45"/>
+     <WindowState Visible="True" X="5" Y="240" Width="135" Height="45"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3737,7 +3741,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="SlideAndViz" ID="37" Icon="">
-     <WindowState Visible="False" X="5" Y="190" Width="135" Height="45"/>
+     <WindowState Visible="True" X="5" Y="190" Width="135" Height="45"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3758,7 +3762,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="False" X="700" Y="5" Width="360" Height="255"/>
+    <WindowState Visible="True" X="700" Y="5" Width="360" Height="255"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
@@ -3767,7 +3771,7 @@
     <Collapsed>True</Collapsed>
     <Disabled>False</Disabled>
     <Button Caption="Viz0" ID="39" Icon="">
-     <WindowState Visible="False" X="10" Y="50" Width="50" Height="50"/>
+     <WindowState Visible="True" X="10" Y="50" Width="50" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3780,7 +3784,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="Visualizer - 04" ID="40" Icon="">
-     <WindowState Visible="False" X="10" Y="100" Width="125" Height="50"/>
+     <WindowState Visible="True" X="10" Y="100" Width="125" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3793,7 +3797,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="Visualizer - 03" ID="41" Icon="">
-     <WindowState Visible="False" X="70" Y="50" Width="125" Height="50"/>
+     <WindowState Visible="True" X="70" Y="50" Width="125" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3806,7 +3810,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="Voice Matrix" ID="42" Icon="">
-     <WindowState Visible="False" X="5" Y="160" Width="125" Height="50"/>
+     <WindowState Visible="True" X="5" Y="160" Width="125" Height="50"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3827,7 +3831,7 @@
      <BackgroundImage>None</BackgroundImage>
      <Font>Default</Font>
     </Appearance>
-    <WindowState Visible="False" X="1300" Y="0" Width="605" Height="550"/>
+    <WindowState Visible="True" X="1300" Y="0" Width="605" Height="550"/>
     <AllowChildren>True</AllowChildren>
     <AllowResize>True</AllowResize>
     <ShowHeader>True</ShowHeader>
@@ -3836,7 +3840,7 @@
     <Collapsed>True</Collapsed>
     <Disabled>False</Disabled>
     <Button Caption="UP" ID="44" Icon="">
-     <WindowState Visible="False" X="210" Y="60" Width="140" Height="90"/>
+     <WindowState Visible="True" X="210" Y="60" Width="140" Height="90"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3849,7 +3853,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="DOWN" ID="45" Icon="">
-     <WindowState Visible="False" X="215" Y="310" Width="145" Height="105"/>
+     <WindowState Visible="True" X="215" Y="310" Width="145" Height="105"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3862,7 +3866,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="LEFT" ID="46" Icon="">
-     <WindowState Visible="False" X="15" Y="180" Width="140" Height="90"/>
+     <WindowState Visible="True" X="15" Y="180" Width="140" Height="90"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3875,7 +3879,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="RIGHT" ID="47" Icon="">
-     <WindowState Visible="False" X="390" Y="180" Width="140" Height="90"/>
+     <WindowState Visible="True" X="390" Y="180" Width="140" Height="90"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3888,7 +3892,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="OK" ID="48" Icon="">
-     <WindowState Visible="False" X="215" Y="180" Width="140" Height="90"/>
+     <WindowState Visible="True" X="215" Y="180" Width="140" Height="90"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3901,7 +3905,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="VALIDATE" ID="49" Icon="">
-     <WindowState Visible="False" X="385" Y="450" Width="140" Height="90"/>
+     <WindowState Visible="True" X="385" Y="450" Width="140" Height="90"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>
@@ -3914,7 +3918,7 @@
      <Intensity Adjust="False">100</Intensity>
     </Button>
     <Button Caption="NONE - MUST BE ACTIVATED FIRST" ID="50" Icon="">
-     <WindowState Visible="False" X="0" Y="460" Width="190" Height="85"/>
+     <WindowState Visible="True" X="0" Y="460" Width="190" Height="85"/>
      <Appearance>
       <FrameStyle>None</FrameStyle>
       <ForegroundColor>Default</ForegroundColor>

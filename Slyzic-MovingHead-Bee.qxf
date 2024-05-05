@@ -3,8 +3,8 @@
 <FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
  <Creator>
   <Name>Q Light Controller Plus</Name>
-  <Version>4.12.4</Version>
-  <Author>scent</Author>
+  <Version>4.12.3 GIT</Version>
+  <Author></Author>
  </Creator>
  <Manufacturer>Slyzic</Manufacturer>
  <Model>Bee moving head</Model>
@@ -54,9 +54,6 @@
  </Channel>
  <Channel Name="Rotate beams">
   <Group Byte="0">Prism</Group>
-  <Capability Min="0" Max="127">angular position</Capability>
-  <Capability Min="128" Max="191">rotate CW slow2fast</Capability>
-  <Capability Min="192" Max="255">rotate CCW fast2slow</Capability>
  </Channel>
  <Channel Name="Show">
   <Group Byte="0">Effect</Group>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureDefinition>
+<FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.12.4</Version>
+  <Author>Slyzic</Author>
+ </Creator>
+ <Manufacturer>Slyzic</Manufacturer>
+ <Model>120W-Moving head</Model>
+ <Type>Moving Head</Type>
+ <Channel Name="Pan">
+  <Group Byte="0">Pan</Group>
+  <Capability Min="0" Max="255">Pan</Capability>
+ </Channel>
+ <Channel Name="Pan fine" Preset="PositionPanFine"/>
+ <Channel Name="Tilt">
+  <Group Byte="0">Tilt</Group>
+  <Capability Min="0" Max="255">Tilt</Capability>
+ </Channel>
+ <Channel Name="Tilt fine" Preset="PositionTiltFine"/>
+ <Channel Name="Pan/Tilt speed" Preset="SpeedPanTiltFastSlow"/>
+ <Channel Name="Master dimmer" Preset="IntensityMasterDimmer"/>
+ <Channel Name="Strobe" Preset="ShutterStrobeSlowFast"/>
+ <Channel Name="Color macro">
+  <Group Byte="0">Colour</Group>
+  <Capability Min="0" Max="19">White</Capability>
+  <Capability Min="20" Max="39">Red</Capability>
+  <Capability Min="40" Max="59">Amber</Capability>
+  <Capability Min="60" Max="79">Yellow</Capability>
+  <Capability Min="80" Max="99">Green</Capability>
+  <Capability Min="100" Max="119">Blue</Capability>
+  <Capability Min="120" Max="139">Purple</Capability>
+  <Capability Min="140" Max="159">LightBlue</Capability>
+  <Capability Min="160" Max="255">AutoChangeSlowFast</Capability>
+ </Channel>
+ <Channel Name="Gobo wheel">
+  <Group Byte="0">Gobo</Group>
+  <Capability Min="0" Max="9">CircleSmall</Capability>
+  <Capability Min="10" Max="19">CrcleLarge</Capability>
+  <Capability Min="20" Max="29">Sun</Capability>
+  <Capability Min="30" Max="39">Spiral</Capability>
+  <Capability Min="40" Max="49">Flower</Capability>
+  <Capability Min="50" Max="59">Beams</Capability>
+  <Capability Min="60" Max="69">Spiral</Capability>
+  <Capability Min="70" Max="79">Flower2</Capability>
+  <Capability Min="80" Max="89"></Capability>
+  <Capability Min="90" Max="99"></Capability>
+  <Capability Min="100" Max="109"></Capability>
+  <Capability Min="110" Max="119"></Capability>
+  <Capability Min="120" Max="129"></Capability>
+  <Capability Min="130" Max="139"></Capability>
+  <Capability Min="140" Max="149"></Capability>
+  <Capability Min="150" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Prism">
+  <Group Byte="0">Prism</Group>
+  <Capability Min="0" Max="127">OFF</Capability>
+  <Capability Min="128" Max="156">ON</Capability>
+  <Capability Min="157" Max="255">RotationSlowFast</Capability>
+ </Channel>
+ <Channel Name="Auto">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="29">NONE</Capability>
+  <Capability Min="30" Max="59">Auto1</Capability>
+  <Capability Min="60" Max="89">Auto2</Capability>
+  <Capability Min="90" Max="119">Auto3</Capability>
+  <Capability Min="120" Max="149">Auto4</Capability>
+  <Capability Min="150" Max="179">Sound1</Capability>
+  <Capability Min="180" Max="209">Sound2</Capability>
+  <Capability Min="210" Max="239">Sound3</Capability>
+  <Capability Min="240" Max="255">Sound4</Capability>
+ </Channel>
+ <Channel Name="Reset">
+  <Group Byte="0">Maintenance</Group>
+  <Capability Min="0" Max="249">NONE</Capability>
+  <Capability Min="250" Max="255">Reset</Capability>
+ </Channel>
+ <Mode Name="Default">
+  <Channel Number="0">Pan</Channel>
+  <Channel Number="1">Pan fine</Channel>
+  <Channel Number="2">Tilt</Channel>
+  <Channel Number="3">Tilt fine</Channel>
+  <Channel Number="4">Pan/Tilt speed</Channel>
+  <Channel Number="5">Master dimmer</Channel>
+  <Channel Number="6">Strobe</Channel>
+  <Channel Number="7">Color macro</Channel>
+  <Channel Number="8">Gobo wheel</Channel>
+  <Channel Number="9">Prism</Channel>
+  <Channel Number="10">Auto</Channel>
+  <Channel Number="11">Reset</Channel>
+  <Head>
+   <Channel>0</Channel>
+   <Channel>2</Channel>
+  </Head>
+ </Mode>
+ <Physical>
+  <Bulb Type="LED" Lumens="0" ColourTemperature="0"/>
+  <Dimensions Weight="0" Width="0" Height="0" Depth="0"/>
+  <Lens Name="Other" DegreesMin="0" DegreesMax="0"/>
+  <Focus Type="Head" PanMax="540" TiltMax="180"/>
+  <Technical PowerConsumption="150" DmxConnector="5-pin"/>
+ </Physical>
+</FixtureDefinition>

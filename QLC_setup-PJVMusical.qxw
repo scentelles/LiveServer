@@ -10,7 +10,7 @@
   <InputOutputMap>
    <Universe Name="Universe 1" ID="0">
     <Input Plugin="OSC" Line="1"/>
-    <Output Plugin="ArtNet" Line="0"/>
+    <Output Plugin="ArtNet" Line="1"/>
    </Universe>
    <Universe Name="Universe 2" ID="1" Passthrough="True">
     <Output Plugin="UART" Line="0">
@@ -251,16 +251,16 @@
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="PerStep" FadeOut="Default" Duration="PerStep"/>
-   <Step Number="0" FadeIn="500" Hold="400" FadeOut="0" Values="68">1:0,255,4,255:2:0,141,1,255,2,61:3:2,107,3,181,4,255,5,70:6:0,82,1,99:7:0,255,1,255:8:5,255,6,255</Step>
-   <Step Number="1" FadeIn="500" Hold="1500" FadeOut="0" Values="68">1:0,255,6,255:2:0,141,1,255,2,61:3:3,29,4,255:5:5,255:6:0,82,1,99,5,255:7:0,255,1,255:8:0,92,5,255,6,255,8,255</Step>
-   <Step Number="2" FadeIn="3000" Hold="1000" FadeOut="0" Values="68">1:0,255,2,216:2:0,141,1,255,2,61:3:1,226,2,255,3,29,4,255,5,70:4:4,63,5,91,7,255,9,255:6:0,82,1,99:7:0,255,1,255,5,254,6,170:8:0,92,2,255,5,255,8,255</Step>
-   <Step Number="3" FadeIn="2000" Hold="1000" FadeOut="0" Values="70">1:0,255,4,231,7,255:2:0,141,1,255,2,61:3:1,255,2,255,3,243,4,255,5,70:4:5,233,7,255:5:5,255:6:0,82,1,99,5,255:7:0,255,1,255,5,254,6,64:8:0,127,2,212,5,255,7,255,8,255:3:5,70:6:0,82</Step>
-   <Step Number="4" FadeIn="4000" Hold="2000" FadeOut="0" Values="70">1:0,255,6,255:2:0,141,1,255,2,61:3:0,226,1,29,2,255,4,255,5,70:6:0,82,1,99:7:0,255,1,255,5,251:8:0,228,5,255,6,255,8,255:3:5,70:6:0,82</Step>
-   <Step Number="5" FadeIn="4000" Hold="100" FadeOut="0" Values="70">1:0,255,4,255:2:0,141,1,255,2,61:3:1,29,2,255,4,255,5,70:6:0,82,1,255:7:0,255,4,255,7,142:8:0,92,2,255,5,200,9,255:3:5,70:6:0,82</Step>
-   <Step Number="6" FadeIn="4000" Hold="2000" FadeOut="0" Values="70">1:0,255,4,255,6,255:2:0,141,1,255,2,61:3:0,77,1,29,2,100,4,255,5,70:5:5,255:6:0,82,1,99,5,255:7:0,255,1,255:8:0,92,2,195,5,255,9,255:3:5,70:6:0,82</Step>
-   <Step Number="7" FadeIn="1500" Hold="1500" FadeOut="0" Values="68">1:0,255,5,254,6,170:2:0,141,1,255,2,61:3:2,100,4,255,5,70:7:0,255,1,255:8:0,92,2,195,5,255,6,171</Step>
-   <Step Number="8" FadeIn="500" Hold="1500" FadeOut="0" Values="71">1:0,255,1,67,4,255:2:0,141,1,255,2,61:3:0,129,1,163,2,135,3,52,4,255,5,70:5:5,255:6:0,82,1,99,5,255:7:0,255,1,255:8:0,218,2,121,5,255,6,255:3:4,255:5:0,82:6:5,255</Step>
-   <Step Number="9" FadeIn="500" Hold="1500" FadeOut="0" Values="70">1:0,255,4,255:2:0,141,1,255,2,61:3:0,129,1,237,2,255,3,52,4,255,5,70:5:5,255:6:0,82,1,99,5,255:7:0,255,1,255:8:0,211,2,132,8,255:3:5,70:6:0,82</Step>
+   <Step Number="0" FadeIn="500" Hold="400" FadeOut="0" Values="70">1:0,255,4,255:2:0,141,1,255,2,61:3:2,107,3,181,4,255,5,70:6:0,82,1,99:7:0,255,1,255:8:5,255,6,255</Step>
+   <Step Number="1" FadeIn="500" Hold="1500" FadeOut="0" Values="70">1:0,255,6,255:2:0,141,1,255,2,61:3:3,29,4,255:5:5,255:6:0,82,1,99,5,255:7:0,255,1,255:8:0,92,5,255,6,255,8,255</Step>
+   <Step Number="2" FadeIn="3000" Hold="1000" FadeOut="0" Values="70">1:0,255,2,216:2:0,141,1,255,2,61:3:1,226,2,255,3,29,4,255,5,70:4:4,63,5,91,7,255,9,255:6:0,82,1,99:7:0,255,1,255,5,254,6,170:8:0,92,2,255,5,255,8,255</Step>
+   <Step Number="3" FadeIn="2000" Hold="1000" FadeOut="0" Values="72">1:0,255,4,231,7,255:2:0,141,1,255,2,61:3:1,255,2,255,3,243,4,255,5,70:4:5,233,7,255:5:5,255:6:0,82,1,99,5,255:7:0,255,1,255,5,254,6,64:8:0,127,2,212,5,255,7,255,8,255:3:5,70:6:0,82</Step>
+   <Step Number="4" FadeIn="4000" Hold="2000" FadeOut="0" Values="72">1:0,255,6,255:2:0,141,1,255,2,61:3:0,226,1,29,2,255,4,255,5,70:6:0,82,1,99:7:0,255,1,255,5,251:8:0,228,5,255,6,255,8,255:3:5,70:6:0,82</Step>
+   <Step Number="5" FadeIn="4000" Hold="100" FadeOut="0" Values="72">1:0,255,4,255:2:0,141,1,255,2,61:3:1,29,2,255,4,255,5,70:6:0,82,1,255:7:0,255,4,255,7,142:8:0,92,2,255,5,200,9,255:3:5,70:6:0,82</Step>
+   <Step Number="6" FadeIn="4000" Hold="2000" FadeOut="0" Values="72">1:0,255,4,255,6,255:2:0,141,1,255,2,61:3:0,77,1,29,2,100,4,255,5,70:5:5,255:6:0,82,1,99,5,255:7:0,255,1,255:8:0,92,2,195,5,255,9,255:3:5,70:6:0,82</Step>
+   <Step Number="7" FadeIn="1500" Hold="1500" FadeOut="0" Values="70">1:0,255,5,254,6,170:2:0,141,1,255,2,61:3:2,100,4,255,5,70:7:0,255,1,255:8:0,92,2,195,5,255,6,171</Step>
+   <Step Number="8" FadeIn="500" Hold="1500" FadeOut="0" Values="73">1:0,255,1,67,4,255:2:0,141,1,255,2,61:3:0,129,1,163,2,135,3,52,4,255,5,70:5:5,255:6:0,82,1,99,5,255:7:0,255,1,255:8:0,218,2,121,5,255,6,255:3:4,255:5:0,82:6:5,255</Step>
+   <Step Number="9" FadeIn="500" Hold="1500" FadeOut="0" Values="72">1:0,255,4,255:2:0,141,1,255,2,61:3:0,129,1,237,2,255,3,52,4,255,5,70:5:5,255:6:0,82,1,99,5,255:7:0,255,1,255:8:0,211,2,132,8,255:3:5,70:6:0,82</Step>
   </Function>
   <Function ID="8" Type="Scene" Name="Spider steady low" Path="Spider">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -450,6 +450,13 @@
   <Function ID="36" Type="Scene" Name="Bee custom show - color" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="12">0,0,1,0,2,0,3,0,5,0,6,0,7,0,8,0,9,0,10,0,11,0,12,0</FixtureVal>
+  </Function>
+  <Function ID="37" Type="Scene" Name="Julien">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
+   <FixtureVal ID="8">0,59,1,0,2,0,3,0,4,0,5,255,6,255,7,0,8,255,9,255,10,0,11,0,12,0,13,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0</FixtureVal>
+   <FixtureVal ID="7">0,255,1,255,2,0,3,255,4,255,5,0,6,0,7,0</FixtureVal>
   </Function>
   <Function ID="40" Type="Script" Name="Set_LH_Mode_IDLE">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -2886,6 +2893,20 @@
      <Action>Toggle</Action>
      <Intensity Adjust="False">100</Intensity>
      <Input Universe="0" Channel="28592"/>
+    </Button>
+    <Button Caption="Julien" ID="82" Icon="">
+     <WindowState Visible="True" X="600" Y="75" Width="50" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="37"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+     <Input Universe="0" Channel="46338"/>
     </Button>
    </SoloFrame>
   </Frame>
