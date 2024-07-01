@@ -22,11 +22,16 @@ class MidiInputHandler(object):
         print("toggling ON")
         cc = [0xB0, ccId, 127]    # CC - ON
         if((ccId >3) and (ccId < 8)):
-            for i in range(8): 
+            for i in range(4,8): 
                 self.toggle[i] = 0
         
         self.toggle[ccId] = 1
         
+        if((ccId >7) and (ccId < 12)):
+            for i in range(8,12): 
+                self.toggle[i] = 0
+        
+        self.toggle[ccId] = 1        
 
         
         
