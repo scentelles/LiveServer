@@ -1,9 +1,9 @@
 {
+  "OSC_LOCALHOST_IP" 	: "10.3.141.52",
   "OSC_LOCALHOST_PORT" 	: 5007,
   "OBS_HOST" 			: "localhost",
   "OBS_PORT" 			: 4444,
   "OBS_PWD"  			: "secret",
   "OSC_PROJECTM_PORT" 	: 7700,
-  "SLIDESHOW_PATH"		: "H:\\Mon Drive\\acoustique\\Clips\\"
-  
+  "SLIDESHOW_PATH"		: "C:\\Users\\az02098.CORP\\Documents\\LiveServer\\VideoPC\\clip1.pptx"
 }

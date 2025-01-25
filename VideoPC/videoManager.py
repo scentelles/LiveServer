@@ -1,5 +1,4 @@
-import sys 
-import socket 
+import sys  
 sys.path.append("..")  
 
 import json
@@ -16,29 +15,15 @@ import threading
 #pywin32 package
 import win32com.client
 import time
-import win32gui
-
 
 from SmoothDefines import *
 
-
-
-
 MAIN_LOOP_DELAY = 0.01 #TODO : replace loop with message queue
 
-print ("Argument List:", str(sys.argv))
-print("loading config", str(sys.argv[1]))
-
-
-
-with open(sys.argv[1]) as config_file:
+with open('config.json') as config_file:
     config = json.load(config_file)
 
-hostname = socket.gethostname()
-local_ip = socket.gethostbyname(hostname)
-print(local_ip)
-    
-OSC_LOCALHOST_IP   = local_ip
+OSC_LOCALHOST_IP   = config['OSC_LOCALHOST_IP']
 OSC_LOCALHOST_PORT = config['OSC_LOCALHOST_PORT']
 OSC_PROJECTM_PORT  = config['OSC_PROJECTM_PORT']
 
@@ -51,8 +36,8 @@ SLIDESHOW_PATH = config['SLIDESHOW_PATH']
 ws = obsws(OBS_HOST, OBS_PORT, OBS_PWD)
 obs_connected = False
 
-print("opening OSC client")
-clientProjectM = udp_client.SimpleUDPClient("127.0.0.1", OSC_PROJECTM_PORT)
+
+clientProjectM = udp_client.SimpleUDPClient(OSC_LOCALHOST_IP, OSC_PROJECTM_PORT)
 
 
 
@@ -77,11 +62,9 @@ app = win32com.client.Dispatch("PowerPoint.Application")
 
 class ppt:
 	def __init__(self):
-		versioned_path = "" + SLIDESHOW_PATH + "Smooth trio clips v" + str(SLIDESHOW_VERSION) + ".pptx"
-		print("opening ", versioned_path)
-		self.pres = app.Presentations.Open(versioned_path, WithWindow=False)
-
-        
+		
+		self.pres = app.Presentations.Open(SLIDESHOW_PATH, WithWindow=False)
+	
 	def goto_slide(self, nb):
 		try:
 			print("Setting slide " + str(nb))
@@ -92,7 +75,7 @@ class ppt:
 		self.pres.SlideShowWindow.View.Next() 
 
 	def previous_slide(self):
-		self.pres.SlideShowWindow.View.Previous() 
+		self.pres.SlideShowWindow.View.Next() 
 		
 	def start_slideshow(self):
 
@@ -110,9 +93,8 @@ class ppt:
 
 def startSongSlide(song):
 	global my_slide	
-	print("Setting slide for song id : " + str(song) + "")
 	slideNb = SToSlide[song]
-	print("Setting ppt slide according to song : " + str(song) + "(" + SName[song] + ")" + " slide : " + str(slideNb))
+	print("Setting ppt slide according to song : " + str(slideNb))
 	my_slide.goto_slide(slideNb)
 		
 	
@@ -144,10 +126,8 @@ def obs_osc_receive(unused_addr, args, command, value):
 	global obs_connected
 	if(obs_connected == False):
 		obs_connect()
-		time.sleep(1)
 	if(obs_connected):
 		if(command == OBS_COMMAND_SWITCH_SCENE):
-			print("Setting scene index : " + str(value))
 			ws.call(requests.SetCurrentScene(ScenesNames[value])) 	
 	else:
 		print("Warning: OBS not connected. Skipping OBS OSC command")
@@ -174,38 +154,22 @@ def osc_thread(name):
 	dispatcher.map("/video/visualizer/preset", projectm_preset_osc_receive, "projectm_preset_osc_receive")
 	dispatcher.map("/video/visualizer/lock", projectm_lock_osc_receive, "projectm_lock_osc_receive")
 	dispatcher.map("/video/visualizer/random", projectm_random_osc_receive, "projectm_random_osc_receive")
-
+	
+	server = osc_server.ThreadingOSCUDPServer((OSC_LOCALHOST_IP, OSC_LOCALHOST_PORT), dispatcher)
+	print("Starting OSC server")
 	try:
-		server = osc_server.ThreadingOSCUDPServer((OSC_LOCALHOST_IP, OSC_LOCALHOST_PORT), dispatcher)
-		print("Starting OSC server")
-		try:
-			server.serve_forever()
-		except (KeyboardInterrupt, SystemExit):
-			print('The END in OSC server.')
-	except (OSError):
-		print("Could not connect to Liveserver on RASPI. If you're not in simulation mode, please check you're connected to the RASPI hotspot")
-		print("Exiting OSC thread")
-
+		server.serve_forever()
+	except (KeyboardInterrupt, SystemExit):
+		print('The END in OSC server.')
 
 	
-print("Opening slideset")		
+		
 my_slide = ppt()
 time.sleep(1)
-
 my_slide.start_slideshow()
 
 time.sleep(2)
 
-
-filename = str(SLIDESHOW_PATH).split('\\').pop()
-window_name = "Diaporama Powerpoint  -  " + filename + " - PowerPoint"  
-print("looking for window named : ", window_name)                   
-hwnd = win32gui.FindWindow(None, window_name)
-print ("handle : ", hwnd)
-if(hwnd != 0):
-    win32gui.MoveWindow(hwnd, 0, 0, 600, 400, True)
-
-print("starting OSC thread")
 dispatcher = dispatcher.Dispatcher()
 x = threading.Thread(target=osc_thread, args=(1,))
 
@@ -232,27 +196,20 @@ def obs_connect():
 try:
 	while True:
 		time.sleep(MAIN_LOOP_DELAY)
-		if(obs_connected == False):
-			print("Trying to connect to OBS...")
-			obs_connect()
-			time.sleep(3)
-
 		if (localCommand != NO_COMMAND):
-
+			if(obs_connected == False):
+				obs_connect()
 			
 			print("Executing local command")
 			if localCommand == NEXT_SLIDE:
-				print("next slide")
 				my_slide.next_slide()
 			if localCommand == PREVIOUS_SLIDE:
-				print("previous slide")
 				my_slide.previous_slide()
 			if localCommand == START_SONG:
-				print("Start new song slide")
 				startSongSlide(currentSong)
 
 			localCommand = NO_COMMAND
 			
 except KeyboardInterrupt:
 	app.Quit()
-
+	print('The END.')

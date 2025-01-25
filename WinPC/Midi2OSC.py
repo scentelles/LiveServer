@@ -4,8 +4,6 @@ import logging
 import sys
 import time
 
-sys.path.append("..")
-
 import rtmidi
 from rtmidi.midiutil import open_midiinput
 
@@ -14,30 +12,46 @@ from pythonosc import udp_client
 from pythonosc import osc_server
 from pythonosc import dispatcher
 
+from LCDMonitor import LCDMonitorClass
 
 import os
-import socket 
 
 from threading import Timer
 
-from SmoothDefines import *
-
 #==========================================================
 # Constant definitions
-hostname = socket.gethostname()
-LOCALHOST_IP   = socket.gethostbyname(hostname)
+RASPI_IP       = "10.3.141.1"
+RASPI_PORT     = 8000
+LOCALHOST_IP   = "10.3.141.213"
+LOCALHOST_PORT = 5006
 
-
-LIVESERVER_PORT     = 8000
-LH_PORT = 8010
-
-INPUT_PORT  = 'AudioBox USB 96 MIDI In 1'
+INPUT_PORT  = 'Springbeats vMIDI2'
 OUTPUT_PORT = 'Springbeats vMIDI4'
+
+DEBOUNCE_PRESET_DELAY = 3.0
+
+#==========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 #==========================================================
-
 
 class MidiInputHandler(object):
     def __init__(self, port):
@@ -73,7 +87,6 @@ class MidiInputHandler(object):
         if(value == 1): #We don't receive the preset 1(index 0...), so let's use the number 2(index 1).
             #shutdown
             print("Shuting down immediately")
-            client.send_message("/midi/shutdown", 1)
             cmd = "Shutdown -s -f -t 0"
             os.system(cmd)
               
@@ -111,6 +124,8 @@ def print_laserharp_handler(osc_address, args, velocity):
 #==========================================================
 #Main code
 
+myMonitor = LCDMonitorClass()
+
 
 #Open output port
 midiout = rtmidi.MidiOut()
@@ -135,22 +150,22 @@ for port, name in enumerate(ports):
        port_name = name
 
 
-client = udp_client.SimpleUDPClient(LOCALHOST_IP, LIVESERVER_PORT)
+client = udp_client.SimpleUDPClient(RASPI_IP, RASPI_PORT)
 
 dispatcher = dispatcher.Dispatcher()
 dispatcher.map("/vkb_midi/0/*", print_laserharp_handler, "midi_laserharp")
 
 server = osc_server.ThreadingOSCUDPServer(
-    (LOCALHOST_IP, LH_PORT), dispatcher)
+    (LOCALHOST_IP, LOCALHOST_PORT), dispatcher)
 
 print("Attaching MIDI input callback handler.")
- 
 midiin.set_callback(MidiInputHandler(port_name))
 
 try:
     print("Entering main loop. Press Control-C to exit.")
     server.serve_forever()
 except KeyboardInterrupt:
-
+    myMonitor.monitorThread.join()
+    myMonitor.keyThread.join()
     exit()
 

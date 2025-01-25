@@ -114,13 +114,13 @@ def forwardCCFromVoicelive(myCC, value):
 
     if   (myCC == VL3_CC_GUITAR_UMOD):
       if (currentSong == RED_CLOUD_LIGHT_PROGRAM):
-        print("LIGHTING")
+        print("FOG")
         if(value > 0):
           clientQLC.send_message("/fog", 255)
         else:
           clientQLC.send_message("/fog", 0)
 
-      else:      
+      if (currentSong == RED_CLOUD_LIVE_PROGRAM):      
         if (value > 0):
           setGMajorProgram(midi_output, 3)
           setAmpChannel(midi_output, AMP_CHANNEL_CLEAN)
@@ -129,39 +129,47 @@ def forwardCCFromVoicelive(myCC, value):
     elif (myCC == VL3_CC_GUITAR_DELAY):
       if (currentSong == RED_CLOUD_LIGHT_PROGRAM):
         clientQLC.send_message("/trip", 255)
-      else:
+      if (currentSong == RED_CLOUD_LIVE_PROGRAM):
         if (value > 0):
           setGMajorProgram(midi_output, 6)
           setAmpChannel(midi_output, AMP_CHANNEL_BOOST)
           clientQLC.send_message("/boost", 255)
           print("Setting QLC boost")
     elif (myCC == VL3_CC_GUITAR_REVERB):
-      if (value > 0):    
-        setGMajorProgram(midi_output, 8)
-        setAmpChannel(midi_output, AMP_CHANNEL_XLEAD)
-        clientQLC.send_message("/lead", 255)
+      if (currentSong == RED_CLOUD_LIGHT_PROGRAM):
+        clientQLC.send_message("/trip2", 255)      
+      if (currentSong == RED_CLOUD_LIVE_PROGRAM):
+          if (value > 0):    
+            setGMajorProgram(midi_output, 8)
+            setAmpChannel(midi_output, AMP_CHANNEL_XLEAD)
+            clientQLC.send_message("/lead", 255)
     elif (myCC == VL3_CC_GUITAR_COMP):
-      if (value > 0):
-        setGMajorProgram(midi_output, 5)
-        setAmpChannel(midi_output, AMP_CHANNEL_CLEAN)
+      if (currentSong == RED_CLOUD_LIVE_PROGRAM):
+          if (value > 0):
+            setGMajorProgram(midi_output, 5)
+            setAmpChannel(midi_output, AMP_CHANNEL_CLEAN)
     elif (myCC == VL3_CC_GUITAR_DRIVE):
-      if (value > 0):
-        setGMajorDelay(midi_output, 1)
-      else:
-        setGMajorDelay(midi_output, 0)
+      if (currentSong == RED_CLOUD_LIVE_PROGRAM):
+          if (value > 0):
+            setGMajorDelay(midi_output, 1)
+          else:
+            setGMajorDelay(midi_output, 0)
     elif (myCC == VL3_CC_GUITAR_HIT):
-      if(value > 0):
-        setGMajorBoost(midi_output, 1)
-        setGMajorDelay(midi_output, 1)
-        clientQLC.send_message("/solo", 255)
-        time.sleep(0.1)
-        clientQLC.send_message("/solo", 0)
-      else:
-        setGMajorBoost(midi_output, 0)
-        setGMajorDelay(midi_output, 0)
-        clientQLC.send_message("/solo", 255)
-        time.sleep(0.1)
-        clientQLC.send_message("/solo", 0)
+      if ((currentSong == RED_CLOUD_LIVE_PROGRAM) or (currentSong == RED_CLOUD_LIGHT_PROGRAM)):
+          if(value > 0):
+            setGMajorBoost(midi_output, 1)
+            setGMajorDelay(midi_output, 1)
+            clientQLC.send_message("/solo", 255)
+            time.sleep(0.1)
+            clientQLC.send_message("/solo", 0)
+          else:
+            setGMajorBoost(midi_output, 0)
+            setGMajorDelay(midi_output, 0)
+            clientQLC.send_message("/solo", 255)
+            time.sleep(0.1)
+            clientQLC.send_message("/solo", 0)
+            time.sleep(0.1)
+            clientQLC.send_message("/boost", 255) #out of solo	    
     else:
       print("message unmapped. do nothing - Did you at least set a song preset?")
 
@@ -184,10 +192,31 @@ def print_voicelive_handler(unused_addr, args, command, note, vel):
 
     
   print("\n[{0}] ~ {1} {2} {3}".format(args[0], command, note, vel))
-   
+  
 def print_shutdown_handler(unused_addr, args, value):
   print("Shutting down system")
   os.system("shutdown -h -P now")  
+
+def print_switch_handler(unused_addr, args, command, value):
+  print("Switch command received")
+  print ("command : " + str(command))
+  print ("value : " + str(value))
+  if(command == 1):
+      print("triggering FOG")
+      clientQLC.send_message("/fog", 255)
+      time.sleep(1)
+      clientQLC.send_message("/fog", 0)
+  if(command == 2):
+      print("triggering STROBE")
+      clientQLC.send_message("/strobe", 255)
+      time.sleep(1)
+      clientQLC.send_message("/strobe", 0)
+  if(command == 3):
+      print("triggering OOS")
+      clientQLC.send_message("/oos", 255)
+     
+      
+#    print("MIDI_CONTROL_CHANGE_FROM_CHRIS")
 
 
 def print_compute_handler(unused_addr, args, volume):
@@ -219,15 +248,16 @@ if __name__ == "__main__":
   
   
   #OSC connection to QLC+
-  clientQLC = udp_client.SimpleUDPClient(local_ip, 5005)
-
-  x = threading.Thread(target=midiReceiveThread, args=(1,))
-  x.start()
+  #clientQLC = udp_client.SimpleUDPClient(local_ip, 5005)
+  clientQLC = udp_client.SimpleUDPClient(local_ip, 7700) #when running on raspi
+ # x = threading.Thread(target=midiReceiveThread, args=(1,))
+  #x.start()
 
 
   dispatcher = dispatcher.Dispatcher()
   dispatcher.map("/midi/voicelive", print_voicelive_handler, "Midi_voicelive OSC")
   dispatcher.map("/midi/shutdown", print_shutdown_handler, "Shutdown")
+  dispatcher.map("/switch", print_switch_handler, "Switch")
 
   server = osc_server.ThreadingOSCUDPServer(
       (local_ip, 8000), dispatcher)
